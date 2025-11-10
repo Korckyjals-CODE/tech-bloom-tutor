@@ -1,0 +1,789 @@
+{
+  "metadata": {
+    "title": "Installing Python on Windows",
+    "subtitle": "Interactive Student Guide",
+    "description": "A comprehensive guide for installing Python on Windows using Bloom's Taxonomy stages",
+    "version": "1.0.0",
+    "author": "ABC Bilingual School",
+    "lastUpdated": "2025-11-10",
+    "storageKeyPrefix": "pywin_guide",
+    "instructorPasscode": "abc123"
+  },
+  
+  "branding": {
+    "brandName": "Python on Windows — Guide",
+    "theme": {
+      "colorScheme": "dark",
+      "primaryColor": "#4aa3ff",
+      "secondaryColor": "#7bc67b"
+    }
+  },
+  
+  "stages": [
+    {
+      "id": "s0",
+      "order": 0,
+      "title": "Stage 0 · Not Knowing",
+      "shortTitle": "Not Knowing",
+      "description": "Introduction and initial exposure to the topic"
+    },
+    {
+      "id": "s1",
+      "order": 1,
+      "title": "Stage 1 · Remembering",
+      "shortTitle": "Remembering",
+      "description": "Recall basic facts and concepts"
+    },
+    {
+      "id": "s2",
+      "order": 2,
+      "title": "Stage 2 · Understanding",
+      "shortTitle": "Understanding",
+      "description": "Explain ideas and concepts"
+    },
+    {
+      "id": "s3",
+      "order": 3,
+      "title": "Stage 3 · Applying",
+      "shortTitle": "Applying",
+      "description": "Use information in new situations"
+    },
+    {
+      "id": "s4",
+      "order": 4,
+      "title": "Stage 4 · Analyzing",
+      "shortTitle": "Analyzing",
+      "description": "Draw connections and distinguish between parts"
+    },
+    {
+      "id": "s5",
+      "order": 5,
+      "title": "Stage 5 · Evaluating",
+      "shortTitle": "Evaluating",
+      "description": "Justify decisions and compare solutions"
+    },
+    {
+      "id": "s6",
+      "order": 6,
+      "title": "Stage 6 · Creating",
+      "shortTitle": "Creating",
+      "description": "Produce original work and synthesize knowledge"
+    }
+  ],
+  
+  "sections": [
+    {
+      "id": "mindset",
+      "displayName": "Mindset",
+      "order": 0,
+      "description": "Prepare mentally and set expectations"
+    },
+    {
+      "id": "recap",
+      "displayName": "Recap",
+      "order": 1,
+      "description": "Review previous concepts or introduce context"
+    },
+    {
+      "id": "core",
+      "displayName": "Core",
+      "order": 2,
+      "description": "Present main content and key concepts"
+    },
+    {
+      "id": "guidedPractice",
+      "displayName": "Guided Practice",
+      "order": 3,
+      "description": "Practice with guidance and scaffolding"
+    },
+    {
+      "id": "challenge",
+      "displayName": "Challenge",
+      "order": 4,
+      "description": "Apply knowledge independently"
+    },
+    {
+      "id": "reflection",
+      "displayName": "Reflection",
+      "order": 5,
+      "description": "Think about learning and understanding"
+    },
+    {
+      "id": "transition",
+      "displayName": "Transition",
+      "order": 6,
+      "description": "Prepare for next stage"
+    }
+  ],
+  
+  "content": {
+    "s0": {
+      "mindset": {
+        "heading": "Welcome",
+        "components": [
+          {
+            "type": "text",
+            "content": "You are about to learn how to install Python on Windows. You do not need any prior knowledge. Read, try, and ask!"
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Why Python?",
+        "components": [
+          {
+            "type": "text",
+            "content": "Python lets you automate tasks and build apps quickly. Many tools and jobs use it."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Overview",
+        "components": [
+          {
+            "type": "text",
+            "content": "You will download the installer from python.org, run it, enable \"Add Python to PATH\", and verify the installation."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Find the Installer",
+        "components": [
+          {
+            "type": "text",
+            "content": "Open your browser and navigate to https://www.python.org/downloads/windows/. Choose the latest stable release for Windows (64-bit)."
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Question",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "Where is the safest place to download Python for Windows?",
+            "options": [
+              "Any site with \"python setup.exe\"",
+              "python.org",
+              "A random YouTube link"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! python.org is the official and safest source.",
+              "incorrect": "Not quite — try again."
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Your Words",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "In one sentence: what will you install today and why?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next",
+        "components": [
+          {
+            "type": "text",
+            "content": "Move to Remembering to learn key terms."
+          }
+        ]
+      }
+    },
+    "s1": {
+      "mindset": {
+        "heading": "Key Terms",
+        "components": [
+          {
+            "type": "text",
+            "content": "Remember these terms: PATH, version, installer, terminal (Command Prompt / PowerShell)."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Flashcards (Matching)",
+        "components": [
+          {
+            "type": "matching",
+            "leftColumn": [
+              "PATH",
+              "Version",
+              "Installer",
+              "Command Prompt"
+            ],
+            "rightColumn": [
+              {
+                "definition": "A system setting that lets you run programs by name",
+                "matchesWith": "PATH"
+              },
+              {
+                "definition": "Number that identifies a specific release (e.g., 3.12.5)",
+                "matchesWith": "Version"
+              },
+              {
+                "definition": "Program that installs another program",
+                "matchesWith": "Installer"
+              },
+              {
+                "definition": "A text-based window where you run commands",
+                "matchesWith": "Command Prompt"
+              }
+            ]
+          }
+        ]
+      },
+      "core": {
+        "heading": "Check Your System",
+        "components": [
+          {
+            "type": "text",
+            "content": "Your Windows is likely 64-bit. You can confirm at Settings → System → About."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Ordering: Install Steps",
+        "components": [
+          {
+            "type": "ordering",
+            "instructions": "Drag to reorder into the correct sequence.",
+            "items": [
+              "Download Python from python.org",
+              "Run the installer",
+              "Check \"Add Python to PATH\"",
+              "Click \"Install Now\"",
+              "Open Command Prompt",
+              "Run python --version"
+            ],
+            "correctOrder": [0, 1, 2, 3, 4, 5]
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Quick Check",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "Why click \"Add Python to PATH\"?",
+            "options": [
+              "It changes wallpaper",
+              "It lets you run python from any folder",
+              "It installs VS Code"
+            ],
+            "correctIndex": 1
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Recall",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Write the command to show Python's version.",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": ["python --version", "py --version"]
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next",
+        "components": [
+          {
+            "type": "text",
+            "content": "Go to Understanding to see how pieces fit together."
+          }
+        ]
+      }
+    },
+    "s2": {
+      "mindset": {
+        "heading": "How it Works",
+        "components": [
+          {
+            "type": "text",
+            "content": "PATH lets Windows find python.exe without typing its full location."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Spot the Problem (MCQ)",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "You installed Python but \"python\" is not recognized. Most likely cause?",
+            "options": [
+              "PC is off",
+              "PATH not set during install",
+              "Your keyboard is broken"
+            ],
+            "correctIndex": 1
+          }
+        ]
+      },
+      "core": {
+        "heading": "Two Launchers",
+        "components": [
+          {
+            "type": "text",
+            "content": "On Windows you may have both python and py launchers. Either can show your version."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Try Commands",
+        "components": [
+          {
+            "type": "code",
+            "language": "bash",
+            "content": "python --version\npy --version",
+            "copyable": true
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Short Answer",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What does PATH help the system do?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": ["find", "locate", "run programs by name"]
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Explain to a Friend",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain in your own words why we add Python to PATH.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next",
+        "components": [
+          {
+            "type": "text",
+            "content": "Apply it: do the real installation."
+          }
+        ]
+      }
+    },
+    "s3": {
+      "mindset": {
+        "heading": "Let's Install",
+        "components": [
+          {
+            "type": "text",
+            "content": "Follow the steps carefully. You can repeat as needed."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Checklist",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "Open python.org/downloads/windows",
+              "Download latest 64‑bit Windows installer",
+              "Run installer",
+              "Check \"Add Python to PATH\"",
+              "Install Now",
+              "Verify in Command Prompt"
+            ]
+          }
+        ]
+      },
+      "core": {
+        "heading": "Copy These Commands",
+        "components": [
+          {
+            "type": "code",
+            "language": "bash",
+            "content": "python --version\npy --version",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Verify Installation",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Paste the Python version you see (e.g., 3.12.5):",
+            "validation": {
+              "type": "regex",
+              "pattern": "3\\.\\d+\\.\\d+"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Ordering: Add pip + IDLE",
+        "components": [
+          {
+            "type": "ordering",
+            "items": [
+              "Open Start menu",
+              "Search \"IDLE\"",
+              "Launch IDLE",
+              "Open \"pip\" help in terminal: pip --help"
+            ]
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Success?",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What part was easiest? What was confusing?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next",
+        "components": [
+          {
+            "type": "text",
+            "content": "Analyze common issues."
+          }
+        ]
+      }
+    },
+    "s4": {
+      "mindset": {
+        "heading": "Troubleshoot",
+        "components": [
+          {
+            "type": "text",
+            "content": "Most problems are fixable. Read the error message first."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Multiple Choice",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "\"python is not recognized…\" What should you try first?",
+            "options": [
+              "Restart or reopen terminal",
+              "Reinstall Windows",
+              "Buy a new laptop"
+            ],
+            "correctIndex": 0
+          }
+        ]
+      },
+      "core": {
+        "heading": "Common Fix",
+        "components": [
+          {
+            "type": "text",
+            "content": "Re-run installer → Modify → \"Add Python to PATH\" or repair install. Then reopen terminal."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Mini Flowchart Builder",
+        "components": [
+          {
+            "type": "flowchart",
+            "nodes": [
+              {
+                "id": "node1",
+                "x": 40,
+                "y": 40,
+                "text": "Issue appears"
+              },
+              {
+                "id": "node2",
+                "x": 240,
+                "y": 40,
+                "text": "Read error"
+              },
+              {
+                "id": "node3",
+                "x": 440,
+                "y": 40,
+                "text": "Search solution"
+              },
+              {
+                "id": "node4",
+                "x": 640,
+                "y": 40,
+                "text": "Apply fix"
+              },
+              {
+                "id": "node5",
+                "x": 840,
+                "y": 40,
+                "text": "Verify"
+              }
+            ],
+            "connections": [
+              {"from": "node1", "to": "node2"},
+              {"from": "node2", "to": "node3"},
+              {"from": "node3", "to": "node4"},
+              {"from": "node4", "to": "node5"}
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Short Answer",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "If pip is not recognized after install, what two steps can you try?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": ["reopen", "repair", "path", "ensure add to path", "py -m pip"]
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Your Strategy",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Write a 3-step plan you will try when any tool is \"not recognized\".",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next",
+        "components": [
+          {
+            "type": "text",
+            "content": "Evaluate different install options."
+          }
+        ]
+      }
+    },
+    "s5": {
+      "mindset": {
+        "heading": "Compare Options",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can install via python.org, Windows Store, or package managers like winget."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Matching",
+        "components": [
+          {
+            "type": "matching",
+            "leftColumn": [
+              "python.org installer",
+              "Microsoft Store",
+              "winget"
+            ],
+            "rightColumn": [
+              {
+                "definition": "Classic .exe with full control",
+                "matchesWith": "python.org installer"
+              },
+              {
+                "definition": "Convenient, sandboxed updates",
+                "matchesWith": "Microsoft Store"
+              },
+              {
+                "definition": "Command-line install and upgrades",
+                "matchesWith": "winget"
+              }
+            ]
+          }
+        ]
+      },
+      "core": {
+        "heading": "Winget Example",
+        "components": [
+          {
+            "type": "code",
+            "language": "bash",
+            "content": "winget install Python.Python.3",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Pros & Cons (Short)",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Name one advantage of winget and one advantage of the .exe installer.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "MCQ",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "Which option gives you the most control over PATH during install?",
+            "options": [
+              "Microsoft Store",
+              "python.org installer",
+              "winget"
+            ],
+            "correctIndex": 1
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Pick Your Default",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Which method would you recommend to a friend and why?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next",
+        "components": [
+          {
+            "type": "text",
+            "content": "Create something: a mini installation guide."
+          }
+        ]
+      }
+    },
+    "s6": {
+      "mindset": {
+        "heading": "Create & Teach",
+        "components": [
+          {
+            "type": "text",
+            "content": "Synthesize your learning by writing a short guide for a new student."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Checklist",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "State goal clearly",
+              "List numbered steps",
+              "Add screenshots placeholders",
+              "Add a troubleshoot section",
+              "Include verification step"
+            ]
+          }
+        ]
+      },
+      "core": {
+        "heading": "Template",
+        "components": [
+          {
+            "type": "code",
+            "language": "markdown",
+            "content": "# Mini Guide\n1) Go to python.org/downloads/windows\n2) Download latest 64‑bit installer\n3) Run it and check \"Add to PATH\"\n4) Install Now\n5) Verify: python --version",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Short",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Write your 3 best tips for installing Python on Windows.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Ordering: Final Steps",
+        "components": [
+          {
+            "type": "ordering",
+            "items": [
+              "Write guide",
+              "Share with a peer",
+              "Peer tests it",
+              "Revise guide"
+            ]
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Self‑assessment",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What do you now understand that you didn't before?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "You did it!",
+        "components": [
+          {
+            "type": "text",
+            "content": "You reached Creating. You can now help others install Python."
+          }
+        ]
+      }
+    }
+  },
+  
+  "ui": {
+    "sidebar": {
+      "studentNamePlaceholder": "Enter your name to save progress",
+      "tips": "Tip: Use Next/Prev at the bottom of each section.",
+      "printButtonText": "Print current stage"
+    },
+    "navigation": {
+      "previousButton": "← Previous",
+      "nextButton": "Next →",
+      "markCompleteButton": "Mark section complete",
+      "markedCompleteButton": "✓ Marked complete"
+    },
+    "feedback": {
+      "correctAnswer": "Correct!",
+      "incorrectAnswer": "Not quite — try again.",
+      "saved": "Saved",
+      "copiedToClipboard": "Copied to clipboard"
+    }
+  }
+}
+
