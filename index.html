@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Installing Python on Windows — Interactive Student Guide</title>
+  <style>
+    :root {
+      --bg: #0b0e12;
+      --panel: #11161d;
+      --muted: #9fb0c3;
+      --text: #e6eef6;
+      --accent: #4aa3ff;
+      --accent-2: #7bc67b;
+      --warn: #ffb86b;
+      --danger: #ff6b6b;
+      --border: #1e2630;
+      --good: #20c997;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: var(--bg); color: var(--text); }
+    .app { display:flex; min-height: 100dvh; }
+    .sidebar { width: 320px; background: var(--panel); border-right: 1px solid var(--border); padding: 16px; overflow:auto; position: sticky; top:0; height: 100dvh; }
+    .brand { font-weight: 700; font-size: 20px; margin-bottom: 8px; }
+    .student-box { display:flex; gap:8px; margin: 8px 0 16px; }
+    input[type=text] { background:#0c1219; border:1px solid var(--border); color:var(--text); padding:8px 10px; border-radius:8px; flex:1; }
+    button, .btn { background: var(--accent); color: white; border: none; padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+    button.secondary { background: #213346; color: var(--text); }
+    button.link { background: transparent; color: var(--accent); padding:0; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .stage-list { margin: 12px 0; display:flex; flex-direction: column; gap: 6px; }
+    .stage { border:1px solid var(--border); border-radius: 10px; overflow:hidden; }
+    .stage > summary { list-style:none; cursor:pointer; padding:10px 12px; background:#0d141b; display:flex; align-items:center; justify-content: space-between; }
+    .badge { font-size: 11px; background:#17202a; padding: 2px 8px; border-radius: 999px; border:1px solid var(--border); }
+    .section-links { padding: 10px 12px; border-top:1px solid var(--border); display:grid; grid-template-columns: 1fr 1fr; gap:6px; }
+    .section-links a { text-decoration:none; color: var(--text); background:#0c1219; border:1px solid var(--border); padding:8px; border-radius:8px; font-size: 13px; }
+    .main { flex:1; padding: 20px; overflow:auto; }
+    .topbar { position: sticky; top:0; backdrop-filter: blur(8px); background: rgba(11,14,18,0.7); border-bottom:1px solid var(--border); padding: 10px 0 12px; z-index: 5; }
+    .breadcrumbs { font-size: 12px; color: var(--muted); display:flex; gap:8px; align-items:center; }
+    .breadcrumbs .stage-chip { background:#141b24; border:1px solid var(--border); padding:2px 8px; border-radius:999px; color: var(--text); }
+    .progress-wrap { margin-top:8px; }
+    .meter { height: 10px; width: 100%; background:#0c1219; border-radius:999px; border:1px solid var(--border); overflow:hidden; }
+    .meter > div { height:100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); width:0%; transition: width .3s ease; }
+    .content { max-width: 1000px; margin: 0 auto; padding-top: 16px; }
+    h1 { font-size: 28px; margin: 8px 0 6px; }
+    h2 { font-size: 22px; margin: 20px 0 8px; }
+    p, li { line-height: 1.65; }
+    code { background:#0f1620; border:1px solid var(--border); padding: 2px 6px; border-radius:6px; }
+    pre { background:#0f1620; border:1px solid var(--border); padding: 12px; border-radius: 12px; overflow:auto; position: relative; }
+    .copy-btn { position:absolute; top:8px; right:8px; font-size:12px; padding:6px 8px; border-radius:8px; background:#1a2740; }
+    .card { border:1px solid var(--border); background:#0d141b; border-radius:12px; padding:12px; }
+    .inline-form { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .pill { border:1px solid var(--border); padding:4px 8px; border-radius:999px; }
+    .flex { display:flex; }
+    .gap-8 { gap:8px; }
+    .gap-12 { gap:12px; }
+    .space-between { justify-content: space-between; }
+    .right { justify-content: flex-end; }
+    .mark-complete { background: #203a2e; border:1px solid #284a3a; }
+    .complete { color: var(--good); font-weight: 700; }
+
+    /* Drag and drop lists */
+    .dd-list { display:flex; gap:10px; flex-wrap:wrap; }
+    .dd-item { padding:8px 10px; background:#0c1219; border:1px dashed var(--border); border-radius:8px; cursor: grab; }
+    .dropzone { min-height:48px; border:1px dashed var(--border); padding:8px; border-radius:10px; background:#0a0f15; }
+
+    /* Matching pairs */
+    .match-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    .match-col { border:1px solid var(--border); padding:10px; border-radius:10px; }
+    .match-item { padding:8px; border:1px dashed var(--border); border-radius:8px; background:#0c1219; margin-bottom:8px; cursor: grab; }
+
+    /* Flowchart */
+    .flow-wrap { display:grid; grid-template-columns: 260px 1fr; gap:12px; }
+    .flow-tools { border:1px solid var(--border); border-radius:12px; padding:10px; background:#0d141b; }
+    .flow-canvas { position:relative; border:1px solid var(--border); border-radius:12px; background:#0b1118; height:420px; overflow:hidden; }
+    .node { position:absolute; padding:10px 12px; background:#132235; border:1px solid var(--border); color:var(--text); border-radius:10px; cursor: move; user-select: none; }
+    .node .handle { font-size:11px; opacity:.8; }
+    .flow-svg { position:absolute; inset:0; pointer-events:none; }
+
+    .toggle-row { display:flex; gap:8px; align-items:center; }
+    .hidden { display:none !important; }
+
+    /* Print */
+    @media print {
+      body { background:white; color:#000; }
+      .sidebar, .topbar, .no-print { display:none !important; }
+      .main { padding:0; }
+      .content { max-width: none; padding:0; }
+      .card, pre, .flow-tools, .flow-canvas { border-color:#ddd; }
+      .stage-section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar">
+      <div class="brand">Python on Windows — Guide</div>
+      <div class="student-box">
+        <input id="studentName" type="text" placeholder="Enter your name to save progress" />
+        <button id="saveName">Save</button>
+      </div>
+      <div class="toggle-row">
+        <span class="muted">Instructor mode</span>
+        <button id="instructorBtn" class="secondary" title="Toggle instructor mode">OFF</button>
+      </div>
+      <div class="muted" style="margin-top:6px">Passcode required</div>
+
+      <div class="stage-list" id="stageList"></div>
+      <div class="muted" style="margin-top:12px">Tip: Use Next/Prev at the bottom of each section.</div>
+      <div style="margin-top:14px">
+        <button id="printStage" class="secondary" title="Print current stage">Print current stage</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="content">
+          <div class="breadcrumbs">
+            <span>Stage:</span>
+            <span class="stage-chip" id="bcStage">—</span>
+            <span>Section:</span>
+            <span class="stage-chip" id="bcSection">—</span>
+          </div>
+          <div class="progress-wrap">
+            <div class="meter"><div id="meterBar"></div></div>
+            <div class="muted" id="meterText" style="margin-top:6px"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content" id="content"></div>
+    </main>
+  </div>
+
+  <script>
+  // ------------------------------
+  // DATA MODEL
+  // ------------------------------
+  const STAGES = [
+    { id: 's0', title: 'Stage 0 · Not Knowing', short: 'Not Knowing' },
+    { id: 's1', title: 'Stage 1 · Remembering', short: 'Remembering' },
+    { id: 's2', title: 'Stage 2 · Understanding', short: 'Understanding' },
+    { id: 's3', title: 'Stage 3 · Applying', short: 'Applying' },
+    { id: 's4', title: 'Stage 4 · Analyzing', short: 'Analyzing' },
+    { id: 's5', title: 'Stage 5 · Evaluating', short: 'Evaluating' },
+    { id: 's6', title: 'Stage 6 · Creating', short: 'Creating' },
+  ];
+  const SECTIONS = ['Mindset','Recap','Core','Guided Practice','Challenge','Reflection','Transition'];
+
+  // Minimal content tailored to "Install Python on Windows"
+  const GUIDE = {
+    s0: {
+      Mindset: {
+        h: 'Welcome',
+        t: 'You are about to learn how to install Python on Windows. You do not need any prior knowledge. Read, try, and ask!'
+      },
+      Recap: { h: 'Why Python?', t: 'Python lets you automate tasks and build apps quickly. Many tools and jobs use it.' },
+      Core: { h: 'Overview', t: 'You will download the installer from python.org, run it, enable “Add Python to PATH”, and verify the installation.' },
+      GuidedPractice: { h: 'Find the Installer', t: 'Open your browser and navigate to https://www.python.org/downloads/windows/. Choose the latest stable release for Windows (64-bit).'},
+      Challenge: { h: 'Question', mcq: { q: 'Where is the safest place to download Python for Windows?', options: ['Any site with “python setup.exe”', 'python.org', 'A random YouTube link'], correct: 1 } },
+      Reflection: { h: 'Your Words', short: { prompt:'In one sentence: what will you install today and why?' } },
+      Transition: { h: 'Next', t:'Move to Remembering to learn key terms.' }
+    },
+    s1: {
+      Mindset: { h:'Key Terms', t:'Remember these terms: PATH, version, installer, terminal (Command Prompt / PowerShell).' },
+      Recap: { h:'Flashcards (Matching)', match: {
+        left: ['PATH','Version','Installer','Command Prompt'],
+        right: {
+          'A system setting that lets you run programs by name':'PATH',
+          'Number that identifies a specific release (e.g., 3.12.5)':'Version',
+          'Program that installs another program':'Installer',
+          'A text-based window where you run commands':'Command Prompt'
+        }
+      }},
+      Core: { h:'Check Your System', t:'Your Windows is likely 64-bit. You can confirm at Settings → System → About.' },
+      GuidedPractice: { h:'Ordering: Install Steps', order: ['Download Python from python.org','Run the installer','Check “Add Python to PATH”','Click “Install Now”','Open Command Prompt','Run python --version'] },
+      Challenge: { h:'Quick Check', mcq: { q:'Why click “Add Python to PATH”?', options:['It changes wallpaper','It lets you run python from any folder','It installs VS Code'], correct:1 } },
+      Reflection: { h:'Recall', short:{ prompt:'Write the command to show Python’s version.' , answerContains:['python --version','py --version'] } },
+      Transition: { h:'Next', t:'Go to Understanding to see how pieces fit together.' }
+    },
+    s2: {
+      Mindset: { h:'How it Works', t:'PATH lets Windows find python.exe without typing its full location.' },
+      Recap: { h:'Spot the Problem (MCQ)', mcq: { q:'You installed Python but “python” is not recognized. Most likely cause?', options:['PC is off','PATH not set during install','Your keyboard is broken'], correct:1 } },
+      Core: { h:'Two Launchers', t:'On Windows you may have both python and py launchers. Either can show your version.' },
+      GuidedPractice: { h:'Try Commands', code: 'python --version\npy --version' },
+      Challenge: { h:'Short Answer', short:{ prompt:'What does PATH help the system do?', answerContains:['find','locate','run programs by name'] } },
+      Reflection: { h:'Explain to a Friend', short:{ prompt:'Explain in your own words why we add Python to PATH.' } },
+      Transition: { h:'Next', t:'Apply it: do the real installation.' }
+    },
+    s3: {
+      Mindset: { h:'Let’s Install', t:'Follow the steps carefully. You can repeat as needed.' },
+      Recap: { h:'Checklist', checklist:['Open python.org/downloads/windows','Download latest 64‑bit Windows installer','Run installer','Check “Add Python to PATH”','Install Now','Verify in Command Prompt'] },
+      Core: { h:'Copy These Commands', code:'python --version\npy --version' },
+      GuidedPractice: { h:'Verify Installation', short:{ prompt:'Paste the Python version you see (e.g., 3.12.5):', answerPattern:/3\.\d+\.\d+/ } },
+      Challenge: { h:'Ordering: Add pip + IDLE', order:['Open Start menu','Search “IDLE”','Launch IDLE','Open “pip” help in terminal: pip --help'] },
+      Reflection: { h:'Success?', short:{ prompt:'What part was easiest? What was confusing?' } },
+      Transition: { h:'Next', t:'Analyze common issues.' }
+    },
+    s4: {
+      Mindset: { h:'Troubleshoot', t:'Most problems are fixable. Read the error message first.' },
+      Recap: { h:'Multiple Choice', mcq:{ q:'“python is not recognized…” What should you try first?', options:['Restart or reopen terminal','Reinstall Windows','Buy a new laptop'], correct:0 } },
+      Core: { h:'Common Fix', t:'Re-run installer → Modify → “Add Python to PATH” or repair install. Then reopen terminal.' },
+      GuidedPractice: { h:'Mini Flowchart Builder', flow:{ nodes:[{x:40,y:40,text:'Issue appears'},{x:240,y:40,text:'Read error'},{x:440,y:40,text:'Search solution'},{x:640,y:40,text:'Apply fix'},{x:840,y:40,text:'Verify'}] } },
+      Challenge: { h:'Short Answer', short:{ prompt:'If pip is not recognized after install, what two steps can you try?', answerContains:['reopen','repair','path','ensure add to path','py -m pip'] } },
+      Reflection: { h:'Your Strategy', short:{ prompt:'Write a 3-step plan you will try when any tool is “not recognized”.' } },
+      Transition: { h:'Next', t:'Evaluate different install options.' }
+    },
+    s5: {
+      Mindset: { h:'Compare Options', t:'You can install via python.org, Windows Store, or package managers like winget.' },
+      Recap: { h:'Matching', match: { left:['python.org installer','Microsoft Store','winget'], right:{
+        'Classic .exe with full control':'python.org installer',
+        'Convenient, sandboxed updates':'Microsoft Store',
+        'Command-line install and upgrades':'winget'
+      } } },
+      Core: { h:'Winget Example', code:'winget install Python.Python.3' },
+      GuidedPractice: { h:'Pros & Cons (Short)', short:{ prompt:'Name one advantage of winget and one advantage of the .exe installer.' } },
+      Challenge: { h:'MCQ', mcq:{ q:'Which option gives you the most control over PATH during install?', options:['Microsoft Store','python.org installer','winget'], correct:1 } },
+      Reflection: { h:'Pick Your Default', short:{ prompt:'Which method would you recommend to a friend and why?' } },
+      Transition: { h:'Next', t:'Create something: a mini installation guide.' }
+    },
+    s6: {
+      Mindset: { h:'Create & Teach', t:'Synthesize your learning by writing a short guide for a new student.' },
+      Recap: { h:'Checklist', checklist:['State goal clearly','List numbered steps','Add screenshots placeholders','Add a troubleshoot section','Include verification step'] },
+      Core: { h:'Template', code:'# Mini Guide\n1) Go to python.org/downloads/windows\n2) Download latest 64‑bit installer\n3) Run it and check "Add to PATH"\n4) Install Now\n5) Verify: python --version' },
+      GuidedPractice: { h:'Short', short:{ prompt:'Write your 3 best tips for installing Python on Windows.' } },
+      Challenge: { h:'Ordering: Final Steps', order:['Write guide','Share with a peer','Peer tests it','Revise guide'] },
+      Reflection: { h:'Self‑assessment', short:{ prompt:'What do you now understand that you didn’t before?' } },
+      Transition: { h:'You did it!', t:'You reached Creating. You can now help others install Python.' }
+    }
+  };
+
+  // ------------------------------
+  // STATE & STORAGE
+  // ------------------------------
+  const state = {
+    student: '',
+    instructor: false,
+    stageIndex: 0,
+    sectionIndex: 0,
+    completed: {}, // completed[stageId][section]
+  };
+
+  function storageKey(name){ return `pywin_guide_${name||state.student||'anon'}`; }
+  function save(){ if(!state.student) return; const data = { completed: state.completed, last: [state.stageIndex,state.sectionIndex] }; localStorage.setItem(storageKey(), JSON.stringify(data)); }
+  function load(name){ const raw = localStorage.getItem(storageKey(name)); if(!raw) return; try{ const data = JSON.parse(raw); state.completed = data.completed||{}; const [si,ci] = data.last||[0,0]; state.stageIndex=si; state.sectionIndex=ci; }catch(e){} }
+
+  // ------------------------------
+  // UI HELPERS
+  // ------------------------------
+  const el = (sel)=>document.querySelector(sel);
+  const contentEl = el('#content');
+
+  function setBreadcrumbs(){
+    el('#bcStage').textContent = STAGES[state.stageIndex].title;
+    el('#bcSection').textContent = SECTIONS[state.sectionIndex];
+  }
+  function computeProgress(){
+    const total = STAGES.length * SECTIONS.length;
+    let done = 0;
+    for(const s of STAGES){
+      const c = state.completed[s.id]||{};
+      done += Object.keys(c).filter(k=>c[k]).length;
+    }
+    const pct = Math.round((done/total)*100);
+    el('#meterBar').style.width = pct + '%';
+    el('#meterText').textContent = `${pct}% complete · Stage ${state.stageIndex} of ${STAGES.length-1} (${STAGES[state.stageIndex].short})`;
+  }
+
+  function markComplete(stageId, section, val=true){
+    if(!state.completed[stageId]) state.completed[stageId]={};
+    state.completed[stageId][section]=val;
+    save();
+    renderSidebar();
+    computeProgress();
+  }
+
+  function sectionCompleted(stageId, section){
+    return !!(state.completed[stageId] && state.completed[stageId][section]);
+  }
+
+  function copyText(txt){
+    navigator.clipboard.writeText(txt).then(()=>{
+      alert('Copied to clipboard');
+    });
+  }
+
+  function makeCopyBlock(codeText){
+    const pre = document.createElement('pre');
+    pre.textContent = codeText;
+    const btn = document.createElement('button');
+    btn.className='copy-btn'; btn.textContent='Copy';
+    btn.addEventListener('click', ()=>copyText(codeText));
+    pre.appendChild(btn);
+    return pre;
+  }
+
+  // ------------------------------
+  // INTERACTIVES
+  // ------------------------------
+  function mcqComponent(mcq){
+    const wrap = document.createElement('div');
+    wrap.className='card';
+    const q = document.createElement('p');
+    q.textContent = mcq.q; wrap.appendChild(q);
+    mcq.options.forEach((opt, i)=>{
+      const id = 'mcq_'+Math.random().toString(36).slice(2);
+      const row = document.createElement('div');
+      row.className='inline-form';
+      const r = document.createElement('input'); r.type='radio'; r.name=id; r.value=i;
+      const lbl = document.createElement('label'); lbl.textContent = opt; lbl.style.marginLeft='6px';
+      row.appendChild(r); row.appendChild(lbl); wrap.appendChild(row);
+    });
+    const fb = document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
+    const btn = document.createElement('button'); btn.textContent='Check answer'; btn.onclick=()=>{
+      const pick = wrap.querySelector('input[type=radio]:checked');
+      if(!pick){ fb.textContent='Choose an option'; return; }
+      if(+pick.value===mcq.correct){ fb.textContent='Correct!'; fb.classList.add('complete'); } else { fb.textContent='Not quite — try again.'; fb.classList.remove('complete'); }
+    };
+    wrap.appendChild(btn); wrap.appendChild(fb);
+    if(state.instructor){ const ans=document.createElement('div'); ans.className='muted'; ans.textContent='(Answer: '+mcq.options[mcq.correct]+')'; wrap.appendChild(ans); }
+    return wrap;
+  }
+
+  function shortAnswerComponent(cfg){
+    const wrap=document.createElement('div'); wrap.className='card';
+    const p=document.createElement('p'); p.textContent=cfg.prompt; wrap.appendChild(p);
+    const ta=document.createElement('input'); ta.type='text'; ta.style.width='100%'; ta.placeholder='Type here...'; ta.setAttribute('aria-label','Short answer');
+    wrap.appendChild(ta);
+    const fb=document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
+    const btn=document.createElement('button'); btn.textContent='Check';
+    btn.onclick=()=>{
+      const val=(ta.value||'').trim();
+      if(cfg.answerPattern){ fb.textContent = cfg.answerPattern.test(val)?'Looks good!':'Format not recognized — example: 3.12.5'; return; }
+      if(Array.isArray(cfg.answerContains)){
+        const ok = cfg.answerContains.some(x=> val.toLowerCase().includes(x));
+        fb.textContent = ok? 'Nice!':'Consider the key idea(s): '+cfg.answerContains.join(', ');
+        return;
+      }
+      fb.textContent='Saved';
+    };
+    wrap.appendChild(btn); wrap.appendChild(fb);
+    return wrap;
+  }
+
+  function checklistComponent(items){
+    const wrap=document.createElement('div'); wrap.className='card';
+    items.forEach((txt,i)=>{
+      const row=document.createElement('div'); row.className='inline-form';
+      const cb=document.createElement('input'); cb.type='checkbox'; cb.id='cb'+i;
+      const lbl=document.createElement('label'); lbl.textContent=txt; lbl.htmlFor=cb.id; lbl.style.marginLeft='6px';
+      row.appendChild(cb); row.appendChild(lbl); wrap.appendChild(row);
+    });
+    return wrap;
+  }
+
+  function orderComponent(items){
+    const wrap=document.createElement('div');
+    const note=document.createElement('div'); note.className='muted'; note.textContent='Drag to reorder into the correct sequence.'; wrap.appendChild(note);
+    const list=document.createElement('div'); list.className='dd-list';
+    (items.slice().map((t,i)=>({t, key: i+"_"+Math.random().toString(36).slice(2)}))).forEach(obj=>{
+      const d=document.createElement('div'); d.className='dd-item'; d.draggable=true; d.textContent=obj.t; d.dataset.key=obj.key; list.appendChild(d);
+    });
+    wrap.appendChild(list);
+    let dragEl=null;
+    list.addEventListener('dragstart',e=>{ if(e.target.classList.contains('dd-item')){ dragEl=e.target; e.dataTransfer.setData('text/plain', dragEl.dataset.key);} });
+    list.addEventListener('dragover',e=>{ e.preventDefault(); const tgt=e.target.closest('.dd-item'); if(!tgt||tgt===dragEl) return; const rect=tgt.getBoundingClientRect(); const before= (e.clientX - rect.left) < rect.width/2; list.insertBefore(dragEl, before? tgt: tgt.nextSibling); });
+    const btn=document.createElement('button'); btn.textContent='Check order'; btn.style.marginTop='8px';
+    const fb=document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
+    btn.onclick=()=>{
+      const current=[...list.children].map(el=>el.textContent);
+      const correct=items;
+      const ok=current.every((t,i)=>t===correct[i]);
+      fb.textContent= ok? 'Correct order!':'Something is off — try again.';
+      fb.classList.toggle('complete', ok);
+    };
+    wrap.appendChild(btn); wrap.appendChild(fb);
+    return wrap;
+  }
+
+  function matchComponent(cfg){
+    const wrap=document.createElement('div');
+    const grid=document.createElement('div'); grid.className='match-grid';
+    const left=document.createElement('div'); left.className='match-col';
+    const right=document.createElement('div'); right.className='match-col';
+    const rights=Object.keys(cfg.right);
+    cfg.left.forEach((term,i)=>{
+      const item=document.createElement('div'); item.className='match-item'; item.draggable=true; item.textContent=term; item.dataset.term=term; left.appendChild(item);
+    });
+    rights.forEach((def)=>{
+      const zone=document.createElement('div'); zone.className='dropzone'; zone.dataset.accept=cfg.right[def];
+      const label=document.createElement('div'); label.className='muted'; label.textContent=def; right.appendChild(label); right.appendChild(zone);
+    });
+    grid.appendChild(left); grid.appendChild(right); wrap.appendChild(grid);
+    let dragging=null;
+    wrap.addEventListener('dragstart',e=>{ if(e.target.classList.contains('match-item')){ dragging=e.target; }});
+    wrap.addEventListener('dragover',e=>{ if(e.target.classList.contains('dropzone')) e.preventDefault(); });
+    wrap.addEventListener('drop',e=>{ if(e.target.classList.contains('dropzone')){ e.preventDefault(); if(dragging){ e.target.textContent=dragging.dataset.term; e.target.dataset.filled=dragging.dataset.term; } }});
+    const btn=document.createElement('button'); btn.textContent='Check matches'; btn.style.marginTop='8px';
+    const fb=document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
+    btn.onclick=()=>{
+      const zones=[...wrap.querySelectorAll('.dropzone')];
+      const ok=zones.every(z=>z.dataset.filled===z.dataset.accept);
+      fb.textContent= ok? 'All matched!':'Some pairs are incorrect.'; fb.classList.toggle('complete', ok);
+    };
+    wrap.appendChild(btn); wrap.appendChild(fb);
+    if(state.instructor){ const ans=document.createElement('div'); ans.className='muted'; ans.style.marginTop='6px'; ans.textContent='(Answer key visible in instructor mode.)'; wrap.appendChild(ans); }
+    return wrap;
+  }
+
+  // Basic mini flowchart: draggable nodes, sequential connectors
+  function flowchartComponent(cfg){
+    const wrap=document.createElement('div'); wrap.className='flow-wrap';
+    const tools=document.createElement('div'); tools.className='flow-tools';
+    const canvas=document.createElement('div'); canvas.className='flow-canvas';
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.classList.add('flow-svg'); canvas.appendChild(svg);
+
+    const nodes=[];
+
+    function addNode(x=40,y=40,text='Step'){
+      const n=document.createElement('div'); n.className='node'; n.style.left=x+'px'; n.style.top=y+'px';
+      n.innerHTML = `<div class="handle">drag</div><div contenteditable="true" spellcheck="false">${text}</div>`;
+      n.dataset.id = 'n'+Math.random().toString(36).slice(2);
+      canvas.appendChild(n);
+      enableDrag(n);
+      nodes.push(n);
+      drawLines();
+    }
+
+    function enableDrag(el){
+      let offX=0, offY=0, dragging=false;
+      el.addEventListener('mousedown', (e)=>{ dragging=true; offX=e.offsetX; offY=e.offsetY; });
+      window.addEventListener('mousemove', (e)=>{ if(!dragging) return; const rect=canvas.getBoundingClientRect(); let x=e.clientX-rect.left-offX; let y=e.clientY-rect.top-offY; x=Math.max(8, Math.min(rect.width-140, x)); y=Math.max(8, Math.min(rect.height-44, y)); el.style.left=x+'px'; el.style.top=y+'px'; drawLines(); });
+      window.addEventListener('mouseup', ()=> dragging=false);
+    }
+
+    function drawLines(){
+      // simple sequential connectors in creation order
+      while(svg.firstChild) svg.removeChild(svg.firstChild);
+      for(let i=0;i<nodes.length-1;i++){
+        const a=nodes[i].getBoundingClientRect();
+        const b=nodes[i+1].getBoundingClientRect();
+        const cr=canvas.getBoundingClientRect();
+        const x1=a.left - cr.left + a.width/2;
+        const y1=a.top - cr.top + a.height/2;
+        const x2=b.left - cr.left + b.width/2;
+        const y2=b.top - cr.top + b.height/2;
+        const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+        const dx=(x2-x1)/2;
+        const d=`M ${x1} ${y1} C ${x1+dx} ${y1}, ${x2-dx} ${y2}, ${x2} ${y2}`;
+        path.setAttribute('d', d); path.setAttribute('fill','none'); path.setAttribute('stroke','#3d74a8'); path.setAttribute('stroke-width','2');
+        svg.appendChild(path);
+      }
+    }
+
+    // tools
+    const addBtn=document.createElement('button'); addBtn.textContent='Add step'; addBtn.onclick=()=>addNode(40+nodes.length*40, 60, 'New step');
+    const seqBtn=document.createElement('button'); seqBtn.className='secondary'; seqBtn.style.marginLeft='8px'; seqBtn.textContent='Auto-sequence';
+    seqBtn.onclick=()=>{ nodes.sort((a,b)=> a.offsetTop - b.offsetTop || a.offsetLeft - b.offsetLeft ); drawLines(); };
+    tools.appendChild(addBtn); tools.appendChild(seqBtn);
+
+    wrap.appendChild(tools); wrap.appendChild(canvas);
+
+    (cfg.nodes||[]).forEach(n=>addNode(n.x,n.y,n.text));
+
+    return wrap;
+  }
+
+  // ------------------------------
+  // RENDERERS
+  // ------------------------------
+  function renderSidebar(){
+    const host = el('#stageList'); host.innerHTML='';
+    STAGES.forEach((s, si)=>{
+      const det=document.createElement('details'); det.className='stage'; det.open = si===state.stageIndex;
+      const sum=document.createElement('summary');
+      sum.innerHTML = `<span>${s.title}</span><span class="badge">${Object.values(state.completed[s.id]||{}).filter(Boolean).length}/${SECTIONS.length}</span>`;
+      det.appendChild(sum);
+      const grid=document.createElement('div'); grid.className='section-links';
+      SECTIONS.forEach((sec, ci)=>{
+        const a=document.createElement('a'); a.href='#'; a.textContent=sec; if(sectionCompleted(s.id, sec)) a.classList.add('complete');
+        a.onclick=(e)=>{ e.preventDefault(); state.stageIndex=si; state.sectionIndex=ci; save(); renderAll(); };
+        grid.appendChild(a);
+      });
+      det.appendChild(grid); host.appendChild(det);
+    });
+  }
+
+  function renderSection(stageId, section){
+    const stageObj = GUIDE[stageId] || {};
+    const secKey = section.replace(/\\s+/g,'');
+    const data = stageObj[secKey] || { h: section, t: '' };
+
+    const wrap=document.createElement('div'); wrap.className='stage-section';
+    const h=document.createElement('h1'); h.textContent=`${STAGES[state.stageIndex].title} — ${section}`; wrap.appendChild(h);
+    if(data.t){ const p=document.createElement('p'); p.textContent=data.t; wrap.appendChild(p); }
+    if(data.code){ wrap.appendChild(makeCopyBlock(data.code)); }
+    if(data.mcq){ wrap.appendChild(mcqComponent(data.mcq)); }
+    if(data.short){ wrap.appendChild(shortAnswerComponent(data.short)); }
+    if(data.checklist){ wrap.appendChild(checklistComponent(data.checklist)); }
+    if(data.order){ wrap.appendChild(orderComponent(data.order)); }
+    if(data.match){ wrap.appendChild(matchComponent(data.match)); }
+    if(data.flow){ wrap.appendChild(flowchartComponent(data.flow)); }
+
+    const ctr=document.createElement('div'); ctr.className='flex space-between gap-12 no-print'; ctr.style.marginTop='14px';
+      const left=document.createElement('div');
+        const mark=document.createElement('button'); mark.className='mark-complete'; mark.textContent = sectionCompleted(stageId, section)? '✓ Marked complete' : 'Mark section complete';
+        mark.onclick=()=>{ const val = !sectionCompleted(stageId, section); markComplete(stageId, section, val); mark.textContent = val? '✓ Marked complete':'Mark section complete'; };
+        left.appendChild(mark);
+      const right=document.createElement('div'); right.className='flex gap-8 right';
+        const prev=document.createElement('button'); prev.className='secondary'; prev.textContent='← Previous'; prev.onclick=()=>move(-1);
+        const next=document.createElement('button'); next.textContent='Next →'; next.onclick=()=>move(1);
+        right.appendChild(prev); right.appendChild(next);
+    ctr.appendChild(left); ctr.appendChild(right);
+    wrap.appendChild(ctr);
+
+    return wrap;
+  }
+
+  function move(dir){
+    let si=state.stageIndex, ci=state.sectionIndex;
+    ci += dir;
+    if(ci<0){ si=Math.max(0, si-1); ci=SECTIONS.length-1; }
+    if(ci>=SECTIONS.length){ si=Math.min(STAGES.length-1, si+1); ci=0; }
+    state.stageIndex=si; state.sectionIndex=ci; save(); renderAll();
+  }
+
+  function renderMain(){
+    const contentEl = document.getElementById('content');
+    contentEl.innerHTML='';
+    const stageId=STAGES[state.stageIndex].id;
+    const section=SECTIONS[state.sectionIndex];
+    contentEl.appendChild(renderSection(stageId, section));
+  }
+
+  function renderAll(){
+    setBreadcrumbs();
+    computeProgress();
+    renderSidebar();
+    renderMain();
+  }
+
+  // ------------------------------
+  // INIT + EVENTS
+  // ------------------------------
+  document.getElementById('saveName').addEventListener('click', ()=>{
+    const name = document.getElementById('studentName').value.trim();
+    if(!name){ alert('Please enter a name'); return; }
+    state.student = name; load(); save(); renderAll();
+  });
+
+  document.getElementById('printStage').addEventListener('click', ()=> window.print());
+
+  document.getElementById('instructorBtn').addEventListener('click', ()=>{
+    if(!state.instructor){
+      const code = prompt('Enter instructor passcode:');
+      if(code==='abc123'){ state.instructor=true; alert('Instructor mode ON'); } else { alert('Incorrect passcode'); return; }
+    } else {
+      state.instructor=false; alert('Instructor mode OFF');
+    }
+    document.getElementById('instructorBtn').textContent = state.instructor? 'ON':'OFF';
+    renderAll();
+  });
+
+  // default load
+  state.student = localStorage.getItem('last_student_name') || '';
+  if(state.student){ document.getElementById('studentName').value = state.student; load(); }
+  document.getElementById('saveName').addEventListener('click', ()=>{
+    localStorage.setItem('last_student_name', state.student);
+  }, { once:false });
+
+  // First render
+  renderAll();
+  </script>
+</body>
+</html>
