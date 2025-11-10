@@ -94,7 +94,15 @@
 <body>
   <div class="app" id="app">
     <aside class="sidebar">
-      <div class="brand">Python on Windows — Guide</div>
+      <div class="brand" id="brandName">Technical Skill Tutor</div>
+      
+      <div style="margin-bottom:12px">
+        <label class="muted" style="display:block; margin-bottom:4px">Select Guide:</label>
+        <select id="guideSelector" style="width:100%; background:#0c1219; border:1px solid var(--border); color:var(--text); padding:8px; border-radius:8px;">
+          <option value="">Loading guides...</option>
+        </select>
+      </div>
+
       <div class="student-box">
         <input id="studentName" type="text" placeholder="Enter your name to save progress" />
         <button id="saveName">Save</button>
@@ -134,100 +142,84 @@
 
   <script>
   // ------------------------------
-  // DATA MODEL
+  // DATA MODEL (loaded from JSON)
   // ------------------------------
-  const STAGES = [
-    { id: 's0', title: 'Stage 0 · Not Knowing', short: 'Not Knowing' },
-    { id: 's1', title: 'Stage 1 · Remembering', short: 'Remembering' },
-    { id: 's2', title: 'Stage 2 · Understanding', short: 'Understanding' },
-    { id: 's3', title: 'Stage 3 · Applying', short: 'Applying' },
-    { id: 's4', title: 'Stage 4 · Analyzing', short: 'Analyzing' },
-    { id: 's5', title: 'Stage 5 · Evaluating', short: 'Evaluating' },
-    { id: 's6', title: 'Stage 6 · Creating', short: 'Creating' },
+  let GUIDE_DATA = null;  // Full JSON data
+  let STAGES = [];
+  let SECTIONS = [];
+  let GUIDE = {};  // Content organized by stage/section
+  
+  // Available guides list
+  const AVAILABLE_GUIDES = [
+    { value: 'guides/python-install.json', label: 'Installing Python on Windows' }
+    // Add more guides here as they are created
   ];
-  const SECTIONS = ['Mindset','Recap','Core','Guided Practice','Challenge','Reflection','Transition'];
 
-  // Minimal content tailored to "Install Python on Windows"
-  const GUIDE = {
-    s0: {
-      Mindset: {
-        h: 'Welcome',
-        t: 'You are about to learn how to install Python on Windows. You do not need any prior knowledge. Read, try, and ask!'
-      },
-      Recap: { h: 'Why Python?', t: 'Python lets you automate tasks and build apps quickly. Many tools and jobs use it.' },
-      Core: { h: 'Overview', t: 'You will download the installer from python.org, run it, enable “Add Python to PATH”, and verify the installation.' },
-      GuidedPractice: { h: 'Find the Installer', t: 'Open your browser and navigate to https://www.python.org/downloads/windows/. Choose the latest stable release for Windows (64-bit).'},
-      Challenge: { h: 'Question', mcq: { q: 'Where is the safest place to download Python for Windows?', options: ['Any site with “python setup.exe”', 'python.org', 'A random YouTube link'], correct: 1 } },
-      Reflection: { h: 'Your Words', short: { prompt:'In one sentence: what will you install today and why?' } },
-      Transition: { h: 'Next', t:'Move to Remembering to learn key terms.' }
-    },
-    s1: {
-      Mindset: { h:'Key Terms', t:'Remember these terms: PATH, version, installer, terminal (Command Prompt / PowerShell).' },
-      Recap: { h:'Flashcards (Matching)', match: {
-        left: ['PATH','Version','Installer','Command Prompt'],
-        right: {
-          'A system setting that lets you run programs by name':'PATH',
-          'Number that identifies a specific release (e.g., 3.12.5)':'Version',
-          'Program that installs another program':'Installer',
-          'A text-based window where you run commands':'Command Prompt'
+  // ------------------------------
+  // GUIDE LOADING
+  // ------------------------------
+  async function loadGuide(path) {
+    try {
+      const response = await fetch(path);
+      if (!response.ok) throw new Error('Failed to load guide');
+      
+      GUIDE_DATA = await response.json();
+      
+      // Extract data from JSON structure
+      STAGES = GUIDE_DATA.stages;
+      SECTIONS = GUIDE_DATA.sections.map(s => s.displayName);
+      
+      // Transform content from JSON format to internal format
+      GUIDE = {};
+      for (const stageId in GUIDE_DATA.content) {
+        GUIDE[stageId] = {};
+        for (const sectionId in GUIDE_DATA.content[stageId]) {
+          const secData = GUIDE_DATA.content[stageId][sectionId];
+          const secKey = GUIDE_DATA.sections.find(s => s.id === sectionId)?.displayName.replace(/\s+/g,'') || sectionId;
+          
+          // Convert JSON components to old format for compatibility
+          GUIDE[stageId][secKey] = {
+            h: secData.heading,
+            components: secData.components
+          };
         }
-      }},
-      Core: { h:'Check Your System', t:'Your Windows is likely 64-bit. You can confirm at Settings → System → About.' },
-      GuidedPractice: { h:'Ordering: Install Steps', order: ['Download Python from python.org','Run the installer','Check “Add Python to PATH”','Click “Install Now”','Open Command Prompt','Run python --version'] },
-      Challenge: { h:'Quick Check', mcq: { q:'Why click “Add Python to PATH”?', options:['It changes wallpaper','It lets you run python from any folder','It installs VS Code'], correct:1 } },
-      Reflection: { h:'Recall', short:{ prompt:'Write the command to show Python’s version.' , answerContains:['python --version','py --version'] } },
-      Transition: { h:'Next', t:'Go to Understanding to see how pieces fit together.' }
-    },
-    s2: {
-      Mindset: { h:'How it Works', t:'PATH lets Windows find python.exe without typing its full location.' },
-      Recap: { h:'Spot the Problem (MCQ)', mcq: { q:'You installed Python but “python” is not recognized. Most likely cause?', options:['PC is off','PATH not set during install','Your keyboard is broken'], correct:1 } },
-      Core: { h:'Two Launchers', t:'On Windows you may have both python and py launchers. Either can show your version.' },
-      GuidedPractice: { h:'Try Commands', code: 'python --version\npy --version' },
-      Challenge: { h:'Short Answer', short:{ prompt:'What does PATH help the system do?', answerContains:['find','locate','run programs by name'] } },
-      Reflection: { h:'Explain to a Friend', short:{ prompt:'Explain in your own words why we add Python to PATH.' } },
-      Transition: { h:'Next', t:'Apply it: do the real installation.' }
-    },
-    s3: {
-      Mindset: { h:'Let’s Install', t:'Follow the steps carefully. You can repeat as needed.' },
-      Recap: { h:'Checklist', checklist:['Open python.org/downloads/windows','Download latest 64‑bit Windows installer','Run installer','Check “Add Python to PATH”','Install Now','Verify in Command Prompt'] },
-      Core: { h:'Copy These Commands', code:'python --version\npy --version' },
-      GuidedPractice: { h:'Verify Installation', short:{ prompt:'Paste the Python version you see (e.g., 3.12.5):', answerPattern:/3\.\d+\.\d+/ } },
-      Challenge: { h:'Ordering: Add pip + IDLE', order:['Open Start menu','Search “IDLE”','Launch IDLE','Open “pip” help in terminal: pip --help'] },
-      Reflection: { h:'Success?', short:{ prompt:'What part was easiest? What was confusing?' } },
-      Transition: { h:'Next', t:'Analyze common issues.' }
-    },
-    s4: {
-      Mindset: { h:'Troubleshoot', t:'Most problems are fixable. Read the error message first.' },
-      Recap: { h:'Multiple Choice', mcq:{ q:'“python is not recognized…” What should you try first?', options:['Restart or reopen terminal','Reinstall Windows','Buy a new laptop'], correct:0 } },
-      Core: { h:'Common Fix', t:'Re-run installer → Modify → “Add Python to PATH” or repair install. Then reopen terminal.' },
-      GuidedPractice: { h:'Mini Flowchart Builder', flow:{ nodes:[{x:40,y:40,text:'Issue appears'},{x:240,y:40,text:'Read error'},{x:440,y:40,text:'Search solution'},{x:640,y:40,text:'Apply fix'},{x:840,y:40,text:'Verify'}] } },
-      Challenge: { h:'Short Answer', short:{ prompt:'If pip is not recognized after install, what two steps can you try?', answerContains:['reopen','repair','path','ensure add to path','py -m pip'] } },
-      Reflection: { h:'Your Strategy', short:{ prompt:'Write a 3-step plan you will try when any tool is “not recognized”.' } },
-      Transition: { h:'Next', t:'Evaluate different install options.' }
-    },
-    s5: {
-      Mindset: { h:'Compare Options', t:'You can install via python.org, Windows Store, or package managers like winget.' },
-      Recap: { h:'Matching', match: { left:['python.org installer','Microsoft Store','winget'], right:{
-        'Classic .exe with full control':'python.org installer',
-        'Convenient, sandboxed updates':'Microsoft Store',
-        'Command-line install and upgrades':'winget'
-      } } },
-      Core: { h:'Winget Example', code:'winget install Python.Python.3' },
-      GuidedPractice: { h:'Pros & Cons (Short)', short:{ prompt:'Name one advantage of winget and one advantage of the .exe installer.' } },
-      Challenge: { h:'MCQ', mcq:{ q:'Which option gives you the most control over PATH during install?', options:['Microsoft Store','python.org installer','winget'], correct:1 } },
-      Reflection: { h:'Pick Your Default', short:{ prompt:'Which method would you recommend to a friend and why?' } },
-      Transition: { h:'Next', t:'Create something: a mini installation guide.' }
-    },
-    s6: {
-      Mindset: { h:'Create & Teach', t:'Synthesize your learning by writing a short guide for a new student.' },
-      Recap: { h:'Checklist', checklist:['State goal clearly','List numbered steps','Add screenshots placeholders','Add a troubleshoot section','Include verification step'] },
-      Core: { h:'Template', code:'# Mini Guide\n1) Go to python.org/downloads/windows\n2) Download latest 64‑bit installer\n3) Run it and check "Add to PATH"\n4) Install Now\n5) Verify: python --version' },
-      GuidedPractice: { h:'Short', short:{ prompt:'Write your 3 best tips for installing Python on Windows.' } },
-      Challenge: { h:'Ordering: Final Steps', order:['Write guide','Share with a peer','Peer tests it','Revise guide'] },
-      Reflection: { h:'Self‑assessment', short:{ prompt:'What do you now understand that you didn’t before?' } },
-      Transition: { h:'You did it!', t:'You reached Creating. You can now help others install Python.' }
+      }
+      
+      // Update UI with guide metadata
+      document.getElementById('brandName').textContent = GUIDE_DATA.branding.brandName;
+      document.title = GUIDE_DATA.metadata.title + ' — ' + GUIDE_DATA.metadata.subtitle;
+      
+      // Reset state and render
+      state.stageIndex = 0;
+      state.sectionIndex = 0;
+      state.completed = {};
+      
+      renderAll();
+      
+    } catch (error) {
+      console.error('Error loading guide:', error);
+      alert('Failed to load guide. Please check the console for details.');
     }
-  };
+  }
+  
+  function populateGuideSelector() {
+    const selector = document.getElementById('guideSelector');
+    selector.innerHTML = '';
+    
+    AVAILABLE_GUIDES.forEach(guide => {
+      const option = document.createElement('option');
+      option.value = guide.value;
+      option.textContent = guide.label;
+      selector.appendChild(option);
+    });
+    
+    // Load saved guide preference or default to first
+    const savedGuide = localStorage.getItem('selected_guide') || AVAILABLE_GUIDES[0].value;
+    selector.value = savedGuide;
+    
+    // Load the selected guide
+    loadGuide(savedGuide);
+  }
 
   // ------------------------------
   // STATE & STORAGE
@@ -240,7 +232,10 @@
     completed: {}, // completed[stageId][section]
   };
 
-  function storageKey(name){ return `pywin_guide_${name||state.student||'anon'}`; }
+  function storageKey(name){ 
+    const prefix = GUIDE_DATA?.metadata?.storageKeyPrefix || 'guide';
+    return `${prefix}_${name||state.student||'anon'}`; 
+  }
   function save(){ if(!state.student) return; const data = { completed: state.completed, last: [state.stageIndex,state.sectionIndex] }; localStorage.setItem(storageKey(), JSON.stringify(data)); }
   function load(name){ const raw = localStorage.getItem(storageKey(name)); if(!raw) return; try{ const data = JSON.parse(raw); state.completed = data.completed||{}; const [si,ci] = data.last||[0,0]; state.stageIndex=si; state.sectionIndex=ci; }catch(e){} }
 
@@ -487,19 +482,62 @@
 
   function renderSection(stageId, section){
     const stageObj = GUIDE[stageId] || {};
-    const secKey = section.replace(/\\s+/g,'');
-    const data = stageObj[secKey] || { h: section, t: '' };
+    const secKey = section.replace(/\s+/g,'');
+    const data = stageObj[secKey] || { h: section, components: [] };
 
     const wrap=document.createElement('div'); wrap.className='stage-section';
     const h=document.createElement('h1'); h.textContent=`${STAGES[state.stageIndex].title} — ${section}`; wrap.appendChild(h);
-    if(data.t){ const p=document.createElement('p'); p.textContent=data.t; wrap.appendChild(p); }
-    if(data.code){ wrap.appendChild(makeCopyBlock(data.code)); }
-    if(data.mcq){ wrap.appendChild(mcqComponent(data.mcq)); }
-    if(data.short){ wrap.appendChild(shortAnswerComponent(data.short)); }
-    if(data.checklist){ wrap.appendChild(checklistComponent(data.checklist)); }
-    if(data.order){ wrap.appendChild(orderComponent(data.order)); }
-    if(data.match){ wrap.appendChild(matchComponent(data.match)); }
-    if(data.flow){ wrap.appendChild(flowchartComponent(data.flow)); }
+    
+    // Process components from JSON structure
+    if(data.components && Array.isArray(data.components)) {
+      data.components.forEach(comp => {
+        switch(comp.type) {
+          case 'text':
+            const p = document.createElement('p');
+            p.textContent = comp.content;
+            wrap.appendChild(p);
+            break;
+          case 'code':
+            wrap.appendChild(makeCopyBlock(comp.content));
+            break;
+          case 'multipleChoice':
+            const mcqData = {
+              q: comp.question,
+              options: comp.options,
+              correct: comp.correctIndex
+            };
+            wrap.appendChild(mcqComponent(mcqData));
+            break;
+          case 'shortAnswer':
+            const shortData = {
+              prompt: comp.prompt,
+              answerPattern: comp.validation?.pattern ? new RegExp(comp.validation.pattern) : undefined,
+              answerContains: comp.validation?.acceptedAnswers
+            };
+            wrap.appendChild(shortAnswerComponent(shortData));
+            break;
+          case 'checklist':
+            wrap.appendChild(checklistComponent(comp.items));
+            break;
+          case 'ordering':
+            wrap.appendChild(orderComponent(comp.items));
+            break;
+          case 'matching':
+            const matchData = {
+              left: comp.leftColumn,
+              right: {}
+            };
+            comp.rightColumn.forEach(item => {
+              matchData.right[item.definition] = item.matchesWith;
+            });
+            wrap.appendChild(matchComponent(matchData));
+            break;
+          case 'flowchart':
+            wrap.appendChild(flowchartComponent(comp));
+            break;
+        }
+      });
+    }
 
     const ctr=document.createElement('div'); ctr.className='flex space-between gap-12 no-print'; ctr.style.marginTop='14px';
       const left=document.createElement('div');
@@ -542,10 +580,18 @@
   // ------------------------------
   // INIT + EVENTS
   // ------------------------------
+  document.getElementById('guideSelector').addEventListener('change', (e) => {
+    const selectedGuide = e.target.value;
+    localStorage.setItem('selected_guide', selectedGuide);
+    loadGuide(selectedGuide);
+  });
+
   document.getElementById('saveName').addEventListener('click', ()=>{
     const name = document.getElementById('studentName').value.trim();
     if(!name){ alert('Please enter a name'); return; }
-    state.student = name; load(); save(); renderAll();
+    state.student = name; 
+    localStorage.setItem('last_student_name', state.student);
+    load(); save(); renderAll();
   });
 
   document.getElementById('printStage').addEventListener('click', ()=> window.print());
@@ -553,7 +599,8 @@
   document.getElementById('instructorBtn').addEventListener('click', ()=>{
     if(!state.instructor){
       const code = prompt('Enter instructor passcode:');
-      if(code==='abc123'){ state.instructor=true; alert('Instructor mode ON'); } else { alert('Incorrect passcode'); return; }
+      const correctCode = GUIDE_DATA?.metadata?.instructorPasscode || 'abc123';
+      if(code===correctCode){ state.instructor=true; alert('Instructor mode ON'); } else { alert('Incorrect passcode'); return; }
     } else {
       state.instructor=false; alert('Instructor mode OFF');
     }
@@ -563,13 +610,10 @@
 
   // default load
   state.student = localStorage.getItem('last_student_name') || '';
-  if(state.student){ document.getElementById('studentName').value = state.student; load(); }
-  document.getElementById('saveName').addEventListener('click', ()=>{
-    localStorage.setItem('last_student_name', state.student);
-  }, { once:false });
+  if(state.student){ document.getElementById('studentName').value = state.student; }
 
-  // First render
-  renderAll();
+  // Initialize guide selector and load first guide
+  populateGuideSelector();
   </script>
 </body>
 </html>
