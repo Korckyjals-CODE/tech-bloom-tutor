@@ -405,19 +405,36 @@
     const p=document.createElement('p'); p.innerHTML=parseMarkdown(cfg.prompt); wrap.appendChild(p);
     const ta=document.createElement('input'); ta.type='text'; ta.style.width='100%'; ta.placeholder='Type here...'; ta.setAttribute('aria-label','Short answer');
     wrap.appendChild(ta);
-    const fb=document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
-    const btn=document.createElement('button'); btn.textContent='Check';
-    btn.onclick=()=>{
+    
+    // Verify with ChatGPT button
+    const verifyBtn=document.createElement('button'); 
+    verifyBtn.textContent='Verify with ChatGPT';
+    verifyBtn.style.marginTop='8px';
+    verifyBtn.onclick=()=>{
       const val=(ta.value||'').trim();
-      if(cfg.answerPattern){ fb.textContent = cfg.answerPattern.test(val)?'Looks good!':'Format not recognized — example: 3.12.5'; return; }
-      if(Array.isArray(cfg.answerContains)){
-        const ok = cfg.answerContains.some(x=> val.toLowerCase().includes(x));
-        fb.textContent = ok? 'Nice!':'Consider the key idea(s): '+cfg.answerContains.join(', ');
-        return;
-      }
-      fb.textContent='Saved';
+      if(!val){ alert('Please enter your answer first'); return; }
+      
+      // Generate ChatGPT prompt
+      const chatGPTPrompt = `You are a helpful tutor evaluating student answers. Please review this answer and provide brief, encouraging feedback.
+
+Question: ${cfg.prompt}
+
+Student Answer: ${val}
+
+Please evaluate if this answer is correct and complete. Provide constructive feedback in 2-3 sentences.`;
+      
+      // Hide the verify button and show the prompt in a code block
+      verifyBtn.style.display='none';
+      const promptBlock = makeCopyBlock(chatGPTPrompt);
+      const instruction = document.createElement('div');
+      instruction.className='muted';
+      instruction.style.marginTop='8px';
+      instruction.innerHTML='<strong>Copy the prompt below and paste it into ChatGPT:</strong>';
+      wrap.appendChild(instruction);
+      wrap.appendChild(promptBlock);
     };
-    wrap.appendChild(btn); wrap.appendChild(fb);
+    wrap.appendChild(verifyBtn);
+    
     return wrap;
   }
 
