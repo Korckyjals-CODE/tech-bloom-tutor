@@ -45,6 +45,8 @@
     h1 { font-size: 28px; margin: 8px 0 6px; }
     h2 { font-size: 22px; margin: 20px 0 8px; }
     p, li { line-height: 1.65; }
+    ul { margin: 12px 0; padding-left: 24px; }
+    li { margin-bottom: 4px; }
     strong { font-weight: 700; color: var(--text); }
     em { font-style: italic; color: var(--text); }
     a { color: var(--accent); text-decoration: none; }
@@ -318,7 +320,54 @@
     // Links: [text](url) → <a href="url">text</a>
     html = html.replace(/\[([^\]]+?)\]\(([^\)]+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
     
-    // Line breaks: convert \n to <br> (preserve formatting)
+    // Bullet lists: Convert lines starting with • into <ul><li> structure
+    // Split by line breaks and process
+    const lines = html.split('\n');
+    const processed = [];
+    let inList = false;
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const trimmedLine = line.trim();
+      
+      // Check if line starts with bullet symbol •
+      if (/^•\s/.test(trimmedLine)) {
+        if (!inList) {
+          processed.push('<ul>');
+          inList = true;
+        }
+        // Remove the bullet and add as list item
+        const content = trimmedLine.replace(/^•\s*/, '');
+        processed.push(`<li>${content}</li>`);
+      } else if (trimmedLine === '' && inList) {
+        // Empty line while in list - skip it (don't close the list)
+        continue;
+      } else {
+        // Non-empty, non-bullet line - close list if open
+        if (inList) {
+          processed.push('</ul>');
+          inList = false;
+        }
+        processed.push(line);
+      }
+    }
+    
+    // Close any open list at the end
+    if (inList) {
+      processed.push('</ul>');
+    }
+    
+    html = processed.join('\n');
+    
+    // Remove newlines around list elements to prevent extra spacing
+    html = html.replace(/\n(<ul>)/g, '$1');
+    html = html.replace(/(<ul>)\n/g, '$1');
+    html = html.replace(/\n(<li>)/g, '$1');
+    html = html.replace(/(<\/li>)\n/g, '$1');
+    html = html.replace(/\n(<\/ul>)/g, '$1');
+    html = html.replace(/(<\/ul>)\n/g, '$1<br>');
+    
+    // Line breaks: convert remaining \n to <br> (for non-list content)
     html = html.replace(/\n/g, '<br>');
     
     return html;
