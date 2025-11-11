@@ -119,66 +119,125 @@
   "content": {
     "s0": {
       "mindset": {
-        "heading": "Welcome — Starting Your Journey",
+        "heading": "Welcome — Discovering Python",
         "components": [
           {
             "type": "text",
-            "content": "You are about to learn how to install Python on Windows. You do not need any prior knowledge. This is your first step into programming — read carefully, try things out, and ask questions!"
+            "content": "You're about to discover a tool that millions of people use to solve real problems, create games, analyze data, and automate boring tasks. Before we install anything, let's explore what Python is and why it's worth learning."
           }
         ]
       },
       "recap": {
-        "heading": "What You Already Know",
+        "heading": "What You've Heard Before",
         "components": [
           {
             "type": "text",
-            "content": "Think about what you already know or have heard: Have you ever seen the word Python before? What do you think it is used for? What is a terminal? (No right or wrong answers here — just curiosity!)"
+            "content": "Think about your daily life: Have you used Netflix, YouTube, Instagram, or Spotify? Did you know Python helps power these platforms? What kinds of problems would you like computers to solve for you?"
           }
         ]
       },
       "core": {
-        "heading": "Overview",
+        "heading": "What is Python?",
         "components": [
           {
             "type": "text",
-            "content": "You will download the installer from python.org, run it, enable \"Add Python to PATH\", and verify the installation in Windows Terminal."
+            "content": "**Python is a Programming Language** — A way to give instructions to computers in a language that's (somewhat) readable by humans.\n\n**Created in 1991** by Guido van Rossum, designed to be easy to learn and read.\n\n**Used Worldwide** by students, scientists, artists, game developers, and companies like Google, NASA, Netflix, and Spotify."
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Examples:**\n\n• Netflix uses Python to recommend shows you might like\n\n• Scientists use Python to analyze space telescope data\n\n• Artists use Python to create interactive installations\n\n• Students use Python to build their first games and apps"
+          },
+          {
+            "type": "text",
+            "content": "**What Makes Python Special?**\n\n• **Readable** — Code looks almost like English\n\n• **Versatile** — Works for websites, games, data analysis, robots, and more\n\n• **Beginner-Friendly** — Designed for learning\n\n• **Powerful** — Professional developers use it for serious projects\n\n• **Free** — Anyone can download and use it"
           }
         ]
       },
       "guidedPractice": {
-        "heading": "Find the Installer",
+        "heading": "Imagine the Possibilities",
         "components": [
           {
             "type": "text",
-            "content": "Open your browser and navigate to https://www.python.org/downloads/. The site will automatically detect Windows and show you the latest version. Choose the recommended installer for Windows (64-bit)."
+            "content": "Look at these Python code examples and try to guess what they do (don't worry about understanding every word):"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "print(\"Hello, World!\")",
+            "copyable": false
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "favorite_color = \"blue\"\nprint(f\"My favorite color is {favorite_color}\")",
+            "copyable": false
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "for number in range(1, 6):\n    print(number)",
+            "copyable": false
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which example do you think prints numbers 1 through 5? Which one displays a personalized message?",
+            "validation": {
+              "type": "freeform"
+            }
           }
         ]
       },
       "challenge": {
-        "heading": "Safety Check",
+        "heading": "Match Python to Its Use",
         "components": [
           {
             "type": "multipleChoice",
-            "question": "Where is the safest place to download Python for Windows?",
+            "question": "Which of these can Python help you do?",
             "options": [
-              "Any site with \"python setup.exe\"",
-              "python.org",
-              "A random YouTube link"
+              "Creating a calculator app",
+              "Making coffee automatically (without any hardware)",
+              "Analyzing student grades",
+              "Both the calculator and grade analysis"
             ],
-            "correctIndex": 1,
+            "correctIndex": 3,
             "feedback": {
-              "correct": "Correct! python.org is the official and safest source.",
-              "incorrect": "Not quite — try again. Always download software from official sources."
+              "correct": "Correct! Python is great for creating apps and analyzing data. It can't make coffee directly, but it could control a smart coffee maker!",
+              "incorrect": "Think about what Python does — it processes information and runs programs."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What would YOU like to create or do with Python?",
+            "validation": {
+              "type": "freeform"
             }
           }
         ]
       },
       "reflection": {
-        "heading": "Your Words",
+        "heading": "Your Motivation",
         "components": [
           {
+            "type": "text",
+            "content": "Before we install Python, think about your 'why':"
+          },
+          {
             "type": "shortAnswer",
-            "prompt": "In one sentence: what will you install today and why?",
+            "prompt": "What problem would you like to solve with programming?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What are you most curious about regarding Python?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "On a scale of 1-10, how excited are you to learn? What would make it a 10?",
             "validation": {
               "type": "freeform"
             }
@@ -186,11 +245,11 @@
         ]
       },
       "transition": {
-        "heading": "Next Step",
+        "heading": "Ready to Begin",
         "components": [
           {
             "type": "text",
-            "content": "Move to Stage 1: Remembering to learn the key terms and basic steps involved in Python installation."
+            "content": "Now that you understand WHAT Python is and WHY it's useful, you're ready to learn HOW to get it running on your computer.\n\nIn Stage 1 (Remembering), you'll learn the key terms and basic steps involved in installation—like what an 'installer' is, what 'PATH' means, and what 'Windows Terminal' does.\n\nRemember: Every programmer started exactly where you are now—curious and ready to learn!"
           }
         ]
       }
