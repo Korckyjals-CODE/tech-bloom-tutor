@@ -135,8 +135,8 @@ Defines the learning progression using Bloom's Taxonomy or similar framework.
     {
       "id": "s0",
       "order": 0,
-      "title": "Stage 0 · Not Knowing",
-      "shortTitle": "Not Knowing",
+      "title": "Stage 0 · Starting",
+      "shortTitle": "Starting",
       "description": "Introduction and initial exposure to the topic"
     },
     {
@@ -162,7 +162,7 @@ Defines the learning progression using Bloom's Taxonomy or similar framework.
 
 ### Default Stages (Bloom's Taxonomy + Stage 0)
 
-1. **Stage 0 - Not Knowing**: Initial exposure, no prior knowledge assumed
+1. **Stage 0 - Starting**: Initial exposure, no prior knowledge assumed
 2. **Stage 1 - Remembering**: Recall facts, terms, basic concepts
 3. **Stage 2 - Understanding**: Explain ideas, interpret information
 4. **Stage 3 - Applying**: Use knowledge in new situations
@@ -672,8 +672,8 @@ Here's a minimal but complete example for a "Git Basics" guide:
     {
       "id": "s0",
       "order": 0,
-      "title": "Stage 0 · Not Knowing",
-      "shortTitle": "Not Knowing",
+      "title": "Stage 0 · Starting",
+      "shortTitle": "Starting",
       "description": "Introduction to version control"
     },
     {
@@ -826,7 +826,7 @@ Here's a minimal but complete example for a "Git Basics" guide:
 
 | Stage | Recommended Components | Avoid |
 |-------|----------------------|-------|
-| **Not Knowing** | Text, MCQ (simple), Short Answer (freeform) | Complex matching, flowcharts |
+| **Starting** | Text, MCQ (simple), Short Answer (freeform) | Complex matching, flowcharts |
 | **Remembering** | Checklist, Matching, MCQ, Ordering | Freeform questions |
 | **Understanding** | Text + Code, Short Answer (contains), MCQ | Pure memorization |
 | **Applying** | Checklist, Code, Short Answer (regex) | Theory-only content |
