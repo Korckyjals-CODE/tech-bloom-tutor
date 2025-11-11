@@ -199,6 +199,7 @@
       state.stageIndex = 0;
       state.sectionIndex = 0;
       state.completed = {};
+      state.answers = {};
       
       renderAll();
       
@@ -236,14 +237,15 @@
     stageIndex: 0,
     sectionIndex: 0,
     completed: {}, // completed[stageId][section]
+    answers: {}, // answers[stageId][section][componentIndex] = answerData
   };
 
   function storageKey(name){ 
     const prefix = GUIDE_DATA?.metadata?.storageKeyPrefix || 'guide';
     return `${prefix}_${name||state.student||'anon'}`; 
   }
-  function save(){ if(!state.student) return; const data = { completed: state.completed, last: [state.stageIndex,state.sectionIndex] }; localStorage.setItem(storageKey(), JSON.stringify(data)); }
-  function load(name){ const raw = localStorage.getItem(storageKey(name)); if(!raw) return; try{ const data = JSON.parse(raw); state.completed = data.completed||{}; const [si,ci] = data.last||[0,0]; state.stageIndex=si; state.sectionIndex=ci; }catch(e){} }
+  function save(){ if(!state.student) return; const data = { completed: state.completed, answers: state.answers, last: [state.stageIndex,state.sectionIndex] }; localStorage.setItem(storageKey(), JSON.stringify(data)); }
+  function load(name){ const raw = localStorage.getItem(storageKey(name)); if(!raw) return; try{ const data = JSON.parse(raw); state.completed = data.completed||{}; state.answers = data.answers||{}; const [si,ci] = data.last||[0,0]; state.stageIndex=si; state.sectionIndex=ci; }catch(e){} }
 
   // ------------------------------
   // UI HELPERS
@@ -283,6 +285,18 @@
     navigator.clipboard.writeText(txt).then(()=>{
       alert('Copied to clipboard');
     });
+  }
+
+  // Answer storage helpers
+  function saveAnswer(stageId, section, componentIndex, answerData){
+    if(!state.answers[stageId]) state.answers[stageId]={};
+    if(!state.answers[stageId][section]) state.answers[stageId][section]={};
+    state.answers[stageId][section][componentIndex] = answerData;
+    save();
+  }
+
+  function getAnswer(stageId, section, componentIndex){
+    return state.answers[stageId]?.[section]?.[componentIndex];
   }
 
   function makeCopyBlock(codeText){
@@ -376,34 +390,81 @@
   // ------------------------------
   // INTERACTIVES
   // ------------------------------
-  function mcqComponent(mcq){
+  function mcqComponent(mcq, stageId, section, componentIndex){
     const wrap = document.createElement('div');
     wrap.className='card';
     const q = document.createElement('p');
     q.innerHTML = parseMarkdown(mcq.q); wrap.appendChild(q);
     const id = 'mcq_'+Math.random().toString(36).slice(2);
+    
+    // Restore saved answer
+    const savedAnswer = getAnswer(stageId, section, componentIndex);
+    
     mcq.options.forEach((opt, i)=>{
       const row = document.createElement('div');
       row.className='inline-form';
       const r = document.createElement('input'); r.type='radio'; r.name=id; r.value=i;
+      
+      // Restore selection
+      if(savedAnswer !== undefined && savedAnswer.selected === i) {
+        r.checked = true;
+      }
+      
+      // Save on change
+      r.addEventListener('change', ()=>{
+        saveAnswer(stageId, section, componentIndex, { selected: i });
+      });
+      
       const lbl = document.createElement('label'); lbl.innerHTML = parseMarkdown(opt); lbl.style.marginLeft='6px';
       row.appendChild(r); row.appendChild(lbl); wrap.appendChild(row);
     });
     const fb = document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
+    
+    // Restore feedback if previously checked
+    if(savedAnswer?.checked !== undefined) {
+      if(savedAnswer.checked) {
+        fb.textContent = 'Correct!'; 
+        fb.classList.add('complete');
+      } else {
+        fb.textContent = 'Not quite — try again.'; 
+        fb.classList.remove('complete');
+      }
+    }
+    
     const btn = document.createElement('button'); btn.textContent='Check answer'; btn.onclick=()=>{
       const pick = wrap.querySelector('input[type=radio]:checked');
       if(!pick){ fb.textContent='Choose an option'; return; }
-      if(+pick.value===mcq.correct){ fb.textContent='Correct!'; fb.classList.add('complete'); } else { fb.textContent='Not quite — try again.'; fb.classList.remove('complete'); }
+      const isCorrect = +pick.value===mcq.correct;
+      if(isCorrect){ fb.textContent='Correct!'; fb.classList.add('complete'); } else { fb.textContent='Not quite — try again.'; fb.classList.remove('complete'); }
+      
+      // Save checked state
+      saveAnswer(stageId, section, componentIndex, { selected: +pick.value, checked: isCorrect });
     };
     wrap.appendChild(btn); wrap.appendChild(fb);
     if(state.instructor){ const ans=document.createElement('div'); ans.className='muted'; ans.textContent='(Answer: '+mcq.options[mcq.correct]+')'; wrap.appendChild(ans); }
     return wrap;
   }
 
-  function shortAnswerComponent(cfg){
+  function shortAnswerComponent(cfg, stageId, section, componentIndex){
     const wrap=document.createElement('div'); wrap.className='card';
     const p=document.createElement('p'); p.innerHTML=parseMarkdown(cfg.prompt); wrap.appendChild(p);
     const ta=document.createElement('input'); ta.type='text'; ta.style.width='100%'; ta.placeholder='Type here...'; ta.setAttribute('aria-label','Short answer');
+    
+    // Restore saved answer
+    const savedAnswer = getAnswer(stageId, section, componentIndex);
+    if(savedAnswer?.text) {
+      ta.value = savedAnswer.text;
+    }
+    
+    // Save on input (with debounce)
+    let saveTimeout;
+    ta.addEventListener('input', ()=>{
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(()=>{
+        saveAnswer(stageId, section, componentIndex, { text: ta.value });
+      }, 500); // Debounce for 500ms
+    });
+    
     wrap.appendChild(ta);
     
     // Verify with ChatGPT button
@@ -447,65 +508,162 @@ Please evaluate if this answer is correct and complete based on the lesson conte
     return wrap;
   }
 
-  function checklistComponent(items){
+  function checklistComponent(items, stageId, section, componentIndex){
     const wrap=document.createElement('div'); wrap.className='card';
+    
+    // Restore saved answers
+    const savedAnswer = getAnswer(stageId, section, componentIndex);
+    
     items.forEach((txt,i)=>{
       const row=document.createElement('div'); row.className='inline-form';
-      const cb=document.createElement('input'); cb.type='checkbox'; cb.id='cb'+i;
+      const cb=document.createElement('input'); cb.type='checkbox'; cb.id='cb'+i+'_'+componentIndex;
+      
+      // Restore checked state
+      if(savedAnswer?.checked && savedAnswer.checked[i]) {
+        cb.checked = true;
+      }
+      
+      // Save on change
+      cb.addEventListener('change', ()=>{
+        const checkedStates = {};
+        items.forEach((_, idx)=>{
+          const checkbox = wrap.querySelector(`#cb${idx}_${componentIndex}`);
+          if(checkbox) checkedStates[idx] = checkbox.checked;
+        });
+        saveAnswer(stageId, section, componentIndex, { checked: checkedStates });
+      });
+      
       const lbl=document.createElement('label'); lbl.innerHTML=parseMarkdown(txt); lbl.htmlFor=cb.id; lbl.style.marginLeft='6px';
       row.appendChild(cb); row.appendChild(lbl); wrap.appendChild(row);
     });
     return wrap;
   }
 
-  function orderComponent(items){
+  function orderComponent(items, stageId, section, componentIndex){
     const wrap=document.createElement('div');
     const note=document.createElement('div'); note.className='muted'; note.textContent='Drag to reorder into the correct sequence.'; wrap.appendChild(note);
     const list=document.createElement('div'); list.className='dd-list';
-    (items.slice().map((t,i)=>({t, key: i+"_"+Math.random().toString(36).slice(2)}))).forEach(obj=>{
+    
+    // Restore saved order or use default
+    const savedAnswer = getAnswer(stageId, section, componentIndex);
+    let orderedItems;
+    if(savedAnswer?.order) {
+      orderedItems = savedAnswer.order.map(t => ({t, key: t+"_"+Math.random().toString(36).slice(2)}));
+    } else {
+      orderedItems = items.slice().map((t,i)=>({t, key: i+"_"+Math.random().toString(36).slice(2)}));
+    }
+    
+    orderedItems.forEach(obj=>{
       const d=document.createElement('div'); d.className='dd-item'; d.draggable=true; d.innerHTML=parseMarkdown(obj.t); d.dataset.key=obj.key; d.dataset.plainText=obj.t; list.appendChild(d);
     });
     wrap.appendChild(list);
     let dragEl=null;
+    
+    function saveCurrentOrder(){
+      const current=[...list.children].map(el=>el.dataset.plainText);
+      saveAnswer(stageId, section, componentIndex, { order: current });
+    }
+    
     list.addEventListener('dragstart',e=>{ if(e.target.classList.contains('dd-item')){ dragEl=e.target; e.dataTransfer.setData('text/plain', dragEl.dataset.key);} });
     list.addEventListener('dragover',e=>{ e.preventDefault(); const tgt=e.target.closest('.dd-item'); if(!tgt||tgt===dragEl) return; const rect=tgt.getBoundingClientRect(); const before= (e.clientX - rect.left) < rect.width/2; list.insertBefore(dragEl, before? tgt: tgt.nextSibling); });
+    list.addEventListener('dragend', saveCurrentOrder);
+    
     const btn=document.createElement('button'); btn.textContent='Check order'; btn.style.marginTop='8px';
     const fb=document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
+    
+    // Restore feedback if previously checked
+    if(savedAnswer?.checked !== undefined) {
+      fb.textContent = savedAnswer.checked ? 'Correct order!' : 'Something is off — try again.';
+      fb.classList.toggle('complete', savedAnswer.checked);
+    }
+    
     btn.onclick=()=>{
       const current=[...list.children].map(el=>el.dataset.plainText || el.textContent);
       const correct=items;
       const ok=current.every((t,i)=>t===correct[i]);
       fb.textContent= ok? 'Correct order!':'Something is off — try again.';
       fb.classList.toggle('complete', ok);
+      
+      // Save checked state
+      saveAnswer(stageId, section, componentIndex, { order: current, checked: ok });
     };
     wrap.appendChild(btn); wrap.appendChild(fb);
     return wrap;
   }
 
-  function matchComponent(cfg){
+  function matchComponent(cfg, stageId, section, componentIndex){
     const wrap=document.createElement('div');
     const grid=document.createElement('div'); grid.className='match-grid';
     const left=document.createElement('div'); left.className='match-col';
     const right=document.createElement('div'); right.className='match-col';
     const rights=Object.keys(cfg.right);
+    
+    // Restore saved matches
+    const savedAnswer = getAnswer(stageId, section, componentIndex);
+    
     cfg.left.forEach((term,i)=>{
       const item=document.createElement('div'); item.className='match-item'; item.draggable=true; item.innerHTML=parseMarkdown(term); item.dataset.term=term; left.appendChild(item);
     });
-    rights.forEach((def)=>{
-      const zone=document.createElement('div'); zone.className='dropzone'; zone.dataset.accept=cfg.right[def];
+    rights.forEach((def, idx)=>{
+      const zone=document.createElement('div'); zone.className='dropzone'; zone.dataset.accept=cfg.right[def]; zone.dataset.defIndex=idx;
+      
+      // Restore matched term
+      if(savedAnswer?.matches && savedAnswer.matches[idx]) {
+        zone.textContent = savedAnswer.matches[idx];
+        zone.dataset.filled = savedAnswer.matches[idx];
+      }
+      
       const label=document.createElement('div'); label.className='muted'; label.innerHTML=parseMarkdown(def); right.appendChild(label); right.appendChild(zone);
     });
     grid.appendChild(left); grid.appendChild(right); wrap.appendChild(grid);
     let dragging=null;
+    
+    function saveMatches(){
+      const zones=[...wrap.querySelectorAll('.dropzone')];
+      const matches = {};
+      zones.forEach(z => {
+        const idx = z.dataset.defIndex;
+        if(z.dataset.filled) {
+          matches[idx] = z.dataset.filled;
+        }
+      });
+      saveAnswer(stageId, section, componentIndex, { matches });
+    }
+    
     wrap.addEventListener('dragstart',e=>{ if(e.target.classList.contains('match-item')){ dragging=e.target; }});
     wrap.addEventListener('dragover',e=>{ if(e.target.classList.contains('dropzone')) e.preventDefault(); });
-    wrap.addEventListener('drop',e=>{ if(e.target.classList.contains('dropzone')){ e.preventDefault(); if(dragging){ e.target.textContent=dragging.dataset.term; e.target.dataset.filled=dragging.dataset.term; } }});
+    wrap.addEventListener('drop',e=>{ 
+      if(e.target.classList.contains('dropzone')){ 
+        e.preventDefault(); 
+        if(dragging){ 
+          e.target.textContent=dragging.dataset.term; 
+          e.target.dataset.filled=dragging.dataset.term; 
+          saveMatches();
+        } 
+      }
+    });
     const btn=document.createElement('button'); btn.textContent='Check matches'; btn.style.marginTop='8px';
     const fb=document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
+    
+    // Restore feedback if previously checked
+    if(savedAnswer?.checked !== undefined) {
+      fb.textContent = savedAnswer.checked ? 'All matched!' : 'Some pairs are incorrect.';
+      fb.classList.toggle('complete', savedAnswer.checked);
+    }
+    
     btn.onclick=()=>{
       const zones=[...wrap.querySelectorAll('.dropzone')];
       const ok=zones.every(z=>z.dataset.filled===z.dataset.accept);
-      fb.textContent= ok? 'All matched!':'Some pairs are incorrect.'; fb.classList.toggle('complete', ok);
+      fb.textContent= ok? 'All matched!':'Some pairs are incorrect.'; 
+      fb.classList.toggle('complete', ok);
+      
+      // Save checked state
+      const matches = {};
+      zones.forEach(z => {
+        const idx = z.dataset.defIndex;
+        if(z.dataset.filled) matches[idx] = z.dataset.filled;
+      });
+      saveAnswer(stageId, section, componentIndex, { matches, checked: ok });
     };
     wrap.appendChild(btn); wrap.appendChild(fb);
     if(state.instructor){ const ans=document.createElement('div'); ans.className='muted'; ans.style.marginTop='6px'; ans.textContent='(Answer key visible in instructor mode.)'; wrap.appendChild(ans); }
@@ -513,29 +671,49 @@ Please evaluate if this answer is correct and complete based on the lesson conte
   }
 
   // Basic mini flowchart: draggable nodes, sequential connectors
-  function flowchartComponent(cfg){
+  function flowchartComponent(cfg, stageId, section, componentIndex){
     const wrap=document.createElement('div'); wrap.className='flow-wrap';
     const tools=document.createElement('div'); tools.className='flow-tools';
     const canvas=document.createElement('div'); canvas.className='flow-canvas';
     const svg=document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.classList.add('flow-svg'); canvas.appendChild(svg);
 
     const nodes=[];
+    
+    function saveNodes(){
+      const nodeData = nodes.map(n => ({
+        x: parseInt(n.style.left),
+        y: parseInt(n.style.top),
+        text: n.querySelector('[contenteditable]').textContent,
+        id: n.dataset.id
+      }));
+      saveAnswer(stageId, section, componentIndex, { nodes: nodeData });
+    }
 
     function addNode(x=40,y=40,text='Step'){
       const n=document.createElement('div'); n.className='node'; n.style.left=x+'px'; n.style.top=y+'px';
       n.innerHTML = `<div class="handle">drag</div><div contenteditable="true" spellcheck="false">${text}</div>`;
       n.dataset.id = 'n'+Math.random().toString(36).slice(2);
+      
+      // Save on text edit
+      const editableDiv = n.querySelector('[contenteditable]');
+      editableDiv.addEventListener('blur', saveNodes);
+      editableDiv.addEventListener('input', ()=>{
+        clearTimeout(editableDiv._saveTimeout);
+        editableDiv._saveTimeout = setTimeout(saveNodes, 1000);
+      });
+      
       canvas.appendChild(n);
       enableDrag(n);
       nodes.push(n);
       drawLines();
+      saveNodes();
     }
 
     function enableDrag(el){
       let offX=0, offY=0, dragging=false;
-      el.addEventListener('mousedown', (e)=>{ dragging=true; offX=e.offsetX; offY=e.offsetY; });
+      el.addEventListener('mousedown', (e)=>{ if(e.target.contentEditable === 'true') return; dragging=true; offX=e.offsetX; offY=e.offsetY; });
       window.addEventListener('mousemove', (e)=>{ if(!dragging) return; const rect=canvas.getBoundingClientRect(); let x=e.clientX-rect.left-offX; let y=e.clientY-rect.top-offY; x=Math.max(8, Math.min(rect.width-140, x)); y=Math.max(8, Math.min(rect.height-44, y)); el.style.left=x+'px'; el.style.top=y+'px'; drawLines(); });
-      window.addEventListener('mouseup', ()=> dragging=false);
+      window.addEventListener('mouseup', ()=> { if(dragging) saveNodes(); dragging=false; });
     }
 
     function drawLines(){
@@ -560,12 +738,18 @@ Please evaluate if this answer is correct and complete based on the lesson conte
     // tools
     const addBtn=document.createElement('button'); addBtn.textContent='Add step'; addBtn.onclick=()=>addNode(40+nodes.length*40, 60, 'New step');
     const seqBtn=document.createElement('button'); seqBtn.className='secondary'; seqBtn.style.marginLeft='8px'; seqBtn.textContent='Auto-sequence';
-    seqBtn.onclick=()=>{ nodes.sort((a,b)=> a.offsetTop - b.offsetTop || a.offsetLeft - b.offsetLeft ); drawLines(); };
+    seqBtn.onclick=()=>{ nodes.sort((a,b)=> a.offsetTop - b.offsetTop || a.offsetLeft - b.offsetLeft ); drawLines(); saveNodes(); };
     tools.appendChild(addBtn); tools.appendChild(seqBtn);
 
     wrap.appendChild(tools); wrap.appendChild(canvas);
 
-    (cfg.nodes||[]).forEach(n=>addNode(n.x,n.y,n.text));
+    // Restore saved nodes or use default
+    const savedAnswer = getAnswer(stageId, section, componentIndex);
+    if(savedAnswer?.nodes && savedAnswer.nodes.length > 0) {
+      savedAnswer.nodes.forEach(n => addNode(n.x, n.y, n.text));
+    } else {
+      (cfg.nodes||[]).forEach(n=>addNode(n.x,n.y,n.text));
+    }
 
     return wrap;
   }
@@ -617,7 +801,7 @@ Please evaluate if this answer is correct and complete based on the lesson conte
     const precedingContext = [];
     
     if(data.components && Array.isArray(data.components)) {
-      data.components.forEach(comp => {
+      data.components.forEach((comp, componentIndex) => {
         switch(comp.type) {
           case 'text':
             const p = document.createElement('p');
@@ -637,7 +821,7 @@ Please evaluate if this answer is correct and complete based on the lesson conte
               options: comp.options,
               correct: comp.correctIndex
             };
-            wrap.appendChild(mcqComponent(mcqData));
+            wrap.appendChild(mcqComponent(mcqData, stageId, section, componentIndex));
             break;
           case 'shortAnswer':
             const shortData = {
@@ -648,13 +832,13 @@ Please evaluate if this answer is correct and complete based on the lesson conte
               sectionTitle: sectionTitle,
               sectionContext: [...precedingContext] // Copy of context up to this point
             };
-            wrap.appendChild(shortAnswerComponent(shortData));
+            wrap.appendChild(shortAnswerComponent(shortData, stageId, section, componentIndex));
             break;
           case 'checklist':
-            wrap.appendChild(checklistComponent(comp.items));
+            wrap.appendChild(checklistComponent(comp.items, stageId, section, componentIndex));
             break;
           case 'ordering':
-            wrap.appendChild(orderComponent(comp.items));
+            wrap.appendChild(orderComponent(comp.items, stageId, section, componentIndex));
             break;
           case 'matching':
             const matchData = {
@@ -664,10 +848,10 @@ Please evaluate if this answer is correct and complete based on the lesson conte
             comp.rightColumn.forEach(item => {
               matchData.right[item.definition] = item.matchesWith;
             });
-            wrap.appendChild(matchComponent(matchData));
+            wrap.appendChild(matchComponent(matchData, stageId, section, componentIndex));
             break;
           case 'flowchart':
-            wrap.appendChild(flowchartComponent(comp));
+            wrap.appendChild(flowchartComponent(comp, stageId, section, componentIndex));
             break;
         }
       });
