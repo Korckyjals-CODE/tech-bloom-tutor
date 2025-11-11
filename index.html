@@ -381,8 +381,8 @@
     wrap.className='card';
     const q = document.createElement('p');
     q.innerHTML = parseMarkdown(mcq.q); wrap.appendChild(q);
+    const id = 'mcq_'+Math.random().toString(36).slice(2);
     mcq.options.forEach((opt, i)=>{
-      const id = 'mcq_'+Math.random().toString(36).slice(2);
       const row = document.createElement('div');
       row.className='inline-form';
       const r = document.createElement('input'); r.type='radio'; r.name=id; r.value=i;
