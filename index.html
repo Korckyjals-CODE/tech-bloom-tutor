@@ -587,6 +587,16 @@ Please evaluate if this answer is correct and complete based on the lesson conte
         grid.appendChild(a);
       });
       det.appendChild(grid); host.appendChild(det);
+      
+      // Accordion behavior: close other stages when this one opens
+      det.addEventListener('toggle', ()=>{
+        if(det.open){
+          // Close all other stages
+          host.querySelectorAll('.stage').forEach(otherStage => {
+            if(otherStage !== det) otherStage.open = false;
+          });
+        }
+      });
     });
   }
 
