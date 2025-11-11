@@ -45,7 +45,11 @@
     h1 { font-size: 28px; margin: 8px 0 6px; }
     h2 { font-size: 22px; margin: 20px 0 8px; }
     p, li { line-height: 1.65; }
-    code { background:#0f1620; border:1px solid var(--border); padding: 2px 6px; border-radius:6px; }
+    strong { font-weight: 700; color: var(--text); }
+    em { font-style: italic; color: var(--text); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background:#0f1620; border:1px solid var(--border); padding: 2px 6px; border-radius:6px; font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace; font-size: 0.9em; }
     pre { background:#0f1620; border:1px solid var(--border); padding: 12px; border-radius: 12px; overflow:auto; position: relative; }
     .copy-btn { position:absolute; top:8px; right:8px; font-size:12px; padding:6px 8px; border-radius:8px; background:#1a2740; }
     .card { border:1px solid var(--border); background:#0d141b; border-radius:12px; padding:12px; }
@@ -290,19 +294,50 @@
   }
 
   // ------------------------------
+  // MARKDOWN PARSER
+  // ------------------------------
+  function parseMarkdown(text) {
+    if (!text) return '';
+    
+    // Escape HTML to prevent XSS
+    let html = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    
+    // Parse markdown syntax
+    // Bold: **text** → <strong>text</strong>
+    html = html.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
+    
+    // Italic: *text* → <em>text</em> (but not if it's part of **)
+    html = html.replace(/(?<!\*)\*([^\*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+    
+    // Inline code: `text` → <code>text</code>
+    html = html.replace(/`([^`]+?)`/g, '<code>$1</code>');
+    
+    // Links: [text](url) → <a href="url">text</a>
+    html = html.replace(/\[([^\]]+?)\]\(([^\)]+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    
+    // Line breaks: convert \n to <br> (preserve formatting)
+    html = html.replace(/\n/g, '<br>');
+    
+    return html;
+  }
+
+  // ------------------------------
   // INTERACTIVES
   // ------------------------------
   function mcqComponent(mcq){
     const wrap = document.createElement('div');
     wrap.className='card';
     const q = document.createElement('p');
-    q.textContent = mcq.q; wrap.appendChild(q);
+    q.innerHTML = parseMarkdown(mcq.q); wrap.appendChild(q);
     mcq.options.forEach((opt, i)=>{
       const id = 'mcq_'+Math.random().toString(36).slice(2);
       const row = document.createElement('div');
       row.className='inline-form';
       const r = document.createElement('input'); r.type='radio'; r.name=id; r.value=i;
-      const lbl = document.createElement('label'); lbl.textContent = opt; lbl.style.marginLeft='6px';
+      const lbl = document.createElement('label'); lbl.innerHTML = parseMarkdown(opt); lbl.style.marginLeft='6px';
       row.appendChild(r); row.appendChild(lbl); wrap.appendChild(row);
     });
     const fb = document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
@@ -318,7 +353,7 @@
 
   function shortAnswerComponent(cfg){
     const wrap=document.createElement('div'); wrap.className='card';
-    const p=document.createElement('p'); p.textContent=cfg.prompt; wrap.appendChild(p);
+    const p=document.createElement('p'); p.innerHTML=parseMarkdown(cfg.prompt); wrap.appendChild(p);
     const ta=document.createElement('input'); ta.type='text'; ta.style.width='100%'; ta.placeholder='Type here...'; ta.setAttribute('aria-label','Short answer');
     wrap.appendChild(ta);
     const fb=document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
@@ -342,7 +377,7 @@
     items.forEach((txt,i)=>{
       const row=document.createElement('div'); row.className='inline-form';
       const cb=document.createElement('input'); cb.type='checkbox'; cb.id='cb'+i;
-      const lbl=document.createElement('label'); lbl.textContent=txt; lbl.htmlFor=cb.id; lbl.style.marginLeft='6px';
+      const lbl=document.createElement('label'); lbl.innerHTML=parseMarkdown(txt); lbl.htmlFor=cb.id; lbl.style.marginLeft='6px';
       row.appendChild(cb); row.appendChild(lbl); wrap.appendChild(row);
     });
     return wrap;
@@ -353,7 +388,7 @@
     const note=document.createElement('div'); note.className='muted'; note.textContent='Drag to reorder into the correct sequence.'; wrap.appendChild(note);
     const list=document.createElement('div'); list.className='dd-list';
     (items.slice().map((t,i)=>({t, key: i+"_"+Math.random().toString(36).slice(2)}))).forEach(obj=>{
-      const d=document.createElement('div'); d.className='dd-item'; d.draggable=true; d.textContent=obj.t; d.dataset.key=obj.key; list.appendChild(d);
+      const d=document.createElement('div'); d.className='dd-item'; d.draggable=true; d.innerHTML=parseMarkdown(obj.t); d.dataset.key=obj.key; d.dataset.plainText=obj.t; list.appendChild(d);
     });
     wrap.appendChild(list);
     let dragEl=null;
@@ -362,7 +397,7 @@
     const btn=document.createElement('button'); btn.textContent='Check order'; btn.style.marginTop='8px';
     const fb=document.createElement('div'); fb.className='muted'; fb.style.marginTop='6px';
     btn.onclick=()=>{
-      const current=[...list.children].map(el=>el.textContent);
+      const current=[...list.children].map(el=>el.dataset.plainText || el.textContent);
       const correct=items;
       const ok=current.every((t,i)=>t===correct[i]);
       fb.textContent= ok? 'Correct order!':'Something is off — try again.';
@@ -379,11 +414,11 @@
     const right=document.createElement('div'); right.className='match-col';
     const rights=Object.keys(cfg.right);
     cfg.left.forEach((term,i)=>{
-      const item=document.createElement('div'); item.className='match-item'; item.draggable=true; item.textContent=term; item.dataset.term=term; left.appendChild(item);
+      const item=document.createElement('div'); item.className='match-item'; item.draggable=true; item.innerHTML=parseMarkdown(term); item.dataset.term=term; left.appendChild(item);
     });
     rights.forEach((def)=>{
       const zone=document.createElement('div'); zone.className='dropzone'; zone.dataset.accept=cfg.right[def];
-      const label=document.createElement('div'); label.className='muted'; label.textContent=def; right.appendChild(label); right.appendChild(zone);
+      const label=document.createElement('div'); label.className='muted'; label.innerHTML=parseMarkdown(def); right.appendChild(label); right.appendChild(zone);
     });
     grid.appendChild(left); grid.appendChild(right); wrap.appendChild(grid);
     let dragging=null;
@@ -494,7 +529,7 @@
         switch(comp.type) {
           case 'text':
             const p = document.createElement('p');
-            p.textContent = comp.content;
+            p.innerHTML = parseMarkdown(comp.content);
             wrap.appendChild(p);
             break;
           case 'code':
