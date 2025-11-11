@@ -86,6 +86,187 @@
     .toggle-row { display:flex; gap:8px; align-items:center; }
     .hidden { display:none !important; }
 
+    /* Summary Page Styles */
+    .summary-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .completion-banner {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-radius: 16px;
+      margin-bottom: 24px;
+      color: white;
+    }
+
+    .completion-banner h1 {
+      font-size: 48px;
+      margin: 0 0 12px;
+    }
+
+    .completion-banner h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+
+    .completion-banner p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    .progress-summary {
+      margin-bottom: 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      background: #0a0f15;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .skills-recap, .final-checklist, .quick-reference, 
+    .next-steps, .resources, .feedback-section, .answers-review {
+      margin-bottom: 24px;
+    }
+
+    .skills-recap ul, .next-steps ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .skills-recap li, .next-steps li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skills-recap li:last-child, .next-steps li:last-child {
+      border-bottom: none;
+    }
+
+    .resource-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .resource-links a {
+      display: block;
+      padding: 12px;
+      background: #0a0f15;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .resource-links a:hover {
+      background: var(--accent);
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .completion-certificate {
+      background: linear-gradient(135deg, #1a2332, #0d141b);
+      border: 2px solid var(--accent);
+    }
+
+    .certificate-box {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .student-name-display {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 16px 0;
+    }
+
+    .completion-date {
+      font-style: italic;
+      color: var(--muted);
+      margin: 16px 0 24px;
+    }
+
+    .rating-stars {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 12px 0;
+    }
+
+    .rating-stars .star {
+      background: transparent;
+      border: none;
+      font-size: 32px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      filter: grayscale(100%);
+      opacity: 0.5;
+    }
+
+    .rating-stars .star:hover,
+    .rating-stars .star.selected {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .feedback-form textarea {
+      width: 100%;
+      background: #0c1219;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    .summary-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 32px;
+      padding: 24px 0;
+    }
+
+    .summary-actions button {
+      flex: 1;
+      min-width: 160px;
+      max-width: 200px;
+    }
+
     /* Print */
     @media print {
       body { background:white; color:#000; }
@@ -238,14 +419,15 @@
     sectionIndex: 0,
     completed: {}, // completed[stageId][section]
     answers: {}, // answers[stageId][section][componentIndex] = answerData
+    showSummary: false, // Show summary page when true
   };
 
   function storageKey(name){ 
     const prefix = GUIDE_DATA?.metadata?.storageKeyPrefix || 'guide';
     return `${prefix}_${name||state.student||'anon'}`; 
   }
-  function save(){ if(!state.student) return; const data = { completed: state.completed, answers: state.answers, last: [state.stageIndex,state.sectionIndex] }; localStorage.setItem(storageKey(), JSON.stringify(data)); }
-  function load(name){ const raw = localStorage.getItem(storageKey(name)); if(!raw) return; try{ const data = JSON.parse(raw); state.completed = data.completed||{}; state.answers = data.answers||{}; const [si,ci] = data.last||[0,0]; state.stageIndex=si; state.sectionIndex=ci; }catch(e){} }
+  function save(){ if(!state.student) return; const data = { completed: state.completed, answers: state.answers, last: [state.stageIndex,state.sectionIndex], showSummary: state.showSummary }; localStorage.setItem(storageKey(), JSON.stringify(data)); }
+  function load(name){ const raw = localStorage.getItem(storageKey(name)); if(!raw) return; try{ const data = JSON.parse(raw); state.completed = data.completed||{}; state.answers = data.answers||{}; state.showSummary = data.showSummary||false; const [si,ci] = data.last||[0,0]; state.stageIndex=si; state.sectionIndex=ci; }catch(e){} }
 
   // ------------------------------
   // UI HELPERS
@@ -254,8 +436,13 @@
   const contentEl = el('#content');
 
   function setBreadcrumbs(){
-    el('#bcStage').textContent = STAGES[state.stageIndex].title;
-    el('#bcSection').textContent = SECTIONS[state.sectionIndex];
+    if (state.showSummary) {
+      el('#bcStage').textContent = 'Complete';
+      el('#bcSection').textContent = 'Summary';
+    } else {
+      el('#bcStage').textContent = STAGES[state.stageIndex].title;
+      el('#bcSection').textContent = SECTIONS[state.sectionIndex];
+    }
   }
   function computeProgress(){
     const total = STAGES.length * SECTIONS.length;
@@ -755,6 +942,217 @@ Please evaluate if this answer is correct and complete based on the lesson conte
   }
 
   // ------------------------------
+  // SUMMARY PAGE
+  // ------------------------------
+  function renderSummaryPage() {
+    const wrap = document.createElement('div');
+    wrap.className = 'summary-page';
+    
+    // Completion Banner
+    const banner = document.createElement('div');
+    banner.className = 'completion-banner';
+    banner.innerHTML = `
+      <h1>🎉 Congratulations!</h1>
+      <h2>You've completed: ${GUIDE_DATA.metadata.title}</h2>
+      <p>You've successfully progressed through all ${STAGES.length} stages and gained essential technical skills.</p>
+    `;
+    wrap.appendChild(banner);
+    
+    // Progress Statistics
+    const progressCard = document.createElement('div');
+    progressCard.className = 'progress-summary card';
+    const totalSections = STAGES.length * SECTIONS.length;
+    let completedSections = 0;
+    for(const s of STAGES) {
+      const c = state.completed[s.id] || {};
+      completedSections += Object.keys(c).filter(k => c[k]).length;
+    }
+    
+    progressCard.innerHTML = `
+      <h2>Your Learning Journey</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">${STAGES.length}</span>
+          <span class="stat-label">Stages Completed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">${completedSections}</span>
+          <span class="stat-label">Sections Finished</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">${Math.round((completedSections/totalSections)*100)}%</span>
+          <span class="stat-label">Progress</span>
+        </div>
+      </div>
+    `;
+    wrap.appendChild(progressCard);
+    
+    // Skills Learned
+    const skillsCard = document.createElement('div');
+    skillsCard.className = 'skills-recap card';
+    const summaryData = GUIDE_DATA.summary || {};
+    
+    let skillsHTML = '<h2>🎯 Skills You\'ve Mastered</h2><ul>';
+    if (summaryData.skills && summaryData.skills.length > 0) {
+      skillsHTML += summaryData.skills.map(skill => 
+        `<li><strong>${skill.title}</strong> - ${skill.description}</li>`
+      ).join('');
+    } else {
+      // Default skills
+      skillsHTML += `
+        <li><strong>Technical Setup</strong> - Successfully configured software and system settings</li>
+        <li><strong>Command Line Skills</strong> - Navigated and executed commands in terminal</li>
+        <li><strong>Problem Solving</strong> - Identified and resolved common issues</li>
+        <li><strong>Best Practices</strong> - Applied professional development workflows</li>
+      `;
+    }
+    skillsHTML += '</ul>';
+    skillsCard.innerHTML = skillsHTML;
+    wrap.appendChild(skillsCard);
+    
+    // Final Checklist
+    const checklistCard = document.createElement('div');
+    checklistCard.className = 'final-checklist card';
+    checklistCard.innerHTML = `
+      <h2>✅ Final System Check</h2>
+      <p>Verify your setup is fully functional:</p>
+    `;
+    
+    const finalChecklist = summaryData.finalChecklist || [
+      'All software is properly installed',
+      'System configuration is complete',
+      'Test examples run successfully',
+      'Development environment is ready',
+      'Know where to find help if needed'
+    ];
+    
+    finalChecklist.forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'inline-form';
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.id = `final-check-${i}`;
+      const lbl = document.createElement('label');
+      lbl.htmlFor = cb.id;
+      lbl.textContent = item;
+      lbl.style.marginLeft = '6px';
+      row.appendChild(cb);
+      row.appendChild(lbl);
+      checklistCard.appendChild(row);
+    });
+    wrap.appendChild(checklistCard);
+    
+    // Quick Reference
+    if (summaryData.quickReference) {
+      const refCard = document.createElement('div');
+      refCard.className = 'quick-reference card';
+      refCard.innerHTML = `<h2>📝 Quick Reference Guide</h2><p>Keep these essential commands handy:</p>`;
+      refCard.appendChild(makeCopyBlock(summaryData.quickReference));
+      wrap.appendChild(refCard);
+    }
+    
+    // Next Steps
+    const nextCard = document.createElement('div');
+    nextCard.className = 'next-steps card';
+    
+    let nextStepsHTML = '<h2>🚀 What\'s Next?</h2><p>Continue your learning journey:</p><ul>';
+    if (summaryData.nextSteps && summaryData.nextSteps.length > 0) {
+      nextStepsHTML += summaryData.nextSteps.map(step => 
+        `<li><strong>${step.title}</strong> - ${step.description}</li>`
+      ).join('');
+    } else {
+      // Default next steps
+      nextStepsHTML += `
+        <li><strong>Practice</strong> - Apply what you've learned in real projects</li>
+        <li><strong>Explore</strong> - Discover advanced features and techniques</li>
+        <li><strong>Connect</strong> - Join communities and share your progress</li>
+      `;
+    }
+    nextStepsHTML += '</ul>';
+    nextCard.innerHTML = nextStepsHTML;
+    wrap.appendChild(nextCard);
+    
+    // Resources (if provided)
+    if (summaryData.resources && summaryData.resources.length > 0) {
+      const resourcesCard = document.createElement('div');
+      resourcesCard.className = 'resources card';
+      resourcesCard.innerHTML = '<h2>📚 Additional Resources</h2>';
+      
+      const resourceLinks = document.createElement('div');
+      resourceLinks.className = 'resource-links';
+      summaryData.resources.forEach(res => {
+        const link = document.createElement('a');
+        link.href = res.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = res.title;
+        resourceLinks.appendChild(link);
+      });
+      resourcesCard.appendChild(resourceLinks);
+      wrap.appendChild(resourcesCard);
+    }
+    
+    // Certificate Section (if student name is present)
+    if (state.student) {
+      const certCard = document.createElement('div');
+      certCard.className = 'completion-certificate card';
+      const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      certCard.innerHTML = `
+        <h2>🏆 Certificate of Completion</h2>
+        <div class="certificate-box">
+          <h3>This certifies that</h3>
+          <p class="student-name-display">${state.student}</p>
+          <p>has successfully completed</p>
+          <h4>${GUIDE_DATA.metadata.title}</h4>
+          <p class="completion-date">Completed on: ${today}</p>
+        </div>
+      `;
+      wrap.appendChild(certCard);
+    }
+    
+    // Action Buttons
+    const actions = document.createElement('div');
+    actions.className = 'summary-actions';
+    
+    const restartBtn = document.createElement('button');
+    restartBtn.className = 'secondary';
+    restartBtn.textContent = '🔄 Start Over';
+    restartBtn.onclick = () => {
+      if (confirm('Are you sure you want to reset all progress?')) {
+        state.stageIndex = 0;
+        state.sectionIndex = 0;
+        state.completed = {};
+        state.answers = {};
+        state.showSummary = false;
+        save();
+        renderAll();
+      }
+    };
+    
+    const homeBtn = document.createElement('button');
+    homeBtn.textContent = '🏠 Back to Start';
+    homeBtn.onclick = () => {
+      state.stageIndex = 0;
+      state.sectionIndex = 0;
+      state.showSummary = false;
+      save();
+      renderAll();
+    };
+    
+    const printBtn = document.createElement('button');
+    printBtn.className = 'secondary';
+    printBtn.textContent = '🖨️ Print Summary';
+    printBtn.onclick = () => window.print();
+    
+    actions.appendChild(homeBtn);
+    actions.appendChild(printBtn);
+    actions.appendChild(restartBtn);
+    wrap.appendChild(actions);
+    
+    return wrap;
+  }
+
+  // ------------------------------
   // RENDERERS
   // ------------------------------
   function renderSidebar(){
@@ -874,6 +1272,19 @@ Please evaluate if this answer is correct and complete based on the lesson conte
 
   function move(dir){
     let si=state.stageIndex, ci=state.sectionIndex;
+    
+    // Check if we're at Stage 6 (last stage), Transition section (last section), going forward
+    if (dir > 0 && si === STAGES.length - 1 && ci === SECTIONS.length - 1) {
+      // Show summary page
+      state.showSummary = true;
+      save();
+      renderAll();
+      return;
+    }
+    
+    // Moving away from summary page
+    state.showSummary = false;
+    
     ci += dir;
     if(ci<0){ si=Math.max(0, si-1); ci=SECTIONS.length-1; }
     if(ci>=SECTIONS.length){ si=Math.min(STAGES.length-1, si+1); ci=0; }
@@ -883,6 +1294,13 @@ Please evaluate if this answer is correct and complete based on the lesson conte
   function renderMain(){
     const contentEl = document.getElementById('content');
     contentEl.innerHTML='';
+    
+    // Show summary page if flag is set
+    if (state.showSummary) {
+      contentEl.appendChild(renderSummaryPage());
+      return;
+    }
+    
     const stageId=STAGES[state.stageIndex].id;
     const section=SECTIONS[state.sectionIndex];
     contentEl.appendChild(renderSection(stageId, section));
