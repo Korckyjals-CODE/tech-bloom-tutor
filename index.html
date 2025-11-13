@@ -577,6 +577,17 @@
   // ------------------------------
   // INTERACTIVES
   // ------------------------------
+  
+  // Fisher-Yates shuffle algorithm for randomizing arrays
+  function shuffleArray(array) {
+    const shuffled = [...array]; // Create a copy to avoid mutating original
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+  
   function mcqComponent(mcq, stageId, section, componentIndex){
     const wrap = document.createElement('div');
     wrap.className='card';
@@ -731,13 +742,16 @@ Please evaluate if this answer is correct and complete based on the lesson conte
     const note=document.createElement('div'); note.className='muted'; note.textContent='Drag to reorder into the correct sequence.'; wrap.appendChild(note);
     const list=document.createElement('div'); list.className='dd-list';
     
-    // Restore saved order or use default
+    // Restore saved order or use shuffled items on first load
     const savedAnswer = getAnswer(stageId, section, componentIndex);
     let orderedItems;
     if(savedAnswer?.order) {
+      // Restore previously saved order
       orderedItems = savedAnswer.order.map(t => ({t, key: t+"_"+Math.random().toString(36).slice(2)}));
     } else {
-      orderedItems = items.slice().map((t,i)=>({t, key: i+"_"+Math.random().toString(36).slice(2)}));
+      // First load: shuffle the items randomly
+      const shuffledItems = shuffleArray(items);
+      orderedItems = shuffledItems.map((t,i)=>({t, key: i+"_"+Math.random().toString(36).slice(2)}));
     }
     
     orderedItems.forEach(obj=>{
@@ -788,10 +802,14 @@ Please evaluate if this answer is correct and complete based on the lesson conte
     // Restore saved matches
     const savedAnswer = getAnswer(stageId, section, componentIndex);
     
-    cfg.left.forEach((term,i)=>{
+    // Shuffle both columns for initial display (but not when restoring)
+    const leftItems = shuffleArray(cfg.left);
+    const rightItems = shuffleArray(rights);
+    
+    leftItems.forEach((term,i)=>{
       const item=document.createElement('div'); item.className='match-item'; item.draggable=true; item.innerHTML=parseMarkdown(term); item.dataset.term=term; left.appendChild(item);
     });
-    rights.forEach((def, idx)=>{
+    rightItems.forEach((def, idx)=>{
       const zone=document.createElement('div'); zone.className='dropzone'; zone.dataset.accept=cfg.right[def]; zone.dataset.defIndex=idx;
       
       // Restore matched term
