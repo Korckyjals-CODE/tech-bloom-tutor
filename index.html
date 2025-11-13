@@ -598,7 +598,24 @@
     // Restore saved answer
     const savedAnswer = getAnswer(stageId, section, componentIndex);
     
-    mcq.options.forEach((opt, i)=>{
+    // Shuffle options while tracking the correct answer
+    let shuffledOptions;
+    let correctAnswerText = mcq.options[mcq.correct];
+    
+    if(savedAnswer?.shuffledOptions) {
+      // Restore previously shuffled order
+      shuffledOptions = savedAnswer.shuffledOptions;
+    } else {
+      // First load: create shuffled options with original indices
+      const optionsWithIndices = mcq.options.map((opt, idx) => ({ text: opt, originalIndex: idx }));
+      const shuffled = shuffleArray(optionsWithIndices);
+      shuffledOptions = shuffled.map(item => item.text);
+      
+      // Save the shuffled order
+      saveAnswer(stageId, section, componentIndex, { shuffledOptions });
+    }
+    
+    shuffledOptions.forEach((opt, i)=>{
       const row = document.createElement('div');
       row.className='inline-form';
       const r = document.createElement('input'); r.type='radio'; r.name=id; r.value=i;
@@ -610,7 +627,8 @@
       
       // Save on change
       r.addEventListener('change', ()=>{
-        saveAnswer(stageId, section, componentIndex, { selected: i });
+        const currentAnswer = getAnswer(stageId, section, componentIndex) || {};
+        saveAnswer(stageId, section, componentIndex, { ...currentAnswer, selected: i });
       });
       
       const lbl = document.createElement('label'); lbl.innerHTML = parseMarkdown(opt); lbl.style.marginLeft='6px';
@@ -632,14 +650,16 @@
     const btn = document.createElement('button'); btn.textContent='Check answer'; btn.onclick=()=>{
       const pick = wrap.querySelector('input[type=radio]:checked');
       if(!pick){ fb.textContent='Choose an option'; return; }
-      const isCorrect = +pick.value===mcq.correct;
+      const selectedText = shuffledOptions[+pick.value];
+      const isCorrect = selectedText === correctAnswerText;
       if(isCorrect){ fb.textContent='Correct!'; fb.classList.add('complete'); } else { fb.textContent='Not quite — try again.'; fb.classList.remove('complete'); }
       
       // Save checked state
-      saveAnswer(stageId, section, componentIndex, { selected: +pick.value, checked: isCorrect });
+      const currentAnswer = getAnswer(stageId, section, componentIndex) || {};
+      saveAnswer(stageId, section, componentIndex, { ...currentAnswer, selected: +pick.value, checked: isCorrect });
     };
     wrap.appendChild(btn); wrap.appendChild(fb);
-    if(state.instructor){ const ans=document.createElement('div'); ans.className='muted'; ans.textContent='(Answer: '+mcq.options[mcq.correct]+')'; wrap.appendChild(ans); }
+    if(state.instructor){ const ans=document.createElement('div'); ans.className='muted'; ans.textContent='(Answer: '+correctAnswerText+')'; wrap.appendChild(ans); }
     return wrap;
   }
 
