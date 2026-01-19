@@ -1,0 +1,298 @@
+{
+    "metadata": {
+      "title": "Your First Python Script",
+      "subtitle": "From Text File to Running Program",
+      "description": "An interactive guide that teaches students how to create, run, and understand their first Python script using Bloom’s Taxonomy.",
+      "version": "1.0.0",
+      "author": "ABC Bilingual School",
+      "lastUpdated": "2026-01-19",
+      "storageKeyPrefix": "first_python_script",
+      "instructorPasscode": "abc123"
+    },
+  
+    "branding": {
+      "brandName": "First Python Script — Guide",
+      "theme": {
+        "colorScheme": "dark",
+        "primaryColor": "#4aa3ff",
+        "secondaryColor": "#f4c542"
+      }
+    },
+  
+    "stages": [
+      { "id": "s0", "order": 0, "title": "Stage 0 · Starting", "shortTitle": "Starting" },
+      { "id": "s1", "order": 1, "title": "Stage 1 · Remembering", "shortTitle": "Remembering" },
+      { "id": "s2", "order": 2, "title": "Stage 2 · Understanding", "shortTitle": "Understanding" },
+      { "id": "s3", "order": 3, "title": "Stage 3 · Applying", "shortTitle": "Applying" },
+      { "id": "s4", "order": 4, "title": "Stage 4 · Analyzing", "shortTitle": "Analyzing" },
+      { "id": "s5", "order": 5, "title": "Stage 5 · Evaluating", "shortTitle": "Evaluating" },
+      { "id": "s6", "order": 6, "title": "Stage 6 · Creating", "shortTitle": "Creating" }
+    ],
+  
+    "sections": [
+      {
+        "id": "mindset",
+        "displayName": "Mindset",
+        "order": 0,
+        "description": "Prepare mentally and set expectations for learning"
+      },
+      {
+        "id": "recap",
+        "displayName": "Recap",
+        "order": 1,
+        "description": "Connect with prior knowledge or previous lessons"
+      },
+      {
+        "id": "core",
+        "displayName": "Core",
+        "order": 2,
+        "description": "Introduce and explain the main concepts"
+      },
+      {
+        "id": "guidedPractice",
+        "displayName": "Guided Practice",
+        "order": 3,
+        "description": "Practice new concepts with guidance and support"
+      },
+      {
+        "id": "challenge",
+        "displayName": "Challenge",
+        "order": 4,
+        "description": "Apply learning independently and think critically"
+      },
+      {
+        "id": "reflection",
+        "displayName": "Reflection",
+        "order": 5,
+        "description": "Reflect on learning, understanding, and difficulties"
+      },
+      {
+        "id": "transition",
+        "displayName": "Transition",
+        "order": 6,
+        "description": "Prepare for the next stage or upcoming lesson"
+      }
+    ],
+    
+    "content": {
+  
+      "s0": {
+        "mindset": {
+          "heading": "Welcome — Writing Instructions for a Computer",
+          "components": [
+            {
+              "type": "text",
+              "content": "Programming is not magic. It’s simply writing instructions for a computer to follow.\n\nIn this lesson, you will write your very first set of instructions and watch the computer execute them."
+            }
+          ]
+        },
+        "recap": {
+          "heading": "What You Already Have",
+          "components": [
+            {
+              "type": "text",
+              "content": "You already installed Python and used the terminal.\n\nNow you’ll take the next step: creating a file that Python can run."
+            }
+          ]
+        },
+        "core": {
+          "heading": "What Is a Python Script?",
+          "components": [
+            {
+              "type": "text",
+              "content": "A **Python script** is just a text file with instructions written by a human.\n\nIt usually ends with **.py**.\n\nPython reads this file from top to bottom and executes each line."
+            }
+          ]
+        },
+        "guidedPractice": {
+          "heading": "Predict the Outcome",
+          "components": [
+            {
+              "type": "code",
+              "language": "python",
+              "content": "print(\"Hello, world!\")",
+              "copyable": false
+            },
+            {
+              "type": "shortAnswer",
+              "prompt": "What do you think will appear when this script runs?",
+              "validation": { "type": "freeform" }
+            }
+          ]
+        },
+        "transition": {
+          "heading": "Let’s Learn the Names",
+          "components": [
+            {
+              "type": "text",
+              "content": "Before writing code, let’s learn the basic words programmers use."
+            }
+          ]
+        }
+      },
+  
+      "s1": {
+        "core": {
+          "heading": "Key Terms You Must Remember",
+          "components": [
+            {
+              "type": "text",
+              "content": "**Python script** — a file with instructions\n\n**.py** — file extension for Python\n\n**Source code** — what you write\n\n**Interpreter** — Python itself\n\n**print()** — shows text on the screen"
+            }
+          ]
+        },
+        "guidedPractice": {
+          "heading": "Match the Concepts",
+          "components": [
+            {
+              "type": "matching",
+              "leftColumn": ["Python", "Script", "print()", ".py"],
+              "rightColumn": [
+                { "definition": "Runs the instructions", "matchesWith": "Python" },
+                { "definition": "A file with code", "matchesWith": "Script" },
+                { "definition": "Shows output", "matchesWith": "print()" },
+                { "definition": "Python file extension", "matchesWith": ".py" }
+              ]
+            }
+          ]
+        },
+        "reflection": {
+          "heading": "Quick Check",
+          "components": [
+            {
+              "type": "shortAnswer",
+              "prompt": "What file extension does a Python script use?",
+              "validation": { "type": "contains", "acceptedAnswers": [".py"] }
+            }
+          ]
+        }
+      },
+  
+      "s2": {
+        "core": {
+          "heading": "What Happens When You Run a Script?",
+          "components": [
+            {
+              "type": "text",
+              "content": "When you run a script:\n\n1. Python opens the file\n2. Reads it line by line\n3. Executes each instruction\n4. Shows output in the terminal"
+            }
+          ]
+        },
+        "guidedPractice": {
+          "heading": "Explain the Flow",
+          "components": [
+            {
+              "type": "shortAnswer",
+              "prompt": "What happens first when you run a Python script?",
+              "validation": { "type": "freeform" }
+            }
+          ]
+        }
+      },
+  
+      "s3": {
+        "core": {
+          "heading": "Run Your First Script",
+          "components": [
+            {
+              "type": "text",
+              "content": "1. Create a file called **first_script.py**\n2. Write a print() statement\n3. Save the file\n4. Run it using the terminal"
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "content": "python first_script.py",
+              "copyable": true
+            }
+          ]
+        },
+        "guidedPractice": {
+          "heading": "Try It Yourself",
+          "components": [
+            {
+              "type": "checklist",
+              "items": [
+                "Created the .py file",
+                "Added a print() line",
+                "Saved the file",
+                "Ran the script",
+                "Saw output"
+              ]
+            }
+          ]
+        }
+      },
+  
+      "s4": {
+        "core": {
+          "heading": "When Things Go Wrong",
+          "components": [
+            {
+              "type": "text",
+              "content": "If nothing happens, check:\n\n• Did you save the file?\n• Did you run the correct filename?\n• Are there spelling mistakes?"
+            }
+          ]
+        },
+        "challenge": {
+          "heading": "Analyze the Problem",
+          "components": [
+            {
+              "type": "shortAnswer",
+              "prompt": "Your script runs but shows nothing. What could be wrong?",
+              "validation": { "type": "freeform" }
+            }
+          ]
+        }
+      },
+  
+      "s5": {
+        "core": {
+          "heading": "What Makes a Good Script?",
+          "components": [
+            {
+              "type": "text",
+              "content": "A good script:\n\n• Has clear output\n• Is easy to read\n• Does exactly what it says"
+            }
+          ]
+        },
+        "guidedPractice": {
+          "heading": "Judge the Output",
+          "components": [
+            {
+              "type": "multipleChoice",
+              "question": "Which output is clearer?",
+              "options": [
+                "Hi",
+                "Welcome to the Hackathon Club!"
+              ],
+              "correctIndex": 1
+            }
+          ]
+        }
+      },
+  
+      "s6": {
+        "core": {
+          "heading": "Create Your Own Script",
+          "components": [
+            {
+              "type": "text",
+              "content": "Create a script that prints:\n\n• Your name\n• Something you like\n• A welcome message"
+            }
+          ]
+        },
+        "reflection": {
+          "heading": "Final Reflection",
+          "components": [
+            {
+              "type": "shortAnswer",
+              "prompt": "What did you learn about how computers follow instructions?",
+              "validation": { "type": "freeform" }
+            }
+          ]
+        }
+      }
+  
+    }
+  }
+  

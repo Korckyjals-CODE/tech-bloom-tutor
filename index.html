@@ -338,13 +338,24 @@
   
   // Available guides list
   const AVAILABLE_GUIDES = [
-    { value: 'guides/python-install.json', label: 'Installing Python on Windows' }
+    { value: 'guides/python-install.json', label: 'Installing Python on Windows' },
+    { value: 'guides/first-python-script.json', label: 'Your First Python Script' }
     // Add more guides here as they are created
   ];
 
   // ------------------------------
   // GUIDE LOADING
   // ------------------------------
+  // Helper function to get section display name, converting ID to readable format if needed
+  function getSectionDisplayName(section) {
+    if (section.displayName) return section.displayName;
+    // Convert camelCase ID to Title Case (e.g., "guidedPractice" -> "Guided Practice")
+    return section.id
+      .replace(/([A-Z])/g, ' $1') // Add space before capital letters
+      .replace(/^./, str => str.toUpperCase()) // Capitalize first letter
+      .trim();
+  }
+  
   async function loadGuide(path) {
     try {
       const response = await fetch(path);
@@ -354,7 +365,7 @@
       
       // Extract data from JSON structure
       STAGES = GUIDE_DATA.stages;
-      SECTIONS = GUIDE_DATA.sections.map(s => s.displayName);
+      SECTIONS = GUIDE_DATA.sections.map(s => getSectionDisplayName(s));
       
       // Transform content from JSON format to internal format
       GUIDE = {};
@@ -362,7 +373,9 @@
         GUIDE[stageId] = {};
         for (const sectionId in GUIDE_DATA.content[stageId]) {
           const secData = GUIDE_DATA.content[stageId][sectionId];
-          const secKey = GUIDE_DATA.sections.find(s => s.id === sectionId)?.displayName.replace(/\s+/g,'') || sectionId;
+          const section = GUIDE_DATA.sections.find(s => s.id === sectionId);
+          const displayName = section ? getSectionDisplayName(section) : sectionId;
+          const secKey = displayName.replace(/\s+/g,'');
           
           // Convert JSON components to old format for compatibility
           GUIDE[stageId][secKey] = {
