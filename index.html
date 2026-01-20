@@ -53,6 +53,11 @@
     a:hover { text-decoration: underline; }
     code { background:#0f1620; border:1px solid var(--border); padding: 2px 6px; border-radius:6px; font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace; font-size: 0.9em; }
     pre { background:#0f1620; border:1px solid var(--border); padding: 12px; border-radius: 12px; overflow:auto; position: relative; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; background: #0d141b; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    th { background: #141b24; color: var(--text); font-weight: 600; padding: 12px; text-align: left; border-bottom: 2px solid var(--border); }
+    td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover { background: #0f1620; }
     .copy-btn { position:absolute; top:8px; right:8px; font-size:12px; padding:6px 8px; border-radius:8px; background:#1a2740; }
     .card { border:1px solid var(--border); background:#0d141b; border-radius:12px; padding:12px; }
     .inline-form { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
@@ -515,13 +520,60 @@
   function parseMarkdown(text) {
     if (!text) return '';
     
-    // Escape HTML to prevent XSS
-    let html = text
+    // Parse markdown tables first (before HTML escaping)
+    // Tables are identified by lines starting with | and containing |
+    const lines = text.split('\n');
+    const processed = [];
+    let inTable = false;
+    let tableRows = [];
+    const tablePlaceholders = [];
+    let placeholderIndex = 0;
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const trimmedLine = line.trim();
+      
+      // Check if this is a table row (starts with | and contains |)
+      const isTableRow = /^\|.+?\|/.test(trimmedLine);
+      const isTableSeparator = /^\|[\s\-\|:]+?\|/.test(trimmedLine);
+      
+      if (isTableRow || isTableSeparator) {
+        if (!inTable) {
+          inTable = true;
+          tableRows = [];
+        }
+        tableRows.push(trimmedLine);
+      } else {
+        // Not a table row - process any accumulated table
+        if (inTable && tableRows.length > 0) {
+          const placeholder = `__TABLE_PLACEHOLDER_${placeholderIndex}__`;
+          // Parse table with markdown applied to cells
+          tablePlaceholders.push({ placeholder, html: parseMarkdownTable(tableRows, true) });
+          processed.push(placeholder);
+          placeholderIndex++;
+          tableRows = [];
+          inTable = false;
+        }
+        processed.push(line);
+      }
+    }
+    
+    // Process any remaining table
+    if (inTable && tableRows.length > 0) {
+      const placeholder = `__TABLE_PLACEHOLDER_${placeholderIndex}__`;
+      tablePlaceholders.push({ placeholder, html: parseMarkdownTable(tableRows, true) });
+      processed.push(placeholder);
+    }
+    
+    let html = processed.join('\n');
+    
+    // Escape HTML to prevent XSS (but preserve table placeholders)
+    html = html
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
     
-    // Parse markdown syntax
+    // Parse markdown syntax (before replacing table placeholders, so markdown in tables works)
     // Bold: **text** → <strong>text</strong>
     html = html.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
     
@@ -536,42 +588,48 @@
     
     // Bullet lists: Convert lines starting with • into <ul><li> structure
     // Split by line breaks and process
-    const lines = html.split('\n');
-    const processed = [];
+    const lines2 = html.split('\n');
+    const processed2 = [];
     let inList = false;
     
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
+    for (let i = 0; i < lines2.length; i++) {
+      const line = lines2[i];
       const trimmedLine = line.trim();
+      
+      // Skip if this is already a table (contains <table>)
+      if (trimmedLine.includes('<table>')) {
+        processed2.push(line);
+        continue;
+      }
       
       // Check if line starts with bullet symbol •
       if (/^•\s/.test(trimmedLine)) {
         if (!inList) {
-          processed.push('<ul>');
+          processed2.push('<ul>');
           inList = true;
         }
         // Remove the bullet and add as list item
         const content = trimmedLine.replace(/^•\s*/, '');
-        processed.push(`<li>${content}</li>`);
+        processed2.push(`<li>${content}</li>`);
       } else if (trimmedLine === '' && inList) {
         // Empty line while in list - skip it (don't close the list)
         continue;
       } else {
         // Non-empty, non-bullet line - close list if open
         if (inList) {
-          processed.push('</ul>');
+          processed2.push('</ul>');
           inList = false;
         }
-        processed.push(line);
+        processed2.push(line);
       }
     }
     
     // Close any open list at the end
     if (inList) {
-      processed.push('</ul>');
+      processed2.push('</ul>');
     }
     
-    html = processed.join('\n');
+    html = processed2.join('\n');
     
     // Remove newlines around list elements to prevent extra spacing
     html = html.replace(/\n(<ul>)/g, '$1');
@@ -581,9 +639,77 @@
     html = html.replace(/\n(<\/ul>)/g, '$1');
     html = html.replace(/(<\/ul>)\n/g, '$1<br>');
     
-    // Line breaks: convert remaining \n to <br> (for non-list content)
+    // Line breaks: convert remaining \n to <br> (for non-list, non-table content)
     html = html.replace(/\n/g, '<br>');
     
+    // Replace table placeholders with actual table HTML (after all markdown processing)
+    tablePlaceholders.forEach(({ placeholder, html: tableHtml }) => {
+      html = html.replace(placeholder, tableHtml);
+    });
+    
+    return html;
+  }
+  
+  // Helper function to parse markdown table syntax
+  // Note: This is called before main markdown parsing, so we need to apply markdown to cells
+  function parseMarkdownTable(tableRows, applyMarkdownToCells) {
+    if (tableRows.length < 2) return ''; // Need at least header and separator
+    
+    const headerRow = tableRows[0];
+    const separatorRow = tableRows[1];
+    const dataRows = tableRows.slice(2);
+    
+    // Parse header
+    const headerCells = headerRow.split('|').map(c => c.trim()).filter(c => c);
+    
+    // Parse data rows
+    const rows = dataRows.map(row => {
+      return row.split('|').map(c => c.trim()).filter(c => c);
+    });
+    
+    // Build HTML table with markdown applied to cell content
+    let tableHtml = '<table><thead><tr>';
+    headerCells.forEach(cell => {
+      const processed = applyMarkdownToCells ? parseMarkdownInline(cell) : escapeHtml(cell);
+      tableHtml += `<th>${processed}</th>`;
+    });
+    tableHtml += '</tr></thead><tbody>';
+    
+    rows.forEach(row => {
+      tableHtml += '<tr>';
+      // Ensure we have the same number of cells as headers
+      for (let i = 0; i < headerCells.length; i++) {
+        const cell = row[i] || '';
+        const processed = applyMarkdownToCells ? parseMarkdownInline(cell) : escapeHtml(cell);
+        tableHtml += `<td>${processed}</td>`;
+      }
+      tableHtml += '</tr>';
+    });
+    
+    tableHtml += '</tbody></table>';
+    return tableHtml;
+  }
+  
+  // Helper to escape HTML
+  function escapeHtml(text) {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+  
+  // Helper to apply inline markdown (bold, italic, code, links) without block elements
+  function parseMarkdownInline(text) {
+    if (!text) return '';
+    let html = escapeHtml(text);
+    // Bold: **text** → <strong>text</strong>
+    html = html.replace(/\*\*([^\*]+?)\*\*/g, '<strong>$1</strong>');
+    // Italic: *text* → <em>text</em> (but not if it's part of **)
+    html = html.replace(/(?<!\*)\*([^\*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+    // Inline code: `text` → <code>text</code>
+    html = html.replace(/`([^`]+?)`/g, '<code>$1</code>');
+    // Links: [text](url) → <a href="url">text</a>
+    html = html.replace(/\[([^\]]+?)\]\(([^\)]+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
     return html;
   }
 
@@ -905,6 +1031,65 @@ Please evaluate if this answer is correct and complete based on the lesson conte
     };
     wrap.appendChild(btn); wrap.appendChild(fb);
     if(state.instructor){ const ans=document.createElement('div'); ans.className='muted'; ans.style.marginTop='6px'; ans.textContent='(Answer key visible in instructor mode.)'; wrap.appendChild(ans); }
+    return wrap;
+  }
+
+  // Table component: renders structured table data
+  function tableComponent(cfg, stageId, section, componentIndex){
+    const wrap = document.createElement('div');
+    wrap.className = 'card';
+    
+    // Optional caption
+    if (cfg.caption) {
+      const caption = document.createElement('div');
+      caption.className = 'muted';
+      caption.style.marginBottom = '8px';
+      caption.innerHTML = parseMarkdown(cfg.caption);
+      wrap.appendChild(caption);
+    }
+    
+    const table = document.createElement('table');
+    
+    // Header row
+    if (cfg.headers && cfg.headers.length > 0) {
+      const thead = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      cfg.headers.forEach(header => {
+        const th = document.createElement('th');
+        th.innerHTML = parseMarkdown(header);
+        headerRow.appendChild(th);
+      });
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+    }
+    
+    // Body rows
+    if (cfg.rows && cfg.rows.length > 0) {
+      const tbody = document.createElement('tbody');
+      cfg.rows.forEach(row => {
+        const tr = document.createElement('tr');
+        // Handle both array of cells and object with cell keys
+        if (Array.isArray(row)) {
+          row.forEach(cell => {
+            const td = document.createElement('td');
+            td.innerHTML = parseMarkdown(cell);
+            tr.appendChild(td);
+          });
+        } else if (typeof row === 'object') {
+          // If row is an object, use headers to determine order
+          cfg.headers.forEach(header => {
+            const td = document.createElement('td');
+            const cellValue = row[header] || '';
+            td.innerHTML = parseMarkdown(cellValue);
+            tr.appendChild(td);
+          });
+        }
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+    }
+    
+    wrap.appendChild(table);
     return wrap;
   }
 
@@ -1301,6 +1486,9 @@ Please evaluate if this answer is correct and complete based on the lesson conte
             break;
           case 'flowchart':
             wrap.appendChild(flowchartComponent(comp, stageId, section, componentIndex));
+            break;
+          case 'table':
+            wrap.appendChild(tableComponent(comp, stageId, section, componentIndex));
             break;
         }
       });

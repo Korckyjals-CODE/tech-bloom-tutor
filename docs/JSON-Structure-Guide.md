@@ -521,6 +521,72 @@ Interactive flowchart builder with draggable nodes.
 
 ---
 
+### 9. Table Component
+
+Structured table for displaying data in rows and columns.
+
+```json
+{
+  "type": "table",
+  "caption": "Optional table caption or description",
+  "headers": [
+    "Column 1",
+    "Column 2",
+    "Column 3"
+  ],
+  "rows": [
+    ["Row 1, Cell 1", "Row 1, Cell 2", "Row 1, Cell 3"],
+    ["Row 2, Cell 1", "Row 2, Cell 2", "Row 2, Cell 3"]
+  ]
+}
+```
+
+**Alternative format using objects:**
+
+```json
+{
+  "type": "table",
+  "caption": "Evaluation Rubric",
+  "headers": ["Criterion", "Excellent (5)", "Good (4)", "Acceptable (3)"],
+  "rows": [
+    {
+      "Criterion": "Clarity",
+      "Excellent (5)": "Crystal clear",
+      "Good (4)": "Mostly clear",
+      "Acceptable (3)": "Somewhat clear"
+    },
+    {
+      "Criterion": "Purpose",
+      "Excellent (5)": "Perfectly achieves goal",
+      "Good (4)": "Achieves goal well",
+      "Acceptable (3)": "Partially achieves goal"
+    }
+  ]
+}
+```
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `caption` | string | No | Optional caption displayed above the table |
+| `headers` | array | Yes | Array of column header strings |
+| `rows` | array | Yes | Array of row data (arrays or objects) |
+| `rows[]` | array or object | Yes | Row data matching header structure |
+
+**Use cases**: Comparison tables, rubrics, data summaries, reference charts
+
+**Note**: You can also include markdown table syntax directly in `text` components. The parser will automatically convert markdown tables to HTML tables.
+
+**Markdown table example in text component:**
+
+```json
+{
+  "type": "text",
+  "content": "**Evaluation Rubric:**\n\n| Criterion | Excellent | Good |\n|-----------|-----------|------|\n| Clarity | Crystal clear | Mostly clear |\n| Purpose | Perfectly achieves | Achieves well |"
+}
+```
+
+---
+
 ## Validation Types
 
 Validation is used with `shortAnswer` components to check student responses.
@@ -830,9 +896,9 @@ Here's a minimal but complete example for a "Git Basics" guide:
 | **Remembering** | Checklist, Matching, MCQ, Ordering | Freeform questions |
 | **Understanding** | Text + Code, Short Answer (contains), MCQ | Pure memorization |
 | **Applying** | Checklist, Code, Short Answer (regex) | Theory-only content |
-| **Analyzing** | Flowchart, Ordering, Matching | Surface-level questions |
-| **Evaluating** | Short Answer (freeform), MCQ (comparison) | Single-answer questions |
-| **Creating** | Short Answer (freeform), Flowchart, Code | Recall-only activities |
+| **Analyzing** | Flowchart, Ordering, Matching, Table | Surface-level questions |
+| **Evaluating** | Short Answer (freeform), MCQ (comparison), Table | Single-answer questions |
+| **Creating** | Short Answer (freeform), Flowchart, Code, Table | Recall-only activities |
 
 ### Writing Guidelines
 
@@ -923,6 +989,7 @@ For questions or suggestions about this JSON structure:
 - `ordering`
 - `matching`
 - `flowchart`
+- `table`
 
 ### All Validation Types
 
