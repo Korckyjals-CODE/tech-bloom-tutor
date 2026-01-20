@@ -543,20 +543,20 @@ For each of the 4 data types (int, float, str, bool), create a dedicated compone
 
 After implementation, verify:
 
-- [ ] Stage 0 core has 5 text components with examples, metaphors, connections
-- [ ] Stage 1 core has 8-10 vocabulary terms with definitions, examples, context
-- [ ] Stage 2 core has detailed "behind the scenes" explanation (8-10 steps)
-- [ ] Stage 3 core has comprehensive step-by-step guide (7-10 steps) with pitfalls
-- [ ] Stage 4 core has error analysis table (8-10 error types)
-- [ ] Stage 5 core has evaluation criteria (6-8 criteria) with rubrics and examples
-- [ ] Stage 6 core has multiple project types (6-8 options) with templates
-- [ ] Each guidedPractice has minimum 2 activities (preferably 3-4)
-- [ ] Each challenge has creative/visual elements or multiple activity types
-- [ ] Each reflection has self-assessment checklist (3-4 questions) + multiple prompts (3-5)
-- [ ] Each transition previews specific concepts for next stage
-- [ ] Real-world examples throughout (5-7 in Stage 0)
-- [ ] Multiple question types in activities
-- [ ] Feedback for all multiple choice questions
+- [x] Stage 0 core has 5 text components with examples, metaphors, connections
+- [x] Stage 1 core has 8-10 vocabulary terms with definitions, examples, context
+- [x] Stage 2 core has detailed "behind the scenes" explanation (8-10 steps)
+- [x] Stage 3 core has comprehensive step-by-step guide (7-10 steps) with pitfalls
+- [x] Stage 4 core has error analysis table (8-10 error types)
+- [x] Stage 5 core has evaluation criteria (6-8 criteria) with rubrics and examples
+- [x] Stage 6 core has multiple project types (6-8 options) with templates
+- [x] Each guidedPractice has minimum 2 activities (preferably 3-4)
+- [x] Each challenge has creative/visual elements or multiple activity types
+- [x] Each reflection has self-assessment checklist (3-4 questions) + multiple prompts (3-5)
+- [x] Each transition previews specific concepts for next stage
+- [x] Real-world examples throughout (5-7 in Stage 0)
+- [x] Multiple question types in activities
+- [x] Feedback for all multiple choice questions
 
 ---
 

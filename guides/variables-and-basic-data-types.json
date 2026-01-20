@@ -1,589 +1,1596 @@
 {
-    "metadata": {
-      "title": "Python Variables and Basic Data Types",
-      "subtitle": "Storing and working with information in Python",
-      "description": "Learn how to store data using variables and understand Python's basic data types: integers, floats, strings, and booleans.",
-      "version": "1.0.0",
-      "author": "EduCafé",
-      "lastUpdated": "2026-01-20",
-      "storageKeyPrefix": "python_variables",
-      "instructorPasscode": "educafe-vars-101"
-    },
-    "branding": {
-      "brandName": "EduCafé — Python Guide",
-      "theme": {
-        "colorScheme": "dark",
-        "primaryColor": "#4aa3ff",
-        "secondaryColor": "#7bc67b"
-      }
-    },
-    "stages": [
-      { "id": "s0", "order": 0, "title": "Stage 0 · Starting", "shortTitle": "Starting", "description": "Introduction and motivation" },
-      { "id": "s1", "order": 1, "title": "Stage 1 · Remembering", "shortTitle": "Remembering", "description": "Vocabulary and basic facts" },
-      { "id": "s2", "order": 2, "title": "Stage 2 · Understanding", "shortTitle": "Understanding", "description": "How variables and types work" },
-      { "id": "s3", "order": 3, "title": "Stage 3 · Applying", "shortTitle": "Applying", "description": "Hands-on usage" },
-      { "id": "s4", "order": 4, "title": "Stage 4 · Analyzing", "shortTitle": "Analyzing", "description": "Errors and troubleshooting" },
-      { "id": "s5", "order": 5, "title": "Stage 5 · Evaluating", "shortTitle": "Evaluating", "description": "Judging quality and choices" },
-      { "id": "s6", "order": 6, "title": "Stage 6 · Creating", "shortTitle": "Creating", "description": "Original projects" }
-    ],
-    "sections": [
-      { "id": "mindset", "displayName": "Mindset", "order": 0, "description": "Prepare mentally" },
-      { "id": "recap", "displayName": "Recap", "order": 1, "description": "Connect to prior learning" },
-      { "id": "core", "displayName": "Core", "order": 2, "description": "Main content" },
-      { "id": "guidedPractice", "displayName": "Guided Practice", "order": 3, "description": "Practice with help" },
-      { "id": "challenge", "displayName": "Challenge", "order": 4, "description": "Independent work" },
-      { "id": "reflection", "displayName": "Reflection", "order": 5, "description": "Think about learning" },
-      { "id": "transition", "displayName": "Transition", "order": 6, "description": "Move forward" }
-    ],
-    "content": {
-      "s0": {
-        "mindset": {
-          "heading": "Why Variables Matter",
-          "components": [
-            {
-              "type": "text",
-              "content": "Every program needs to **remember information**. Variables are how Python remembers things for you."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "From Printing to Remembering",
-          "components": [
-            {
-              "type": "text",
-              "content": "So far, you printed text directly. But what if you want to reuse information later?"
-            }
-          ]
-        },
-        "core": {
-          "heading": "What Is a Variable?",
-          "components": [
-            {
-              "type": "text",
-              "content": "**A variable is a name that stores a value.** Think of it as a labeled box where you keep information."
-            },
-            {
-              "type": "text",
-              "content": "Real-world examples:\n- Your name\n- Your age\n- A game score\n- Whether a light is on or off\n- The price of an item"
-            },
-            {
-              "type": "code",
-              "language": "python",
-              "content": "age = 12\nprint(age)",
-              "copyable": true
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Seeing Variables in Action",
-          "components": [
-            {
-              "type": "multipleChoice",
-              "question": "What does a variable do?",
-              "options": [
-                "Prints text only",
-                "Stores information",
-                "Deletes data",
-                "Runs Python"
-              ],
-              "correctIndex": 1,
-              "feedback": {
-                "correct": "Correct! Variables store information.",
-                "incorrect": "Variables are used to remember values."
-              }
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "Think About Your Own Variables",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "Name one thing in your life that could be stored in a variable.",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Reflection",
-          "components": [
-            {
-              "type": "checklist",
-              "items": [
-                "I know what a variable is",
-                "I know why variables are useful",
-                "I am ready to learn types"
-              ]
-            }
-          ]
-        },
-        "transition": {
-          "heading": "Next Step",
-          "components": [
-            {
-              "type": "text",
-              "content": "Next, you’ll learn that not all values are the same — they have **types**."
-            }
-          ]
-        }
-      },
-      "s1": {
-        "mindset": {
-          "heading": "Learning the Language",
-          "components": [
-            {
-              "type": "text",
-              "content": "Now we name and recognize the most common data types in Python."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "Variables Store Values",
-          "components": [
-            {
-              "type": "text",
-              "content": "A variable stores a value — but values come in different forms."
-            }
-          ]
-        },
-        "core": {
-          "heading": "Basic Data Types",
-          "components": [
-            { "type": "text", "content": "**int** – whole numbers (e.g. 5)" },
-            { "type": "text", "content": "**float** – decimal numbers (e.g. 3.14)" },
-            { "type": "text", "content": "**str** – text (e.g. \"Hello\")" },
-            { "type": "text", "content": "**bool** – true or false values (True / False)" }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Match the Type",
-          "components": [
-            {
-              "type": "matching",
-              "leftColumn": ["5", "3.5", "\"Hi\"", "True"],
-              "rightColumn": [
-                { "definition": "Integer", "matchesWith": "5" },
-                { "definition": "Float", "matchesWith": "3.5" },
-                { "definition": "String", "matchesWith": "\"Hi\"" },
-                { "definition": "Boolean", "matchesWith": "True" }
-              ]
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "Type Recognition",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "What data type is the value 10.0?",
-              "validation": { "type": "contains", "acceptedAnswers": ["float"] }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Check Yourself",
-          "components": [
-            {
-              "type": "checklist",
-              "items": [
-                "I can name the four basic data types",
-                "I can recognize examples of each"
-              ]
-            }
-          ]
-        },
-        "transition": {
-          "heading": "Understanding Comes Next",
-          "components": [
-            {
-              "type": "text",
-              "content": "Next, you’ll learn how Python knows which type a variable has."
-            }
-          ]
-        }
-      },
-      "s2": {
-        "mindset": {
-          "heading": "Understanding What Happens",
-          "components": [
-            {
-              "type": "text",
-              "content": "Now we open the black box and see how Python handles variables and types."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "Types Review",
-          "components": [
-            {
-              "type": "text",
-              "content": "Variables store values, and values have types."
-            }
-          ]
-        },
-        "core": {
-          "heading": "How Python Handles Types",
-          "components": [
-            {
-              "type": "text",
-              "content": "Python automatically decides the type based on the value you assign."
-            },
-            {
-              "type": "code",
-              "language": "python",
-              "content": "x = 5\ny = \"Hello\"\nprint(type(x))\nprint(type(y))",
-              "copyable": true
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Predict the Type",
-          "components": [
-            {
-              "type": "multipleChoice",
-              "question": "What is the type of x = 7?",
-              "options": ["str", "int", "float", "bool"],
-              "correctIndex": 1,
-              "feedback": {
-                "correct": "Correct! Whole numbers are integers.",
-                "incorrect": "Remember: whole numbers without decimals are ints."
-              }
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "Explain It",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "Why is \"5\" a string but 5 is an integer?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Reflection",
-          "components": [
-            {
-              "type": "checklist",
-              "items": [
-                "I understand how Python assigns types",
-                "I can explain the difference between values"
-              ]
-            }
-          ]
-        },
-        "transition": {
-          "heading": "Time to Do It Yourself",
-          "components": [
-            {
-              "type": "text",
-              "content": "Next, you’ll start creating and using variables on your own."
-            }
-          ]
-        }
-      },
-      "s3": {
-        "mindset": {
-          "heading": "Hands On",
-          "components": [
-            {
-              "type": "text",
-              "content": "Now you’ll actively create and use variables."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "Before You Start",
-          "components": [
-            {
-              "type": "text",
-              "content": "You know variables, types, and how Python assigns them."
-            }
-          ]
-        },
-        "core": {
-          "heading": "Using Variables",
-          "components": [
-            {
-              "type": "code",
-              "language": "python",
-              "content": "name = \"Alex\"\nage = 13\nis_student = True\nprint(name)\nprint(age)\nprint(is_student)",
-              "copyable": true
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Try It",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "Create a variable called score with a value of 100. What type is it?",
-              "validation": { "type": "contains", "acceptedAnswers": ["int"] }
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "Mini Task",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "Write three variables about yourself and their types.",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Confidence Check",
-          "components": [
-            {
-              "type": "checklist",
-              "items": [
-                "I can create variables",
-                "I can print variable values",
-                "I understand their types"
-              ]
-            }
-          ]
-        },
-        "transition": {
-          "heading": "Next Challenge",
-          "components": [
-            {
-              "type": "text",
-              "content": "Next, you’ll learn what happens when things go wrong."
-            }
-          ]
-        }
-      },
-      "s4": {
-        "mindset": {
-          "heading": "Think Like a Detective",
-          "components": [
-            {
-              "type": "text",
-              "content": "Errors help you understand how Python thinks."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "What Works",
-          "components": [
-            {
-              "type": "text",
-              "content": "Correct variables have names and valid values."
-            }
-          ]
-        },
-        "core": {
-          "heading": "Common Errors",
-          "components": [
-            {
-              "type": "text",
-              "content": "**NameError**: Using a variable before defining it."
-            },
-            {
-              "type": "text",
-              "content": "**TypeError**: Using incompatible types together."
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Spot the Error",
-          "components": [
-            {
-              "type": "multipleChoice",
-              "question": "What error occurs if you print(x) before defining x?",
-              "options": ["TypeError", "NameError", "SyntaxError", "ValueError"],
-              "correctIndex": 1,
-              "feedback": {
-                "correct": "Correct! x does not exist yet.",
-                "incorrect": "The variable name is unknown."
-              }
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "Explain an Error",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "Why does adding a string and a number cause an error?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Troubleshooting Mindset",
-          "components": [
-            {
-              "type": "checklist",
-              "items": [
-                "I can recognize NameError",
-                "I understand type mismatches"
-              ]
-            }
-          ]
-        },
-        "transition": {
-          "heading": "Judging Code Quality",
-          "components": [
-            {
-              "type": "text",
-              "content": "Next, you’ll learn to decide which variable choices are better."
-            }
-          ]
-        }
-      },
-      "s5": {
-        "mindset": {
-          "heading": "Choosing Better Code",
-          "components": [
-            {
-              "type": "text",
-              "content": "Good code is not just correct — it is clear."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "What You Know",
-          "components": [
-            {
-              "type": "text",
-              "content": "You can create and analyze variables."
-            }
-          ]
-        },
-        "core": {
-          "heading": "Evaluating Variable Use",
-          "components": [
-            {
-              "type": "text",
-              "content": "Good variable names are clear, meaningful, and readable."
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Choose the Best Name",
-          "components": [
-            {
-              "type": "multipleChoice",
-              "question": "Which variable name is best for a student’s age?",
-              "options": ["x", "a1", "studentAge", "value"],
-              "correctIndex": 2,
-              "feedback": {
-                "correct": "Correct! Clear and descriptive.",
-                "incorrect": "Good names describe the data."
-              }
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "Justify Your Choice",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "Why is clear naming important in programming?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Quality Check",
-          "components": [
-            {
-              "type": "checklist",
-              "items": [
-                "I choose meaningful variable names",
-                "I can explain my choices"
-              ]
-            }
-          ]
-        },
-        "transition": {
-          "heading": "Time to Create",
-          "components": [
-            {
-              "type": "text",
-              "content": "Now you’ll create something using variables."
-            }
-          ]
-        }
-      },
-      "s6": {
-        "mindset": {
-          "heading": "You Are the Creator",
-          "components": [
-            {
-              "type": "text",
-              "content": "You now combine everything into your own mini program."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "Full Journey",
-          "components": [
-            {
-              "type": "text",
-              "content": "You learned variables, types, errors, and quality."
-            }
-          ]
-        },
-        "core": {
-          "heading": "Project Ideas",
-          "components": [
-            {
-              "type": "text",
-              "content": "Create a program that stores and prints:\n- Your name\n- Your age\n- Whether you like Python"
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Plan",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "What variables will your program need?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "Build It",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "Write your program and explain what each variable stores.",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Mastery Check",
-          "components": [
-            {
-              "type": "checklist",
-              "items": [
-                "I can create variables confidently",
-                "I understand data types",
-                "I can explain my code"
-              ]
-            }
-          ]
-        },
-        "transition": {
-          "heading": "Congratulations",
-          "components": [
-            {
-              "type": "text",
-              "content": "You are ready to learn **input, math operations, and conditions** next!"
-            }
-          ]
-        }
-      }
-    },
-    "ui": {
-      "defaultExpandedStage": "s0"
+  "metadata": {
+    "title": "Python Variables and Basic Data Types",
+    "subtitle": "Storing and working with information in Python",
+    "description": "Learn how to store data using variables and understand Python's basic data types: integers, floats, strings, and booleans.",
+    "version": "1.0.0",
+    "author": "EduCafé",
+    "lastUpdated": "2026-01-20",
+    "storageKeyPrefix": "python_variables",
+    "instructorPasscode": "educafe-vars-101"
+  },
+  "branding": {
+    "brandName": "EduCafé — Python Guide",
+    "theme": {
+      "colorScheme": "dark",
+      "primaryColor": "#4aa3ff",
+      "secondaryColor": "#7bc67b"
     }
+  },
+  "stages": [
+    {
+      "id": "s0",
+      "order": 0,
+      "title": "Stage 0 · Starting",
+      "shortTitle": "Starting",
+      "description": "Introduction and motivation"
+    },
+    {
+      "id": "s1",
+      "order": 1,
+      "title": "Stage 1 · Remembering",
+      "shortTitle": "Remembering",
+      "description": "Vocabulary and basic facts"
+    },
+    {
+      "id": "s2",
+      "order": 2,
+      "title": "Stage 2 · Understanding",
+      "shortTitle": "Understanding",
+      "description": "How variables and types work"
+    },
+    {
+      "id": "s3",
+      "order": 3,
+      "title": "Stage 3 · Applying",
+      "shortTitle": "Applying",
+      "description": "Hands-on usage"
+    },
+    {
+      "id": "s4",
+      "order": 4,
+      "title": "Stage 4 · Analyzing",
+      "shortTitle": "Analyzing",
+      "description": "Errors and troubleshooting"
+    },
+    {
+      "id": "s5",
+      "order": 5,
+      "title": "Stage 5 · Evaluating",
+      "shortTitle": "Evaluating",
+      "description": "Judging quality and choices"
+    },
+    {
+      "id": "s6",
+      "order": 6,
+      "title": "Stage 6 · Creating",
+      "shortTitle": "Creating",
+      "description": "Original projects"
+    }
+  ],
+  "sections": [
+    {
+      "id": "mindset",
+      "displayName": "Mindset",
+      "order": 0,
+      "description": "Prepare mentally"
+    },
+    {
+      "id": "recap",
+      "displayName": "Recap",
+      "order": 1,
+      "description": "Connect to prior learning"
+    },
+    {
+      "id": "core",
+      "displayName": "Core",
+      "order": 2,
+      "description": "Main content"
+    },
+    {
+      "id": "guidedPractice",
+      "displayName": "Guided Practice",
+      "order": 3,
+      "description": "Practice with help"
+    },
+    {
+      "id": "challenge",
+      "displayName": "Challenge",
+      "order": 4,
+      "description": "Independent work"
+    },
+    {
+      "id": "reflection",
+      "displayName": "Reflection",
+      "order": 5,
+      "description": "Think about learning"
+    },
+    {
+      "id": "transition",
+      "displayName": "Transition",
+      "order": 6,
+      "description": "Move forward"
+    }
+  ],
+  "content": {
+    "s0": {
+      "mindset": {
+        "heading": "Why Variables Matter",
+        "components": [
+          {
+            "type": "text",
+            "content": "Every program needs to **remember information**. Variables are how Python remembers things for you."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "From Printing to Remembering",
+        "components": [
+          {
+            "type": "text",
+            "content": "So far, you printed text directly. But what if you want to reuse information later?"
+          }
+        ]
+      },
+      "core": {
+        "heading": "What Is a Variable?",
+        "components": [
+          {
+            "type": "text",
+            "content": "**A variable is a name that stores a value.** Think of it as a labeled box where you keep information."
+          },
+          {
+            "type": "text",
+            "content": "**Visual Metaphors for Variables:**\n\nVariables can be thought of in many ways:\n- **Labeled boxes/containers** — Each box has a name tag and holds a value inside\n- **Sticky notes** — You write a label on the note and stick it to a value\n- **Name tags** — Like a name tag at an event, the variable name identifies the value\n- **Memory slots** — Your computer has memory slots, and variables are how you name and access them"
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Examples:**\n\n**Personal:**\n- Your name (e.g., \"Alex\")\n- Your age (e.g., 13)\n- Whether a light is on or off (True/False)\n- Your budget for the month ($50.00)\n\n**School:**\n- Your grade in math (e.g., 95)\n- Number of assignments completed (e.g., 8)\n- Your favorite subject (e.g., \"Science\")\n- Whether you passed the test (True/False)\n\n**Professional:**\n- Number of sales this month (e.g., 150)\n- Average customer rating (e.g., 4.7)\n- Company name (e.g., \"TechCorp\")\n- Is the store open? (True/False)"
+          },
+          {
+            "type": "text",
+            "content": "**What Makes Variables Powerful:**\n\nVariables give your programs superpowers:\n- **Reusability** — Store a value once, use it many times\n- **Flexibility** — Change the value without rewriting your entire program\n- **Organization** — Give meaningful names to make code readable\n- **Efficiency** — Calculate something once, store it, and reuse it"
+          },
+          {
+            "type": "text",
+            "content": "**Connection to Prior Knowledge:**\n\nVariables connect to things you already know:\n- **Math** — Like algebra where `x = 5`, variables store numbers\n- **Everyday life** — Like name tags, labels, or sticky notes that identify things\n- **Previous Python** — If you've printed text before, variables let you store that text and reuse it\n- **Real-world storage** — Just like a filing cabinet with labeled folders, variables organize information"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "age = 12\nprint(age)",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Seeing Variables in Action",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "What does a variable do?",
+            "options": [
+              "Prints text only",
+              "Stores information",
+              "Deletes data",
+              "Runs Python"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Variables store information.",
+              "incorrect": "Variables are used to remember values."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Look at this code: `name = \"Alex\"` and `age = 15`. Identify the two variables and what they store.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Code Comparison:**\n\n**Without variables:**\n```python\nprint(\"Alex\")\nprint(15)\nprint(\"Alex\")\nprint(15)\n```\n\n**With variables:**\n```python\nname = \"Alex\"\nage = 15\nprint(name)\nprint(age)\nprint(name)\nprint(age)\n```\n\n**Question:** What advantage do variables provide in the second example?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain why using variables makes code easier to change and reuse.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Think About Your Own Variables",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Name one thing in your life that could be stored in a variable.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which real-world scenario best demonstrates the power of variables?",
+            "options": [
+              "A game that tracks your score as you play",
+              "Printing the same text 10 times",
+              "Writing a single number",
+              "Deleting files"
+            ],
+            "correctIndex": 0,
+            "feedback": {
+              "correct": "Correct! Variables let you track changing values like scores.",
+              "incorrect": "Variables are most powerful when values change or need to be reused."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Creative Visualization:**\n\nDraw or describe a visual representation of a variable. You could:\n- Draw a labeled box with a value inside\n- Create a sticky note with a name and value\n- Design a name tag that stores information\n\nThen explain: How does your visualization help you understand what a variable does?"
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Reflection",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I know what a variable is",
+              "I know why variables are useful",
+              "I can identify variables in code examples",
+              "I am ready to learn types"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What motivated you to learn about variables? What do you hope to create with them?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What are you curious about regarding variables? What questions do you still have?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How do variables connect to things you already know (math, everyday life, previous Python knowledge)?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Do you feel ready to move on to learning about data types? What would help you feel more confident?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next Step",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you’ll learn that not all values are the same — they have **types**."
+          },
+          {
+            "type": "text",
+            "content": "Great job understanding variables! You're making excellent progress."
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nIn the next stage, you'll learn about **data types** — the different kinds of values variables can store:\n\n• **int** (integers) — whole numbers like 5, 10, -3\n• **float** (floating-point) — decimal numbers like 3.14, 2.5\n• **str** (strings) — text like \"Hello\", \"Python\"\n• **bool** (booleans) — True or False values\n\nUnderstanding types will help you use variables more effectively!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Just like variables help you store information, types help you understand what kind of information you're storing. This knowledge will make your programs more powerful and help you avoid errors."
+          }
+        ]
+      }
+    },
+    "s1": {
+      "mindset": {
+        "heading": "Learning the Language",
+        "components": [
+          {
+            "type": "text",
+            "content": "Now we name and recognize the most common data types in Python."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Variables Store Values",
+        "components": [
+          {
+            "type": "text",
+            "content": "A variable stores a value — but values come in different forms."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Basic Data Types",
+        "components": [
+          {
+            "type": "text",
+            "content": "**int (Integer)** — Whole numbers without decimal points.\n\n**Examples:**\n• `5` — A single number\n• `-10` — Negative numbers are also integers\n• `0` — Zero is an integer\n• `1000` — Large whole numbers\n\n**When it matters:** Use integers for counting, scores, ages, quantities — anything that doesn't need decimals.\n\n**Connection:** Integers are the foundation for floats (you can think of 5.0 as an integer with a decimal point)."
+          },
+          {
+            "type": "text",
+            "content": "**float (Floating-Point Number)** — Numbers with decimal points.\n\n**Examples:**\n• `3.14` — Pi, a mathematical constant\n• `2.5` — Half of 5\n• `0.0` — Zero as a float\n• `-15.7` — Negative decimal numbers\n• `100.0` — Whole numbers can be floats too\n\n**When it matters:** Use floats for measurements, averages, percentages, and any calculation requiring precision beyond whole numbers.\n\n**Connection:** Floats extend integers by adding decimal precision. Both represent numbers, but floats allow fractional values."
+          },
+          {
+            "type": "text",
+            "content": "**str (String)** — Text enclosed in quotes.\n\n**Examples:**\n• `\"Hello\"` — A greeting\n• `'Python'` — A programming language name\n• `\"123\"` — Numbers as text (not a number!)\n• `\"\"` — An empty string\n• `\"My name is Alex\"` — Multiple words\n\n**When it matters:** Use strings for names, messages, descriptions, and any text data. Strings can contain letters, numbers, spaces, and symbols.\n\n**Connection:** Strings are different from numbers — `\"5\"` is text, while `5` is a number. You can't do math with strings (unless you convert them)."
+          },
+          {
+            "type": "text",
+            "content": "**bool (Boolean)** — True or False values (only these two options).\n\n**Examples:**\n• `True` — Something is true, on, yes, or correct\n• `False` — Something is false, off, no, or incorrect\n\n**When it matters:** Use booleans for yes/no questions, on/off states, and any situation with only two possible outcomes.\n\n**Connection:** Booleans are the simplest type — just two values. They're often used with conditions and comparisons (you'll learn about these later)."
+          },
+          {
+            "type": "text",
+            "content": "**The type() Function** — Discover what type a value has.\n\nUse `type()` to check the data type of any value or variable:\n\n```python\ntype(5)        # Returns: <class 'int'>\ntype(3.14)     # Returns: <class 'float'>\ntype(\"Hello\")  # Returns: <class 'str'>\ntype(True)     # Returns: <class 'bool'>\n```\n\nThis helps you verify what type Python assigned to your values."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "age = 15\nprice = 9.99\nname = \"Alex\"\nis_student = True\n\nprint(type(age))        # <class 'int'>\nprint(type(price))      # <class 'float'>\nprint(type(name))       # <class 'str'>\nprint(type(is_student)) # <class 'bool'>",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**How Python Determines Types Automatically** — Python is smart! It looks at your value and automatically assigns the correct type:\n\n• **No quotes + no decimal** → `int` (e.g., `5`)\n• **No quotes + has decimal** → `float` (e.g., `3.14`)\n• **Has quotes** → `str` (e.g., `\"Hello\"`)\n• **True or False** → `bool` (e.g., `True`)\n\nYou don't need to tell Python the type — it figures it out from the value you write!"
+          },
+          {
+            "type": "text",
+            "content": "**Why Types Matter** — Different types behave differently:\n\n• **Numbers (int/float)** — You can do math: `5 + 3` = `8`\n• **Strings (str)** — You can combine text: `\"Hello\" + \" World\"` = `\"Hello World\"`\n• **Booleans (bool)** — Used for decisions: `if is_student:`\n\nMixing incompatible types causes errors. For example, you can't add a string to a number directly: `5 + \"Hello\"` will cause a TypeError."
+          },
+          {
+            "type": "text",
+            "content": "**How All Types Work Together** — In real programs, you use all types together:\n\n```python\nname = \"Alex\"           # str\nage = 15                # int\naverage_grade = 92.5    # float\nis_passing = True       # bool\n```\n\nEach type serves a different purpose, and together they let you represent all kinds of information in your programs."
+          },
+          {
+            "type": "text",
+            "content": "**Type Conversion Basics** — Sometimes you need to convert between types:\n\n• `int(3.7)` → `3` (float to int, drops decimal)\n• `float(5)` → `5.0` (int to float, adds decimal)\n• `str(42)` → `\"42\"` (number to string)\n• `int(\"10\")` → `10` (string to int, if the string is a number)\n\n**Note:** You can't convert `\"Hello\"` to a number — it's not a valid number!"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Match the Type",
+        "components": [
+          {
+            "type": "matching",
+            "leftColumn": [
+              "5",
+              "-10",
+              "3.14",
+              "0.0",
+              "\"Hello\"",
+              "\"42\"",
+              "True",
+              "False",
+              "100",
+              "2.5"
+            ],
+            "rightColumn": [
+              {
+                "definition": "Integer",
+                "matchesWith": "5"
+              },
+              {
+                "definition": "Integer",
+                "matchesWith": "-10"
+              },
+              {
+                "definition": "Float",
+                "matchesWith": "3.14"
+              },
+              {
+                "definition": "Float",
+                "matchesWith": "0.0"
+              },
+              {
+                "definition": "String",
+                "matchesWith": "\"Hello\""
+              },
+              {
+                "definition": "String",
+                "matchesWith": "\"42\""
+              },
+              {
+                "definition": "Boolean",
+                "matchesWith": "True"
+              },
+              {
+                "definition": "Boolean",
+                "matchesWith": "False"
+              },
+              {
+                "definition": "Integer",
+                "matchesWith": "100"
+              },
+              {
+                "definition": "Float",
+                "matchesWith": "2.5"
+              }
+            ]
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What is the data type of the value 7.0?",
+            "options": [
+              "int",
+              "float",
+              "str",
+              "bool"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! 7.0 has a decimal point, so it's a float.",
+              "incorrect": "Remember: if a number has a decimal point, it's a float, even if it's a whole number like 7.0."
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which of these is a string?",
+            "options": [
+              "42",
+              "\"42\"",
+              "42.0",
+              "True"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Strings are enclosed in quotes.",
+              "incorrect": "Strings must have quotes around them. \"42\" is a string, but 42 (without quotes) is an integer."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Type Recognition",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What data type is the value 10.0?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": [
+                "float"
+              ]
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Creative Visualization Task:**\n\nCreate a diagram showing the four data types (int, float, str, bool). For each type:\n- Draw or describe a visual representation\n- Include 2-3 example values\n- Show how they're different from each other\n\nYou can use boxes, circles, or any visual format that helps you remember!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "In your own words, explain when you would use each data type (int, float, str, bool) in a real program.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Check Yourself",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can name the four basic data types",
+              "I can recognize examples of each",
+              "I understand when to use each type",
+              "I can use the type() function to check types"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which data type term was easiest for you to remember? Which was hardest? Why?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Can you recall the four data types without looking back? Try naming them and their purposes.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How do the different data types work together? Give an example of using multiple types in one program.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What connection do you see between learning data types and what you'll learn next about how Python handles them?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Understanding Comes Next",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you’ll learn how Python knows which type a variable has."
+          },
+          {
+            "type": "text",
+            "content": "Excellent work learning the data types! You're building a strong foundation."
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nNext, you'll dive deeper into **how Python automatically assigns types** to values. You'll learn:\n\n• The step-by-step process Python uses\n• Why quotes, decimals, and True/False matter\n• How type inference works behind the scenes\n• How types can change when you reassign variables\n\nThis understanding will help you predict and control types in your code!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Now that you know what types exist, you'll learn how Python decides which type to use. This connects directly to using types correctly in your programs."
+          }
+        ]
+      }
+    },
+    "s2": {
+      "mindset": {
+        "heading": "Understanding What Happens",
+        "components": [
+          {
+            "type": "text",
+            "content": "Now we open the black box and see how Python handles variables and types."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Types Review",
+        "components": [
+          {
+            "type": "text",
+            "content": "Variables store values, and values have types."
+          }
+        ]
+      },
+      "core": {
+        "heading": "How Python Handles Types",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Step-by-Step: How Python Assigns Types**\n\nWhen you write `age = 15`, Python goes through a careful process:\n\n**Step 1:** You write a value (like `15`, `\"Hello\"`, or `3.14`)\n**Step 2:** Python reads the value you wrote\n**Step 3:** Python checks for quotes — if it finds quotes, it's a string\n**Step 4:** Python checks for a decimal point — if it finds one (and no quotes), it's a float\n**Step 5:** Python checks for `True` or `False` — if it finds these keywords, it's a boolean\n**Step 6:** Python assigns the type based on what it found\n**Step 7:** Python stores the value in the variable with its assigned type\n**Step 8:** Python remembers the type for future operations\n**Step 9:** When you use the variable later, Python knows its type\n**Step 10:** Python uses the type information to allow or prevent operations"
+          },
+          {
+            "type": "text",
+            "content": "**Why Each Step Matters:**\n\n• **Quotes matter** — Quotes tell Python \"this is text, not a number.\" Without quotes, `5` is a number. With quotes, `\"5\"` is text.\n\n• **Decimal points matter** — A decimal point tells Python \"this needs precision.\" `5` is an integer, but `5.0` is a float.\n\n• **True/False are special** — These are reserved keywords in Python. When Python sees them, it knows they're booleans, not variable names or strings."
+          },
+          {
+            "type": "text",
+            "content": "**What Happens Internally:**\n\nBehind the scenes, Python does more than you see:\n\n• **Memory storage** — Different types are stored differently in your computer's memory. Integers and floats use different amounts of space.\n\n• **Type checking** — Python keeps track of each variable's type. When you try to use a variable, Python checks if the operation is allowed for that type.\n\n• **The type() function** — When you call `type()`, Python looks up the type information it stored when the variable was created. It doesn't re-analyze the value — it uses what it remembered."
+          },
+          {
+            "type": "text",
+            "content": "**How Components Interact:**\n\nThe relationship between variable name, value, and type:\n\n```python\nage = 15\n```\n\n• **Variable name** (`age`) → This is just a label you choose\n• **Value** (`15`) → This is the actual data\n• **Type** (`int`) → This is determined by the value, not the name\n\nThe key insight: **The type comes from the value, not the variable name.** You could write `age = \"fifteen\"` and it would be a string, even though the name suggests a number!"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "x = 5\ny = \"Hello\"\nz = 3.14\nis_active = True\n\nprint(type(x))        # <class 'int'>\nprint(type(y))        # <class 'str'>\nprint(type(z))        # <class 'float'>\nprint(type(is_active)) # <class 'bool'>",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Visual/Conceptual Flow:**\n\nHere's the flow of information when Python processes `name = \"Alex\"`:\n\n1. **Input:** You type `name = \"Alex\"`\n2. **Detection:** Python sees quotes → \"This is text!\"\n3. **Classification:** Python assigns type `str`\n4. **Storage:** Python stores `\"Alex\"` in memory with type `str`\n5. **Binding:** Python links the name `name` to this stored value\n6. **Memory:** Python remembers: `name` → string `\"Alex\"`\n7. **Ready:** Now `name` can be used, and Python knows it's a string\n\nThis all happens in milliseconds — faster than you can blink!"
+          },
+          {
+            "type": "text",
+            "content": "**Key Ideas:**\n\n**Idea 1: Type is determined by value, not variable name**\n\n```python\nage = 15        # int (because 15 has no quotes or decimal)\nage = \"fifteen\"  # str (because \"fifteen\" has quotes)\nage = 15.0       # float (because 15.0 has a decimal point)\n```\n\nThe variable name `age` doesn't force it to be a number. The value determines the type.\n\n**Idea 2: Types can change when you reassign**\n\n```python\nx = 5        # x is an int\nx = \"Hello\"  # Now x is a str!\n```\n\nPython doesn't care that `x` used to be an integer. When you assign a new value, Python determines the new type from the new value."
+          },
+          {
+            "type": "text",
+            "content": "**Type Inference in Action:**\n\nPython's type inference (automatic type detection) follows a decision tree:\n\n```\nIs it in quotes? → Yes → str\n                → No → Continue\n\nHas a decimal point? → Yes → float\n                    → No → Continue\n\nIs it True or False? → Yes → bool\n                    → No → int\n```\n\nThis process happens automatically for every value you assign. You never need to declare types — Python figures it out!"
+          },
+          {
+            "type": "text",
+            "content": "**Why This Matters:**\n\nUnderstanding how Python assigns types helps you:\n\n• **Avoid errors** — Know why `\"5\" + 3` fails (string + number)\n• **Debug faster** — Understand error messages about type mismatches\n• **Write better code** — Choose the right type for your data\n• **Predict behavior** — Know what type Python will assign before you run code\n\nThis \"behind the scenes\" knowledge makes you a better programmer!"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Watch Python's type inference in action:\n\n# Integer\ncount = 10\nprint(f\"count = {count}, type = {type(count)}\")\n\n# Float\nprice = 9.99\nprint(f\"price = {price}, type = {type(price)}\")\n\n# String\nmessage = \"Hello\"\nprint(f\"message = {message}, type = {type(message)}\")\n\n# Boolean\nis_ready = True\nprint(f\"is_ready = {is_ready}, type = {type(is_ready)}\")\n\n# Type can change!\nvalue = 5\nprint(f\"First: value = {value}, type = {type(value)}\")\nvalue = \"five\"\nprint(f\"After: value = {value}, type = {type(value)}\")",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Predict the Type",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "What is the type of x = 7?",
+            "options": [
+              "str",
+              "int",
+              "float",
+              "bool"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Whole numbers are integers.",
+              "incorrect": "Remember: whole numbers without decimals are ints."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does Python assign the type 'str' to a value with quotes, but 'int' to a value without quotes?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What will be the type of `price = 9.99`?",
+            "options": [
+              "int",
+              "float",
+              "str",
+              "bool"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Numbers with decimal points are floats.",
+              "incorrect": "Remember: decimal points indicate float type."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Comparison Activity:**\n\nCompare these two assignments:\n```python\nage1 = 15\nage2 = \"15\"\n```\n\n**Question:** What's the difference? Why does Python assign different types?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "A student wrote `score = \"100\"` but wants to do math with it. What's the problem and how would you fix it?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Explain It",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Why is \"5\" a string but 5 is an integer?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Creative Diagram/Flowchart Task:**\n\nCreate a flowchart or diagram showing Python's decision process for assigning types. Your diagram should show:\n- The steps Python takes (checking for quotes, decimal points, etc.)\n- The decision points\n- The final type assignment\n\nUse arrows, boxes, or any visual format that makes the process clear!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What happens if you write `x = True` and then later write `x = \"True\"`? Explain the type changes.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Reflection",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I understand how Python assigns types",
+              "I can explain the difference between values",
+              "I know why quotes, decimals, and True/False matter",
+              "I understand that type comes from the value, not the variable name"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does it matter that Python automatically assigns types? How does this help you as a programmer?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most surprising thing you learned about how Python handles types?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does understanding type assignment connect to what you'll do next (creating and using variables)?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Can you explain to someone else why `\"5\"` is a string but `5` is an integer? Try explaining it in your own words.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Time to Do It Yourself",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you’ll start creating and using variables on your own."
+          },
+          {
+            "type": "text",
+            "content": "Wonderful! You now understand how Python thinks about types. This is powerful knowledge!"
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nNow it's time to **apply** what you've learned! In the next stage, you'll:\n\n• Create your first Python script with variables\n• Follow a step-by-step guide to write and run code\n• Learn common pitfalls and how to avoid them\n• Verify your code works correctly\n\nYou'll go from understanding to doing — the best way to learn!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Understanding how types work prepares you to create variables correctly. Now you'll put that knowledge into practice by writing real code."
+          }
+        ]
+      }
+    },
+    "s3": {
+      "mindset": {
+        "heading": "Hands On",
+        "components": [
+          {
+            "type": "text",
+            "content": "Now you’ll actively create and use variables."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Before You Start",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know variables, types, and how Python assigns them."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Using Variables",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Preparation Checklist**\n\nBefore you start coding, make sure you have:\n\n✓ **Python installed** — You should be able to run `python --version` in your terminal\n✓ **Text editor ready** — Any editor works (VS Code, Notepad++, Sublime, or even Notepad)\n✓ **Terminal/Command Prompt open** — You'll need this to run your script\n✓ **Folder location chosen** — Decide where you'll save your Python files (e.g., `C:\\Code\\python-practice` or `~/python-practice`)\n\nOnce you've checked these off, you're ready to create your first variable script!"
+          },
+          {
+            "type": "text",
+            "content": "**Step-by-Step Guide: Creating Your First Variable Script**\n\n**Step 1:** Open your text editor (VS Code, Notepad++, or any editor you prefer)\n\n**Step 2:** Create a new file and save it as `my_variables.py` (the `.py` extension tells Python it's a Python file)\n\n**Step 3:** Write your first variable assignment:\n```python\nname = \"Alex\"\n```\n\n**Step 4:** Save the file (Ctrl+S or Cmd+S) — **Important:** Always save before running!\n\n**Step 5:** Open your terminal/command prompt\n\n**Step 6:** Navigate to the folder where you saved your file using `cd`:\n```bash\ncd C:\\Code\\python-practice\n# or on Mac/Linux:\ncd ~/python-practice\n```\n\n**Step 7:** Run your Python script:\n```bash\npython my_variables.py\n```\n\n**Step 8:** Verify the output — You should see the value printed (if you added `print(name)`)\n\n**Step 9:** Check the type using `type()`:\n```python\nprint(type(name))\n```\n\n**Step 10:** Experiment! Try different values and see what types Python assigns"
+          },
+          {
+            "type": "text",
+            "content": "**Visual Descriptions:**\n\n**File Location:**\n```\nC:\\Code\\python-practice\\\n  └── my_variables.py  ← Your script goes here\n```\n\n**Terminal Navigation:**\n```\nC:\\Users\\YourName> cd C:\\Code\\python-practice\nC:\\Code\\python-practice> python my_variables.py\n```\n\n**Code Structure:**\n```python\n# Variable assignments\nname = \"Alex\"\nage = 13\n\n# Print statements\nprint(name)\nprint(age)\n\n# Type checking\nprint(type(name))\nprint(type(age))\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Common Pitfalls and How to Avoid Them:**\n\n1. **Forgetting quotes for strings** — `name = Alex` will cause a NameError. Use `name = \"Alex\"` instead.\n\n2. **Using wrong quotes** — Mixing quotes can cause issues. Stick with `\"double quotes\"` or `'single quotes'` consistently.\n\n3. **Forgetting to save the file** — If you run the script without saving, you'll run the old version. Always save before running!\n\n4. **Wrong directory in terminal** — If you get \"file not found,\" check that your terminal is in the same folder as your script. Use `cd` to navigate.\n\n5. **Typo in variable name** — `name` and `nmae` are different! Python is case-sensitive and spelling-sensitive.\n\n6. **Using reserved words** — Don't use Python keywords like `print`, `if`, `for`, `class` as variable names. They're reserved for Python.\n\n7. **Case sensitivity** — `Name`, `name`, and `NAME` are three different variables. Be consistent!\n\n8. **Spaces in variable names** — `my name = \"Alex\"` won't work. Use `my_name = \"Alex\"` or `myName = \"Alex\"` instead.\n\n9. **Forgetting the .py extension** — Save as `my_variables.py`, not `my_variables.txt`\n\n10. **Running Python 2 instead of Python 3** — Make sure you're using `python3` or `python` (version 3.x), not `python2`"
+          },
+          {
+            "type": "text",
+            "content": "**File Location Guidance:**\n\n**Where to Save:**\n• Create a dedicated folder for your Python practice (e.g., `python-practice` or `my-python-scripts`)\n• Save all your `.py` files in this folder so they're easy to find\n• Use descriptive filenames: `variables_practice.py`, `my_first_script.py`, etc.\n\n**How to Navigate:**\n• In Windows: `cd C:\\path\\to\\your\\folder`\n• In Mac/Linux: `cd ~/path/to/your/folder`\n• Use `dir` (Windows) or `ls` (Mac/Linux) to see files in the current folder\n\n**Finding Your Script:**\n• If you forget where you saved it, search for `*.py` files on your computer\n• Or use `cd` without arguments to see your current location\n• In most editors, you can right-click the file tab and select \"Reveal in File Explorer\" (or similar)"
+          },
+          {
+            "type": "text",
+            "content": "**Verification Steps:**\n\n**How to Confirm Success:**\n\n1. **Check the output** — Your script should run without errors and show the expected output\n\n2. **Use type() to verify** — Add `print(type(variable_name))` to confirm Python assigned the correct type\n\n3. **Multiple verification methods:**\n   - Run the script and check output\n   - Use `type()` function\n   - Try operations (e.g., `age + 1` for integers, `name + \"!\"` for strings)\n   - Check for error messages (no errors = success!)\n\n4. **Test edge cases** — Try different values to make sure it works:\n   - Negative numbers\n   - Zero\n   - Empty strings\n   - Very long strings\n\nIf all these work, you've successfully created and verified your variables!"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 1: Basic variables\nname = \"Alex\"\nage = 13\nis_student = True\n\nprint(name)\nprint(age)\nprint(is_student)",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 2: Multiple variables with type checking\nfirst_name = \"Alex\"\nlast_name = \"Smith\"\nage = 13\naverage_grade = 92.5\nis_passing = True\n\nprint(f\"Name: {first_name} {last_name}\")\nprint(f\"Age: {age}\")\nprint(f\"Grade: {average_grade}\")\nprint(f\"Passing: {is_passing}\")\n\n# Verify types\nprint(f\"\\nTypes:\")\nprint(f\"first_name is {type(first_name)}\")\nprint(f\"age is {type(age)}\")\nprint(f\"average_grade is {type(average_grade)}\")\nprint(f\"is_passing is {type(is_passing)}\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 3: Progressive complexity - using variables in calculations\n# Store values\nprice = 9.99\nquantity = 3\ntax_rate = 0.08\n\n# Calculate total\nsubtotal = price * quantity\ntax = subtotal * tax_rate\ntotal = subtotal + tax\n\n# Display results\nprint(f\"Price per item: ${price}\")\nprint(f\"Quantity: {quantity}\")\nprint(f\"Subtotal: ${subtotal:.2f}\")\nprint(f\"Tax: ${tax:.2f}\")\nprint(f\"Total: ${total:.2f}\")",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Try It",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Preparation Checklist:**\n\nBefore you start, make sure you have:\n\n□ Python installed and working\n□ Text editor open\n□ Terminal/command prompt ready\n□ Folder location chosen for your script\n□ Ready to save your file with .py extension"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Create a variable called score with a value of 100. What type is it?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": [
+                "int"
+              ]
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "After running your script, paste the output here to verify it worked correctly.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What's the most common error when first creating variables?",
+            "options": [
+              "Forgetting to save the file",
+              "Using wrong quotes for strings",
+              "Typo in variable name",
+              "All of the above"
+            ],
+            "correctIndex": 3,
+            "feedback": {
+              "correct": "Correct! All of these are common beginner mistakes.",
+              "incorrect": "These are all common issues when starting out. Practice helps!"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Troubleshooting Guide:**\n\nIf your script doesn't run:\n1. Check that you saved the file (Ctrl+S or Cmd+S)\n2. Verify you're in the correct directory in terminal\n3. Make sure you used quotes for strings\n4. Check for typos in variable names\n5. Verify the file has a .py extension"
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Mini Task",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Write three variables about yourself and their types.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Proof of Work:**\n\nCreate a Python script with your three variables, run it, and paste the output here. Include:\n- Your code\n- The terminal output\n- Verification that each variable has the correct type (use type() function)"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Optional Advanced Step: Modify your script to print a formatted message using all three variables. For example: \"My name is [name], I am [age] years old, and I like Python: [boolean]\"",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Confidence Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can create variables",
+              "I can print variable values",
+              "I understand their types",
+              "I can run Python scripts successfully"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most challenging part of creating and running your first variable script? How did you overcome it?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How did the step-by-step process help you? What would you do differently next time?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What common pitfalls did you encounter (or avoid)? How will you prevent them in the future?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How confident do you feel about creating variables on your own? What would make you feel more confident?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next Challenge",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you’ll learn what happens when things go wrong."
+          },
+          {
+            "type": "text",
+            "content": "Fantastic! You've created and run your first variable scripts. That's a huge milestone!"
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nNext, you'll learn to **analyze and troubleshoot** when things go wrong. You'll discover:\n\n• Common error types (NameError, TypeError, SyntaxError, etc.)\n• How to read and understand error messages\n• Systematic troubleshooting methods\n• Error patterns and how to prevent them\n\nErrors are learning opportunities — you'll become a better programmer by understanding them!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Now that you can create variables, you'll learn what happens when mistakes occur and how to fix them. This makes you more independent and confident."
+          }
+        ]
+      }
+    },
+    "s4": {
+      "mindset": {
+        "heading": "Think Like a Detective",
+        "components": [
+          {
+            "type": "text",
+            "content": "Errors help you understand how Python thinks."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What Works",
+        "components": [
+          {
+            "type": "text",
+            "content": "Correct variables have names and valid values."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Common Errors",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Error Analysis Table**\n\n**1. NameError (Variable Not Defined)**\n• **Symptom:** `NameError: name 'x' is not defined`\n• **Cause:** Trying to use a variable before it's created or a typo in the variable name\n• **Verification:** Check if the variable is defined before use, check spelling\n• **Fix:** Define the variable first: `x = 5` before using `print(x)`\n\n**2. NameError (Typo in Variable Name)**\n• **Symptom:** `NameError: name 'nmae' is not defined` (you meant `name`)\n• **Cause:** Misspelling the variable name when using it\n• **Verification:** Compare the variable name where it's defined vs. where it's used\n• **Fix:** Correct the spelling to match the original definition\n\n**3. TypeError (Wrong Type Operation)**\n• **Symptom:** `TypeError: unsupported operand type(s) for +: 'int' and 'str'`\n• **Cause:** Trying to perform an operation on incompatible types (e.g., adding a number to a string)\n• **Verification:** Check the types with `type()` function\n• **Fix:** Convert types: `str(age) + \" years old\"` or use `age + 1` (not `age + \"1\"`)\n\n**4. SyntaxError (Invalid Syntax)**\n• **Symptom:** `SyntaxError: invalid syntax` with a caret (^) pointing to the problem\n• **Cause:** Missing quotes, parentheses, or using invalid characters\n• **Verification:** Look at the line indicated by the error message\n• **Fix:** Add missing quotes: `name = \"Alex\"` (not `name = Alex`), check parentheses and brackets\n\n**5. IndentationError (Wrong Indentation)**\n• **Symptom:** `IndentationError: expected an indented block`\n• **Cause:** Incorrect spacing or mixing tabs and spaces\n• **Verification:** Check if indentation is consistent (use 4 spaces, not tabs)\n• **Fix:** Use consistent indentation (4 spaces is standard in Python)\n\n**6. AttributeError (Wrong Method)**\n• **Symptom:** `AttributeError: 'int' object has no attribute 'upper'`\n• **Cause:** Trying to use a method that doesn't exist for that type (e.g., calling `.upper()` on a number)\n• **Verification:** Check what methods are available for that data type\n• **Fix:** Use the correct method for the type: strings have `.upper()`, numbers don't\n\n**7. ValueError (Wrong Value)**\n• **Symptom:** `ValueError: invalid literal for int() with base 10: 'abc'`\n• **Cause:** Trying to convert a value that can't be converted (e.g., converting text \"abc\" to a number)\n• **Verification:** Check if the value is appropriate for the conversion\n• **Fix:** Only convert valid values: `int(\"123\")` works, but `int(\"abc\")` doesn't\n\n**8. UnboundLocalError (Local Before Assignment)**\n• **Symptom:** `UnboundLocalError: local variable 'x' referenced before assignment`\n• **Cause:** Using a variable in a function before assigning it (advanced, but good to know)\n• **Verification:** Check if variable is assigned before use in the function\n• **Fix:** Assign the variable before using it, or use `global` keyword if needed\n\n**9. SyntaxError (Missing Colon or Quotes)**\n• **Symptom:** `SyntaxError: EOL while scanning string literal`\n• **Cause:** Forgetting to close quotes or using mismatched quotes\n• **Verification:** Check that every opening quote has a closing quote\n• **Fix:** Close all quotes: `name = \"Alex\"` (not `name = \"Alex`)\n\n**10. TypeError (Calling Non-Function)**\n• **Symptom:** `TypeError: 'int' object is not callable`\n• **Cause:** Using parentheses `()` on something that's not a function (e.g., `age()` when `age` is a number)\n• **Verification:** Check if you're trying to call a variable as if it were a function\n• **Fix:** Remove parentheses: use `age` not `age()`, or use `print(age)` not `print(age())`"
+          },
+          {
+            "type": "text",
+            "content": "**Comparison of Error Categories:**\n\n**Syntax Errors** — Found before code runs\n• **When:** Python reads your code and finds invalid syntax\n• **Examples:** Missing quotes, unmatched parentheses, invalid characters\n• **How to identify:** Error message says \"SyntaxError\" and points to the line\n• **Fix:** Correct the syntax before running\n\n**Runtime Errors** — Found when code runs\n• **When:** Code runs but encounters a problem during execution\n• **Examples:** NameError, TypeError, ValueError\n• **How to identify:** Error occurs when you run the script, not when you write it\n• **Fix:** Fix the logic or data that causes the error\n\n**Logic Errors** — Code runs but produces wrong results\n• **When:** Code runs without errors but doesn't do what you intended\n• **Examples:** Using wrong variable, incorrect calculation\n• **How to identify:** Output is unexpected or incorrect\n• **Fix:** Review your logic and test with different inputs\n\n**Environment Errors** — Problems with setup\n• **When:** Python isn't installed, wrong version, or file not found\n• **Examples:** `python: command not found`, `FileNotFoundError`\n• **How to identify:** Error about Python installation or file paths\n• **Fix:** Install Python, check file paths, verify installation"
+          },
+          {
+            "type": "text",
+            "content": "**Systematic Troubleshooting Methodology:**\n\nFollow these 5 steps when you encounter an error:\n\n**Step 1: Read the Error Message**\n• Look at the error type (NameError, TypeError, etc.)\n• Read the error message — it often tells you what's wrong\n• Note the line number where the error occurred\n\n**Step 2: Identify the Problem**\n• Go to the line mentioned in the error\n• Check if variables are defined before use\n• Verify types match for operations\n• Look for typos or missing quotes\n\n**Step 3: Understand the Cause**\n• Use the error analysis table to understand what the error means\n• Check if it's a syntax, runtime, or logic error\n• Think about what Python expected vs. what you provided\n\n**Step 4: Apply the Fix**\n• Use the \"Fix\" column from the error analysis table\n• Make one change at a time\n• Test after each fix\n\n**Step 5: Verify the Solution**\n• Run the code again\n• Check if the error is gone\n• Verify the output is correct\n• If new errors appear, repeat the process"
+          },
+          {
+            "type": "text",
+            "content": "**Pattern Recognition:**\n\n**Common Error Patterns:**\n\n**Pattern 1: Quote Issues**\n• **Symptoms:** SyntaxError, NameError when using strings\n• **How to identify:** Look for unquoted text or mismatched quotes\n• **Prevention:** Always use quotes for strings, be consistent with single or double quotes\n\n**Pattern 2: Variable Name Mismatches**\n• **Symptoms:** NameError about undefined variables\n• **How to identify:** Variable works in one place but not another\n• **Prevention:** Use consistent naming, copy-paste variable names instead of retyping\n\n**Pattern 3: Type Mismatches**\n• **Symptoms:** TypeError when doing operations\n• **How to identify:** Error mentions incompatible types\n• **Prevention:** Check types with `type()` before operations, convert types when needed\n\n**Pattern 4: Missing Definitions**\n• **Symptoms:** NameError about variables not being defined\n• **How to identify:** Using a variable before creating it\n• **Prevention:** Define all variables before use, organize code logically\n\n**Pattern 5: Case Sensitivity**\n• **Symptoms:** NameError even though variable seems defined\n• **How to identify:** `name` vs `Name` vs `NAME` are different\n• **Prevention:** Use consistent capitalization, Python is case-sensitive!"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: NameError - variable not defined\nprint(x)  # Error: x is not defined\n# Fix:\nx = 5\nprint(x)  # Works!",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: TypeError - incompatible types\nage = 15\nmessage = \"I am \" + age + \" years old\"  # Error: can't add str and int\n# Fix:\nage = 15\nmessage = \"I am \" + str(age) + \" years old\"  # Convert to string first",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: SyntaxError - missing quotes\nname = Alex  # Error: Alex is not defined\n# Fix:\nname = \"Alex\"  # Use quotes for strings",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: ValueError - invalid conversion\nnumber = int(\"abc\")  # Error: can't convert \"abc\" to int\n# Fix:\nnumber = int(\"123\")  # Only convert valid numbers\n# Or check first:\nif \"123\".isdigit():\n    number = int(\"123\")",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Quick Reference: Error Types by Category**\n\n**Syntax Errors (Before Running):**\n• SyntaxError — Invalid syntax\n• IndentationError — Wrong indentation\n\n**Runtime Errors (During Execution):**\n• NameError — Variable not found\n• TypeError — Wrong type operation\n• ValueError — Invalid value\n• AttributeError — Wrong method\n• UnboundLocalError — Local variable issue\n\n**Remember:** Every error is a learning opportunity! Python's error messages are trying to help you find the problem."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Spot the Error",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "What error occurs if you print(x) before defining x?",
+            "options": [
+              "TypeError",
+              "NameError",
+              "SyntaxError",
+              "ValueError"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! x does not exist yet.",
+              "incorrect": "The variable name is unknown."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Error Scenario 1:**\n```python\nname = \"Alex\"\nprint(nmae)  # Typo!\n```\n\n**Step-by-step diagnosis:**\n1. What error occurs? (NameError)\n2. What's the cause? (Typo: nmae instead of name)\n3. How would you fix it? (Correct the spelling)"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Analyze this code: `age = 15` followed by `message = \"I am \" + age + \" years old\"`. What error will occur and why?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Pattern Recognition Activity:**\n\nLook at these three code snippets:\n1. `name = Alex` (no quotes)\n2. `name = \"Alex` (missing closing quote)\n3. `name = 'Alex\"` (mismatched quotes)\n\n**Question:** What pattern do these errors share? (All are quote-related syntax errors)"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which error category does this belong to: `print(x)` when x is not defined?",
+            "options": [
+              "Syntax Error",
+              "Runtime Error",
+              "Logic Error",
+              "Environment Error"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! This is a runtime error - it happens when the code runs.",
+              "incorrect": "Runtime errors occur when code executes, not when Python reads the code."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Create a troubleshooting flowchart: What steps would you take to diagnose and fix a NameError?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Explain an Error",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does adding a string and a number cause an error?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Troubleshooting Flowchart Creation:**\n\nCreate a visual flowchart showing your systematic approach to fixing errors. Include:\n- Start: Error occurs\n- Decision points: What type of error? Where did it happen?\n- Actions: Check variable names, check types, check syntax\n- End: Error fixed\n\nYou can draw this on paper, use a flowchart tool, or describe it in text format!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Find an error in this code and explain how you would fix it: `name = Alex` followed by `print(name)`",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe a time you encountered an error (or imagine one). Walk through the 5-step troubleshooting process to solve it.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Troubleshooting Mindset",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can recognize common error types (NameError, TypeError, SyntaxError)",
+              "I understand type mismatches",
+              "I can use the 5-step troubleshooting process",
+              "I can identify error patterns"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How has learning about errors changed your approach to programming? Do errors feel less scary now?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What error pattern do you think you're most likely to make? How will you prevent it?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does understanding error categories (syntax, runtime, logic, environment) help you debug faster?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What troubleshooting strategy works best for you? Describe your process when you encounter an error.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Judging Code Quality",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you’ll learn to decide which variable choices are better."
+          },
+          {
+            "type": "text",
+            "content": "Excellent troubleshooting skills! You can now diagnose and fix errors like a pro."
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nNow you'll learn to **evaluate code quality** and make better choices. You'll explore:\n\n• Evaluation criteria (clarity, maintainability, readability, etc.)\n• Rating systems and rubrics\n• Examples of good vs. bad code\n• How context affects code quality\n\nThis will help you write not just working code, but excellent code!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Understanding errors helps you write correct code. Now you'll learn to write code that's not just correct, but also clear, maintainable, and professional."
+          }
+        ]
+      }
+    },
+    "s5": {
+      "mindset": {
+        "heading": "Choosing Better Code",
+        "components": [
+          {
+            "type": "text",
+            "content": "Good code is not just correct — it is clear."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What You Know",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can create and analyze variables."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Evaluating Variable Use",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Detailed Evaluation Criteria**\n\nWhen evaluating code quality, consider these 8 criteria:\n\n1. **Clarity** — Is the code easy to understand? Can someone read it and know what it does?\n2. **Purpose** — Does each variable have a clear purpose? Is it necessary?\n3. **Appropriateness** — Is the data type appropriate for the data being stored?\n4. **Quality** — Is the code correct and does it work as intended?\n5. **Readability** — Is the code easy to read? Are names descriptive?\n6. **Functionality** — Does the code accomplish its goal?\n7. **Maintainability** — Will this code be easy to modify or fix later?\n8. **Efficiency** — Is the code using resources well? (Less important for beginners, but good to consider)"
+          },
+          {
+            "type": "text",
+            "content": "**Rating Scales: 1-5 Star System**\n\n**⭐ (1 Star) — Poor**\n• Code doesn't work or is very confusing\n• Variable names are meaningless (x, y, temp)\n• Types are wrong or inappropriate\n• Code is hard to read or understand\n\n**⭐⭐ (2 Stars) — Below Average**\n• Code works but is confusing\n• Some variable names are unclear\n• Types are mostly correct but could be better\n• Requires effort to understand\n\n**⭐⭐⭐ (3 Stars) — Average**\n• Code works correctly\n• Variable names are somewhat descriptive\n• Types are appropriate\n• Generally readable with some effort\n\n**⭐⭐⭐⭐ (4 Stars) — Good**\n• Code works well and is clear\n• Variable names are descriptive and meaningful\n• Types are well-chosen\n• Easy to read and understand\n\n**⭐⭐⭐⭐⭐ (5 Stars) — Excellent**\n• Code is exemplary and very clear\n• Variable names are perfect and self-documenting\n• Types are optimal for the use case\n• Extremely readable and maintainable"
+          },
+          {
+            "type": "text",
+            "content": "**Examples of Good vs. Bad**\n\n**1. Variable Naming:**\n\n❌ **Bad:**\n```python\nx = 15\ny = \"Alex\"\nz = True\n```\n\n✅ **Good:**\n```python\nage = 15\nname = \"Alex\"\nis_student = True\n```\n\n**2. Type Choice:**\n\n❌ **Bad:**\n```python\nage = \"15\"  # Age as string - can't do math!\nprice = 10   # Price as int - can't show cents!\n```\n\n✅ **Good:**\n```python\nage = 15        # Age as int - perfect for counting\nprice = 10.99  # Price as float - can show decimals\n```\n\n**3. Code Organization:**\n\n❌ **Bad:**\n```python\nx = \"Alex\"\ny = 15\nz = 92.5\nprint(x)\nprint(y)\nprint(z)\n```\n\n✅ **Good:**\n```python\n# Student information\nname = \"Alex\"\nage = 15\naverage_grade = 92.5\n\n# Display information\nprint(f\"Name: {name}\")\nprint(f\"Age: {age}\")\nprint(f\"Grade: {average_grade}\")\n```\n\n**4. Comments:**\n\n❌ **Bad:**\n```python\nx = 5  # x is 5\n```\n\n✅ **Good:**\n```python\n# Store the number of items in the cart\ncart_item_count = 5\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Multiple Dimensions of Quality:**\n\n**Technical Quality**\n• Code runs without errors\n• Uses correct data types\n• Follows Python conventions\n• Efficient use of resources\n\n**Educational Quality**\n• Code teaches good practices\n• Demonstrates understanding\n• Shows proper use of concepts\n• Easy to learn from\n\n**Aesthetic Quality**\n• Code looks clean and organized\n• Consistent formatting\n• Good spacing and structure\n• Pleasing to read\n\n**Practical Quality**\n• Solves the intended problem\n• Useful and applicable\n• Works in real scenarios\n• Meets requirements\n\n**Maintainability Quality**\n• Easy to modify later\n• Clear structure\n• Well-documented\n• Future-proof"
+          },
+          {
+            "type": "text",
+            "content": "**Evaluation Rubric Table**\n\n| Criterion | 1 Star | 2 Stars | 3 Stars | 4 Stars | 5 Stars |\n|----------|--------|---------|---------|---------|---------|\n| **Clarity** | Unclear, confusing | Somewhat unclear | Generally clear | Very clear | Crystal clear |\n| **Purpose** | No clear purpose | Vague purpose | Clear purpose | Well-defined purpose | Perfectly defined |\n| **Appropriateness** | Wrong types | Mostly wrong | Mostly correct | Correct types | Optimal types |\n| **Quality** | Doesn't work | Works poorly | Works correctly | Works well | Works perfectly |\n| **Readability** | Very hard to read | Hard to read | Readable | Easy to read | Extremely readable |\n| **Functionality** | Doesn't function | Partial function | Functions | Functions well | Functions excellently |\n| **Maintainability** | Impossible to maintain | Hard to maintain | Maintainable | Easy to maintain | Very easy to maintain |\n| **Efficiency** | Very inefficient | Somewhat inefficient | Adequate | Efficient | Highly efficient |\n\n**Scoring:** Add up stars from each criterion, then divide by 8 to get an average rating."
+          },
+          {
+            "type": "text",
+            "content": "**Context Considerations:**\n\n**When to Prioritize Which Criteria:**\n\n**Learning/Educational Context:**\n• Prioritize: Clarity, Readability, Educational Quality\n• Less important: Efficiency, Advanced optimization\n• Goal: Understand concepts, learn good practices\n\n**Quick Prototype/Testing:**\n• Prioritize: Functionality, Quality\n• Less important: Aesthetic, Perfect naming\n• Goal: Get it working quickly\n\n**Production/Real Project:**\n• Prioritize: Maintainability, Functionality, Appropriateness\n• All criteria matter\n• Goal: Long-term, professional code\n\n**Code Review/Sharing:**\n• Prioritize: Readability, Clarity, Aesthetic\n• Less important: Personal preferences\n• Goal: Others can understand and use it\n\n**Context-Dependent Evaluation:**\n• A simple script for personal use can be less strict\n• Code shared with others needs higher standards\n• Educational code should prioritize learning\n• Production code needs all criteria met"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Poor Quality Code (1-2 stars)\nx = 15\ny = \"Alex\"\nz = 92.5\nprint(x)\nprint(y)\nprint(z)\n\n# Problems:\n# - Unclear variable names (x, y, z)\n# - No organization\n# - No comments\n# - Hard to understand purpose",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Good Quality Code (4-5 stars)\n# Student Information System\n# Store and display student data\n\n# Student personal information\nstudent_name = \"Alex\"\nstudent_age = 15\n\n# Academic information\nstudent_average_grade = 92.5\nis_honor_student = True\n\n# Display formatted information\nprint(f\"Student: {student_name}\")\nprint(f\"Age: {student_age} years old\")\nprint(f\"Average Grade: {student_average_grade}%\")\nprint(f\"Honor Student: {is_honor_student}\")\n\n# Why this is better:\n# - Clear, descriptive variable names\n# - Appropriate data types\n# - Well-organized with comments\n# - Easy to read and understand\n# - Easy to maintain and modify",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Evaluation Checklist:**\n\nBefore considering your code \"done,\" ask yourself:\n\n✓ **Clarity:** Can someone else understand what this code does?\n✓ **Purpose:** Does every variable have a clear purpose?\n✓ **Appropriateness:** Are the data types right for the data?\n✓ **Quality:** Does the code work correctly?\n✓ **Readability:** Is it easy to read and follow?\n✓ **Functionality:** Does it accomplish the goal?\n✓ **Maintainability:** Could I modify this easily later?\n✓ **Efficiency:** Is it using resources appropriately?\n\nIf you can answer \"yes\" to most of these, your code is good quality!"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Choose the Best Name",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "Which variable name is best for a student’s age?",
+            "options": [
+              "x",
+              "a1",
+              "studentAge",
+              "value"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! Clear and descriptive.",
+              "incorrect": "Good names describe the data."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Context 1: Learning/Educational Code**\n\nEvaluate this code for a learning context:\n```python\nx = 15\ny = \"Alex\"\nz = True\n```\n\n**Question:** What would you rate this code (1-5 stars) and why?"
+          },
+          {
+            "type": "text",
+            "content": "**Context 2: Production/Real Project**\n\nCompare these two code snippets:\n\n**Code A:**\n```python\nn = \"Alex\"\na = 15\n```\n\n**Code B:**\n```python\nstudent_name = \"Alex\"\nstudent_age = 15\n```\n\n**Question:** Which is better for a production project? Justify your answer."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Justify why `price = 9.99` is better than `p = 9.99` for a budget tracking application.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Code Comparison Activity:**\n\n**Version 1:**\n```python\nx = 5\ny = 10\nz = x + y\n```\n\n**Version 2:**\n```python\napples = 5\noranges = 10\ntotal_fruit = apples + oranges\n```\n\n**Question:** Which version is more maintainable? Why?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Recommend improvements for this code: `a = 15`, `b = \"Hello\"`, `c = 3.14`. What would you change and why?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Justify Your Choice",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Why is clear naming important in programming?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Code Review Scenario:**\n\nYou're reviewing code from a teammate. They wrote:\n```python\nx = 15\ny = \"Alex\"\nz = True\n```\n\n**Task:** Write a code review:\n1. Rate this code (1-5 stars) using the evaluation criteria\n2. Explain your rating for each criterion\n3. Suggest specific improvements\n4. Rewrite the code with your improvements"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "In a production codebase, which is the most important evaluation criterion?",
+            "options": [
+              "Efficiency (fastest code)",
+              "Maintainability (easy to modify later)",
+              "Aesthetic (looks pretty)",
+              "All are equally important"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Maintainability is crucial for production code that needs to be updated and fixed over time.",
+              "incorrect": "While all criteria matter, maintainability is especially important for code that will be used long-term."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Justify your answer: Why did you choose maintainability (or another criterion) as most important for production code?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Quality Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I choose meaningful variable names",
+              "I can explain my choices",
+              "I understand evaluation criteria",
+              "I can rate code quality using the rubric"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How has learning to evaluate code quality changed how you write code? What will you do differently?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which evaluation criterion (clarity, maintainability, etc.) do you think is most important? Why?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does context (learning vs. production) affect how you evaluate code? Give an example.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Rate your own code from earlier stages. What would you improve now that you know about evaluation criteria?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Time to Create",
+        "components": [
+          {
+            "type": "text",
+            "content": "Now you’ll create something using variables."
+          },
+          {
+            "type": "text",
+            "content": "Outstanding! You can now evaluate and improve code quality. You're thinking like a professional programmer!"
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nFinally, you'll **create** your own original project! You'll have:\n\n• Multiple project options to choose from\n• Templates and examples to guide you\n• Different complexity levels (Beginner ⭐, Intermediate ⭐⭐, Advanced ⭐⭐⭐)\n• Success criteria to know when you're done\n\nThis is where everything comes together — you'll create something uniquely yours!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** All your learning — variables, types, errors, quality — culminates in creating your own project. This is the ultimate test of mastery!"
+          }
+        ]
+      }
+    },
+    "s6": {
+      "mindset": {
+        "heading": "You Are the Creator",
+        "components": [
+          {
+            "type": "text",
+            "content": "You now combine everything into your own mini program."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Full Journey",
+        "components": [
+          {
+            "type": "text",
+            "content": "You learned variables, types, errors, and quality."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Project Ideas",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Multiple Project Type Options**\n\nChoose a project that interests you! Here are 8 project ideas:\n\n1. **Personal Information Tracker** ⭐ — Store and display your personal info\n2. **Grade Calculator** ⭐⭐ — Calculate and display your grades\n3. **Unit Converter** ⭐⭐ — Convert between different units (miles to km, etc.)\n4. **Simple Quiz Program** ⭐⭐ — Create a quiz with questions and answers\n5. **Budget Tracker** ⭐⭐ — Track income and expenses\n6. **Study Schedule Generator** ⭐⭐ — Plan your study time\n7. **Random Number Generator** ⭐ — Generate random numbers for games\n8. **Text-Based Game** ⭐⭐⭐ — Create a simple adventure game\n\nEach project uses variables and data types in different ways. Pick one that matches your interests and skill level!"
+          },
+          {
+            "type": "text",
+            "content": "**Different Complexity Levels**\n\n**⭐ Beginner Projects** — Simple, straightforward\n• Personal Information Tracker\n• Random Number Generator\n• Good for: First projects, getting comfortable with variables\n\n**⭐⭐ Intermediate Projects** — More variables, some calculations\n• Grade Calculator\n• Unit Converter\n• Simple Quiz Program\n• Budget Tracker\n• Study Schedule Generator\n• Good for: Practicing with multiple variables and types\n\n**⭐⭐⭐ Advanced Projects** — Complex logic, many variables\n• Text-Based Game\n• Good for: Combining everything you've learned\n\n**Tip:** Start with a ⭐ project if you're new, then try ⭐⭐ when you're comfortable!"
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Application Suggestions**\n\n**School Projects:**\n• Grade Calculator — Track your grades\n• Study Schedule Generator — Plan your study time\n• Simple Quiz Program — Create study quizzes\n\n**Personal Projects:**\n• Personal Information Tracker — Organize your info\n• Budget Tracker — Track your allowance or spending\n• Unit Converter — Convert measurements for recipes or travel\n\n**Fun Projects:**\n• Random Number Generator — For games or random decisions\n• Text-Based Game — Create your own adventure\n\n**Learning Projects:**\n• Any project! — All projects help you learn and practice\n\n**Professional Projects:**\n• Budget Tracker — Financial planning\n• Unit Converter — Useful for various jobs\n• Information Tracker — Data organization"
+          },
+          {
+            "type": "text",
+            "content": "**Project Selection Guidance**\n\n**Choose Based on Skill Level:**\n\n**If you're just starting:**\n→ Try: Personal Information Tracker or Random Number Generator\n→ These use basic variables and are easy to understand\n\n**If you're comfortable with variables:**\n→ Try: Grade Calculator, Unit Converter, or Budget Tracker\n→ These use multiple variables and some calculations\n\n**If you want a challenge:**\n→ Try: Text-Based Game\n→ This combines many concepts and requires planning\n\n**Choose Based on Interests:**\n\n**Like math?** → Grade Calculator, Unit Converter\n**Like games?** → Random Number Generator, Text-Based Game\n**Like organization?** → Budget Tracker, Study Schedule Generator\n**Like personal info?** → Personal Information Tracker\n**Like quizzes?** → Simple Quiz Program\n\n**Remember:** You can always start simple and add features later!"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 1: Personal Information Tracker ⭐\n# Store and display personal information\n\n# Personal details\nfirst_name = \"Alex\"\nlast_name = \"Smith\"\nage = 15\ncity = \"New York\"\ncountry = \"USA\"\n\n# Contact information\nemail = \"alex.smith@email.com\"\nphone = \"555-1234\"\n\n# Display information\nprint(\"=== Personal Information ===\")\nprint(f\"Name: {first_name} {last_name}\")\nprint(f\"Age: {age}\")\nprint(f\"Location: {city}, {country}\")\nprint(f\"Email: {email}\")\nprint(f\"Phone: {phone}\")\n\n# Expected Output:\n# === Personal Information ===\n# Name: Alex Smith\n# Age: 15\n# Location: New York, USA\n# Email: alex.smith@email.com\n# Phone: 555-1234",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 2: Grade Calculator ⭐⭐\n# Calculate and display your grades\n\n# Subject names\nsubject1 = \"Math\"\nsubject2 = \"Science\"\nsubject3 = \"English\"\n\n# Grades (as floats for decimal precision)\ngrade1 = 92.5\ngrade2 = 88.0\ngrade3 = 95.5\n\n# Calculate average\ntotal_grades = grade1 + grade2 + grade3\nnumber_of_subjects = 3\naverage_grade = total_grades / number_of_subjects\n\n# Display results\nprint(\"=== Grade Report ===\")\nprint(f\"{subject1}: {grade1}%\")\nprint(f\"{subject2}: {grade2}%\")\nprint(f\"{subject3}: {grade3}%\")\nprint(f\"\\nAverage: {average_grade:.2f}%\")\n\n# Expected Output:\n# === Grade Report ===\n# Math: 92.5%\n# Science: 88.0%\n# English: 95.5%\n#\n# Average: 92.0%",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 3: Unit Converter ⭐⭐\n# Convert between different units\n\n# Distance in miles\nmiles = 10.0\n\n# Conversion factors\nmiles_to_km = 1.60934\nmiles_to_feet = 5280.0\n\n# Convert to kilometers and feet\nkilometers = miles * miles_to_km\nfeet = miles * miles_to_feet\n\n# Display conversions\nprint(\"=== Unit Converter ===\")\nprint(f\"Distance: {miles} miles\")\nprint(f\"In kilometers: {kilometers:.2f} km\")\nprint(f\"In feet: {feet:.0f} feet\")\n\n# Expected Output:\n# === Unit Converter ===\n# Distance: 10.0 miles\n# In kilometers: 16.09 km\n# In feet: 52800 feet",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 4: Budget Tracker ⭐⭐\n# Track income and expenses\n\n# Income\nallowance = 50.0\nbirthday_money = 25.0\n\n# Expenses\nlunch = 8.50\nmovie = 12.00\ngame = 15.99\n\n# Calculate total income and expenses\ntotal_income = allowance + birthday_money\ntotal_expenses = lunch + movie + game\nremaining_balance = total_income - total_expenses\n\n# Display budget\nprint(\"=== Budget Tracker ===\")\nprint(f\"Income: ${total_income:.2f}\")\nprint(f\"  - Allowance: ${allowance:.2f}\")\nprint(f\"  - Birthday Money: ${birthday_money:.2f}\")\nprint(f\"\\nExpenses: ${total_expenses:.2f}\")\nprint(f\"  - Lunch: ${lunch:.2f}\")\nprint(f\"  - Movie: ${movie:.2f}\")\nprint(f\"  - Game: ${game:.2f}\")\nprint(f\"\\nRemaining: ${remaining_balance:.2f}\")\n\n# Expected Output:\n# === Budget Tracker ===\n# Income: $75.00\n#   - Allowance: $50.00\n#   - Birthday Money: $25.00\n#\n# Expenses: $36.49\n#   - Lunch: $8.50\n#   - Movie: $12.00\n#   - Game: $15.99\n#\n# Remaining: $38.51",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 5: Simple Quiz Program ⭐⭐\n# Create a quiz with questions and answers\n\n# Quiz questions\nquestion1 = \"What is the capital of France?\"\nquestion2 = \"What is 2 + 2?\"\nquestion3 = \"What is the largest planet?\"\n\n# Quiz answers\nanswer1 = \"Paris\"\nanswer2 = 4\nanswer3 = \"Jupiter\"\n\n# Display quiz\nprint(\"=== Simple Quiz ===\")\nprint(f\"\\n1. {question1}\")\nprint(f\"   Answer: {answer1}\")\nprint(f\"\\n2. {question2}\")\nprint(f\"   Answer: {answer2}\")\nprint(f\"\\n3. {question3}\")\nprint(f\"   Answer: {answer3}\")\n\n# Expected Output:\n# === Simple Quiz ===\n#\n# 1. What is the capital of France?\n#    Answer: Paris\n#\n# 2. What is 2 + 2?\n#    Answer: 4\n#\n# 3. What is the largest planet?\n#    Answer: Jupiter",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 6: Random Number Generator ⭐\n# Generate random numbers (using a simple method)\n\n# Seed values (for demonstration - real random would use random module)\nimport time\nseed = int(time.time()) % 100\n\n# Generate \"random\" numbers\nrandom_number1 = (seed * 7 + 13) % 100\nrandom_number2 = (seed * 11 + 17) % 100\nrandom_number3 = (seed * 3 + 5) % 100\n\n# Display random numbers\nprint(\"=== Random Number Generator ===\")\nprint(f\"Random number 1: {random_number1}\")\nprint(f\"Random number 2: {random_number2}\")\nprint(f\"Random number 3: {random_number3}\")\n\n# Note: For truly random numbers, you'd use:\n# import random\n# random_number = random.randint(1, 100)\n\n# Expected Output:\n# === Random Number Generator ===\n# Random number 1: [varies]\n# Random number 2: [varies]\n# Random number 3: [varies]",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Success Criteria**\n\n**For Personal Information Tracker:**\n✓ Stores at least 5 pieces of information\n✓ Uses appropriate data types (str for names, int for age)\n✓ Displays all information clearly\n✓ Code runs without errors\n\n**For Grade Calculator:**\n✓ Stores at least 3 grades\n✓ Calculates average correctly\n✓ Displays individual grades and average\n✓ Uses float for decimal grades\n\n**For Unit Converter:**\n✓ Converts between at least 2 units\n✓ Uses conversion factors correctly\n✓ Displays original and converted values\n✓ Handles decimal numbers properly\n\n**For Budget Tracker:**\n✓ Tracks income and expenses\n✓ Calculates remaining balance\n✓ Uses float for money amounts\n✓ Displays organized budget report\n\n**For Simple Quiz Program:**\n✓ Has at least 3 questions\n✓ Stores questions and answers in variables\n✓ Displays quiz clearly\n✓ Uses appropriate types (str for text, int for numbers)\n\n**For Random Number Generator:**\n✓ Generates at least 3 random numbers\n✓ Displays numbers clearly\n✓ Code runs without errors\n\n**For Text-Based Game:**\n✓ Uses multiple variables for game state\n✓ Displays game information\n✓ Uses different data types appropriately\n✓ Code is organized and readable\n\n**General Success Criteria:**\n✓ Code runs without errors\n✓ Uses meaningful variable names\n✓ Uses appropriate data types\n✓ Code is readable and organized\n✓ Accomplishes the project goal"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Plan",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Plan Your Project**\n\nAnswer these planning questions before you start coding:"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "1. What project are you creating? (e.g., Personal Information Tracker, Grade Calculator)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "2. What variables will your program need? List at least 3-5 variables.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "3. What data types will each variable use? (int, float, str, bool)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "4. What will your program do with these variables? (display, calculate, etc.)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "5. What will the output look like? Describe what users will see.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Draft and Test Checklist**\n\nUse this checklist as you create and test your program:\n\n□ Created the Python file with .py extension\n□ Defined all variables with appropriate types\n□ Used meaningful variable names\n□ Added print statements to display output\n□ Saved the file\n□ Ran the script in terminal\n□ Verified the output is correct\n□ Checked types using type() function\n□ Tested with different values\n□ Code runs without errors"
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Build It",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Write your program and explain what each variable stores.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Multiple Deliverable Options:**\n\nChoose how you want to demonstrate your project:\n\n**Option 1:** Share your code and output\n**Option 2:** Create a brief video walkthrough explaining your variables\n**Option 3:** Write a short explanation document describing your project\n**Option 4:** Present your project to a friend or family member and get feedback"
+          },
+          {
+            "type": "text",
+            "content": "**Ordering Activity:**\n\nPut these steps in the correct order for creating a project:\n1. Plan your variables\n2. Write the code\n3. Test and debug\n4. Run the program\n5. Evaluate the code quality\n\nWhat order did you use? Did you follow this sequence or adapt it?"
+          },
+          {
+            "type": "text",
+            "content": "**Quality Criteria Checklist:**\n\nBefore submitting, check:\n□ All variables have meaningful names\n□ Appropriate data types are used\n□ Code runs without errors\n□ Output is clear and readable\n□ Code is organized and well-structured\n□ You can explain what each variable does"
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Mastery Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can create variables confidently",
+              "I understand data types",
+              "I can explain my code",
+              "I can create a complete project using variables"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most satisfying part of creating your project? What made you proud?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How did planning your project help you? What would you do differently in your next project?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What did you learn about yourself as a programmer while creating this project?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How has your understanding of variables evolved from Stage 0 to now? What's the biggest change?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "🎉 **Celebration of Mastery!** 🎉\n\nYou've completed the full journey from learning what variables are to creating your own project! Take a moment to celebrate:\n- You understand variables and data types\n- You can create, use, and debug variables\n- You can evaluate code quality\n- You can create original projects\n\nYou're ready for the next level of Python programming!"
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Congratulations",
+        "components": [
+          {
+            "type": "text",
+            "content": "You are ready to learn **input, math operations, and conditions** next!"
+          }
+        ]
+      }
+    }
+  },
+  "ui": {
+    "defaultExpandedStage": "s0"
   }
-  
+}
