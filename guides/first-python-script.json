@@ -1,795 +1,1644 @@
 {
-    "metadata": {
-      "title": "Your First Python Script",
-      "subtitle": "From Text File to Running Program",
-      "description": "An interactive guide that teaches students how to create, run, and understand their first Python script using Bloom’s Taxonomy.",
-      "version": "1.0.0",
-      "author": "ABC Bilingual School",
-      "lastUpdated": "2026-01-19",
-      "storageKeyPrefix": "first_python_script",
-      "instructorPasscode": "abc123"
+  "metadata": {
+    "title": "Your First Python Script",
+    "subtitle": "From Text File to Running Program",
+    "description": "An interactive guide that teaches students how to create, run, and understand their first Python script using Bloom’s Taxonomy.",
+    "version": "1.0.0",
+    "author": "ABC Bilingual School",
+    "lastUpdated": "2026-01-19",
+    "storageKeyPrefix": "first_python_script",
+    "instructorPasscode": "abc123"
+  },
+  "branding": {
+    "brandName": "First Python Script — Guide",
+    "theme": {
+      "colorScheme": "dark",
+      "primaryColor": "#4aa3ff",
+      "secondaryColor": "#f4c542"
+    }
+  },
+  "stages": [
+    {
+      "id": "s0",
+      "order": 0,
+      "title": "Stage 0 · Starting",
+      "shortTitle": "Starting"
     },
-  
-    "branding": {
-      "brandName": "First Python Script — Guide",
-      "theme": {
-        "colorScheme": "dark",
-        "primaryColor": "#4aa3ff",
-        "secondaryColor": "#f4c542"
+    {
+      "id": "s1",
+      "order": 1,
+      "title": "Stage 1 · Remembering",
+      "shortTitle": "Remembering"
+    },
+    {
+      "id": "s2",
+      "order": 2,
+      "title": "Stage 2 · Understanding",
+      "shortTitle": "Understanding"
+    },
+    {
+      "id": "s3",
+      "order": 3,
+      "title": "Stage 3 · Applying",
+      "shortTitle": "Applying"
+    },
+    {
+      "id": "s4",
+      "order": 4,
+      "title": "Stage 4 · Analyzing",
+      "shortTitle": "Analyzing"
+    },
+    {
+      "id": "s5",
+      "order": 5,
+      "title": "Stage 5 · Evaluating",
+      "shortTitle": "Evaluating"
+    },
+    {
+      "id": "s6",
+      "order": 6,
+      "title": "Stage 6 · Creating",
+      "shortTitle": "Creating"
+    }
+  ],
+  "sections": [
+    {
+      "id": "mindset",
+      "displayName": "Mindset",
+      "order": 0,
+      "description": "Prepare mentally and set expectations for learning"
+    },
+    {
+      "id": "recap",
+      "displayName": "Recap",
+      "order": 1,
+      "description": "Connect with prior knowledge or previous lessons"
+    },
+    {
+      "id": "core",
+      "displayName": "Core",
+      "order": 2,
+      "description": "Introduce and explain the main concepts"
+    },
+    {
+      "id": "guidedPractice",
+      "displayName": "Guided Practice",
+      "order": 3,
+      "description": "Practice new concepts with guidance and support"
+    },
+    {
+      "id": "challenge",
+      "displayName": "Challenge",
+      "order": 4,
+      "description": "Apply learning independently and think critically"
+    },
+    {
+      "id": "reflection",
+      "displayName": "Reflection",
+      "order": 5,
+      "description": "Reflect on learning, understanding, and difficulties"
+    },
+    {
+      "id": "transition",
+      "displayName": "Transition",
+      "order": 6,
+      "description": "Prepare for the next stage or upcoming lesson"
+    }
+  ],
+  "content": {
+    "s0": {
+      "mindset": {
+        "heading": "Welcome — Writing Instructions for a Computer",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're about to learn how to write instructions that computers can follow — and it's simpler than you might think!\n\n**Programming is not magic.** It's simply writing clear, step-by-step instructions in a language the computer understands. Think of it like giving directions to a friend, but instead of \"turn left at the stop sign,\" you're telling the computer \"print this message\" or \"calculate this number.\"\n\n**Why does this matter?**\n\nEvery day, people use Python scripts to:\n• **Automate boring tasks** — Rename hundreds of photos in seconds, organize files automatically, or send daily reminders\n• **Solve real problems** — Calculate grades, analyze data, convert file formats, or process information\n• **Create fun projects** — Build simple games, generate random stories, or create interactive quizzes\n• **Save time** — Do in minutes what would take hours of manual work\n\n**In this lesson**, you'll write your very first Python script — a simple set of instructions that the computer will follow exactly as you tell it. You'll see your code come to life as the computer executes your commands, and you'll discover that creating scripts is both powerful and surprisingly accessible.\n\nReady to turn your ideas into working code? Let's begin!"
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What You Already Have",
+        "components": [
+          {
+            "type": "text",
+            "content": "You already installed Python and used the terminal.\n\nNow you’ll take the next step: creating a file that Python can run."
+          }
+        ]
+      },
+      "core": {
+        "heading": "What Is a Python Script?",
+        "components": [
+          {
+            "type": "text",
+            "content": "**A Python Script is a Text File with Instructions**\n\nA **Python script** is a text file containing instructions written by a human in the Python programming language. Think of it like a recipe for a computer — you write down step-by-step instructions, and the computer follows them exactly.\n\n**File Extension: .py**\nPython scripts usually end with **.py** (like `my_script.py`). This tells your computer and Python that this file contains Python code.\n\n**How Python Reads Scripts**\nPython reads the script file from top to bottom, line by line, and executes (runs) each instruction in order. Just like reading a book, Python starts at the beginning and doesn't skip ahead."
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Examples of Python Scripts:**\n\n• **Automation Scripts** — A script that renames 100 photos automatically, or organizes files into folders based on their type\n\n• **Data Processing** — A script that reads a spreadsheet of student grades and calculates averages, or analyzes weather data to find patterns\n\n• **Games and Interactive Programs** — A simple text-based game like \"Guess the Number,\" or a quiz program that asks questions and scores answers\n\n• **Web Scraping** — A script that collects information from websites (like news headlines or product prices) automatically\n\n• **File Management** — A script that finds and deletes duplicate files, or backs up important documents\n\n• **Calculations and Math** — A script that solves math problems, converts units (like Celsius to Fahrenheit), or calculates loan payments\n\n• **Personal Projects** — A script that sends you a daily weather report, tracks your study hours, or generates random writing prompts"
+          },
+          {
+            "type": "text",
+            "content": "**Visual Metaphors: Understanding Scripts**\n\n**Like a Recipe**\nA Python script is like a recipe. You write down ingredients (data) and steps (instructions). The computer follows the recipe exactly, step by step, to produce a result (output).\n\n**Like a To-Do List**\nA script is like a to-do list for your computer. Each line is a task. The computer checks off each task in order, one at a time.\n\n**Like Giving Directions**\nA script is like giving someone directions to your house. You write down each turn and landmark. The computer follows your directions precisely to reach the destination (complete the task).\n\n**Like a Music Score**\nA script is like sheet music. Each line of code is like a note. Python reads the \"music\" and plays it (executes it) in the correct order."
+          },
+          {
+            "type": "text",
+            "content": "**What Makes Scripts Powerful?**\n\n• **Repeatable** — Run the same script 100 times and get the same result (or process 100 files the same way)\n\n• **Precise** — Computers follow instructions exactly, without getting tired or making mistakes\n\n• **Fast** — A script can process thousands of items in seconds\n\n• **Shareable** — You can share a script file with others, and they can run it on their computer\n\n• **Modifiable** — Change one line of code to change what the script does, without rewriting everything\n\n• **Automated** — Once written, a script can run automatically without you watching it"
+          },
+          {
+            "type": "text",
+            "content": "**Connection to What You Already Know:**\n\nYou already know how to:\n• **Write instructions** — Like giving directions or writing a recipe\n• **Follow steps in order** — Like assembling furniture or cooking\n• **Use text files** — Like writing a document in Word or Notepad\n• **Run programs** — Like opening an app on your phone\n\nCreating a Python script combines these skills: you write instructions in a text file, save it, and then tell Python to run it. It's that simple!"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Imagine the Possibilities",
+        "components": [
+          {
+            "type": "text",
+            "content": "Look at these Python script examples and try to guess what they do (don't worry about understanding every word — just focus on what output you might see):"
+          },
+          {
+            "type": "text",
+            "content": "**Example 1: Simple Greeting**"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "print(\"Hello, World!\")",
+            "copyable": false
+          },
+          {
+            "type": "text",
+            "content": "**Example 2: Personalized Message**"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "name = \"Alex\"\nprint(f\"Welcome, {name}!\")\nprint(\"Ready to learn Python?\")\nprint(\"Let's get started!\")",
+            "copyable": false
+          },
+          {
+            "type": "text",
+            "content": "**Example 3: Number Sequence**"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "print(\"Counting from 1 to 5:\")\nfor number in range(1, 6):\n    print(f\"Number {number}\")",
+            "copyable": false
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which example do you think prints a personalized welcome message? Which one counts numbers?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Building Understanding:**\n\nNotice how the examples get more complex:\n• Example 1: Just prints one line of text\n• Example 2: Uses a variable (name) and prints multiple lines\n• Example 3: Uses a loop to repeat an action multiple times\n\nEven though you might not understand all the syntax yet, you can see that scripts can do different things — from simple greetings to counting numbers to creating personalized messages."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What do you notice about how the scripts change from Example 1 to Example 3? What gets more complex?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which script example would be best for creating a welcome message for a new student joining your class?",
+            "options": [
+              "Example 1 — Simple and clear",
+              "Example 2 — Personalized and welcoming",
+              "Example 3 — Shows counting, which is useful",
+              "All of them would work equally well"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Example 2 is personalized and creates a welcoming message, which is perfect for greeting a new student.",
+              "incorrect": "Think about which example creates a personalized, welcoming message for a specific person..."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "🚀 Challenge Activity: Match Scripts to Their Purpose",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "Which of these tasks could a Python script help you do?",
+            "options": [
+              "Automatically rename 100 photos from a vacation",
+              "Make your computer turn on the lights in your room (without smart home hardware)",
+              "Calculate the average of all your test scores from a spreadsheet",
+              "Both renaming photos and calculating test score averages"
+            ],
+            "correctIndex": 3,
+            "feedback": {
+              "correct": "Correct! Python scripts are great for automating repetitive tasks and processing data. They can't control hardware directly, but they could work with smart home systems!",
+              "incorrect": "Think about what scripts do — they automate tasks and process information."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Think of one task you do regularly (at school, at home, or for fun) that a Python script could help automate. Describe it:",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Your First Thoughts",
+        "components": [
+          {
+            "type": "text",
+            "content": "Before we continue, think about what you already know and what you're curious about:"
+          },
+          {
+            "type": "text",
+            "content": "Ask yourself:\n\n• Do I understand what a Python script is?\n• Can I identify examples of what scripts can do?\n• Am I ready to learn the basic terms and concepts?\n\n✅ If yes → you're ready for the next stage (Starting → Remembering).\n❌ If not → review the core section about what scripts are."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What do you think programming will be like? Easy, hard, or somewhere in between?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What would you like to create with Python?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What are you most curious about regarding Python scripts? What questions do you have?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "On a scale of 1-10, how excited are you to learn? What would make it a 10?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Ready to Begin",
+        "components": [
+          {
+            "type": "text",
+            "content": "Now that you understand WHAT a Python script is and WHY it's useful, you're ready to learn the basic words programmers use to talk about scripts.\n\nIn Stage 1 (Remembering), you'll learn the key terms that every Python programmer needs to know—like what 'source code' means, what an 'interpreter' does, what 'print()' is, and how to 'execute' a script.\n\nRemember: Every programmer started exactly where you are now—curious and ready to learn!"
+          }
+        ]
       }
     },
-  
-    "stages": [
-      { "id": "s0", "order": 0, "title": "Stage 0 · Starting", "shortTitle": "Starting" },
-      { "id": "s1", "order": 1, "title": "Stage 1 · Remembering", "shortTitle": "Remembering" },
-      { "id": "s2", "order": 2, "title": "Stage 2 · Understanding", "shortTitle": "Understanding" },
-      { "id": "s3", "order": 3, "title": "Stage 3 · Applying", "shortTitle": "Applying" },
-      { "id": "s4", "order": 4, "title": "Stage 4 · Analyzing", "shortTitle": "Analyzing" },
-      { "id": "s5", "order": 5, "title": "Stage 5 · Evaluating", "shortTitle": "Evaluating" },
-      { "id": "s6", "order": 6, "title": "Stage 6 · Creating", "shortTitle": "Creating" }
-    ],
-  
-    "sections": [
-      {
-        "id": "mindset",
-        "displayName": "Mindset",
-        "order": 0,
-        "description": "Prepare mentally and set expectations for learning"
+    "s1": {
+      "mindset": {
+        "heading": "🧠 Mindset Shift",
+        "components": [
+          {
+            "type": "text",
+            "content": "You are moving from not knowing the names to being able to recognize and recall key programming terms. At this stage, you're building your vocabulary — the foundation for everything else you'll learn."
+          }
+        ]
       },
-      {
-        "id": "recap",
-        "displayName": "Recap",
-        "order": 1,
-        "description": "Connect with prior knowledge or previous lessons"
+      "recap": {
+        "heading": "🎓 What You Just Learned",
+        "components": [
+          {
+            "type": "text",
+            "content": "In the previous stage, you learned that a Python script is a text file with instructions. Now you'll learn the specific words programmers use to talk about scripts and code."
+          }
+        ]
       },
-      {
-        "id": "core",
-        "displayName": "Core",
-        "order": 2,
-        "description": "Introduce and explain the main concepts"
+      "core": {
+        "heading": "🧩 Core Learning: Key Terms You Must Remember",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Python Script** — A text file containing instructions written in the Python programming language. It's like a recipe for your computer — you write down what you want the computer to do, and Python follows those instructions.\n\n**When it matters:** You need to know this term because scripts are the files you'll create and run. Every Python program starts as a script file.\n\n**Example:** A file named `greeting.py` that contains `print(\"Hello!\")` is a Python script."
+          },
+          {
+            "type": "text",
+            "content": "**.py** — The file extension (the letters after the dot in a filename) that tells your computer and Python that a file contains Python code.\n\n**When it matters:** Python only recognizes files ending in `.py` as Python scripts. If you save a file as `script.txt`, Python won't run it.\n\n**Example:** `my_program.py`, `calculator.py`, `game.py` — all end with `.py`\n\n**Connection:** Just like `.docx` means a Word document, `.py` means a Python script."
+          },
+          {
+            "type": "text",
+            "content": "**Source Code** — The actual text you write in a Python script — the instructions, commands, and code that tell Python what to do.\n\n**When it matters:** When people say \"show me your code,\" they mean your source code. This is what you edit, save, and Python reads.\n\n**Example:** The line `print(\"Hello, World!\")` is source code. The words \"Hello, World!\" that appear on screen are the output, not the source code.\n\n**Connection:** Source code is like the script of a play — it's what the actors (Python) read to know what to do."
+          },
+          {
+            "type": "text",
+            "content": "**Interpreter** — The Python program itself (python.exe) that reads your script file and executes (runs) the instructions you wrote.\n\n**When it matters:** You need the interpreter installed on your computer to run scripts. When you type `python script.py`, you're telling the interpreter to read and run that script.\n\n**Example:** When you type `python my_script.py`, the Python interpreter opens the file, reads each line, and executes the commands.\n\n**Connection:** The interpreter is like a translator — it reads your human-readable code and translates it into actions the computer can perform."
+          },
+          {
+            "type": "text",
+            "content": "**print()** — A built-in Python function (a command that comes with Python) that displays text on the screen.\n\n**When it matters:** This is often the first function beginners learn because it lets you see the results of your code. You'll use it constantly to show output.\n\n**Example:** `print(\"Hello!\")` displays \"Hello!\" in the terminal. `print(5 + 3)` calculates 5 + 3 and displays \"8\".\n\n**Connection:** `print()` is like telling someone to speak — it makes your program communicate with you."
+          },
+          {
+            "type": "text",
+            "content": "**Execute / Run** — To execute or run a script means to tell Python to read the script file and perform all the instructions in it.\n\n**When it matters:** Writing code is only half the work — you must run it to see what happens. This is how you test if your code works.\n\n**Example:** After writing `print(\"Hello!\")` in a file, you run it by typing `python script.py` in the terminal.\n\n**Connection:** Running a script is like pressing \"play\" on a music track — the file exists, but you need to run it to hear the music."
+          },
+          {
+            "type": "text",
+            "content": "**Terminal / Command Line** — A text-based interface where you type commands instead of clicking icons. On Windows, this is PowerShell or Command Prompt.\n\n**When it matters:** You use the terminal to run Python scripts. It's where you type `python script.py` and where you see the output.\n\n**Example:** Opening PowerShell and typing `python my_script.py` uses the terminal to run your script.\n\n**Connection:** The terminal is like a remote control for your computer — you type commands and the computer responds."
+          },
+          {
+            "type": "text",
+            "content": "**Syntax** — The rules for how Python code must be written — like grammar rules for a language. Python is very strict about syntax.\n\n**When it matters:** If you break syntax rules (like forgetting a closing parenthesis), Python will show a SyntaxError and your script won't run.\n\n**Example:** `print(\"Hello\")` is correct syntax. `print(\"Hello\"` (missing closing parenthesis) is incorrect syntax.\n\n**Connection:** Syntax is like spelling — if you spell a word wrong, people can't understand you. If your syntax is wrong, Python can't understand your code."
+          },
+          {
+            "type": "text",
+            "content": "**🧭 How These Terms Connect:**\n\n• You write **source code** in a file with a **.py** extension, creating a **Python script**\n\n• You use the **terminal** to tell the **interpreter** to **execute** (run) your script\n\n• The interpreter reads your source code, checks the **syntax**, and if correct, runs the commands like **print()**\n\n• The output appears back in the **terminal**\n\n**Think of it like this:** Script (.py file) → Terminal (command) → Interpreter (reads) → Syntax check → Execute → Output (in terminal)"
+          }
+        ]
       },
-      {
-        "id": "guidedPractice",
-        "displayName": "Guided Practice",
-        "order": 3,
-        "description": "Practice new concepts with guidance and support"
+      "guidedPractice": {
+        "heading": "🧪 Guided Practice",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Vocabulary Matching**\n\nMatch the terms with their meanings:"
+          },
+          {
+            "type": "matching",
+            "leftColumn": [
+              "Python",
+              "Script",
+              "print()",
+              ".py",
+              "Interpreter",
+              "Terminal",
+              "Source code",
+              "Execute"
+            ],
+            "rightColumn": [
+              {
+                "definition": "Runs the instructions",
+                "matchesWith": "Python"
+              },
+              {
+                "definition": "A file with code",
+                "matchesWith": "Script"
+              },
+              {
+                "definition": "Shows output",
+                "matchesWith": "print()"
+              },
+              {
+                "definition": "Python file extension",
+                "matchesWith": ".py"
+              },
+              {
+                "definition": "The program that reads and runs Python code",
+                "matchesWith": "Interpreter"
+              },
+              {
+                "definition": "A text-based interface where you type commands",
+                "matchesWith": "Terminal"
+              },
+              {
+                "definition": "The human-written instructions in a script",
+                "matchesWith": "Source code"
+              },
+              {
+                "definition": "To run or perform the instructions in a script",
+                "matchesWith": "Execute"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Order the Steps**\n\nPut these steps in the correct order for creating and running your first Python script:"
+          },
+          {
+            "type": "ordering",
+            "instructions": "Drag to reorder into the correct sequence.",
+            "items": [
+              "Create a text file with a .py extension",
+              "Write Python code (like print(\"Hello\")) in the file",
+              "Save the file",
+              "Open the terminal in the same folder as your script",
+              "Type 'python script_name.py' and press Enter",
+              "See the output displayed in the terminal"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ]
       },
-      {
-        "id": "challenge",
-        "displayName": "Challenge",
-        "order": 4,
-        "description": "Apply learning independently and think critically"
+      "challenge": {
+        "heading": "🚀 Challenge Activity: Visualize the Vocabulary",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Task:** Draw or describe a simple diagram showing how these terms connect:\n\n• Python script (.py file)\n• Source code (the instructions inside)\n• Interpreter (python.exe)\n• Terminal (where you type commands)\n• print() function (what displays output)\n\n🧩 Hints:\n• Start with *You* → *Terminal* → *Python interpreter* → *Script file* → *Output*\n• Add labels showing what each part does\n• Use arrows to show the flow of information"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your diagram or explain how these terms work together when you run a script:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Without looking back, what is the file extension for Python scripts?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": [
+                ".py"
+              ]
+            }
+          }
+        ]
       },
-      {
-        "id": "reflection",
-        "displayName": "Reflection",
-        "order": 5,
-        "description": "Reflect on learning, understanding, and difficulties"
+      "reflection": {
+        "heading": "🔍 Reflection & Checkpoint",
+        "components": [
+          {
+            "type": "text",
+            "content": "Ask yourself:\n\n• Can I **define** all the key terms (Python script, .py, source code, interpreter, print(), execute, terminal, syntax)?\n\n• Can I **recall** what each term means without looking back?\n\n• Can I **explain** how these terms connect to each other?\n\n✅ If yes → you're ready for the next stage (Remembering → Understanding).\n❌ If not → review the vocabulary list or repeat the matching activity."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What file extension does a Python script use?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": [
+                ".py"
+              ]
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which term was easiest to remember? Which one do you need to review?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How do you think understanding these terms will help you in the next stage?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Can you explain how a Python script, the interpreter, and the terminal work together?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
       },
-      {
-        "id": "transition",
-        "displayName": "Transition",
-        "order": 6,
-        "description": "Prepare for the next stage or upcoming lesson"
+      "transition": {
+        "heading": "🔗 Transition Preview",
+        "components": [
+          {
+            "type": "text",
+            "content": "You now know the basic vocabulary—terms like 'script', 'interpreter', 'terminal', and 'print()'. Next, you'll go deeper — learning **how these pieces work together** when you run a script. You'll discover what happens behind the scenes when you type 'python my_script.py' and see how Python reads your code line by line.\n\n*(Coming next: Understanding Stage)*"
+          }
+        ]
       }
-    ],
-
-    "content": {
-  
-      "s0": {
-        "mindset": {
-          "heading": "Welcome — Writing Instructions for a Computer",
-          "components": [
-            {
-              "type": "text",
-              "content": "Programming is not magic. It’s simply writing instructions for a computer to follow.\n\nIn this lesson, you will write your very first set of instructions and watch the computer execute them."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "What You Already Have",
-          "components": [
-            {
-              "type": "text",
-              "content": "You already installed Python and used the terminal.\n\nNow you’ll take the next step: creating a file that Python can run."
-            }
-          ]
-        },
-        "core": {
-          "heading": "What Is a Python Script?",
-          "components": [
-            {
-              "type": "text",
-              "content": "A **Python script** is just a text file with instructions written by a human.\n\nIt usually ends with **.py**.\n\nPython reads this file from top to bottom and executes each line."
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Predict the Outcome",
-          "components": [
-            {
-              "type": "code",
-              "language": "python",
-              "content": "print(\"Hello, world!\")",
-              "copyable": false
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What do you think will appear when this script runs?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "Think About It",
-          "components": [
-            {
-              "type": "text",
-              "content": "Imagine you want to tell a computer to say \"Good morning\" to you every day. How would you write that instruction?"
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "Describe in your own words how you would give this instruction to a computer:",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Your First Thoughts",
-          "components": [
-            {
-              "type": "text",
-              "content": "Before we continue, think about what you already know:"
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What do you think programming will be like? Easy, hard, or somewhere in between?",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What would you like to create with Python?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "transition": {
-          "heading": "Let’s Learn the Names",
-          "components": [
-            {
-              "type": "text",
-              "content": "Before writing code, let’s learn the basic words programmers use."
-            }
-          ]
-        }
+    },
+    "s2": {
+      "mindset": {
+        "heading": "🧠 Mindset Shift",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from remembering *what* things are called to understanding *how* they work together. At this level, you'll see the connections between the script file, Python, and the terminal."
+          }
+        ]
       },
-  
-      "s1": {
-        "mindset": {
-          "heading": "🧠 Mindset Shift",
-          "components": [
-            {
-              "type": "text",
-              "content": "You are moving from not knowing the names to being able to recognize and recall key programming terms. At this stage, you're building your vocabulary — the foundation for everything else you'll learn."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "🎓 What You Just Learned",
-          "components": [
-            {
-              "type": "text",
-              "content": "In the previous stage, you learned that a Python script is a text file with instructions. Now you'll learn the specific words programmers use to talk about scripts and code."
-            }
-          ]
-        },
-        "core": {
-          "heading": "Key Terms You Must Remember",
-          "components": [
-            {
-              "type": "text",
-              "content": "**Python script** — a file with instructions\n\n**.py** — file extension for Python\n\n**Source code** — what you write\n\n**Interpreter** — Python itself\n\n**print()** — shows text on the screen"
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Match the Concepts",
-          "components": [
-            {
-              "type": "matching",
-              "leftColumn": ["Python", "Script", "print()", ".py"],
-              "rightColumn": [
-                { "definition": "Runs the instructions", "matchesWith": "Python" },
-                { "definition": "A file with code", "matchesWith": "Script" },
-                { "definition": "Shows output", "matchesWith": "print()" },
-                { "definition": "Python file extension", "matchesWith": ".py" }
-              ]
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "🚀 Challenge Activity",
-          "components": [
-            {
-              "type": "text",
-              "content": "Without looking back, try to recall the key terms:"
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What is the name of the function that shows text on the screen?",
-              "validation": {
-                "type": "contains",
-                "acceptedAnswers": ["print", "print()"]
-              }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What do we call the file extension for Python scripts?",
-              "validation": {
-                "type": "contains",
-                "acceptedAnswers": [".py"]
-              }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Quick Check",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "What file extension does a Python script use?",
-              "validation": { "type": "contains", "acceptedAnswers": [".py"] }
-            }
-          ]
-        },
-        "transition": {
-          "heading": "🔗 Transition Preview",
-          "components": [
-            {
-              "type": "text",
-              "content": "You now know the basic vocabulary. Next, you'll understand *how* these pieces work together when you run a script.\n\n*(Coming next: Understanding Stage)*"
-            }
-          ]
-        }
+      "recap": {
+        "heading": "🎓 Quick Recap",
+        "components": [
+          {
+            "type": "text",
+            "content": "Review what you know:\n\n✅ A Python script is a .py file with instructions\n✅ The print() function shows output\n✅ Python reads and executes scripts\n\nNow, let's understand *exactly* what happens when you run a script."
+          }
+        ]
       },
-  
-      "s2": {
-        "mindset": {
-          "heading": "🧠 Mindset Shift",
-          "components": [
-            {
-              "type": "text",
-              "content": "You're moving from remembering *what* things are called to understanding *how* they work together. At this level, you'll see the connections between the script file, Python, and the terminal."
-            }
-          ]
-        },
-        "recap": {
-          "heading": "🎓 Quick Recap",
-          "components": [
-            {
-              "type": "text",
-              "content": "Review what you know:\n\n✅ A Python script is a .py file with instructions\n✅ The print() function shows output\n✅ Python reads and executes scripts\n\nNow, let's understand *exactly* what happens when you run a script."
-            }
-          ]
-        },
-        "core": {
-          "heading": "What Happens When You Run a Script?",
-          "components": [
-            {
-              "type": "text",
-              "content": "When you run a script:\n\n1. Python opens the file\n2. Reads it line by line\n3. Executes each instruction\n4. Shows output in the terminal"
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Explain the Flow",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "What happens first when you run a Python script?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "🚀 Challenge Activity",
-          "components": [
-            {
-              "type": "text",
-              "content": "Explain the complete flow in your own words:"
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "Describe what happens step-by-step when you type 'python my_script.py' in the terminal:",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "🔍 Reflection & Checkpoint",
-          "components": [
-            {
-              "type": "text",
-              "content": "Ask yourself:\n\n• Can I explain what happens when Python runs a script?\n• Do I understand the order of steps (open file → read → execute → show output)?\n• Can I describe how the terminal, Python, and the script file work together?\n\n✅ If yes → You've reached *Understanding.*\n❌ If not → Review the core section and try explaining it to someone else."
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "In your own words, what does Python do when it reads a script file?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "transition": {
-          "heading": "🔗 Transition Preview",
-          "components": [
-            {
-              "type": "text",
-              "content": "You now understand how scripts work. Next, you'll *apply* this knowledge by creating and running your own script.\n\n*(Coming next: Understanding → Applying)*"
-            }
-          ]
-        }
+      "core": {
+        "heading": "🧩 Core Learning: What Happens When You Run a Script?",
+        "components": [
+          {
+            "type": "text",
+            "content": "**What happens in each step:**\n\n**1. You Type the Command**\nWhen you type `python my_script.py` in the terminal, you're giving Windows a command. The terminal (like PowerShell or Command Prompt) receives this text and needs to figure out what to do with it.\n\n**2. Windows Finds Python**\nWindows looks at the word \"python\" and searches through the PATH (a list of folder locations) to find a program called `python.exe`. This is the Python interpreter — the program that can read and execute Python code.\n\n**3. Python Opens the File**\nOnce Python starts, it looks for the file `my_script.py` in the current directory (the folder where your terminal is located). If the file exists, Python opens it and prepares to read its contents.\n\n**4. Python Reads the File Line by Line**\nPython doesn't read the entire file at once. Instead, it processes the script line by line, from top to bottom. Think of it like reading a recipe — you follow each step in order.\n\n**5. Python Interprets Each Line**\nAs Python reads each line, it translates your human-readable code into instructions the computer can understand. For example, when it sees `print(\"Hello\")`, it understands: \"Display the text 'Hello' on the screen.\"\n\n**6. Python Executes the Instructions**\nAfter interpreting a line, Python immediately executes (runs) that instruction. If the line says `print(\"Hello\")`, Python sends \"Hello\" to the terminal to be displayed.\n\n**7. Output Appears in the Terminal**\nThe terminal receives the output from Python and displays it on your screen. You see the results of your script's execution.\n\n**8. Python Closes the File**\nWhen Python reaches the end of the file (or encounters an error), it stops reading, closes the file, and exits. Control returns to the terminal, and you see the command prompt again."
+          },
+          {
+            "type": "text",
+            "content": "**🧠 Key Idea: The Flow of Information**\n\nHere's how the different parts work together:\n\n**Terminal** → Receives your command → Finds Python using PATH\n\n**Python Interpreter** → Opens the script file → Reads it line by line\n\n**Python Interpreter** → Interprets each line → Executes instructions\n\n**Python Interpreter** → Sends output → **Terminal** displays it\n\n**Terminal** → Shows command prompt again\n\nThink of it like a relay race: the terminal passes the baton to Python, Python does the work, and Python passes the results back to the terminal."
+          },
+          {
+            "type": "text",
+            "content": "**Why Each Step Matters:**\n\n• **Finding Python via PATH** — Without PATH, Windows wouldn't know where to find Python, and you'd get an error like \"python is not recognized.\"\n\n• **Reading Line by Line** — This sequential processing means Python executes code in order. If you put `print(\"Second\")` before `print(\"First\")`, it will print \"Second\" first!\n\n• **Interpreting Before Executing** — Python checks your code for errors (like missing parentheses) before trying to run it. If there's a syntax error, Python stops and shows you an error message.\n\n• **Immediate Execution** — Python doesn't wait until the end of the file to run code. Each line runs as soon as it's read, which is why you see output appear immediately.\n\n• **Terminal as Output Display** — The terminal is like a window that shows you what your script is doing. Without it, you wouldn't see the results of your `print()` statements."
+          },
+          {
+            "type": "text",
+            "content": "**What Python Does Internally:**\n\nWhen Python reads your script, it goes through several internal steps:\n\n1. **Lexical Analysis** — Python breaks your code into small pieces called \"tokens\" (like words in a sentence).\n\n2. **Parsing** — Python arranges these tokens into a structure it understands (like building a sentence from words).\n\n3. **Compilation** — Python converts your code into bytecode (a simpler form the computer can process faster).\n\n4. **Execution** — Python runs the bytecode, which performs the actual actions (like printing text).\n\nYou don't need to understand all these steps right now, but it's helpful to know that Python does a lot of work \"under the hood\" to make your code run smoothly."
+          }
+        ]
       },
-  
-      "s3": {
-        "mindset": {
-          "heading": "🧠 Mindset Shift",
-          "components": [
-            {
-              "type": "text",
-              "content": "You're moving from *knowing how it works* to *doing it yourself*.\n\nThis stage focuses on **action** — learning by creating, not just reading. Mistakes are expected here — that's part of the learning!"
+      "guidedPractice": {
+        "heading": "🧪 Guided Practice",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Explain in Your Own Words**\n\nFill in what's happening at each step:"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "When you type 'python my_script.py' in the terminal, what happens first? (Hint: Think about what the terminal does with your command)",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "recap": {
-          "heading": "🎓 Quick Recap",
-          "components": [
-            {
-              "type": "text",
-              "content": "Before starting, make sure you understand:\n\n• How Python reads and executes scripts\n• What the print() function does\n• How to use the terminal\n\nIf you can explain these, you're ready to create your first script."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "When Python opens the script file, what does it do next? (Hint: How does Python read the file?)",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "core": {
-          "heading": "Run Your First Script",
-          "components": [
-            {
-              "type": "text",
-              "content": "1. Create a file called **first_script.py**\n2. Write a print() statement\n3. Save the file\n4. Run it using the terminal"
-            },
-            {
-              "type": "code",
-              "language": "bash",
-              "content": "python first_script.py",
-              "copyable": true
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does Python read the file line by line instead of all at once? What would happen if it read everything at once?",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Try It Yourself",
-          "components": [
-            {
-              "type": "checklist",
-              "items": [
-                "Created the .py file",
-                "Added a print() line",
-                "Saved the file",
-                "Ran the script",
-                "Saw output"
-              ]
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Predict the Problem**\n\nYou created a script called `greeting.py` and saved it on your Desktop. You open the terminal in your Documents folder and type `python greeting.py`, but you get an error."
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What is the most likely reason for the error?",
+            "options": [
+              "Python isn't installed on your computer",
+              "The file doesn't exist in the Documents folder (you're in the wrong directory)",
+              "The script has a syntax error",
+              "The terminal is broken"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Python looks for the file in the current directory. Since you're in Documents but the file is on Desktop, Python can't find it.",
+              "incorrect": "Think about where Python looks for the file when you run a script..."
             }
-          ]
-        },
-        "challenge": {
-          "heading": "🚀 Challenge Activity",
-          "components": [
-            {
-              "type": "text",
-              "content": "Create a script that does more than just print \"Hello, world!\":"
-            },
-            {
-              "type": "code",
-              "language": "python",
-              "content": "# Your challenge: Create a script that prints three different messages\nprint(\"Message 1\")\nprint(\"Message 2\")\nprint(\"Message 3\")",
-              "copyable": true
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What did your script print? Paste the output here:",
-              "validation": { "type": "freeform" }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 3: Compare the Steps**\n\nThink about the difference between these two scenarios:"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Scenario A: You type 'python script.py' and the script runs successfully.\nScenario B: You type 'python script.py' but get 'FileNotFoundError'.\n\nWhat's the key difference between these two scenarios? What step in the process failed in Scenario B?",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "reflection": {
-          "heading": "🔍 Reflection & Checkpoint",
-          "components": [
-            {
-              "type": "text",
-              "content": "Ask yourself:\n\n• Can I create a .py file and write code in it?\n• Can I run the script from the terminal?\n• Can I see the output appear on the screen?\n\n✅ If yes → You've reached *Applying.*\n❌ If not → Try the steps again or ask for help."
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What part was easiest? What was confusing?",
-              "validation": { "type": "freeform" }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 4: Why Does It Matter?**\n\nUnderstanding the order of steps helps you troubleshoot problems."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why is it important that Python reads the script line by line, from top to bottom? What would happen if Python could read lines in any order?",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "transition": {
-          "heading": "🔗 Transition Preview",
-          "components": [
-            {
-              "type": "text",
-              "content": "You can now create and run scripts successfully — great work! In the next stage, you'll learn how to **analyze problems** when scripts don't work as expected.\n\n*(Coming next: Applying → Analyzing)*"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does the terminal need to find Python using PATH? What would happen if Python wasn't in the PATH?",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        }
+          }
+        ]
       },
-  
-      "s4": {
-        "mindset": {
-          "heading": "🧠 Mindset Shift",
-          "components": [
-            {
-              "type": "text",
-              "content": "You're moving from *doing things correctly* to *understanding what happens when things go wrong*.\n\nThis stage trains your **troubleshooting mindset**: looking for causes, patterns, and relationships. Think like a detective — every error message is a clue."
+      "challenge": {
+        "heading": "🚀 Challenge Activity: Map the Execution Flow",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Create a simple diagram (or flowchart) showing what happens when you run a Python script.**\n\n🧩 Your diagram should include:\n• You typing a command in the terminal\n• The terminal finding the script file\n• Python reading the script line by line\n• Python executing each instruction\n• Output appearing in the terminal\n\nAdd arrows and labels like \"command travels here\" or \"Python reads this file.\""
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your diagram or explain the complete flow from typing 'python my_script.py' to seeing output:",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "recap": {
-          "heading": "🎓 Quick Recap",
-          "components": [
-            {
-              "type": "text",
-              "content": "Review your successful script creation:\n\n• You can create .py files\n• You can write print() statements\n• You can run scripts from the terminal\n\nNow you'll explore what happens when something doesn't work."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What happens if Python encounters a line it doesn't understand? Where would that show up in your diagram?",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "core": {
-          "heading": "When Things Go Wrong",
-          "components": [
-            {
-              "type": "text",
-              "content": "If nothing happens, check:\n\n• Did you save the file?\n• Did you run the correct filename?\n• Are there spelling mistakes?"
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "🧪 Guided Practice",
-          "components": [
-            {
-              "type": "text",
-              "content": "Let's practice identifying common problems:"
-            },
-            {
-              "type": "code",
-              "language": "python",
-              "content": "print(\"Hello, world!\"",
-              "copyable": false
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "Look at this code. What's wrong with it? (Hint: count the parentheses)",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "multipleChoice",
-              "question": "If you get 'FileNotFoundError', what is the most likely cause?",
-              "options": [
-                "The file doesn't exist",
-                "Python isn't installed",
-                "The terminal is broken"
-              ],
-              "correctIndex": 0,
-              "feedback": {
-                "correct": "Correct! Make sure the file exists and you're in the right directory.",
-                "incorrect": "Think about what 'FileNotFoundError' means..."
-              }
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "Analyze the Problem",
-          "components": [
-            {
-              "type": "shortAnswer",
-              "prompt": "Your script runs but shows nothing. What could be wrong?",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "text",
-              "content": "Create a simple troubleshooting checklist for when a script doesn't work:"
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "List 3 things you would check if your script doesn't run:",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "🔍 Reflection & Checkpoint",
-          "components": [
-            {
-              "type": "text",
-              "content": "Ask yourself:\n\n• Can I identify why a script might not run?\n• Can I tell the difference between file errors and code errors?\n• Can I create a troubleshooting plan?\n\n✅ If yes → You've reached *Analyzing.*\n❌ If not → Review the core section and practice with different error scenarios."
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "Write a 3-step plan you will use when a script doesn't work:",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "transition": {
-          "heading": "🔗 Transition Preview",
-          "components": [
-            {
-              "type": "text",
-              "content": "You can now diagnose and fix script problems. In the next level, you'll go further — **evaluating** script quality to decide what makes code good or bad.\n\n*(Coming next: Analyzing → Evaluating)*"
-            }
-          ]
-        }
+          }
+        ]
       },
-  
-      "s5": {
-        "mindset": {
-          "heading": "🧠 Mindset Shift",
-          "components": [
-            {
-              "type": "text",
-              "content": "You're moving from *finding what's wrong* to *choosing what's best*.\n\nThis stage focuses on **judgment** — deciding what makes code good, clear, and useful. You're not just fixing problems now; you're thinking about quality."
+      "reflection": {
+        "heading": "🔍 Reflection & Checkpoint",
+        "components": [
+          {
+            "type": "text",
+            "content": "Ask yourself:\n\n• Can I explain what happens when Python runs a script?\n• Do I understand the order of steps (open file → read → execute → show output)?\n• Can I describe how the terminal, Python, and the script file work together?\n• Can I explain **why** Python reads scripts line by line?\n\n✅ If yes → You've reached *Understanding.*\n❌ If not → Review the core section and try explaining it to someone else."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "In your own words, what does Python do when it reads a script file?",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "recap": {
-          "heading": "🎓 Quick Recap",
-          "components": [
-            {
-              "type": "text",
-              "content": "You can:\n• Create and run scripts\n• Diagnose and fix errors\n• Understand how scripts work\n\nNow, you'll make judgments about code quality — like a professional programmer would."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why is it important that Python reads the script line by line, from top to bottom? What would happen if Python could read lines in any order?",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "core": {
-          "heading": "What Makes a Good Script?",
-          "components": [
-            {
-              "type": "text",
-              "content": "A good script:\n\n• Has clear output\n• Is easy to read\n• Does exactly what it says"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What part of the script execution process is still confusing or unclear to you? What would help you understand it better?",
+            "validation": {
+              "type": "freeform"
             }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "Judge the Output",
-          "components": [
-            {
-              "type": "multipleChoice",
-              "question": "Which output is clearer?",
-              "options": [
-                "Hi",
-                "Welcome to the Hackathon Club!"
-              ],
-              "correctIndex": 1
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "🚀 Challenge Activity: Code Review Scenario",
-          "components": [
-            {
-              "type": "text",
-              "content": "**Real-World Scenario:**\n\nYou're helping a teacher choose a welcome script for the first day of a Python programming class. Three students submitted scripts, and you need to evaluate them and make a recommendation.\n\n**Context:** The script will run when students first open their computers. It should be welcoming, informative, and set a positive tone for the course."
-            },
-            {
-              "type": "text",
-              "content": "**Script A:**"
-            },
-            {
-              "type": "code",
-              "language": "python",
-              "content": "print(\"Welcome to Python Programming!\\nToday we'll learn how to write your first script.\\nGet ready for an exciting journey into coding!\\nLet's start by understanding how Python reads and executes code.\\nRemember: every expert was once a beginner.\")",
-              "copyable": false
-            },
-            {
-              "type": "text",
-              "content": "**Script B:**"
-            },
-            {
-              "type": "code",
-              "language": "python",
-              "content": "print(\"Welcome to Python Programming!\")\nprint(\"Today we'll learn how to write your first script.\")\nprint(\"Get ready for an exciting journey into coding!\")\nprint(\"Let's start by understanding how Python reads and executes code.\")\nprint(\"Remember: every expert was once a beginner.\")",
-              "copyable": false
-            },
-            {
-              "type": "text",
-              "content": "**Script C:**"
-            },
-            {
-              "type": "code",
-              "language": "python",
-              "content": "print(\"WELCOME TO PYTHON PROGRAMMING!\")\nprint(\"TODAY WE'LL LEARN HOW TO WRITE YOUR FIRST SCRIPT.\")\nprint(\"GET READY FOR AN EXCITING JOURNEY INTO CODING!\")\nprint(\"LET'S START BY UNDERSTANDING HOW PYTHON READS AND EXECUTES CODE.\")\nprint(\"REMEMBER: EVERY EXPERT WAS ONCE A BEGINNER.\")",
-              "copyable": false
-            },
-            {
-              "type": "text",
-              "content": "**Your Task:**\n\nEvaluate each script using these criteria:\n1. **Clarity** — Is the message clear and easy to understand?\n2. **Purpose** — Does it achieve the goal of welcoming students?\n3. **Appropriateness** — Is it suitable for the context?\n4. **Quality** — Is the code well-written?\n\nThen make a recommendation."
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "Rate Script A (1-5) for clarity, purpose, appropriateness, and quality. Explain your ratings:",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "Rate Script B (1-5) for clarity, purpose, appropriateness, and quality. Explain your ratings:",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "Rate Script C (1-5) for clarity, purpose, appropriateness, and quality. Explain your ratings:",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "Which script do you recommend and why? Give at least three specific reasons based on your evaluation criteria:",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What is one potential weakness of your recommended script, and how could it be improved?",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "multipleChoice",
-              "question": "If the teacher wanted a script that balances being informative without being too long, which script would be best?",
-              "options": [
-                "Script A — short and simple",
-                "Script B — detailed and welcoming",
-                "Script C — repetitive but clear",
-                "None of them — they all have issues"
-              ],
-              "correctIndex": 1,
-              "feedback": {
-                "correct": "Correct! Script B provides good information without being overwhelming, and it's welcoming.",
-                "incorrect": "Think about which script provides useful information while remaining appropriate for a welcome message."
-              }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "🔍 Reflection & Checkpoint",
-          "components": [
-            {
-              "type": "text",
-              "content": "Ask yourself:\n\n• Can I compare scripts and decide which is better?\n• Can I explain what makes code clear and useful?\n• Can I evaluate my own scripts for quality?\n\n✅ If yes → You've reached *Evaluating.*\n❌ If not → Review the core section and practice evaluating different scripts."
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What makes a script 'good' in your opinion?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "transition": {
-          "heading": "🔗 Transition Preview",
-          "components": [
-            {
-              "type": "text",
-              "content": "You can now evaluate and judge script quality like an expert. Next, you'll go one step further — **creating** your own original script from scratch.\n\n*(Coming next: Evaluating → Creating)*"
-            }
-          ]
-        }
+          }
+        ]
       },
-  
-      "s6": {
-        "mindset": {
-          "heading": "🧠 Mindset Shift",
-          "components": [
-            {
-              "type": "text",
-              "content": "You're moving from *judging existing solutions* to *creating your own*.\n\nNow you'll **design**, **write**, and **demonstrate** your understanding by creating an original script.\n\nThe question is no longer \"Which way is best?\" It's \"How can I create something useful and clear?\""
-            }
-          ]
-        },
-        "recap": {
-          "heading": "🎓 Quick Recap",
-          "components": [
-            {
-              "type": "text",
-              "content": "You already know:\n• How to create and run scripts\n• How to troubleshoot problems\n• How to evaluate code quality\n\nNow, you'll combine all that knowledge into a creative, original script."
-            }
-          ]
-        },
-        "core": {
-          "heading": "Create Your Own Script",
-          "components": [
-            {
-              "type": "text",
-              "content": "Create a script that prints:\n\n• Your name\n• Something you like\n• A welcome message"
-            }
-          ]
-        },
-        "guidedPractice": {
-          "heading": "🧪 Guided Practice",
-          "components": [
-            {
-              "type": "text",
-              "content": "Plan your script before you write it:"
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What will your script do? Describe its purpose:",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What messages will it print? List them:",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "checklist",
-              "items": [
-                "I have a clear purpose for my script",
-                "I know what output I want",
-                "I've thought about the code structure",
-                "I'm ready to write it"
-              ]
-            }
-          ]
-        },
-        "challenge": {
-          "heading": "🚀 Challenge Activity: Create Your Masterpiece",
-          "components": [
-            {
-              "type": "text",
-              "content": "Create an original script that demonstrates everything you've learned. Your script should:\n\n• Have a clear purpose\n• Print multiple messages\n• Be easy to read and understand\n• Work without errors"
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What is the name of your script file?",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "Paste your script code here:",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What does your script output when you run it?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "reflection": {
-          "heading": "Final Reflection",
-          "components": [
-            {
-              "type": "text",
-              "content": "Ask yourself:\n\n• Did I create something original that works?\n• Does my script show that I understand how Python scripts work?\n• Can I explain what my script does and why I wrote it this way?\n\n✅ If yes → You've reached the **Creating** stage — full mastery.\n🎉 You can now create, run, troubleshoot, and evaluate Python scripts!"
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What did you learn about how computers follow instructions?",
-              "validation": { "type": "freeform" }
-            },
-            {
-              "type": "shortAnswer",
-              "prompt": "What would you like to learn next about Python?",
-              "validation": { "type": "freeform" }
-            }
-          ]
-        },
-        "transition": {
-          "heading": "🌟 You Did It!",
-          "components": [
-            {
-              "type": "text",
-              "content": "**Congratulations!** You've completed the full Bloom's learning cycle for your first Python script.\n\nYou now think like both a learner and a creator — capable of writing scripts and helping others do the same.\n\n**Your Journey:**\n1. No Knowledge → Remembering ✓\n2. Remembering → Understanding ✓\n3. Understanding → Applying ✓\n4. Applying → Analyzing ✓\n5. Analyzing → Evaluating ✓\n6. Evaluating → Creating ✓\n\nYou reached Creating. You can now write Python scripts with confidence and expertise!"
-            }
-          ]
-        }
+      "transition": {
+        "heading": "🔗 Transition Preview",
+        "components": [
+          {
+            "type": "text",
+            "content": "You now understand how Python reads and executes scripts—from the terminal command to the final output. Next, you'll *apply* this knowledge by creating and running your own script from scratch. You'll learn the step-by-step process: creating a .py file, writing your code, saving it, and running it in the terminal.\n\n*(Coming next: Understanding → Applying)*"
+          }
+        ]
       }
-  
+    },
+    "s3": {
+      "mindset": {
+        "heading": "🧠 Mindset Shift",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from *knowing how it works* to *doing it yourself*.\n\nThis stage focuses on **action** — learning by creating, not just reading. Mistakes are expected here — that's part of the learning!"
+          }
+        ]
+      },
+      "recap": {
+        "heading": "🎓 Quick Recap",
+        "components": [
+          {
+            "type": "text",
+            "content": "Before starting, make sure you understand:\n\n• How Python reads and executes scripts\n• What the print() function does\n• How to use the terminal\n\nIf you can explain these, you're ready to create your first script."
+          }
+        ]
+      },
+      "core": {
+        "heading": "🧩 Core Learning: Step-by-Step Script Creation Guide",
+        "components": [
+          {
+            "type": "text",
+            "content": "**🧰 Preparation Checklist**\n\nMake sure you have:\n• Python installed and accessible (you can run `python --version` in terminal)\n• A text editor (Notepad, VS Code, or any plain text editor)\n• Windows Terminal or PowerShell open\n• A folder where you'll save your scripts (like `Documents\\PythonScripts` or `Desktop`)"
+          },
+          {
+            "type": "text",
+            "content": "**🪜 Step-by-Step Guide**\n\n**Step 1: Choose a Location**\n• Decide where to save your script (Desktop, Documents folder, or a dedicated PythonScripts folder)\n• Open Windows File Explorer and navigate to that location\n• **Tip:** Create a folder called \"PythonScripts\" to keep all your scripts organized\n\n**Step 2: Create the File**\n• Right-click in the folder → **New** → **Text Document**\n• Name it `first_script.py` (make sure to change the extension from `.txt` to `.py`)\n• If Windows asks \"Are you sure you want to change the extension?\" click **Yes**\n• **Important:** The file must end with `.py` for Python to recognize it\n\n**Step 3: Open the File in a Text Editor**\n• Right-click `first_script.py` → **Open with** → Choose **Notepad** (or your preferred text editor)\n• **Recommended editors:** Notepad (built-in), VS Code (free), or Notepad++ (free)\n• Avoid Word or Google Docs — they add formatting that Python can't read\n\n**Step 4: Write Your First Code**\n• Type this line in the file:\n  `print(\"Hello, World!\")`\n• Make sure you have:\n  - Opening parenthesis `(`\n  - Quotation marks `\"` around the text\n  - Closing parenthesis `)`\n  - No extra spaces before `print`\n\n**Step 5: Save the File**\n• Press **Ctrl + S** (or File → Save)\n• **Critical:** Make sure the file is saved before running it\n• Check the file icon — it should show a Python logo or `.py` extension\n\n**Step 6: Open Terminal in the Correct Location**\n• In File Explorer, click in the address bar and type `cmd` or `powershell`, then press Enter\n• OR: Right-click in the folder → **Open in Terminal** (Windows 11) or **Open PowerShell window here** (Windows 10)\n• The terminal should show your folder path\n\n**Step 7: Run Your Script**\n• Type: `python first_script.py`\n• Press Enter\n• You should see: `Hello, World!`\n• If you see an error, check the troubleshooting section below"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# This is what your first_script.py should contain:\nprint(\"Hello, World!\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "content": "# This is the command to run your script:\npython first_script.py",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**📁 File Location Guidance**\n\n**Where to Save Scripts:**\n• **Desktop** — Easy to find, but can get cluttered\n• **Documents\\PythonScripts** — Organized, easy to access\n• **C:\\Users\\YourName\\Scripts** — Professional location, requires creating folder\n\n**How to Navigate in Terminal:**\n• Use `cd` to change directory: `cd Desktop` or `cd Documents\\PythonScripts`\n• Use `dir` (Windows) or `ls` (Mac/Linux) to see files in current folder\n• Use `cd ..` to go up one folder level\n• Use `cd` by itself to go to your home folder\n\n**Finding Your Script:**\n• If you can't find your script, use `dir` to list files in the current terminal directory\n• Make sure you're in the same folder where you saved the `.py` file"
+          },
+          {
+            "type": "text",
+            "content": "**⚠️ Common Pitfalls and How to Avoid Them**\n\n**Pitfall 1: File Extension is .txt Instead of .py**\n• **Symptom:** Python says \"No such file or directory\" or file opens in Word\n• **Fix:** Rename the file to end with `.py`. In File Explorer, make sure \"File name extensions\" is visible (View tab → check \"File name extensions\")\n\n**Pitfall 2: Forgot to Save the File**\n• **Symptom:** Changes don't appear when you run the script\n• **Fix:** Always save (Ctrl+S) before running. Look for the `*` symbol next to filename — it means unsaved changes\n\n**Pitfall 3: Wrong Directory in Terminal**\n• **Symptom:** \"FileNotFoundError\" even though file exists\n• **Fix:** Use `cd` to navigate to the folder where your script is saved. Use `dir` to verify the file is there\n\n**Pitfall 4: Typo in Filename**\n• **Symptom:** \"No such file or directory\"\n• **Fix:** Check spelling. `first_script.py` is different from `firstscript.py` or `first_script.txt`\n\n**Pitfall 5: Missing Quotation Marks or Parentheses**\n• **Symptom:** SyntaxError when running\n• **Fix:** Check that `print(\"Hello, World!\")` has both opening `(` and closing `)`, and both opening `\"` and closing `\"`\n\n**Pitfall 6: Using Word or Rich Text Editor**\n• **Symptom:** Script doesn't run or shows strange errors\n• **Fix:** Use a plain text editor like Notepad, VS Code, or Notepad++. Word adds hidden formatting characters\n\n**Pitfall 7: Python Not in PATH**\n• **Symptom:** \"python is not recognized as an internal or external command\"\n• **Fix:** Use `py` instead of `python` on Windows, or reinstall Python with \"Add to PATH\" checked"
+          },
+          {
+            "type": "text",
+            "content": "**📝 Text Editor Recommendations**\n\n**For Beginners:**\n• **Notepad** (Windows built-in) — Simple, always available\n• **VS Code** (free download) — Professional, with helpful features like syntax highlighting\n• **Notepad++** (free download) — Lightweight, shows line numbers\n\n**What to Look For:**\n• **Syntax highlighting** — Code appears in different colors (makes errors easier to spot)\n• **Line numbers** — Helps when Python shows error line numbers\n• **Auto-save** — Some editors save automatically\n• **Python support** — Some editors recognize Python files and help with formatting\n\n**Avoid:**\n• Microsoft Word — Adds formatting that breaks Python code\n• Google Docs — Same problem, plus requires internet\n• Rich text editors — They add hidden characters\n\n**Pro Tip:** VS Code is free and used by many professional programmers. It's worth learning!"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "🧪 Guided Practice",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Perform and Record**\n\nPerform each step and record your progress:"
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Created the .py file with the correct extension",
+              "Added a print() line with proper syntax",
+              "Saved the file",
+              "Opened terminal in the correct folder",
+              "Ran the script successfully",
+              "Saw the output displayed"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Paste the output your script produced (e.g., Hello, World!):",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Spot the Problem**\n\nIf you get an error when trying to run your script, what could have gone wrong?"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What's the most likely cause if you see 'FileNotFoundError' when running your script?",
+            "options": [
+              "The print() function is misspelled",
+              "You're in the wrong directory (folder) in the terminal",
+              "Python is not installed"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Use `cd` to navigate to the folder where your script is saved, or check that you're in the right directory.",
+              "incorrect": "Think about what the error message means — it can't find the file. Where might the problem be?"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What's the most likely cause if you see 'SyntaxError' when running your script?",
+            "options": [
+              "The file extension is wrong",
+              "You're in the wrong directory",
+              "Missing quotation marks, parentheses, or a typo in the code"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! SyntaxError means there's a problem with how the code is written — check for missing quotes, parentheses, or typos.",
+              "incorrect": "SyntaxError is about the code itself, not the file location or extension."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "🚀 Challenge Activity: Create and Verify Your Script",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Create a Proof-of-Work Script**\n\n• Create a script named `my_first_script.py`\n• Your script should print at least 3 different messages\n• Run it in the terminal and capture the output\n• Take a screenshot showing:\n  - Your script file in a file explorer or editor\n  - The terminal command you used to run it\n  - The output your script produced\n\n(Optional advanced step: Create a second script that prints your name and today's goal.)"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is the name of your script file?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Paste your script code here:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What output did your script produce? Paste it here:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Confirm you've successfully created and run your script. What was the most challenging part?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "🔍 Reflection & Checkpoint",
+        "components": [
+          {
+            "type": "text",
+            "content": "Ask yourself:\n\n• Can I create a .py file and write code in it?\n• Can I run the script from the terminal?\n• Can I see the output appear on the screen?\n• Can I perform the entire process *without looking at notes*?\n\n✅ If yes → You've reached *Applying.*\n❌ If not → Try the steps again or ask for help."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What part was easiest? What was confusing?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What surprised you about creating and running your first script? Was it easier or harder than you expected?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How confident do you feel about creating and running scripts now? What would make you feel more confident?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "🔗 Transition Preview",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can now create and run scripts successfully — great work! In the next stage, you'll learn how to **analyze problems** when scripts don't work as expected. You'll become the person who can read error messages, identify what went wrong, and fix common issues like FileNotFoundError, SyntaxError, and logic errors.\n\n*(Coming next: Applying → Analyzing)*"
+          }
+        ]
+      }
+    },
+    "s4": {
+      "mindset": {
+        "heading": "🧠 Mindset Shift",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from *doing things correctly* to *understanding what happens when things go wrong*.\n\nThis stage trains your **troubleshooting mindset**: looking for causes, patterns, and relationships. Think like a detective — every error message is a clue."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "🎓 Quick Recap",
+        "components": [
+          {
+            "type": "text",
+            "content": "Review your successful script creation:\n\n• You can create .py files\n• You can write print() statements\n• You can run scripts from the terminal\n\nNow you'll explore what happens when something doesn't work."
+          }
+        ]
+      },
+      "core": {
+        "heading": "🧩 Core Learning: Common Script Errors and How to Analyze Them",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Common Script Errors and How to Analyze Them:**\n\n**Symptom:** FileNotFoundError: [Errno 2] No such file or directory\n**Possible Cause:** File doesn't exist, wrong filename, or wrong directory\n**How to Verify:** Type `dir` (Windows) or `ls` (Mac/Linux) to see files in current folder. Check if filename matches exactly (including .py extension)\n**How to Fix:** Navigate to correct folder using `cd folder_name`, or use full path: `python C:\\Users\\YourName\\Documents\\my_script.py`\n\n**Symptom:** SyntaxError: invalid syntax\n**Possible Cause:** Missing parentheses, quotes, or colons; typos in code\n**How to Verify:** Python shows a line number and points to the error location. Look for missing `(`, `)`, `\"`, or `:`\n**How to Fix:** Check the line Python points to. Count opening and closing parentheses/quotes. Make sure colons follow `if`, `for`, `while`, `def` statements\n\n**Symptom:** IndentationError: expected an indented block\n**Possible Cause:** Missing indentation after `if`, `for`, `while`, or `def` statements\n**How to Verify:** Python shows which line needs indentation. Indented lines should have 4 spaces (or consistent tabs)\n**How to Fix:** Add 4 spaces before the line that follows `if`, `for`, `while`, or `def`. Make sure all indentation is consistent (all spaces or all tabs)\n\n**Symptom:** NameError: name 'something' is not defined\n**Possible Cause:** Typo in variable name, or variable used before it's created\n**How to Verify:** Check if variable name is spelled correctly. Make sure variable is created (assigned a value) before it's used\n**How to Fix:** Fix the typo, or move the line that creates the variable before the line that uses it\n\n**Symptom:** Script runs but shows nothing (no output)\n**Possible Cause:** No print() statements, or print() statements are commented out\n**How to Verify:** Open the file and check if it contains `print()` statements. Look for lines starting with `#` (comments)\n**How to Fix:** Add `print(\"your message\")` statements, or remove `#` from commented print statements\n\n**Symptom:** 'python' is not recognized as an internal or external command\n**Possible Cause:** Python not installed, or not in PATH\n**How to Verify:** Type `python --version` in a new terminal window. If it fails, Python isn't accessible\n**How to Fix:** Reinstall Python and check \"Add Python to PATH\" during installation, or use `py` instead of `python` on Windows\n\n**Symptom:** Script runs but produces wrong output\n**Possible Cause:** Logic error in code, wrong order of statements, or incorrect variable values\n**How to Verify:** Read through your code line by line. Trace what each line does mentally\n**How to Fix:** Check the order of operations. Verify variable values. Add temporary `print()` statements to see what values variables have\n\n**Symptom:** PermissionError: [Errno 13] Permission denied\n**Possible Cause:** File is open in another program, or you don't have permission to access the file\n**How to Verify:** Check if the file is open in a text editor or another program\n**How to Fix:** Close the file in all programs, then try again. If on a school computer, make sure you have permission to run scripts"
+          },
+          {
+            "type": "text",
+            "content": "**Systematic Troubleshooting Methodology:**\n\nWhen a script doesn't work, follow these steps in order:\n\n**Step 1: Read the Error Message**\nPython error messages tell you exactly what's wrong. Look for:\n• The error type (FileNotFoundError, SyntaxError, etc.)\n• The line number where the error occurred\n• A description of what went wrong\n\n**Step 2: Check the File**\n• Does the file exist in the current directory?\n• Is the filename spelled correctly?\n• Did you save the file before running it?\n• Is the file extension `.py`?\n\n**Step 3: Check the Code**\n• Are all parentheses, quotes, and brackets matched?\n• Is indentation correct (4 spaces for each level)?\n• Are variable names spelled correctly?\n• Are there any typos in function names like `print()`?\n\n**Step 4: Check the Environment**\n• Is Python installed and accessible?\n• Are you in the correct directory?\n• Is the terminal working correctly?\n\n**Step 5: Test Incrementally**\n• Comment out most of your code\n• Run a simple `print(\"test\")` statement\n• Gradually add code back to find where the problem starts"
+          },
+          {
+            "type": "text",
+            "content": "**Comparison of Error Types:**\n\n**Syntax Errors (SyntaxError, IndentationError)**\n• **When they occur:** Before the script runs (Python can't understand the code)\n• **How to spot:** Python shows line number and points to the problem\n• **Fix difficulty:** Usually easy — fix the syntax mistake\n• **Example:** Missing closing parenthesis: `print(\"Hello\"`\n\n**Runtime Errors (FileNotFoundError, NameError)**\n• **When they occur:** While the script is running\n• **How to spot:** Script starts but crashes with an error message\n• **Fix difficulty:** Medium — need to understand what the code is trying to do\n• **Example:** File doesn't exist: `python missing_file.py`\n\n**Logic Errors (Wrong Output)**\n• **When they occur:** Script runs completely but produces wrong results\n• **How to spot:** Output doesn't match what you expected\n• **Fix difficulty:** Hard — need to trace through the code mentally\n• **Example:** Printing in wrong order, or using wrong variable\n\n**Environment Errors (PermissionError, Command not found)**\n• **When they occur:** Before or during script execution\n• **How to spot:** System-level error messages\n• **Fix difficulty:** Varies — may need to change system settings\n• **Example:** Python not in PATH, or file locked by another program"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "🧪 Guided Practice",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Error Exploration - Syntax Error**\n\nYou run this script and get a SyntaxError:"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "print(\"Hello, world!\"",
+            "copyable": false
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is the symptom? (What error message would you see?)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is the possible cause? (Hint: count the opening and closing parentheses)",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": [
+                "missing",
+                "parenthesis",
+                "closing",
+                "unclosed"
+              ]
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What evidence would confirm it? (How would you check?)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What solution would you try?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Error Exploration - File Not Found**\n\nYou created a script called `greeting.py` on your Desktop. You open the terminal in your Documents folder and type `python greeting.py`, but you get an error."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is the symptom? (What error message would you see?)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is the possible cause?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": [
+                "directory",
+                "folder",
+                "location",
+                "path",
+                "wrong"
+              ]
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What evidence would confirm it? (What command could you use to check?)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What solution would you try?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 3: Step-by-Step Error Diagnosis**\n\nFollow the systematic troubleshooting steps for this scenario:\n\nYou wrote a script with this code:"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "name = \"Alex\"\nprint(f\"Welcome, {name}\")\nprint(\"Ready to learn Python?\")",
+            "copyable": false
+          },
+          {
+            "type": "text",
+            "content": "When you run it, you get: `NameError: name 'name' is not defined`"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Step 1: Read the Error Message - What type of error is this? What does the error message tell you?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Step 2: Check the File - Is the file saved? Is the filename correct?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Step 3: Check the Code - Look at the code above. Can you spot the problem? (Hint: Look at the order of the lines)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 4: Pattern Recognition**\n\nLook at these three error scenarios and identify the pattern:"
+          },
+          {
+            "type": "text",
+            "content": "**Scenario A:** `print(\"Hello\"` → SyntaxError\n**Scenario B:** `print(\"Hello\"` → SyntaxError\n**Scenario C:** `if x > 5` → SyntaxError"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What pattern do you notice? What do all three scenarios have in common?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Based on the pattern, what is the most common cause of SyntaxError?",
+            "options": [
+              "Missing closing punctuation (parentheses, quotes, colons)",
+              "Wrong variable names",
+              "File not found",
+              "Python not installed"
+            ],
+            "correctIndex": 0,
+            "feedback": {
+              "correct": "Correct! Syntax errors are usually caused by missing closing punctuation like parentheses, quotes, or colons.",
+              "incorrect": "Think about what syntax means — it's about the structure and punctuation of the code."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 5: Compare Error Types**\n\nCompare these two error scenarios:"
+          },
+          {
+            "type": "text",
+            "content": "**Error A:** You type `python script.py` and immediately see `SyntaxError: invalid syntax`\n\n**Error B:** You type `python script.py`, the script starts running, then crashes with `NameError: name 'x' is not defined`"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What's the key difference between when Error A occurs vs. when Error B occurs?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which error occurs BEFORE the script runs, and which occurs DURING execution?",
+            "options": [
+              "Error A occurs before, Error B occurs during",
+              "Error B occurs before, Error A occurs during",
+              "Both occur during execution",
+              "Both occur before execution"
+            ],
+            "correctIndex": 0,
+            "feedback": {
+              "correct": "Correct! SyntaxError happens before Python can even start running the code (it can't understand the syntax). NameError happens while the script is running (Python tries to use a variable that doesn't exist).",
+              "incorrect": "Think about when Python can detect each type of error — can it detect syntax errors before running, or only while running?"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "🚀 Challenge Activity: Design a Troubleshooting Flowchart",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Design a Troubleshooting Flowchart**\n\nUsing boxes and arrows, create a simple flowchart starting with: \"My script doesn't work.\"\n\nYour flowchart should include decision points for:\n• File not found errors\n• Syntax errors\n• Script runs but shows no output\n• Python command not recognized\n• Wrong output (logic errors)\n\nYour chart should end with: \"Problem solved — script runs successfully.\""
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your troubleshooting flowchart (list the steps and decision points in order):",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Your script runs but shows nothing. What are 3 things you would check, in order?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "If you see 'FileNotFoundError', what is the first question you should ask yourself?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "🔍 Reflection & Checkpoint",
+        "components": [
+          {
+            "type": "text",
+            "content": "Ask yourself:\n\n• Can I identify why a script might not run?\n• Can I tell the difference between file errors and code errors?\n• Can I create a troubleshooting plan?\n• Can I explain the difference between syntax errors, runtime errors, and logic errors?\n\n✅ If yes → You've reached *Analyzing.*\n❌ If not → Review the core section and practice with different error scenarios."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Write a 3-step plan you will use when a script doesn't work:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What error patterns have you noticed? For example, do you see certain types of errors happening more often?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How has your approach to problem-solving changed? What troubleshooting strategy works best for you?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "🔗 Transition Preview",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can now diagnose and fix most script problems—you know how to read error messages and troubleshoot issues. In the next level, you'll go further — **evaluating** script quality to decide what makes code good, clear, and useful. You'll learn to judge scripts using criteria like clarity, purpose, appropriateness, and quality—just like professional programmers do.\n\n*(Coming next: Analyzing → Evaluating)*"
+          }
+        ]
+      }
+    },
+    "s5": {
+      "mindset": {
+        "heading": "🧠 Mindset Shift",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from *finding what's wrong* to *choosing what's best*.\n\nThis stage focuses on **judgment** — deciding what makes code good, clear, and useful. You're not just fixing problems now; you're thinking about quality."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "🎓 Quick Recap",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can:\n• Create and run scripts\n• Diagnose and fix errors\n• Understand how scripts work\n\nNow, you'll make judgments about code quality — like a professional programmer would."
+          }
+        ]
+      },
+      "core": {
+        "heading": "🧩 Core Learning: Evaluation Criteria for Scripts",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Evaluating Criteria:**\n\n**Clarity** — How easy it is to understand what the script does\nExample: Clear variable names, descriptive print statements, logical organization\n\n**Purpose** — How well the script achieves its intended goal\nExample: A greeting script should actually greet people, not just print random text\n\n**Appropriateness** — How suitable the script is for its intended audience and context\nExample: A classroom script should be appropriate for students, not too complex or too simple\n\n**Quality** — How well-written and professional the code is\nExample: Proper syntax, no errors, follows Python conventions\n\n**Readability** — How easy it is for others (or future you) to read and understand the code\nExample: Good spacing, clear comments, organized structure\n\n**Functionality** — Whether the script works correctly and produces the expected output\nExample: No errors when running, output matches the script's purpose"
+          },
+          {
+            "type": "text",
+            "content": "**Rating Scale (1-5 Stars):**\n\n**⭐⭐⭐⭐⭐ Excellent** — Script is clear, purposeful, appropriate, high quality, readable, and fully functional\n\n**⭐⭐⭐⭐ Good** — Script meets most criteria but has minor issues (e.g., could be clearer or more organized)\n\n**⭐⭐⭐ Acceptable** — Script works but has noticeable problems (e.g., unclear output, poor organization)\n\n**⭐⭐ Poor** — Script has significant issues (e.g., confusing, doesn't achieve its purpose well)\n\n**⭐ Very Poor** — Script has major problems (e.g., doesn't work, completely unclear, inappropriate)"
+          },
+          {
+            "type": "text",
+            "content": "**Examples: Good vs. Bad Scripts**\n\n**Example 1: Clarity**\n\n**Bad Script (Unclear):**\n```python\nprint(\"x\")\nprint(\"y\")\nprint(\"z\")\n```\n**Problems:** No context, meaningless output, unclear purpose\n\n**Good Script (Clear):**\n```python\nprint(\"Welcome to Python Programming!\")\nprint(\"Today we'll learn about scripts.\")\nprint(\"Let's get started!\")\n```\n**Why it's better:** Clear messages, obvious purpose, easy to understand\n\n**Example 2: Purpose**\n\n**Bad Script (Doesn't achieve purpose):**\n```python\nprint(\"Hello\")\nprint(\"Math: 2+2\")\nprint(\"Goodbye\")\n```\n**Problems:** Claims to be a calculator but doesn't calculate anything\n\n**Good Script (Achieves purpose):**\n```python\nprint(\"=== Simple Calculator ===\")\nprint(\"2 + 2 = 4\")\nprint(\"10 - 3 = 7\")\nprint(\"5 * 4 = 20\")\n```\n**Why it's better:** Actually performs calculations and shows results clearly"
+          },
+          {
+            "type": "text",
+            "content": "**Example 3: Appropriateness**\n\n**Bad Script (Inappropriate for context):**\n```python\nprint(\"WELCOME TO PYTHON!\")\nprint(\"PYTHON IS THE BEST!\")\nprint(\"YOU WILL LOVE IT!\")\n```\n**Problems:** All caps is hard to read, too enthusiastic for a classroom setting\n\n**Good Script (Appropriate):**\n```python\nprint(\"Welcome to Python Programming!\")\nprint(\"Today we'll learn about scripts.\")\nprint(\"I hope you find this helpful.\")\n```\n**Why it's better:** Professional tone, appropriate for educational context\n\n**Example 4: Quality**\n\n**Bad Script (Poor quality):**\n```python\nprint(\"hello\")\nprint(\"world\")\nprint(\"test\")\n```\n**Problems:** No organization, no clear purpose, looks rushed\n\n**Good Script (High quality):**\n```python\n# Personal Introduction Script\n# Created by: [Your Name]\n# Purpose: Introduce myself to the class\n\nprint(\"Hello! My name is Sarah.\")\nprint(\"I'm excited to learn Python programming.\")\nprint(\"My favorite subject is mathematics.\")\n```\n**Why it's better:** Has comments, clear structure, professional appearance"
+          },
+          {
+            "type": "text",
+            "content": "**Multiple Dimensions of Quality:**\n\n**Technical Quality** — Does the code work? Are there syntax errors? Does it run without crashing?\n\n**Educational Quality** — Is it appropriate for learning? Does it demonstrate concepts clearly?\n\n**Aesthetic Quality** — Is it visually organized? Is the output pleasant to read?\n\n**Practical Quality** — Does it solve a real problem? Would someone actually use this script?\n\n**Maintainability** — Could someone else (or future you) understand and modify this script easily?\n\n**When evaluating a script, consider all these dimensions, not just whether it \"works.\"**"
+          },
+          {
+            "type": "text",
+            "content": "**Evaluation Rubric:**\n\nUse this rubric to evaluate any script:\n\n| Criterion | Excellent (5) | Good (4) | Acceptable (3) | Poor (2) | Very Poor (1) |\n|-----------|---------------|----------|-----------------|----------|---------------|\n| **Clarity** | Crystal clear purpose and output | Mostly clear | Somewhat clear | Unclear | Completely confusing |\n| **Purpose** | Perfectly achieves goal | Achieves goal well | Partially achieves goal | Barely achieves goal | Doesn't achieve goal |\n| **Appropriateness** | Perfect for context | Good fit | Acceptable | Poor fit | Inappropriate |\n| **Quality** | Professional, error-free | Good quality | Acceptable | Poor quality | Very poor quality |\n| **Readability** | Easy to read and understand | Mostly readable | Somewhat readable | Hard to read | Very hard to read |\n| **Functionality** | Works perfectly | Works well | Works with minor issues | Has problems | Doesn't work |\n\n**Total Score:** Add up all scores and divide by 6 to get an average rating."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "🧪 Guided Practice",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Evaluate for Different Contexts**\n\nImagine three different scenarios and evaluate which script would be best for each:"
+          },
+          {
+            "type": "text",
+            "content": "**Scenario A: Classroom Welcome Script**\n\n**Script 1:**\n```python\nprint(\"HELLO\")\nprint(\"WELCOME\")\nprint(\"START\")\n```\n\n**Script 2:**\n```python\nprint(\"Welcome to Python Programming!\")\nprint(\"Today we'll learn about scripts.\")\nprint(\"Let's get started!\")\n```"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "For a classroom welcome script, which script (1 or 2) is better? Rate it using the evaluation criteria (clarity, purpose, appropriateness, quality) and explain why:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Scenario B: Personal Reminder Script**\n\n**Script 3:**\n```python\nprint(\"Don't forget: Homework due tomorrow\")\nprint(\"Math: Pages 45-50\")\nprint(\"Science: Lab report\")\n```\n\n**Script 4:**\n```python\nprint(\"reminder\")\nprint(\"homework\")\nprint(\"math\")\n```"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "For a personal reminder script, which script (3 or 4) is better? Rate it and explain your reasoning:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: What Would You Recommend?**\n\nYou're helping a friend choose a script for a school presentation. They have two options:"
+          },
+          {
+            "type": "text",
+            "content": "**Option A:**\n```python\nprint(\"My Project\")\nprint(\"By: John\")\nprint(\"Topic: Python\")\n```\n\n**Option B:**\n```python\n# School Presentation Script\n# Created by: John\n# Topic: Introduction to Python\n\nprint(\"=== My Python Project ===\")\nprint(\"Created by: John\")\nprint(\"Topic: Introduction to Python Programming\")\nprint(\"Thank you for watching!\")\n```"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Write your recommendation (2-3 sentences) considering clarity, purpose, appropriateness, and quality. Which option would you recommend and why?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which output is clearer?",
+            "options": [
+              "Hi",
+              "Welcome to the Hackathon Club!"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! 'Welcome to the Hackathon Club!' is much clearer because it provides context and a complete message.",
+              "incorrect": "Think about which message gives more information and context to the reader."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "🚀 Challenge Activity: Code Review Scenario",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Real-World Scenario:**\n\nYou're helping a teacher choose a welcome script for the first day of a Python programming class. Three students submitted scripts, and you need to evaluate them and make a recommendation.\n\n**Context:** The script will run when students first open their computers. It should be welcoming, informative, and set a positive tone for the course."
+          },
+          {
+            "type": "text",
+            "content": "**Script A:**"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "print(\"Welcome to Python Programming!\\nToday we'll learn how to write your first script.\\nGet ready for an exciting journey into coding!\\nLet's start by understanding how Python reads and executes code.\\nRemember: every expert was once a beginner.\")",
+            "copyable": false
+          },
+          {
+            "type": "text",
+            "content": "**Script B:**"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "print(\"Welcome to Python Programming!\")\nprint(\"Today we'll learn how to write your first script.\")\nprint(\"Get ready for an exciting journey into coding!\")\nprint(\"Let's start by understanding how Python reads and executes code.\")\nprint(\"Remember: every expert was once a beginner.\")",
+            "copyable": false
+          },
+          {
+            "type": "text",
+            "content": "**Script C:**"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "print(\"WELCOME TO PYTHON PROGRAMMING!\")\nprint(\"TODAY WE'LL LEARN HOW TO WRITE YOUR FIRST SCRIPT.\")\nprint(\"GET READY FOR AN EXCITING JOURNEY INTO CODING!\")\nprint(\"LET'S START BY UNDERSTANDING HOW PYTHON READS AND EXECUTES CODE.\")\nprint(\"REMEMBER: EVERY EXPERT WAS ONCE A BEGINNER.\")",
+            "copyable": false
+          },
+          {
+            "type": "text",
+            "content": "**Your Task:**\n\nEvaluate each script using these criteria:\n1. **Clarity** — Is the message clear and easy to understand?\n2. **Purpose** — Does it achieve the goal of welcoming students?\n3. **Appropriateness** — Is it suitable for the context?\n4. **Quality** — Is the code well-written?\n\nThen make a recommendation."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Rate Script A (1-5) for clarity, purpose, appropriateness, and quality. Explain your ratings:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Rate Script B (1-5) for clarity, purpose, appropriateness, and quality. Explain your ratings:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Rate Script C (1-5) for clarity, purpose, appropriateness, and quality. Explain your ratings:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which script do you recommend and why? Give at least three specific reasons based on your evaluation criteria:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is one potential weakness of your recommended script, and how could it be improved?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "If the teacher wanted a script that balances being informative without being too long, which script would be best?",
+            "options": [
+              "Script A — short and simple",
+              "Script B — detailed and welcoming",
+              "Script C — repetitive but clear",
+              "None of them — they all have issues"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Script B provides good information without being overwhelming, and it's welcoming.",
+              "incorrect": "Think about which script provides useful information while remaining appropriate for a welcome message."
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "🔍 Reflection & Checkpoint",
+        "components": [
+          {
+            "type": "text",
+            "content": "Ask yourself:\n\n• Can I compare scripts and decide which is better?\n• Can I explain what makes code clear and useful?\n• Can I evaluate my own scripts for quality?\n• Can I use multiple criteria (clarity, purpose, appropriateness, quality) to judge scripts?\n\n✅ If yes → You've reached *Evaluating.*\n❌ If not → Review the core section and practice evaluating different scripts."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What makes a script 'good' in your opinion?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which evaluation criterion (clarity, purpose, appropriateness, quality, readability, or functionality) do you think is most important? Why?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How will you apply these evaluation criteria when you create your own scripts? What standards will you set for yourself?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "🔗 Transition Preview",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can now evaluate and judge script quality like an expert—you know what makes code clear, purposeful, and well-written. Next, you'll go one step further — **creating** your own original script from scratch. You'll combine everything you've learned to design, write, and test a script that solves a real problem or creates something useful.\n\n*(Coming next: Evaluating → Creating)*"
+          }
+        ]
+      }
+    },
+    "s6": {
+      "mindset": {
+        "heading": "🧠 Mindset Shift",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from *judging existing solutions* to *creating your own*.\n\nNow you'll **design**, **write**, and **demonstrate** your understanding by creating an original script.\n\nThe question is no longer \"Which way is best?\" It's \"How can I create something useful and clear?\""
+          }
+        ]
+      },
+      "recap": {
+        "heading": "🎓 Quick Recap",
+        "components": [
+          {
+            "type": "text",
+            "content": "You already know:\n• How to create and run scripts\n• How to troubleshoot problems\n• How to evaluate code quality\n\nNow, you'll combine all that knowledge into a creative, original script."
+          }
+        ]
+      },
+      "core": {
+        "heading": "🧩 Core Learning: Create Your Own Script",
+        "components": [
+          {
+            "type": "text",
+            "content": "**💡 Choose a Project Type:**\n\n**Personal Introduction Script**\nCreate a script that introduces you to others.\nExample Outcome: A script that prints your name, hobbies, favorite subject, and a fun fact\nComplexity: ⭐ Beginner\n\n**Greeting Card Generator**\nCreate a script that generates personalized greeting messages.\nExample Outcome: A script that asks for a name and occasion, then prints a custom greeting\nComplexity: ⭐ Beginner\n\n**Daily Reminder Script**\nCreate a script that displays daily reminders or motivational messages.\nExample Outcome: A script that prints your daily schedule, goals, or inspirational quotes\nComplexity: ⭐⭐ Intermediate\n\n**Calculator Helper**\nCreate a script that performs simple calculations and shows the steps.\nExample Outcome: A script that calculates and displays math problems with explanations\nComplexity: ⭐⭐ Intermediate\n\n**Story Generator**\nCreate a script that tells a short story or generates creative text.\nExample Outcome: A script that prints a multi-line story with your name as the main character\nComplexity: ⭐⭐ Intermediate\n\n**Classroom Helper**\nCreate a script that helps with school tasks (homework tracker, study tips, etc.).\nExample Outcome: A script that organizes study reminders or prints helpful information\nComplexity: ⭐⭐⭐ Advanced"
+          },
+          {
+            "type": "text",
+            "content": "**📝 Project Templates and Examples:**\n\n**Template 1: Personal Introduction (Beginner)**\nPerfect for your first original script. Simple but personal."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Personal Introduction Script\n# Replace the text with your own information\n\nprint(\"Hello! My name is [Your Name]\")\nprint(\"I'm a student at [Your School]\")\nprint(\"My favorite subject is [Subject]\")\nprint(\"In my free time, I like to [Activity]\")\nprint(\"One fun fact about me: [Fun Fact]\")",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Template 2: Greeting Card Generator (Beginner)**\nA script that creates personalized messages for different occasions."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Greeting Card Generator\n\nprint(\"=== Greeting Card Generator ===\")\nprint(\"\")\nprint(\"To: [Friend's Name]\")\nprint(\"\")\nprint(\"Happy [Occasion]!\")\nprint(\"\")\nprint(\"I hope you have an amazing day!\")\nprint(\"You're an awesome friend!\")\nprint(\"\")\nprint(\"From: [Your Name]\")",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Template 3: Daily Reminder (Intermediate)**\nA script that helps organize your day with reminders and goals."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Daily Reminder Script\n\nprint(\"=== Today's Reminders ===\")\nprint(\"\")\nprint(\"Morning Tasks:\")\nprint(\"  - Complete math homework\")\nprint(\"  - Review science notes\")\nprint(\"\")\nprint(\"Afternoon Tasks:\")\nprint(\"  - Practice Python coding\")\nprint(\"  - Read for 30 minutes\")\nprint(\"\")\nprint(\"Evening Tasks:\")\nprint(\"  - Prepare for tomorrow's test\")\nprint(\"  - Get 8 hours of sleep\")\nprint(\"\")\nprint(\"Today's Goal: Stay focused and learn something new!\")",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Template 4: Calculator Helper (Intermediate)**\nA script that performs calculations and explains the steps."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Calculator Helper Script\n\nprint(\"=== Math Calculator ===\")\nprint(\"\")\nprint(\"Problem: 15 + 27\")\nprint(\"Step 1: Add the ones place: 5 + 7 = 12\")\nprint(\"Step 2: Write 2, carry 1\")\nprint(\"Step 3: Add the tens place: 1 + 2 + 1 = 4\")\nprint(\"Step 4: Write 4\")\nprint(\"\")\nprint(\"Answer: 42\")",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Application Suggestions:**\n\n**For School:**\n• Create a script that prints your class schedule\n• Make a script that shows study tips for different subjects\n• Build a script that calculates your grade average\n• Design a script that generates quiz questions\n\n**For Personal Use:**\n• Create a script that prints daily affirmations or motivational quotes\n• Make a script that shows your favorite recipes or meal plans\n• Build a script that tracks your reading goals\n• Design a script that generates random writing prompts\n\n**For Fun:**\n• Create a script that tells jokes or riddles\n• Make a script that generates random story ideas\n• Build a script that creates ASCII art (text pictures)\n• Design a script that simulates a conversation\n\n**For Learning:**\n• Create a script that quizzes you on vocabulary words\n• Make a script that explains programming concepts\n• Build a script that shows examples of different Python features\n• Design a script that demonstrates math concepts visually"
+          },
+          {
+            "type": "text",
+            "content": "**🎯 Choosing Your Project:**\n\n**If you're a beginner:** Start with Personal Introduction or Greeting Card Generator. These are simple but let you be creative.\n\n**If you want a challenge:** Try Daily Reminder or Calculator Helper. These require more planning and organization.\n\n**If you want to be creative:** Try Story Generator or Classroom Helper. These let you combine programming with your interests.\n\n**Remember:** The best script is one that solves a problem YOU care about. What would make your life easier or more fun?"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "🧪 Guided Practice",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Plan Your Script**\n\nBefore you write your script, think through these questions:"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What will your script do? Describe its purpose and who it's for:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why will it help? What problem does it solve or what need does it meet?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What messages will it print? List them in order:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What approach will you use? (Simple print statements, variables, multiple messages, etc.)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Draft and Test**\n\n1. Write your script code\n2. Test it yourself (run it and check the output)\n3. Record any improvements needed"
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "I have a clear purpose for my script",
+              "I know what output I want",
+              "I've thought about the code structure",
+              "I've written the script code",
+              "I've tested it and it runs without errors",
+              "The output matches what I planned",
+              "I'm ready to share it or improve it"
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "🚀 Challenge Activity: Create Your Masterpiece",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Deliver a final product that demonstrates your complete mastery of Python scripting.**\n\n**Choose one of these project types:**\n\n• **A Personal Script** — A script that solves a real problem you have (organizing files, calculating something, daily reminder)\n• **A Teaching Script** — A script that helps someone else learn Python (with clear comments and helpful output)\n• **A Creative Script** — A script that tells a story, creates art with text, or does something fun\n• **A Utility Script** — A script that automates a task you do regularly\n\n**Each project must include:**\n1. A clear **purpose** (what problem does it solve?)\n2. **Working code** that runs without errors\n3. **Helpful output** that shows what the script does\n4. A short **reflection** explaining your design choices"
+          },
+          {
+            "type": "ordering",
+            "instructions": "Order these steps for creating and sharing your script:",
+            "items": [
+              "Write and test your script",
+              "Share your script with a peer for feedback",
+              "Peer runs your script and gives feedback",
+              "Revise your script based on feedback"
+            ],
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is the name of your script file?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Paste your script code here:",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What does your script output when you run it?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain your design choices: Why did you write your script this way? What decisions did you make?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Final Reflection",
+        "components": [
+          {
+            "type": "text",
+            "content": "Ask yourself:\n\n• Did I create something original that works?\n• Does my script show that I understand how Python scripts work?\n• Can I explain what my script does and why I wrote it this way?\n• Can I describe the design choices I made and why I made them?\n\n✅ If yes → You've reached the **Creating** stage — full mastery.\n🎉 You can now create, run, troubleshoot, and evaluate Python scripts!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What did you learn about how computers follow instructions?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your script and explain your design choices. Why did you write it this way? What decisions did you make?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What would you like to learn next about Python?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "🌟 You Did It!",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Congratulations!** You've completed the full Bloom's learning cycle for your first Python script.\n\nYou now think like both a learner and a creator — capable of writing scripts and helping others do the same.\n\n**Your Journey:**\n1. No Knowledge → Remembering ✓\n2. Remembering → Understanding ✓\n3. Understanding → Applying ✓\n4. Applying → Analyzing ✓\n5. Analyzing → Evaluating ✓\n6. Evaluating → Creating ✓\n\nYou reached Creating. You can now write Python scripts with confidence and expertise!"
+          }
+        ]
+      }
     }
   }
-  
+}
