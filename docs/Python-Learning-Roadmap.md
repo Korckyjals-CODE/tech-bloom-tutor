@@ -75,8 +75,8 @@ This document outlines the complete learning path for Python programming using t
 ## Proposed Guides (To Be Created)
 
 ### 4. Input and Operations
-**File:** `input-and-operations.json` (to be created)  
-**Status:** 📋 Planned  
+**File:** `input-and-operations.json`  
+**Status:** ✅ Complete  
 **Scope:** Main concept (interactive programs) + related sub-concepts (input, math operations, string operations)
 
 **Learning Objectives:**
@@ -187,7 +187,7 @@ This document outlines the complete learning path for Python programming using t
 ┌─────────────────────────────────────┐
 │  4. Input and Operations             │
 │     (Requires: Guides #1, #2, #3)   │
-│     📋 PLANNED                       │
+│     ✅ COMPLETE                      │
 └──────────────┬──────────────────────┘
                │
                ▼
@@ -280,7 +280,7 @@ After Guide #5 (Conditional Statements), potential next topics:
 | Installing Python | ✅ Complete | `python-install.json` | Done |
 | First Python Script | ✅ Complete | `first-python-script.json` | Done |
 | Variables & Data Types | ✅ Complete | `variables-and-basic-data-types.json` | Done |
-| Input and Operations | 📋 Planned | `input-and-operations.json` | TBD |
+| Input and Operations | ✅ Complete | `input-and-operations.json` | Done |
 | Conditional Statements | 📋 Planned | `conditional-statements.json` | TBD |
 
 ---
