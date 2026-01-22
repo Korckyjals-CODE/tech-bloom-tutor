@@ -1,0 +1,1668 @@
+{
+  "metadata": {
+    "title": "Input and Operations",
+    "subtitle": "Making programs interactive with user input and calculations",
+    "description": "Learn how to get user input, perform arithmetic and string operations, and create interactive programs like calculators and converters.",
+    "version": "1.0.0",
+    "author": "EduCafé",
+    "lastUpdated": "2026-01-20",
+    "storageKeyPrefix": "input_and_operations",
+    "instructorPasscode": "educafe-input-ops-101"
+  },
+  "branding": {
+    "brandName": "EduCafé — Python Guide",
+    "theme": {
+      "colorScheme": "dark",
+      "primaryColor": "#4aa3ff",
+      "secondaryColor": "#7bc67b"
+    }
+  },
+  "stages": [
+    {
+      "id": "s0",
+      "order": 0,
+      "title": "Stage 0 · Starting",
+      "shortTitle": "Starting",
+      "description": "Introduction to interactive programs"
+    },
+    {
+      "id": "s1",
+      "order": 1,
+      "title": "Stage 1 · Remembering",
+      "shortTitle": "Remembering",
+      "description": "Vocabulary for input and operations"
+    },
+    {
+      "id": "s2",
+      "order": 2,
+      "title": "Stage 2 · Understanding",
+      "shortTitle": "Understanding",
+      "description": "How input and operations work"
+    },
+    {
+      "id": "s3",
+      "order": 3,
+      "title": "Stage 3 · Applying",
+      "shortTitle": "Applying",
+      "description": "Creating interactive programs"
+    },
+    {
+      "id": "s4",
+      "order": 4,
+      "title": "Stage 4 · Analyzing",
+      "shortTitle": "Analyzing",
+      "description": "Troubleshooting input and operation errors"
+    },
+    {
+      "id": "s5",
+      "order": 5,
+      "title": "Stage 5 · Evaluating",
+      "shortTitle": "Evaluating",
+      "description": "Judging code quality"
+    },
+    {
+      "id": "s6",
+      "order": 6,
+      "title": "Stage 6 · Creating",
+      "shortTitle": "Creating",
+      "description": "Original interactive projects"
+    }
+  ],
+  "sections": [
+    {
+      "id": "mindset",
+      "displayName": "Mindset",
+      "order": 0,
+      "description": "Prepare mentally"
+    },
+    {
+      "id": "recap",
+      "displayName": "Recap",
+      "order": 1,
+      "description": "Connect to prior learning"
+    },
+    {
+      "id": "core",
+      "displayName": "Core",
+      "order": 2,
+      "description": "Main content"
+    },
+    {
+      "id": "guidedPractice",
+      "displayName": "Guided Practice",
+      "order": 3,
+      "description": "Practice with help"
+    },
+    {
+      "id": "challenge",
+      "displayName": "Challenge",
+      "order": 4,
+      "description": "Independent work"
+    },
+    {
+      "id": "reflection",
+      "displayName": "Reflection",
+      "order": 5,
+      "description": "Think about learning"
+    },
+    {
+      "id": "transition",
+      "displayName": "Transition",
+      "order": 6,
+      "description": "Move forward"
+    }
+  ],
+  "content": {
+    "s0": {
+      "mindset": {
+        "heading": "From Static to Interactive",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're about to learn how to make your programs **interactive** — programs that ask questions, get answers, and respond to users. This transforms your code from static scripts into dynamic tools that can adapt to different inputs."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Building on Variables",
+        "components": [
+          {
+            "type": "text",
+            "content": "You already know how to store data in variables. Now you'll learn to get that data from users and perform operations on it to create useful, interactive programs."
+          }
+        ]
+      },
+      "core": {
+        "heading": "What Are Interactive Programs?",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Interactive programs** are programs that communicate with users. Instead of always doing the same thing, they ask for input, process it, and respond with output. This makes programs useful for different situations and different users."
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Examples of Interactive Programs:**\n\n**Personal Use:**\n• **Calculator apps** — You enter numbers, they calculate results\n• **Unit converters** — You enter a value in one unit, they convert it to another\n• **Personal information forms** — You enter your details, they display a formatted profile\n• **Quiz programs** — You answer questions, they tell you your score\n• **Budget trackers** — You enter expenses, they calculate totals\n\n**School Use:**\n• **Grade calculators** — Enter grades, get averages\n• **Study planners** — Enter subjects and time, get a schedule\n• **Math practice tools** — Enter answers, get feedback\n• **Attendance trackers** — Enter attendance data, get statistics\n\n**Professional Use:**\n• **Point-of-sale systems** — Enter items, calculate totals\n• **Inventory systems** — Enter quantities, track stock\n• **Customer information systems** — Enter customer data, generate reports\n• **Data entry forms** — Enter information, process and store it"
+          },
+          {
+            "type": "text",
+            "content": "**Visual Metaphors for Interactive Programs:**\n\n**Like a Conversation:**\nInteractive programs are like having a conversation. The program asks a question (prompt), you answer (input), and the program responds (output).\n\n**Like a Calculator:**\nJust like a physical calculator, you press buttons (enter input), and it shows results (output). Your program does the same with code.\n\n**Like a Form:**\nInteractive programs are like filling out a form. You provide information (input), and the program processes it (operations) and gives you something back (output).\n\n**Like a Recipe Helper:**\nWhen cooking, you might ask \"How many cups?\" and get an answer. Interactive programs work the same way — they ask, you answer, they help."
+          },
+          {
+            "type": "text",
+            "content": "**What Makes Interactive Programs Powerful:**\n\nInteractive programs unlock new possibilities:\n- **Flexibility** — Same program works with different inputs\n- **User engagement** — Users feel involved and in control\n- **Practical utility** — Solve real problems that need user data\n- **Reusability** — One program serves many users and situations\n- **Learning tool** — Great for practicing with different values\n- **Professional applications** — Most real-world software is interactive"
+          },
+          {
+            "type": "text",
+            "content": "**Connection to Prior Knowledge:**\n\nInteractive programs build on what you already know:\n- **Variables** — You'll store user input in variables\n- **Data types** — You'll work with the same types (int, float, str, bool)\n- **Print statements** — You'll use print() to show results\n- **Real-world forms** — Like filling out online forms or surveys\n- **Math operations** — Like using a calculator, but programmable\n- **Conversations** — Like asking and answering questions"
+          },
+          {
+            "type": "text",
+            "content": "**The Three Key Components:**\n\n1. **Input** — Getting data from users using `input()`\n2. **Operations** — Performing calculations and manipulations (math and string operations)\n3. **Output** — Showing results using `print()`\n\nTogether, these create the interactive loop: Ask → Process → Respond"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Simple interactive program\nname = input(\"What's your name? \")\nprint(f\"Hello, {name}!\")\n\n# When you run this:\n# What's your name? Alex\n# Hello, Alex!",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Exploring Interactive Programs",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "What makes a program interactive?",
+            "options": [
+              "It only prints text",
+              "It gets input from users and responds",
+              "It uses variables",
+              "It runs without errors"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Interactive programs get input from users and respond to it.",
+              "incorrect": "Interactive programs need to communicate with users through input and output."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Think of three real-world examples of interactive programs you use regularly. What makes them interactive?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Code Comparison:**\n\n**Static program (always the same):**\n```python\nname = \"Alex\"\nage = 15\nprint(f\"{name} is {age} years old\")\n```\n\n**Interactive program (adapts to input):**\n```python\nname = input(\"What's your name? \")\nage = input(\"How old are you? \")\nprint(f\"{name} is {age} years old\")\n```\n\n**Question:** What's the key difference? How does the interactive version make the program more useful?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain why interactive programs are more useful than static programs that always do the same thing.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which scenario best demonstrates the power of interactive programs?",
+            "options": [
+              "A program that always prints \"Hello\"",
+              "A calculator that asks for two numbers and adds them",
+              "A program with hardcoded variables",
+              "A script that only uses print()"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! A calculator that gets input and performs operations is a great example of an interactive program.",
+              "incorrect": "Interactive programs need to get input from users and process it."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Think About Interactivity",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe an interactive program you'd like to create. What would it ask users? What would it do with their input?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What would make a program more useful: getting input from users or using fixed values?",
+            "options": [
+              "Fixed values are always better",
+              "Getting input makes programs more flexible and useful",
+              "It doesn't matter",
+              "Input is only for advanced programmers"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Getting input makes programs flexible and useful for different users and situations.",
+              "incorrect": "User input makes programs adaptable and more practical."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Think about a calculator app on your phone. How is it interactive? What input does it get? What operations does it perform?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Reflection",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I understand what interactive programs are",
+              "I can identify examples of interactive programs",
+              "I see how input, operations, and output work together",
+              "I'm ready to learn about input() and operations"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What excites you most about creating interactive programs? What would you like to build?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What are you most curious about regarding input and operations? What questions do you have?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How do interactive programs relate to things you already know (variables, data types, print statements)?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "On a scale of 1-10, how ready do you feel to learn about input() and operations? What would make it a 10?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next Step",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you'll learn the vocabulary and building blocks: `input()`, arithmetic operators, and string operations."
+          },
+          {
+            "type": "text",
+            "content": "Great start! You now understand what makes programs interactive and why they're powerful."
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nIn the next stage, you'll learn the key terms and concepts:\n\n• **input()** — The function that gets user input\n• **Arithmetic operators** — +, -, *, /, //, %, ** for math\n• **String operations** — Concatenation and methods like .upper(), .lower(), .strip()\n• **Type conversion** — Converting input strings to numbers (int(), float())\n• **Order of operations** — PEMDAS for math expressions\n\nThese are the tools you'll use to build interactive programs!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Understanding what interactive programs are helps you see why these tools matter. Now you'll learn the specific functions and operators that make interactivity possible."
+          }
+        ]
+      }
+    },
+    "s1": {
+      "mindset": {
+        "heading": "Learning the Language",
+        "components": [
+          {
+            "type": "text",
+            "content": "Now you'll learn the vocabulary and building blocks for interactive programs: input functions, operators, and string methods."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "From Concept to Tools",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know what interactive programs are. Now let's learn the specific tools and terms you'll use to build them."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Key Vocabulary for Input and Operations",
+        "components": [
+          {
+            "type": "text",
+            "content": "**input()** — A built-in Python function that gets text from the user.\n\n**Examples:**\n• `name = input(\"What's your name? \")` — Gets the user's name\n• `age = input(\"How old are you? \")` — Gets the user's age\n• `number = input(\"Enter a number: \")` — Gets a number (as text)\n\n**When it matters:** Use input() whenever you need to get information from the user. Always returns a string, even if the user types a number.\n\n**Connection:** input() is how you make programs interactive — it's the \"ask\" part of ask → process → respond."
+          },
+          {
+            "type": "text",
+            "content": "**Prompt** — The message shown to the user when asking for input.\n\n**Examples:**\n• `\"What's your name? \"` — A prompt asking for a name\n• `\"Enter your age: \"` — A prompt asking for age\n• `\"Type a number: \"` — A prompt asking for a number\n\n**When it matters:** Good prompts tell users exactly what to enter. Always include a space at the end for readability.\n\n**Connection:** Prompts guide users on what to enter, making your program user-friendly."
+          },
+          {
+            "type": "text",
+            "content": "**Type Conversion** — Converting data from one type to another.\n\n**Examples:**\n• `int(\"15\")` → `15` — Converts string \"15\" to integer 15\n• `float(\"3.14\")` → `3.14` — Converts string \"3.14\" to float 3.14\n• `str(42)` → `\"42\"` — Converts integer 42 to string \"42\"\n\n**When it matters:** input() always returns strings. Use int() or float() to convert to numbers for math operations.\n\n**Connection:** Type conversion bridges the gap between input (always strings) and operations (often need numbers)."
+          },
+          {
+            "type": "text",
+            "content": "**Arithmetic Operators** — Symbols that perform mathematical operations.\n\n**The Seven Operators:**\n• `+` — Addition: `5 + 3` = `8`\n• `-` — Subtraction: `10 - 4` = `6`\n• `*` — Multiplication: `3 * 4` = `12`\n• `/` — Division: `15 / 3` = `5.0` (always returns float)\n• `//` — Floor division: `15 // 4` = `3` (drops decimal)\n• `%` — Modulo (remainder): `15 % 4` = `3`\n• `**` — Exponentiation (power): `2 ** 3` = `8`\n\n**When it matters:** Use these for all mathematical calculations in your programs.\n\n**Connection:** Arithmetic operators are the \"process\" part of interactive programs — they perform calculations on user input."
+          },
+          {
+            "type": "text",
+            "content": "**PEMDAS** — The order of operations for math expressions.\n\n**Order:**\n1. **P**arentheses — `()`\n2. **E**xponents — `**`\n3. **M**ultiplication and **D**ivision — `*`, `/`, `//`, `%` (left to right)\n4. **A**ddition and **S**ubtraction — `+`, `-` (left to right)\n\n**Examples:**\n• `2 + 3 * 4` = `14` (multiplication first)\n• `(2 + 3) * 4` = `20` (parentheses first)\n• `2 ** 3 + 1` = `9` (exponent first)\n\n**When it matters:** Python follows PEMDAS automatically. Understanding it helps you write correct expressions.\n\n**Connection:** PEMDAS ensures math expressions are evaluated correctly, just like in math class."
+          },
+          {
+            "type": "text",
+            "content": "**String Concatenation** — Combining strings using the `+` operator.\n\n**Examples:**\n• `\"Hello\" + \" \" + \"World\"` = `\"Hello World\"`\n• `name + \" is \" + str(age) + \" years old\"` — Combines text and variables\n• `\"Score: \" + str(score)` — Combines label with number (converted to string)\n\n**When it matters:** Use concatenation to build messages from multiple pieces of text.\n\n**Connection:** String concatenation lets you create dynamic messages using user input and variables."
+          },
+          {
+            "type": "text",
+            "content": "**String Methods** — Built-in functions that operate on strings.\n\n**Common Methods:**\n• `.upper()` — Converts to uppercase: `\"hello\".upper()` = `\"HELLO\"`\n• `.lower()` — Converts to lowercase: `\"HELLO\".lower()` = `\"hello\"`\n• `.strip()` — Removes whitespace: `\"  hello  \".strip()` = `\"hello\"`\n• `.title()` — Capitalizes first letter of each word: `\"hello world\".title()` = `\"Hello World\"`\n• `.capitalize()` — Capitalizes first letter: `\"hello\".capitalize()` = `\"Hello\"`\n\n**When it matters:** Use string methods to format and clean user input.\n\n**Connection:** String methods help you process and format the text input() returns."
+          },
+          {
+            "type": "text",
+            "content": "**Expression** — A combination of values, variables, and operators that Python evaluates.\n\n**Examples:**\n• `5 + 3` — A simple expression\n• `age + 1` — An expression with a variable\n• `(x + y) * 2` — A complex expression with parentheses\n• `name.upper()` — An expression using a method\n\n**When it matters:** Expressions are how you perform operations and calculations.\n\n**Connection:** Expressions combine input, operations, and variables to produce results."
+          },
+          {
+            "type": "text",
+            "content": "**Interactive Loop** — The pattern of ask → process → respond in interactive programs.\n\n**Pattern:**\n1. **Ask** — Use input() to get user data\n2. **Process** — Perform operations (math, string manipulation)\n3. **Respond** — Use print() to show results\n\n**When it matters:** This pattern is the foundation of all interactive programs.\n\n**Connection:** The interactive loop connects input, operations, and output into a complete program."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example using key vocabulary:\nname = input(\"What's your name? \")  # input() with prompt\nage_str = input(\"How old are you? \")  # input() returns string\nage = int(age_str)  # Type conversion: string to int\n\n# Arithmetic operations\nnext_age = age + 1  # Addition\nbirth_year = 2024 - age  # Subtraction\n\n# String operations\ngreeting = \"Hello, \" + name.upper() + \"!\"  # Concatenation + method\nmessage = f\"You'll be {next_age} next year.\"  # f-string (formatted string)\n\nprint(greeting)\nprint(message)",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Match the Terms",
+        "components": [
+          {
+            "type": "matching",
+            "leftColumn": [
+              "input()",
+              "int()",
+              "+",
+              "/",
+              "//",
+              "%",
+              "**",
+              ".upper()",
+              ".strip()",
+              "PEMDAS"
+            ],
+            "rightColumn": [
+              {
+                "definition": "Function that gets user input (always returns string)",
+                "matchesWith": "input()"
+              },
+              {
+                "definition": "Converts string to integer",
+                "matchesWith": "int()"
+              },
+              {
+                "definition": "Addition operator (also concatenates strings)",
+                "matchesWith": "+"
+              },
+              {
+                "definition": "Division operator (returns float)",
+                "matchesWith": "/"
+              },
+              {
+                "definition": "Floor division (drops decimal)",
+                "matchesWith": "//"
+              },
+              {
+                "definition": "Modulo operator (returns remainder)",
+                "matchesWith": "%"
+              },
+              {
+                "definition": "Exponentiation operator (power)",
+                "matchesWith": "**"
+              },
+              {
+                "definition": "String method that converts to uppercase",
+                "matchesWith": ".upper()"
+              },
+              {
+                "definition": "String method that removes whitespace",
+                "matchesWith": ".strip()"
+              },
+              {
+                "definition": "Order of operations (Parentheses, Exponents, etc.)",
+                "matchesWith": "PEMDAS"
+              }
+            ]
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What does input() always return?",
+            "options": [
+              "An integer",
+              "A float",
+              "A string",
+              "A boolean"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! input() always returns a string, even if the user types a number.",
+              "incorrect": "input() always returns a string. You need to convert it to int or float for numbers."
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which operator is used for exponentiation (raising to a power)?",
+            "options": [
+              "^",
+              "**",
+              "exp",
+              "pow"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! ** is the exponentiation operator in Python.",
+              "incorrect": "In Python, ** is used for exponentiation (e.g., 2 ** 3 = 8)."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Vocabulary Recognition",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What is the difference between / and // operators? Give an example.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Creative Visualization Task:**\n\nCreate a diagram showing the interactive loop (ask → process → respond). Include:\n- The three main steps\n- Examples of functions/operators used in each step\n- How data flows through the loop\n\nYou can draw this or describe it in text!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why do you need to convert input() to int() or float() before doing math? What happens if you don't?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What does PEMDAS stand for? Why is it important?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": ["Parentheses", "Exponents", "Multiplication", "Division", "Addition", "Subtraction"]
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Check Yourself",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can name the key functions and operators",
+              "I understand what input() does",
+              "I know the arithmetic operators",
+              "I understand why type conversion is needed"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which term was easiest for you to remember? Which was hardest? Why?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Can you recall the seven arithmetic operators without looking back? List them.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How do all these terms work together to create interactive programs?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What connection do you see between learning these terms and understanding how interactive programs work?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Understanding Comes Next",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you'll learn how input() and operations work behind the scenes."
+          },
+          {
+            "type": "text",
+            "content": "Excellent work learning the vocabulary! You now know the building blocks."
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nNext, you'll dive deeper into **how input() and operations work**:\n\n• The step-by-step process when input() is called\n• How Python evaluates expressions with PEMDAS\n• What happens when you convert types\n• How string methods transform text\n• The complete flow from input to output\n\nUnderstanding these processes will help you write better interactive programs!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Now that you know the terms, you'll learn how they work together. This understanding will help you debug and improve your programs."
+          }
+        ]
+      }
+    },
+    "s2": {
+      "mindset": {
+        "heading": "Understanding What Happens",
+        "components": [
+          {
+            "type": "text",
+            "content": "Now we'll open the black box and see how input() and operations work step by step."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Vocabulary Review",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know the terms. Now let's understand how they work together."
+          }
+        ]
+      },
+      "core": {
+        "heading": "How Input and Operations Work",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Step-by-Step: How input() Works**\n\nWhen you write `name = input(\"What's your name? \")`, Python goes through this process:\n\n**Step 1:** Python displays the prompt (\"What's your name? \") to the user\n**Step 2:** Python waits for the user to type something and press Enter\n**Step 3:** Python reads everything the user typed (as text)\n**Step 4:** Python stores that text in a string variable\n**Step 5:** Python assigns that string to the variable name\n**Step 6:** The program continues with the next line\n\n**Key insight:** input() always returns a string, even if the user types \"15\" — it's the string \"15\", not the number 15."
+          },
+          {
+            "type": "text",
+            "content": "**Why Each Step Matters:**\n\n• **Displaying the prompt** — Tells users what to enter, making programs user-friendly\n• **Waiting for input** — The program pauses, giving users time to respond\n• **Reading as text** — Everything from input() is text first, even numbers\n• **Storing as string** — This is why type conversion is necessary for math\n• **Continuing execution** — After input, the program uses the value in calculations"
+          },
+          {
+            "type": "text",
+            "content": "**What Happens Internally with Type Conversion:**\n\nWhen you write `age = int(input(\"How old are you? \"))`:\n\n**Step 1:** input() gets the string (e.g., \"15\")\n**Step 2:** int() tries to convert the string to an integer\n**Step 3:** If the string contains only digits, conversion succeeds (\"15\" → 15)\n**Step 4:** If the string contains non-digits, conversion fails (ValueError)\n**Step 5:** The integer is stored in the variable\n**Step 6:** Now you can do math with it\n\n**Behind the scenes:** Python checks each character to see if it's a valid digit, then constructs the integer value."
+          },
+          {
+            "type": "text",
+            "content": "**How Python Evaluates Expressions with PEMDAS:**\n\nWhen Python sees `2 + 3 * 4`:\n\n**Step 1:** Python scans the entire expression\n**Step 2:** Python identifies all operators and values\n**Step 3:** Python applies PEMDAS rules:\n  - Looks for parentheses first (none here)\n  - Looks for exponents (none here)\n  - Looks for multiplication/division: finds `3 * 4`\n  - Evaluates `3 * 4` = `12`\n  - Expression becomes `2 + 12`\n**Step 4:** Python evaluates addition/subtraction: `2 + 12` = `14`\n**Step 5:** Python returns the final result: `14`\n\n**Why this matters:** Understanding PEMDAS helps you write expressions that evaluate correctly."
+          },
+          {
+            "type": "text",
+            "content": "**How String Methods Work:**\n\nWhen you write `name.upper()`:\n\n**Step 1:** Python looks at the string stored in `name` (e.g., \"alex\")\n**Step 2:** Python calls the `.upper()` method on that string\n**Step 3:** The method creates a new string with all uppercase letters\n**Step 4:** The original string is unchanged (strings are immutable)\n**Step 5:** The new uppercase string is returned\n**Step 6:** You can use it immediately or store it in a variable\n\n**Key insight:** String methods don't change the original string — they create a new one."
+          },
+          {
+            "type": "text",
+            "content": "**How Components Interact:**\n\nThe complete flow from input to output:\n\n```python\nname = input(\"What's your name? \")  # Step 1: Get input\nname = name.strip()                  # Step 2: Clean input\nname = name.title()                  # Step 3: Format input\nage_str = input(\"How old are you? \") # Step 4: Get another input\nage = int(age_str)                   # Step 5: Convert to number\nnext_age = age + 1                    # Step 6: Perform operation\nmessage = f\"{name} will be {next_age} next year.\"  # Step 7: Build message\nprint(message)                        # Step 8: Display output\n```\n\n**The flow:** Input → Process → Output. Each step transforms the data toward the final result."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example showing the complete flow:\n\n# Step 1: Get input (returns string)\nuser_input = input(\"Enter a number: \")\nprint(f\"Type after input(): {type(user_input)}\")\nprint(f\"Value: {user_input}\")\n\n# Step 2: Convert to int\nnumber = int(user_input)\nprint(f\"Type after int(): {type(number)}\")\nprint(f\"Value: {number}\")\n\n# Step 3: Perform operations\nresult = number * 2 + 10\nprint(f\"Result of {number} * 2 + 10 = {result}\")\n\n# Step 4: Convert back to string for display\noutput = f\"The result is {result}\"\nprint(output)",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Visual/Conceptual Flow Diagram:**\n\nHere's the complete flow when a user interacts with a program:\n\n1. **Program displays prompt** → \"Enter your age: \"\n2. **User types and presses Enter** → \"15\"\n3. **input() receives the text** → Returns string \"15\"\n4. **Type conversion happens** → int(\"15\") converts to integer 15\n5. **Operations are performed** → age + 1 = 16\n6. **Result is formatted** → f-string creates message\n7. **Output is displayed** → print() shows the result\n\nThis all happens in sequence, with each step building on the previous one."
+          },
+          {
+            "type": "text",
+            "content": "**Key Ideas:**\n\n**Idea 1: input() always returns strings**\n\nEven if the user types a number, input() gives you text:\n```python\nvalue = input(\"Enter a number: \")  # User types: 5\n# value is the string \"5\", not the number 5\n# You need int(value) or float(value) to convert it\n```\n\n**Idea 2: Operations follow PEMDAS automatically**\n\nPython doesn't need you to remember PEMDAS — it applies it automatically:\n```python\nresult = 2 + 3 * 4  # Python calculates 3*4 first, then adds 2\n# Result: 14, not 20\n```\n\n**Idea 3: String methods create new strings**\n\nOriginal strings never change:\n```python\nname = \"alex\"\nname.upper()  # Returns \"ALEX\" but name is still \"alex\"\nname = name.upper()  # Now name is \"ALEX\"\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Why This Understanding Matters:**\n\nUnderstanding how input() and operations work helps you:\n\n• **Debug faster** — Know why type errors occur\n• **Write better code** — Understand when conversion is needed\n• **Predict behavior** — Know what expressions will evaluate to\n• **Fix errors** — Understand what went wrong and why\n• **Optimize code** — Know the order of operations for efficiency\n\nThis \"behind the scenes\" knowledge makes you a better programmer!"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Watch the flow in action:\n\n# Input phase\nprint(\"=== INPUT PHASE ===\")\nname = input(\"Enter your name: \")\nprint(f\"Received: '{name}' (type: {type(name)})\")\n\n# Processing phase\nprint(\"\\n=== PROCESSING PHASE ===\")\nname_cleaned = name.strip()\nname_formatted = name_cleaned.title()\nprint(f\"After strip(): '{name_cleaned}'\")\nprint(f\"After title(): '{name_formatted}'\")\n\n# Operations phase\nage_str = input(\"Enter your age: \")\nage = int(age_str)\nnext_age = age + 1\nprint(f\"\\nAge: {age}, Next year: {next_age}\")\n\n# Output phase\nprint(\"\\n=== OUTPUT PHASE ===\")\nmessage = f\"Hello, {name_formatted}! You'll be {next_age} next year.\"\nprint(message)",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Predict the Flow",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "What type does input() always return?",
+            "options": [
+              "int",
+              "float",
+              "str",
+              "It depends on what the user types"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! input() always returns a string, even if the user types a number.",
+              "incorrect": "input() always returns a string. You must convert it for numbers."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain what happens step-by-step when Python evaluates: `2 + 3 * 4`. Show the PEMDAS order.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What happens to the original string when you call .upper() on it?",
+            "options": [
+              "The original string is changed to uppercase",
+              "A new uppercase string is created, original unchanged",
+              "Both the original and a copy are changed",
+              "Nothing happens"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! String methods create new strings; the original is unchanged.",
+              "incorrect": "String methods create new strings. The original string remains unchanged."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Comparison Activity:**\n\nCompare these two code snippets:\n\n**Code A:**\n```python\nage = input(\"How old are you? \")\nnext_age = age + 1\n```\n\n**Code B:**\n```python\nage = int(input(\"How old are you? \"))\nnext_age = age + 1\n```\n\n**Question:** What's the difference? Which one will work and why?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "A student wrote `result = 10 / 2 + 3`. What will Python calculate? Show the PEMDAS steps.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What happens if a user types \"abc\" when the program expects `int(input(\"Enter a number: \"))`? Explain the error.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Explain the Process",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does input() return a string even when the user types a number?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Creative Diagram/Flowchart Task:**\n\nCreate a flowchart showing the complete flow from user input to program output. Include:\n- User types input\n- input() receives it\n- Type conversion (if needed)\n- Operations performed\n- Output displayed\n\nUse arrows, boxes, and labels to show each step!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain what happens when Python evaluates `(2 + 3) * 4` vs `2 + 3 * 4`. Why are the results different?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe what happens when you call `name.strip()` on a string. Does it change the original string? Why or why not?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Reflection",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I understand how input() works step-by-step",
+              "I can explain PEMDAS and order of operations",
+              "I understand why type conversion is necessary",
+              "I know how string methods work"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does understanding how input() and operations work help you write better programs?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most surprising thing you learned about how Python processes input and operations?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does understanding the flow from input to output connect to what you'll do next (creating interactive programs)?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Time to Do It Yourself",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you'll create your own interactive programs step by step."
+          },
+          {
+            "type": "text",
+            "content": "Wonderful! You now understand how input and operations work. This is powerful knowledge!"
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nNow it's time to **apply** what you've learned! In the next stage, you'll:\n\n• Create your first interactive program step-by-step\n• Get user input and convert types\n• Perform calculations and string operations\n• Display formatted output\n• Learn common pitfalls and how to avoid them\n\nYou'll go from understanding to doing — the best way to learn!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Understanding how input and operations work prepares you to create programs correctly. Now you'll put that knowledge into practice."
+          }
+        ]
+      }
+    },
+    "s3": {
+      "mindset": {
+        "heading": "Hands On",
+        "components": [
+          {
+            "type": "text",
+            "content": "Now you'll actively create interactive programs that get input, perform operations, and display results."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Before You Start",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know how input() and operations work. Now let's build interactive programs."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Creating Interactive Programs",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Preparation Checklist**\n\nBefore you start coding, make sure you have:\n\n✓ **Python installed** — You should be able to run `python --version` in your terminal\n✓ **Text editor ready** — Any editor works (VS Code, Notepad++, Sublime, or even Notepad)\n✓ **Terminal/Command Prompt open** — You'll need this to run your script\n✓ **Folder location chosen** — Decide where you'll save your Python files\n✓ **Understanding of variables** — You should know how to create and use variables\n✓ **Basic Python knowledge** — You should be able to create and run simple scripts\n\nOnce you've checked these off, you're ready to create interactive programs!"
+          },
+          {
+            "type": "text",
+            "content": "**Step-by-Step Guide: Creating Your First Interactive Program**\n\n**Step 1:** Open your text editor and create a new file\n\n**Step 2:** Save it as `interactive_program.py` (the `.py` extension is important)\n\n**Step 3:** Write code to get user input:\n```python\nname = input(\"What's your name? \")\n```\n\n**Step 4:** Add code to process the input (optional cleaning/formatting):\n```python\nname = name.strip().title()\n```\n\n**Step 5:** Get more input if needed:\n```python\nage_str = input(\"How old are you? \")\n```\n\n**Step 6:** Convert input to the correct type:\n```python\nage = int(age_str)\n```\n\n**Step 7:** Perform operations:\n```python\nnext_age = age + 1\nbirth_year = 2024 - age\n```\n\n**Step 8:** Create output message:\n```python\nmessage = f\"Hello, {name}! You'll be {next_age} next year.\"\n```\n\n**Step 9:** Display the result:\n```python\nprint(message)\n```\n\n**Step 10:** Save the file (Ctrl+S or Cmd+S)\n\n**Step 11:** Run the program in terminal:\n```bash\npython interactive_program.py\n```\n\n**Step 12:** Test with different inputs to verify it works"
+          },
+          {
+            "type": "text",
+            "content": "**Visual Descriptions:**\n\n**File Structure:**\n```\nC:\\Code\\python-practice\\\n  └── interactive_program.py  ← Your script\n```\n\n**Terminal Interaction:**\n```\nC:\\Code\\python-practice> python interactive_program.py\nWhat's your name? Alex\nHow old are you? 15\nHello, Alex! You'll be 16 next year.\n```\n\n**Code Structure:**\n```python\n# 1. Get input\nname = input(\"What's your name? \")\n\n# 2. Process input\nname = name.strip().title()\n\n# 3. Get and convert input\nage = int(input(\"How old are you? \"))\n\n# 4. Perform operations\nnext_age = age + 1\n\n# 5. Display output\nprint(f\"Hello, {name}! You'll be {next_age} next year.\")\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Common Pitfalls and How to Avoid Them:**\n\n1. **Forgetting to convert input() for math** — `age = input(\"Age? \")` then `age + 1` causes TypeError. Fix: Use `int(input(\"Age? \"))`\n\n2. **Trying to convert non-numeric input** — `int(\"abc\")` causes ValueError. Fix: Validate input or use try/except (advanced)\n\n3. **Forgetting the prompt space** — `input(\"Name?\")` looks cramped. Fix: Add space: `input(\"Name? \")`\n\n4. **Not handling empty input** — User presses Enter without typing. Fix: Use `.strip()` and check if empty\n\n5. **Wrong operator precedence** — `2 + 3 * 4` might not give expected result. Fix: Use parentheses: `(2 + 3) * 4`\n\n6. **String concatenation with numbers** — `\"Age: \" + age` causes TypeError if age is int. Fix: Convert: `\"Age: \" + str(age)` or use f-strings\n\n7. **Forgetting to save before running** — Changes don't appear. Fix: Always save (Ctrl+S) before running\n\n8. **Not testing with different inputs** — Program might work for one case but fail for others. Fix: Test with various inputs\n\n9. **Using wrong division operator** — `/` returns float, `//` returns int. Fix: Choose the right one for your needs\n\n10. **Not cleaning string input** — User might type extra spaces. Fix: Use `.strip()` on string inputs"
+          },
+          {
+            "type": "text",
+            "content": "**File Location Guidance:**\n\n**Where to Save:**\n• Create a dedicated folder for your Python practice\n• Save all interactive programs in this folder\n• Use descriptive filenames: `calculator.py`, `converter.py`, `quiz.py`\n\n**How to Navigate:**\n• In Windows: `cd C:\\path\\to\\your\\folder`\n• In Mac/Linux: `cd ~/path/to/your/folder`\n• Use `dir` (Windows) or `ls` (Mac/Linux) to see files\n\n**Running Programs:**\n• Make sure you're in the correct directory\n• Type `python filename.py` and press Enter\n• The program will wait for your input when it reaches input()"
+          },
+          {
+            "type": "text",
+            "content": "**Verification Steps:**\n\n**How to Confirm Success:**\n\n1. **Program runs without errors** — No error messages appear\n2. **Prompt displays correctly** — You see the prompt and can type\n3. **Input is received** — Program continues after you press Enter\n4. **Operations work correctly** — Math and string operations produce expected results\n5. **Output is displayed** — Results are shown clearly\n6. **Test with different inputs** — Try various values to ensure it works\n\n**Multiple verification methods:**\n- Run the program and interact with it\n- Check that prompts are clear\n- Verify calculations are correct\n- Test edge cases (empty input, very large numbers, etc.)\n- Check output formatting"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 1: Simple interactive program\nname = input(\"What's your name? \")\nprint(f\"Hello, {name}!\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 2: Interactive program with type conversion\nname = input(\"What's your name? \")\nname = name.strip().title()\n\nage_str = input(\"How old are you? \")\nage = int(age_str)\n\nnext_age = age + 1\nprint(f\"Hello, {name}! You'll be {next_age} next year.\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 3: Simple calculator\nprint(\"=== Simple Calculator ===\")\nnum1 = float(input(\"Enter first number: \"))\nnum2 = float(input(\"Enter second number: \"))\n\nsum_result = num1 + num2\nproduct = num1 * num2\n\nprint(f\"\\n{num1} + {num2} = {sum_result}\")\nprint(f\"{num1} * {num2} = {product}\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 4: Unit converter\nprint(\"=== Miles to Kilometers Converter ===\")\nmiles = float(input(\"Enter distance in miles: \"))\n\n# Conversion factor\nkm_per_mile = 1.60934\nkilometers = miles * km_per_mile\n\nprint(f\"\\n{miles} miles = {kilometers:.2f} kilometers\")",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Try It",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Preparation Checklist:**\n\nBefore you start, make sure you have:\n\n□ Python installed and working\n□ Text editor open\n□ Terminal/command prompt ready\n□ Folder location chosen for your script\n□ Ready to save your file with .py extension\n□ Understanding of variables and basic Python"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Create a simple program that asks for a name and greets the user. Paste your code here.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "After running your program, paste the output here to verify it worked correctly.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What's the most common error when first using input() for math?",
+            "options": [
+              "Forgetting to save the file",
+              "Not converting input() to int() or float()",
+              "Using wrong variable names",
+              "Forgetting print()"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! input() returns a string, so you need to convert it for math operations.",
+              "incorrect": "Remember: input() always returns a string. Convert it with int() or float() for math."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Troubleshooting Guide:**\n\nIf your program doesn't work:\n1. Check that you saved the file (Ctrl+S or Cmd+S)\n2. Verify you're in the correct directory in terminal\n3. Make sure you converted input() to int() or float() for math\n4. Check for typos in variable names\n5. Verify the file has a .py extension\n6. Test with simple inputs first"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What happens if you try to do `age + 1` where age came from `input()` without conversion?",
+            "options": [
+              "It works fine",
+              "TypeError: can only concatenate str",
+              "ValueError: invalid literal",
+              "Nothing happens"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! You'll get a TypeError because you can't add a number to a string.",
+              "incorrect": "input() returns a string, so you need to convert it first with int() or float()."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Build an Interactive Program",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Create a simple calculator that asks for two numbers and displays their sum, difference, product, and quotient. Paste your code here.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Proof of Work:**\n\nCreate an interactive program (calculator, converter, or quiz) and:\n1. Save it with a descriptive name (e.g., `my_calculator.py`)\n2. Run it and test with different inputs\n3. Take a screenshot or copy the terminal output showing:\n   - The prompts\n   - Your input\n   - The program's output\n4. Paste the output here"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Optional Advanced Step: Modify your program to handle string input (like a name) and combine it with numeric calculations. For example, a program that asks for name and age, then calculates birth year.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What challenges did you face while creating your interactive program? How did you solve them?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Confidence Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can create programs that get user input",
+              "I can convert input to the correct type",
+              "I can perform operations on user input",
+              "I can create and run interactive programs successfully"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most challenging part of creating your interactive program? How did you overcome it?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How did the step-by-step process help you? What would you do differently next time?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What common pitfalls did you encounter (or avoid)? How will you prevent them in the future?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How confident do you feel about creating interactive programs on your own? What would make you feel more confident?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Next Challenge",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you'll learn what happens when things go wrong with input and operations."
+          },
+          {
+            "type": "text",
+            "content": "Fantastic! You've created and run your first interactive programs. That's a huge milestone!"
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nNext, you'll learn to **analyze and troubleshoot** when things go wrong. You'll discover:\n\n• Common error types with input() and operations (ValueError, TypeError, etc.)\n• How to read and understand error messages\n• Systematic troubleshooting methods\n• Error patterns and how to prevent them\n\nErrors are learning opportunities — you'll become a better programmer by understanding them!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Now that you can create interactive programs, you'll learn what happens when mistakes occur and how to fix them. This makes you more independent and confident."
+          }
+        ]
+      }
+    },
+    "s4": {
+      "mindset": {
+        "heading": "Think Like a Detective",
+        "components": [
+          {
+            "type": "text",
+            "content": "Errors with input and operations help you understand how Python thinks and how to write better code."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What Works",
+        "components": [
+          {
+            "type": "text",
+            "content": "Correct interactive programs get input, convert types, perform operations, and display results."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Common Errors with Input and Operations",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Error Analysis Table**\n\n**1. ValueError: invalid literal for int()**\n• **Symptom:** `ValueError: invalid literal for int() with base 10: 'abc'`\n• **Cause:** Trying to convert a string that isn't a valid number to int() or float()\n• **Verification:** Check what the user actually typed — was it a number?\n• **Fix:** Validate input or handle the error: `try: age = int(input(\"Age? \"))` except ValueError: print(\"Please enter a number\")`\n\n**2. TypeError: unsupported operand type(s)**\n• **Symptom:** `TypeError: unsupported operand type(s) for +: 'int' and 'str'`\n• **Cause:** Trying to do math with a string (usually forgot to convert input())\n• **Verification:** Check if you converted input() to int() or float() before math\n• **Fix:** Convert first: `age = int(input(\"Age? \"))` then `age + 1`\n\n**3. TypeError: can only concatenate str**\n• **Symptom:** `TypeError: can only concatenate str (not \"int\") to str`\n• **Cause:** Trying to use + to combine string and number without conversion\n• **Verification:** Check if you're mixing strings and numbers in concatenation\n• **Fix:** Convert number to string: `\"Age: \" + str(age)` or use f-strings: `f\"Age: {age}\"`\n\n**4. ZeroDivisionError: division by zero**\n• **Symptom:** `ZeroDivisionError: division by zero`\n• **Cause:** Trying to divide by zero (user entered 0 as divisor)\n• **Verification:** Check if the divisor could be zero\n• **Fix:** Check before dividing: `if num2 != 0: result = num1 / num2`\n\n**5. ValueError: could not convert string to float**\n• **Symptom:** `ValueError: could not convert string to float: 'abc'`\n• **Cause:** Trying to convert non-numeric string to float()\n• **Verification:** Check what the user typed — was it a valid number?\n• **Fix:** Validate input or handle error gracefully\n\n**6. NameError: name 'input' is not defined**\n• **Symptom:** `NameError: name 'input' is not defined`\n• **Cause:** Typo in function name (e.g., `inpt()` instead of `input()`)\n• **Verification:** Check spelling of `input()` — it's case-sensitive\n• **Fix:** Correct spelling: use `input()` not `Input()` or `inpt()`\n\n**7. SyntaxError: invalid syntax**\n• **Symptom:** `SyntaxError: invalid syntax` pointing to input() line\n• **Cause:** Missing quotes around prompt string or other syntax error\n• **Verification:** Check that prompt is in quotes: `input(\"Prompt here\")`\n• **Fix:** Add quotes: `input(\"What's your name? \")`\n\n**8. AttributeError: 'int' object has no attribute 'upper'**\n• **Symptom:** `AttributeError: 'int' object has no attribute 'upper'`\n• **Cause:** Trying to use string method on a number\n• **Verification:** Check if variable is actually a string before using .upper(), .lower(), etc.\n• **Fix:** Convert to string first: `str(age).upper()` or use string methods only on strings\n\n**9. OverflowError: int too large**\n• **Symptom:** `OverflowError: int too large to convert to float`\n• **Cause:** User entered an extremely large number\n• **Verification:** Check if the number is unreasonably large\n• **Fix:** Add validation to check number size, or handle the error\n\n**10. KeyboardInterrupt**\n• **Symptom:** `KeyboardInterrupt` when program is waiting for input\n• **Cause:** User pressed Ctrl+C while program was waiting for input()\n• **Verification:** This is intentional — user cancelled the program\n• **Fix:** This is normal behavior, not really an error to fix"
+          },
+          {
+            "type": "text",
+            "content": "**Comparison of Error Categories:**\n\n**Type Errors** — Wrong data types\n• **When:** Mixing incompatible types (string + number, etc.)\n• **Examples:** TypeError with input() not converted, string concatenation issues\n• **How to identify:** Error message mentions types (str, int, float)\n• **Fix:** Convert types correctly before operations\n\n**Value Errors** — Invalid values\n• **When:** Value can't be converted or is invalid for the operation\n• **Examples:** Converting \"abc\" to int, division by zero\n• **How to identify:** Error message says \"invalid\" or \"could not convert\"\n• **Fix:** Validate input or handle errors gracefully\n\n**Syntax Errors** — Code structure problems\n• **When:** Python can't parse your code\n• **Examples:** Missing quotes, typos in function names\n• **How to identify:** Error points to specific line, often before code runs\n• **Fix:** Check syntax, quotes, spelling\n\n**Runtime Errors** — Problems during execution\n• **When:** Code runs but encounters a problem\n• **Examples:** Division by zero, attribute errors\n• **How to identify:** Error occurs when program runs, not when writing\n• **Fix:** Add checks and validation"
+          },
+          {
+            "type": "text",
+            "content": "**Systematic Troubleshooting Methodology:**\n\nFollow these 5 steps when you encounter an error:\n\n**Step 1: Read the Error Message**\n• Look at the error type (ValueError, TypeError, etc.)\n• Read the full message — it often tells you what's wrong\n• Note the line number where the error occurred\n• Check what the error says about the problem\n\n**Step 2: Identify the Problem**\n• Go to the line mentioned in the error\n• Check if input() was converted to the right type\n• Verify types match for operations (string + string, int + int)\n• Look for common issues (forgot conversion, wrong operator)\n\n**Step 3: Understand the Cause**\n• Use the error analysis table to understand what the error means\n• Check if it's a type, value, syntax, or runtime error\n• Think about what Python expected vs. what you provided\n• Consider what the user might have typed\n\n**Step 4: Apply the Fix**\n• Use the \"Fix\" column from the error analysis table\n• Make one change at a time\n• Test after each fix\n• Common fixes: Add type conversion, validate input, check for zero\n\n**Step 5: Verify the Solution**\n• Run the code again\n• Test with the same input that caused the error\n• Test with different inputs to ensure it works\n• Verify the output is correct\n• If new errors appear, repeat the process"
+          },
+          {
+            "type": "text",
+            "content": "**Pattern Recognition:**\n\n**Common Error Patterns:**\n\n**Pattern 1: Forgot Type Conversion**\n• **Symptoms:** TypeError when doing math with input()\n• **How to identify:** Error mentions str and int/float in the same operation\n• **Prevention:** Always convert input() to int() or float() for math: `age = int(input(\"Age? \"))`\n\n**Pattern 2: Invalid Input Conversion**\n• **Symptoms:** ValueError when converting user input\n• **How to identify:** Error says \"invalid literal\" or \"could not convert\"\n• **Prevention:** Validate input or handle errors: Check if input is numeric before converting\n\n**Pattern 3: String/Number Mixing**\n• **Symptoms:** TypeError when concatenating or doing operations\n• **How to identify:** Error mentions mixing str and int/float\n• **Prevention:** Use f-strings for mixing: `f\"Age: {age}\"` or convert: `\"Age: \" + str(age)`\n\n**Pattern 4: Division by Zero**\n• **Symptoms:** ZeroDivisionError\n• **How to identify:** Error occurs during division operation\n• **Prevention:** Check if divisor is zero before dividing: `if num2 != 0: result = num1 / num2`\n\n**Pattern 5: Wrong Method on Wrong Type**\n• **Symptoms:** AttributeError about missing method\n• **How to identify:** Trying to use string method on number or vice versa\n• **Prevention:** Know which methods work on which types — .upper() only on strings"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: ValueError - invalid conversion\nage = int(input(\"How old are you? \"))  # User types \"abc\"\n# Error: ValueError: invalid literal for int() with base 10: 'abc'\n# Fix: Validate or handle error\ntry:\n    age = int(input(\"How old are you? \"))\nexcept ValueError:\n    print(\"Please enter a valid number\")\n    age = 0",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: TypeError - forgot conversion\nage = input(\"How old are you? \")  # Returns string \"15\"\nnext_age = age + 1  # Error: can't add int to str\n# Fix: Convert first\nage = int(input(\"How old are you? \"))  # Returns int 15\nnext_age = age + 1  # Works!",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: ZeroDivisionError\nnum1 = float(input(\"Enter first number: \"))\nnum2 = float(input(\"Enter second number: \"))\nresult = num1 / num2  # Error if num2 is 0\n# Fix: Check first\nif num2 != 0:\n    result = num1 / num2\n    print(f\"Result: {result}\")\nelse:\n    print(\"Cannot divide by zero!\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: TypeError - string concatenation\nage = 15\nmessage = \"You are \" + age + \" years old\"  # Error: can't concatenate str and int\n# Fix: Convert or use f-string\nmessage = \"You are \" + str(age) + \" years old\"  # Works\n# Or better:\nmessage = f\"You are {age} years old\"  # Also works, cleaner",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Quick Reference: Error Types by Category**\n\n**Type Errors (Wrong Types):**\n• TypeError — Mixing incompatible types\n• AttributeError — Wrong method for the type\n\n**Value Errors (Invalid Values):**\n• ValueError — Can't convert or invalid value\n• ZeroDivisionError — Division by zero\n\n**Syntax Errors (Code Structure):**\n• SyntaxError — Invalid code syntax\n• NameError — Typo in function/variable name\n\n**Remember:** Every error is a learning opportunity! Python's error messages are trying to help you find the problem."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Spot the Error",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "What error occurs if you try `int(input(\"Age? \"))` and the user types \"abc\"?",
+            "options": [
+              "TypeError",
+              "ValueError",
+              "SyntaxError",
+              "NameError"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! ValueError because \"abc\" can't be converted to an integer.",
+              "incorrect": "ValueError occurs when you try to convert an invalid value."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Error Scenario 1:**\n```python\nage = input(\"How old are you? \")\nnext_age = age + 1\n```\n\n**Step-by-step diagnosis:**\n1. What error occurs? (TypeError)\n2. What's the cause? (age is a string, can't add int to str)\n3. How would you fix it? (Convert: `age = int(input(\"How old are you? \"))`)"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Analyze this code: `num1 = float(input(\"Number 1: \"))` followed by `num2 = float(input(\"Number 2: \"))` and `result = num1 / num2`. What error could occur and when?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Pattern Recognition Activity:**\n\nLook at these three code snippets:\n1. `age = input(\"Age? \")` then `age + 1`\n2. `name = input(\"Name? \")` then `name.upper()`\n3. `num = int(input(\"Number? \"))` then `num / 0`\n\n**Question:** What pattern do you see? (All involve operations on input without proper handling)"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which error category does this belong to: trying to do `\"Hello\" + 5`?",
+            "options": [
+              "Value Error",
+              "Type Error",
+              "Syntax Error",
+              "Runtime Error"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! This is a TypeError - mixing incompatible types (str and int).",
+              "incorrect": "TypeError occurs when you mix incompatible types."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Create a troubleshooting flowchart: What steps would you take to diagnose and fix a ValueError when converting input()?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Explain an Error",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does `age = input(\"Age? \")` followed by `age + 1` cause an error? What's the fix?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Troubleshooting Flowchart Creation:**\n\nCreate a visual flowchart showing your systematic approach to fixing errors with input and operations. Include:\n- Start: Error occurs\n- Decision points: What type of error? (TypeError, ValueError, etc.)\n- Actions: Check type conversion, validate input, check operations\n- End: Error fixed\n\nYou can draw this on paper, use a flowchart tool, or describe it in text format!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Find the error in this code and explain how you would fix it: `num = input(\"Number: \")` followed by `result = num * 2`",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe a time you encountered an error with input or operations (or imagine one). Walk through the 5-step troubleshooting process to solve it.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Troubleshooting Mindset",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can recognize common error types (ValueError, TypeError, ZeroDivisionError)",
+              "I understand why type conversion errors occur",
+              "I can use the 5-step troubleshooting process",
+              "I can identify error patterns"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How has learning about errors changed your approach to programming? Do errors feel less scary now?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What error pattern do you think you're most likely to make? How will you prevent it?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does understanding error categories (type, value, syntax, runtime) help you debug faster?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What troubleshooting strategy works best for you? Describe your process when you encounter an error.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Judging Code Quality",
+        "components": [
+          {
+            "type": "text",
+            "content": "Next, you'll learn to decide which code choices are better for interactive programs."
+          },
+          {
+            "type": "text",
+            "content": "Excellent troubleshooting skills! You can now diagnose and fix errors like a pro."
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nNow you'll learn to **evaluate code quality** and make better choices. You'll explore:\n\n• Evaluation criteria (clarity, user experience, error handling, etc.)\n• Rating systems and rubrics\n• Examples of good vs. bad interactive programs\n• How context affects code quality\n\nThis will help you write not just working code, but excellent interactive programs!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** Understanding errors helps you write correct code. Now you'll learn to write code that's not just correct, but also clear, user-friendly, and professional."
+          }
+        ]
+      }
+    },
+    "s5": {
+      "mindset": {
+        "heading": "Choosing Better Code",
+        "components": [
+          {
+            "type": "text",
+            "content": "Good interactive programs are not just correct — they are clear, user-friendly, and well-designed."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What You Know",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can create and troubleshoot interactive programs."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Evaluating Interactive Program Quality",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Detailed Evaluation Criteria**\n\nWhen evaluating interactive program quality, consider these 8 criteria:\n\n1. **Clarity** — Is the code easy to understand? Are prompts clear?\n2. **User Experience** — Is the program easy to use? Are prompts helpful?\n3. **Error Handling** — Does the program handle invalid input gracefully?\n4. **Appropriateness** — Are the right operations used? Is type conversion correct?\n5. **Quality** — Does the code work correctly and produce accurate results?\n6. **Readability** — Is the code easy to read? Are variable names descriptive?\n7. **Functionality** — Does the program accomplish its goal effectively?\n8. **Maintainability** — Will this code be easy to modify or fix later?"
+          },
+          {
+            "type": "text",
+            "content": "**Rating Scales: 1-5 Star System**\n\n**⭐ (1 Star) — Poor**\n• Code doesn't work or crashes on invalid input\n• Prompts are unclear or confusing\n• No error handling\n• Poor user experience\n• Hard to read and understand\n\n**⭐⭐ (2 Stars) — Below Average**\n• Code works but crashes on edge cases\n• Prompts are somewhat unclear\n• Minimal error handling\n• Confusing user experience\n• Requires effort to understand\n\n**⭐⭐⭐ (3 Stars) — Average**\n• Code works correctly for valid input\n• Prompts are generally clear\n• Basic error handling\n• Acceptable user experience\n• Generally readable\n\n**⭐⭐⭐⭐ (4 Stars) — Good**\n• Code works well and handles most cases\n• Clear, helpful prompts\n• Good error handling\n• Good user experience\n• Easy to read and understand\n\n**⭐⭐⭐⭐⭐ (5 Stars) — Excellent**\n• Code is robust and handles all cases\n• Excellent, user-friendly prompts\n• Comprehensive error handling\n• Excellent user experience\n• Very readable and maintainable"
+          },
+          {
+            "type": "text",
+            "content": "**Examples of Good vs. Bad**\n\n**1. Prompt Quality:**\n\n❌ **Bad:**\n```python\nname = input(\"Name\")\n```\n\n✅ **Good:**\n```python\nname = input(\"What's your name? \")\n```\n\n**2. Error Handling:**\n\n❌ **Bad:**\n```python\nage = int(input(\"Age? \"))\n```\n(Crashes if user types non-number)\n\n✅ **Good:**\n```python\ntry:\n    age = int(input(\"How old are you? \"))\nexcept ValueError:\n    print(\"Please enter a valid number.\")\n    age = 0\n```\n\n**3. User Experience:**\n\n❌ **Bad:**\n```python\nnum1 = float(input(\"Number: \"))\nnum2 = float(input(\"Number: \"))\nprint(num1 + num2)\n```\n\n✅ **Good:**\n```python\nprint(\"=== Simple Calculator ===\")\nnum1 = float(input(\"Enter first number: \"))\nnum2 = float(input(\"Enter second number: \"))\nresult = num1 + num2\nprint(f\"\\n{num1} + {num2} = {result}\")\n```\n\n**4. Code Organization:**\n\n❌ **Bad:**\n```python\nx = input(\"Name\")\ny = int(input(\"Age\"))\nprint(x + \" is \" + str(y))\n```\n\n✅ **Good:**\n```python\n# Get user information\nname = input(\"What's your name? \")\nname = name.strip().title()\n\nage = int(input(\"How old are you? \"))\n\n# Display formatted message\nmessage = f\"Hello, {name}! You are {age} years old.\"\nprint(message)\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Multiple Dimensions of Quality:**\n\n**Technical Quality**\n• Code runs without errors\n• Correct type conversions\n• Proper use of operators\n• Follows Python conventions\n\n**User Experience Quality**\n• Clear, helpful prompts\n• Good formatting of output\n• Handles invalid input gracefully\n• Provides feedback to users\n\n**Educational Quality**\n• Code teaches good practices\n• Demonstrates understanding\n• Shows proper error handling\n• Easy to learn from\n\n**Aesthetic Quality**\n• Code looks clean and organized\n• Consistent formatting\n• Good spacing and structure\n• Pleasing to read\n\n**Practical Quality**\n• Solves the intended problem\n• Useful and applicable\n• Works in real scenarios\n• Meets user needs"
+          },
+          {
+            "type": "text",
+            "content": "**Evaluation Rubric Table**\n\n| Criterion | 1 Star | 2 Stars | 3 Stars | 4 Stars | 5 Stars |\n|----------|--------|---------|---------|---------|---------|\n| **Clarity** | Unclear, confusing | Somewhat unclear | Generally clear | Very clear | Crystal clear |\n| **User Experience** | Poor, confusing | Below average | Acceptable | Good | Excellent |\n| **Error Handling** | None | Minimal | Basic | Good | Comprehensive |\n| **Appropriateness** | Wrong operations | Mostly wrong | Mostly correct | Correct | Optimal |\n| **Quality** | Doesn't work | Works poorly | Works correctly | Works well | Works perfectly |\n| **Readability** | Very hard to read | Hard to read | Readable | Easy to read | Extremely readable |\n| **Functionality** | Doesn't function | Partial function | Functions | Functions well | Functions excellently |\n| **Maintainability** | Impossible to maintain | Hard to maintain | Maintainable | Easy to maintain | Very easy to maintain |\n\n**Scoring:** Add up stars from each criterion, then divide by 8 to get an average rating."
+          },
+          {
+            "type": "text",
+            "content": "**Context Considerations:**\n\n**When to Prioritize Which Criteria:**\n\n**Learning/Educational Context:**\n• Prioritize: Clarity, Readability, Educational Quality\n• Less important: Advanced error handling, perfect UX\n• Goal: Understand concepts, learn good practices\n\n**Quick Prototype/Testing:**\n• Prioritize: Functionality, Quality\n• Less important: Perfect prompts, comprehensive error handling\n• Goal: Get it working quickly\n\n**Production/Real Project:**\n• Prioritize: User Experience, Error Handling, Maintainability\n• All criteria matter\n• Goal: Long-term, professional, user-friendly code\n\n**Code Review/Sharing:**\n• Prioritize: Readability, Clarity, User Experience\n• Less important: Personal preferences\n• Goal: Others can understand and use it\n\n**Context-Dependent Evaluation:**\n• A simple learning exercise can be less strict\n• Code shared with others needs higher standards\n• Production code needs all criteria met"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Poor Quality Code (1-2 stars)\nname = input(\"Name\")\nage = int(input(\"Age\"))\nprint(name + \" is \" + str(age))\n\n# Problems:\n# - Unclear prompts (no question marks, no spaces)\n# - No error handling (crashes on invalid input)\n# - Poor formatting\n# - Hard to read",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Good Quality Code (4-5 stars)\nprint(\"=== Personal Information Form ===\")\nprint()\n\n# Get user input with clear prompts\nname = input(\"What's your name? \")\nname = name.strip().title()  # Clean and format\n\ntry:\n    age = int(input(\"How old are you? \"))\nexcept ValueError:\n    print(\"Please enter a valid number.\")\n    age = 0\n\n# Display formatted output\nprint()\nprint(f\"Hello, {name}!\")\nif age > 0:\n    print(f\"You are {age} years old.\")\n\n# Why this is better:\n# - Clear, user-friendly prompts\n# - Error handling for invalid input\n# - Clean and format input\n# - Well-organized with comments\n# - Good formatting of output\n# - Easy to read and maintain",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Evaluation Checklist:**\n\nBefore considering your interactive program \"done,\" ask yourself:\n\n✓ **Clarity:** Are prompts clear and easy to understand?\n✓ **User Experience:** Is the program easy and pleasant to use?\n✓ **Error Handling:** Does it handle invalid input gracefully?\n✓ **Appropriateness:** Are the right operations and conversions used?\n✓ **Quality:** Does the code work correctly?\n✓ **Readability:** Is it easy to read and understand?\n✓ **Functionality:** Does it accomplish the goal effectively?\n✓ **Maintainability:** Could I modify this easily later?\n\nIf you can answer \"yes\" to most of these, your program is good quality!"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Evaluate Code Quality",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "Which prompt is better for user experience?",
+            "options": [
+              "input(\"Name\")",
+              "input(\"What's your name? \")",
+              "input(\"n\")",
+              "input(\"Enter your name here please\")"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Clear, friendly prompts with question marks and spaces are best.",
+              "incorrect": "Good prompts are clear, friendly, and include proper spacing."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Context 1: Learning/Educational Code**\n\nEvaluate this code for a learning context:\n```python\nname = input(\"Name: \")\nage = int(input(\"Age: \"))\nprint(f\"{name} is {age}\")\n```\n\n**Question:** What would you rate this code (1-5 stars) and why?"
+          },
+          {
+            "type": "text",
+            "content": "**Context 2: Production/Real Project**\n\nCompare these two code snippets:\n\n**Code A:**\n```python\nnum = int(input(\"Number: \"))\nprint(num * 2)\n```\n\n**Code B:**\n```python\nprint(\"=== Number Doubler ===\")\ntry:\n    num = float(input(\"Enter a number: \"))\n    result = num * 2\n    print(f\"\\n{num} doubled is {result}\")\nexcept ValueError:\n    print(\"Please enter a valid number.\")\n```\n\n**Question:** Which is better for a production project? Justify your answer."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Justify why clear prompts like \"What's your name? \" are better than \"Name\" for user experience.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Code Comparison Activity:**\n\n**Version 1:**\n```python\nx = input(\"x\")\ny = int(input(\"y\"))\nprint(x + str(y))\n```\n\n**Version 2:**\n```python\nname = input(\"What's your name? \")\nage = int(input(\"How old are you? \"))\nprint(f\"{name} is {age} years old.\")\n```\n\n**Question:** Which version is more maintainable? Why?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Recommend improvements for this code: `age = int(input(\"Age\"))`. What would you change and why?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Justify Your Choice",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Why is error handling important in interactive programs?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Code Review Scenario:**\n\nYou're reviewing code from a teammate. They wrote:\n```python\nname = input(\"Name\")\nage = int(input(\"Age\"))\nprint(name + \" is \" + str(age))\n```\n\n**Task:** Write a code review:\n1. Rate this code (1-5 stars) using the evaluation criteria\n2. Explain your rating for each criterion\n3. Suggest specific improvements\n4. Rewrite the code with your improvements"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "In a production interactive program, which is the most important evaluation criterion?",
+            "options": [
+              "Speed (fastest code)",
+              "User Experience (easy to use)",
+              "Aesthetic (looks pretty)",
+              "All are equally important"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! User experience is crucial for interactive programs that users will actually use.",
+              "incorrect": "While all criteria matter, user experience is especially important for interactive programs."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Justify your answer: Why did you choose user experience (or another criterion) as most important for interactive programs?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Quality Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can evaluate code quality using multiple criteria",
+              "I understand what makes good interactive programs",
+              "I can identify areas for improvement",
+              "I can rate code quality using the rubric"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How has learning to evaluate code quality changed how you write interactive programs? What will you do differently?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which evaluation criterion (clarity, user experience, error handling, etc.) do you think is most important? Why?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does context (learning vs. production) affect how you evaluate interactive programs? Give an example.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Rate your own interactive programs from earlier stages. What would you improve now that you know about evaluation criteria?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Time to Create",
+        "components": [
+          {
+            "type": "text",
+            "content": "Now you'll create your own original interactive programs."
+          },
+          {
+            "type": "text",
+            "content": "Outstanding! You can now evaluate and improve code quality. You're thinking like a professional programmer!"
+          },
+          {
+            "type": "text",
+            "content": "**Preview of What's Next:**\n\nFinally, you'll **create** your own original interactive projects! You'll have:\n\n• Multiple project options to choose from\n• Templates and examples to guide you\n• Different complexity levels (Beginner ⭐, Intermediate ⭐⭐, Advanced ⭐⭐⭐)\n• Success criteria to know when you're done\n\nThis is where everything comes together — you'll create something uniquely yours!"
+          },
+          {
+            "type": "text",
+            "content": "**Connection:** All your learning — input, operations, errors, quality — culminates in creating your own project. This is the ultimate test of mastery!"
+          }
+        ]
+      }
+    },
+    "s6": {
+      "mindset": {
+        "heading": "You Are the Creator",
+        "components": [
+          {
+            "type": "text",
+            "content": "You now combine everything into your own interactive program that solves a real problem."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Full Journey",
+        "components": [
+          {
+            "type": "text",
+            "content": "You learned input, operations, errors, and quality. Now create something amazing!"
+          }
+        ]
+      },
+      "core": {
+        "heading": "Interactive Project Ideas",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Multiple Project Type Options**\n\nChoose a project that interests you! Here are 8 project ideas:\n\n1. **Simple Calculator** ⭐ — Add, subtract, multiply, divide two numbers\n2. **Unit Converter** ⭐⭐ — Convert between units (miles/km, pounds/kg, etc.)\n3. **Personal Information Form** ⭐ — Get and display user information\n4. **Grade Calculator** ⭐⭐ — Calculate average grade from multiple scores\n5. **Budget Tracker** ⭐⭐ — Track income and expenses\n6. **String Manipulator** ⭐ — Get text and transform it (upper, lower, title, etc.)\n7. **Quiz Program** ⭐⭐ — Ask questions and calculate score\n8. **Tip Calculator** ⭐⭐ — Calculate tip and total bill amount\n\nEach project uses input and operations in different ways. Pick one that matches your interests and skill level!"
+          },
+          {
+            "type": "text",
+            "content": "**Different Complexity Levels**\n\n**⭐ Beginner Projects** — Simple, straightforward\n• Simple Calculator\n• Personal Information Form\n• String Manipulator\n• Good for: First projects, getting comfortable with input and operations\n\n**⭐⭐ Intermediate Projects** — More input, calculations\n• Unit Converter\n• Grade Calculator\n• Budget Tracker\n• Quiz Program\n• Tip Calculator\n• Good for: Practicing with multiple inputs and operations\n\n**⭐⭐⭐ Advanced Projects** — Complex logic, many operations\n• Multi-function Calculator (with menu)\n• Comprehensive Budget System\n• Advanced Quiz with scoring\n• Good for: Combining everything you've learned\n\n**Tip:** Start with a ⭐ project if you're new, then try ⭐⭐ when you're comfortable!"
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Application Suggestions**\n\n**School Projects:**\n• Grade Calculator — Calculate your average grade\n• Quiz Program — Create study quizzes\n• Unit Converter — Convert measurements for science class\n\n**Personal Projects:**\n• Budget Tracker — Track your allowance or spending\n• Tip Calculator — Calculate tips when dining out\n• Personal Information Form — Organize your information\n\n**Fun Projects:**\n• String Manipulator — Play with text transformations\n• Simple Calculator — Quick math helper\n• Quiz Program — Create fun trivia games\n\n**Learning Projects:**\n• Any project! — All projects help you learn and practice\n\n**Professional Projects:**\n• Budget Tracker — Financial planning\n• Unit Converter — Useful for various jobs\n• Calculator — Basic tool for many professions"
+          },
+          {
+            "type": "text",
+            "content": "**Project Selection Guidance**\n\n**Choose Based on Skill Level:**\n\n**If you're just starting:**\n→ Try: Simple Calculator, Personal Information Form, or String Manipulator\n→ These use basic input and operations\n\n**If you're comfortable with input and operations:**\n→ Try: Unit Converter, Grade Calculator, Budget Tracker, or Tip Calculator\n→ These use multiple inputs and calculations\n\n**If you want a challenge:**\n→ Try: Multi-function Calculator or Advanced Quiz\n→ This combines many concepts\n\n**Choose Based on Interests:**\n\n**Like math?** → Calculator, Grade Calculator, Tip Calculator\n**Like organization?** → Budget Tracker, Personal Information Form\n**Like games?** → Quiz Program\n**Like practical tools?** → Unit Converter, Tip Calculator\n**Like text?** → String Manipulator\n\n**Remember:** You can always start simple and add features later!"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 1: Simple Calculator ⭐\nprint(\"=== Simple Calculator ===\")\nprint()\n\n# Get two numbers\nnum1 = float(input(\"Enter first number: \"))\nnum2 = float(input(\"Enter second number: \"))\n\n# Perform operations\nsum_result = num1 + num2\ndifference = num1 - num2\nproduct = num1 * num2\n\n# Handle division (check for zero)\nif num2 != 0:\n    quotient = num1 / num2\nelse:\n    quotient = \"Cannot divide by zero\"\n\n# Display results\nprint()\nprint(f\"{num1} + {num2} = {sum_result}\")\nprint(f\"{num1} - {num2} = {difference}\")\nprint(f\"{num1} * {num2} = {product}\")\nprint(f\"{num1} / {num2} = {quotient}\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 2: Unit Converter ⭐⭐\nprint(\"=== Miles to Kilometers Converter ===\")\nprint()\n\n# Get distance in miles\nmiles = float(input(\"Enter distance in miles: \"))\n\n# Conversion factor\nkm_per_mile = 1.60934\n\n# Convert to kilometers\nkilometers = miles * km_per_mile\n\n# Display result\nprint()\nprint(f\"{miles} miles = {kilometers:.2f} kilometers\")\n\n# Optional: Convert the other way\nkm = float(input(\"\\nEnter distance in kilometers: \"))\nmiles_result = km / km_per_mile\nprint(f\"{km} kilometers = {miles_result:.2f} miles\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 3: Personal Information Form ⭐\nprint(\"=== Personal Information Form ===\")\nprint()\n\n# Get user information\nfirst_name = input(\"What's your first name? \")\nfirst_name = first_name.strip().title()\n\nlast_name = input(\"What's your last name? \")\nlast_name = last_name.strip().title()\n\nage = int(input(\"How old are you? \"))\n\ncity = input(\"What city do you live in? \")\ncity = city.strip().title()\n\n# Display formatted information\nprint()\nprint(\"=== Your Information ===\")\nprint(f\"Name: {first_name} {last_name}\")\nprint(f\"Age: {age} years old\")\nprint(f\"Location: {city}\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 4: Grade Calculator ⭐⭐\nprint(\"=== Grade Calculator ===\")\nprint()\n\n# Get grades\nprint(\"Enter your grades (as numbers):\")\ngrade1 = float(input(\"Grade 1: \"))\ngrade2 = float(input(\"Grade 2: \"))\ngrade3 = float(input(\"Grade 3: \"))\n\n# Calculate average\ntotal = grade1 + grade2 + grade3\nnumber_of_grades = 3\naverage = total / number_of_grades\n\n# Display results\nprint()\nprint(f\"Grade 1: {grade1}\")\nprint(f\"Grade 2: {grade2}\")\nprint(f\"Grade 3: {grade3}\")\nprint(f\"\\nAverage: {average:.2f}\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 5: Budget Tracker ⭐⭐\nprint(\"=== Budget Tracker ===\")\nprint()\n\n# Get income\nincome = float(input(\"Enter your income: $\"))\n\n# Get expenses\nprint(\"\\nEnter your expenses:\")\nexpense1 = float(input(\"Expense 1: $\"))\nexpense2 = float(input(\"Expense 2: $\"))\nexpense3 = float(input(\"Expense 3: $\"))\n\n# Calculate\ntotal_expenses = expense1 + expense2 + expense3\nremaining = income - total_expenses\n\n# Display budget\nprint()\nprint(f\"Income: ${income:.2f}\")\nprint(f\"Expenses: ${total_expenses:.2f}\")\nprint(f\"Remaining: ${remaining:.2f}\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Template 6: String Manipulator ⭐\nprint(\"=== String Manipulator ===\")\nprint()\n\n# Get text input\ntext = input(\"Enter some text: \")\n\n# Transform the text\nuppercase = text.upper()\nlowercase = text.lower()\ntitle_case = text.title()\nstripped = text.strip()\n\n# Display transformations\nprint()\nprint(f\"Original: {text}\")\nprint(f\"Uppercase: {uppercase}\")\nprint(f\"Lowercase: {lowercase}\")\nprint(f\"Title Case: {title_case}\")\nprint(f\"Stripped: '{stripped}'\")",
+            "copyable": true
+          },
+          {
+            "type": "text",
+            "content": "**Success Criteria**\n\n**For Simple Calculator:**\n✓ Gets two numbers from user\n✓ Performs at least 4 operations (+, -, *, /)\n✓ Handles division by zero\n✓ Displays results clearly\n✓ Code runs without errors\n\n**For Unit Converter:**\n✓ Gets input in one unit\n✓ Converts to another unit\n✓ Uses correct conversion factors\n✓ Displays original and converted values\n✓ Handles decimal numbers properly\n\n**For Personal Information Form:**\n✓ Gets at least 3 pieces of information\n✓ Cleans and formats string input (strip, title)\n✓ Uses appropriate data types\n✓ Displays formatted information\n✓ Code runs without errors\n\n**For Grade Calculator:**\n✓ Gets at least 3 grades\n✓ Calculates average correctly\n✓ Displays individual grades and average\n✓ Uses float for decimal grades\n✓ Code runs without errors\n\n**For Budget Tracker:**\n✓ Tracks income and expenses\n✓ Calculates remaining balance\n✓ Uses float for money amounts\n✓ Displays organized budget report\n✓ Code runs without errors\n\n**For String Manipulator:**\n✓ Gets text input from user\n✓ Applies at least 3 string methods\n✓ Displays all transformations\n✓ Code runs without errors\n\n**General Success Criteria:**\n✓ Code runs without errors\n✓ Gets input from users\n✓ Performs operations correctly\n✓ Displays clear output\n✓ Uses meaningful variable names\n✓ Code is readable and organized\n✓ Accomplishes the project goal"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Plan Your Project",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Plan Your Project**\n\nAnswer these planning questions before you start coding:"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "1. What project are you creating? (e.g., Simple Calculator, Unit Converter)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "2. What input will your program need? List all the input you'll get from users.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "3. What operations will you perform? (math, string methods, etc.)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "4. What will the output look like? Describe what users will see.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "5. What approach will you use? (Which template will you start from, or will you create your own?)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Draft and Test Checklist**\n\nUse this checklist as you create and test your program:\n\n□ Created the Python file with .py extension\n□ Wrote clear prompts for all input\n□ Got all necessary input from users\n□ Converted input to correct types (int/float where needed)\n□ Performed all necessary operations\n□ Created formatted output messages\n□ Added print statements to display results\n□ Saved the file\n□ Ran the script in terminal\n□ Tested with different inputs\n□ Verified calculations are correct\n□ Checked output formatting\n□ Code runs without errors\n□ Tested edge cases (zero, negative numbers, empty strings)"
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Build Your Project",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "Write your interactive program and explain what it does. Paste your code here.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Multiple Deliverable Options:**\n\nChoose how you want to demonstrate your project:\n\n**Option 1:** Share your code and terminal output (screenshot or text)\n**Option 2:** Create a brief video walkthrough showing your program in action\n**Option 3:** Write a short explanation document describing your project\n**Option 4:** Present your project to a friend or family member and get feedback"
+          },
+          {
+            "type": "text",
+            "content": "**Ordering Activity:**\n\nPut these steps in the correct order for creating an interactive project:\n1. Plan your project\n2. Write the code\n3. Get user input\n4. Perform operations\n5. Display output\n6. Test and debug\n7. Evaluate code quality\n\nWhat order did you use? Did you follow this sequence or adapt it?"
+          },
+          {
+            "type": "text",
+            "content": "**Quality Criteria Checklist:**\n\nBefore submitting, check:\n□ All prompts are clear and user-friendly\n□ Input is converted to correct types\n□ Operations are performed correctly\n□ Output is formatted clearly\n□ Code is organized and readable\n□ Variable names are meaningful\n□ Code runs without errors\n□ You can explain what each part does\n□ Program accomplishes its goal"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Reflection: Why did you write your program this way? What design choices did you make?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Mastery Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can create interactive programs confidently",
+              "I understand input, operations, and output",
+              "I can explain my code",
+              "I can create a complete interactive project"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most satisfying part of creating your interactive project? What made you proud?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How did planning your project help you? What would you do differently in your next project?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What did you learn about yourself as a programmer while creating this project?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How has your understanding of interactive programs evolved from Stage 0 to now? What's the biggest change?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "🎉 **Celebration of Mastery!** 🎉\n\nYou've completed the full journey from learning what interactive programs are to creating your own! Take a moment to celebrate:\n- You understand input() and operations\n- You can create, use, and debug interactive programs\n- You can evaluate code quality\n- You can create original interactive projects\n\nYou're ready for the next level of Python programming — conditional statements!"
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Congratulations",
+        "components": [
+          {
+            "type": "text",
+            "content": "You are ready to learn **conditional statements** next!"
+          }
+        ]
+      }
+    }
+  },
+  "ui": {
+    "defaultExpandedStage": "s0"
+  }
+}
+
+
