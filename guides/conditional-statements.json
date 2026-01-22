@@ -1,0 +1,1521 @@
+{
+  "metadata": {
+    "title": "Conditional Statements",
+    "subtitle": "Making decisions in your code with if, elif, and else",
+    "description": "Learn how to write programs that make decisions using conditional statements, comparison operators, and boolean logic to create interactive programs that respond differently based on conditions.",
+    "version": "1.0.0",
+    "author": "EduCafé",
+    "lastUpdated": "2026-01-20",
+    "storageKeyPrefix": "conditional_statements",
+    "instructorPasscode": "educafe-conditions-101"
+  },
+  "branding": {
+    "brandName": "EduCafé — Python Guide",
+    "theme": {
+      "colorScheme": "dark",
+      "primaryColor": "#4aa3ff",
+      "secondaryColor": "#7bc67b"
+    }
+  },
+  "stages": [
+    {
+      "id": "s0",
+      "order": 0,
+      "title": "Stage 0 · Starting",
+      "shortTitle": "Starting",
+      "description": "Introduction to decision-making in code"
+    },
+    {
+      "id": "s1",
+      "order": 1,
+      "title": "Stage 1 · Remembering",
+      "shortTitle": "Remembering",
+      "description": "Vocabulary for conditional statements"
+    },
+    {
+      "id": "s2",
+      "order": 2,
+      "title": "Stage 2 · Understanding",
+      "shortTitle": "Understanding",
+      "description": "How conditional statements work"
+    },
+    {
+      "id": "s3",
+      "order": 3,
+      "title": "Stage 3 · Applying",
+      "shortTitle": "Applying",
+      "description": "Writing conditional programs"
+    },
+    {
+      "id": "s4",
+      "order": 4,
+      "title": "Stage 4 · Analyzing",
+      "shortTitle": "Analyzing",
+      "description": "Troubleshooting conditional logic errors"
+    },
+    {
+      "id": "s5",
+      "order": 5,
+      "title": "Stage 5 · Evaluating",
+      "shortTitle": "Evaluating",
+      "description": "Judging conditional code quality"
+    },
+    {
+      "id": "s6",
+      "order": 6,
+      "title": "Stage 6 · Creating",
+      "shortTitle": "Creating",
+      "description": "Original decision-making projects"
+    }
+  ],
+  "sections": [
+    {
+      "id": "mindset",
+      "displayName": "Mindset",
+      "order": 0,
+      "description": "Prepare mentally"
+    },
+    {
+      "id": "recap",
+      "displayName": "Recap",
+      "order": 1,
+      "description": "Connect to prior learning"
+    },
+    {
+      "id": "core",
+      "displayName": "Core",
+      "order": 2,
+      "description": "Main content"
+    },
+    {
+      "id": "guidedPractice",
+      "displayName": "Guided Practice",
+      "order": 3,
+      "description": "Practice with help"
+    },
+    {
+      "id": "challenge",
+      "displayName": "Challenge",
+      "order": 4,
+      "description": "Independent work"
+    },
+    {
+      "id": "reflection",
+      "displayName": "Reflection",
+      "order": 5,
+      "description": "Think about learning"
+    },
+    {
+      "id": "transition",
+      "displayName": "Transition",
+      "order": 6,
+      "description": "Move forward"
+    }
+  ],
+  "content": {
+    "s0": {
+      "mindset": {
+        "heading": "From Linear to Decision-Making",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're about to learn **conditional statements** — the programming feature that lets your code make decisions. This transforms your programs from simple linear scripts into intelligent tools that can respond differently based on conditions, just like making choices in real life."
+          },
+          {
+            "type": "text",
+            "content": "Every expert programmer started exactly where you are now. Conditional statements are one of the most powerful and fundamental concepts in programming. Once you master them, you'll be able to create programs that adapt, respond, and make intelligent decisions."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Building on What You Know",
+        "components": [
+          {
+            "type": "text",
+            "content": "You already know how to:\n- Store data in variables\n- Get input from users\n- Perform operations (math and string)\n- Display output\n\nNow you'll learn to make your programs **smart** — programs that can check conditions and choose different actions based on what they find. This is where programming becomes truly powerful!"
+          }
+        ]
+      },
+      "core": {
+        "heading": "What Are Conditional Statements?",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Conditional statements** are code structures that let your program make decisions. They check if a condition is true or false, and then execute different code based on the result. Think of them as \"if-then\" logic: \"If this is true, then do that.\""
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Examples of Conditional Logic:**\n\n**Personal Use:**\n• **Age-based access control** — \"If you're 18+, show adult content; otherwise, show restricted message\"\n• **Weather apps** — \"If it's raining, show umbrella icon; if sunny, show sun icon\"\n• **Smart home systems** — \"If motion detected, turn on lights; otherwise, keep lights off\"\n• **Fitness trackers** — \"If steps > 10,000, show achievement badge; otherwise, show progress\"\n• **Budget apps** — \"If spending > budget, show warning; otherwise, show OK status\"\n\n**School Use:**\n• **Grade calculators** — \"If score >= 90, assign 'A'; if >= 80, assign 'B'; otherwise, assign 'C'\"\n• **Attendance systems** — \"If present days >= 90%, show 'Good attendance'; otherwise, show warning\"\n• **Quiz programs** — \"If answer is correct, add points; otherwise, show correct answer\"\n• **Study planners** — \"If time studied >= goal, show success message; otherwise, show reminder\"\n\n**Professional Use:**\n• **E-commerce sites** — \"If cart total >= $50, apply free shipping; otherwise, show shipping cost\"\n• **Login systems** — \"If password is correct, grant access; otherwise, show error\"\n• **Inventory systems** — \"If stock < 10, send reorder alert; otherwise, show in stock\"\n• **Customer service** — \"If customer is premium, route to priority queue; otherwise, standard queue\""
+          },
+          {
+            "type": "text",
+            "content": "**Visual Metaphors for Conditional Statements:**\n\n**Like a Traffic Light:**\nConditional statements work like traffic lights. If the light is green (condition is true), you go (execute code). If it's red (condition is false), you stop (skip code or do something else).\n\n**Like a Decision Tree:**\nThink of a flowchart or decision tree. At each point, you check a condition and follow a different path. \"If it's raining, take an umbrella; otherwise, don't.\"\n\n**Like a Bouncer at a Club:**\nA bouncer checks your age (condition). If you're 18+ (true), you enter. If not (false), you're turned away. Your program does the same kind of checking.\n\n**Like a Thermostat:**\nA thermostat checks the temperature. If it's too cold (condition true), it turns on heat. If it's warm enough (condition false), it stays off. Conditional statements work the same way."
+          },
+          {
+            "type": "text",
+            "content": "**What Makes Conditional Statements Powerful:**\n\nConditional statements unlock new possibilities:\n- **Adaptability** — Programs respond differently to different situations\n- **Intelligence** — Code can make decisions like a human would\n- **User experience** — Programs can validate input and provide helpful feedback\n- **Error prevention** — Check conditions before performing risky operations\n- **Personalization** — Different users get different experiences based on their data\n- **Real-world applications** — Most useful programs rely heavily on conditional logic"
+          },
+          {
+            "type": "text",
+            "content": "**Connection to Prior Knowledge:**\n\nConditional statements build on what you already know:\n- **Variables** — You'll check values stored in variables\n- **Input** — You'll make decisions based on user input\n- **Operations** — You'll use comparison operators (==, <, >, etc.) to check conditions\n- **Boolean values** — You learned about True/False; conditionals use these\n- **Real-world decisions** — Like choosing what to wear based on weather, or what to eat based on what's available"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Simple conditional statement\nage = int(input(\"How old are you? \"))\n\nif age >= 18:\n    print(\"You are an adult.\")\nelse:\n    print(\"You are a minor.\")\n\n# When you run this:\n# How old are you? 20\n# You are an adult.\n\n# How old are you? 15\n# You are a minor.",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Exploring Conditional Statements",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "What is the main purpose of conditional statements?",
+            "options": [
+              "To perform math operations",
+              "To make decisions based on conditions",
+              "To store data in variables",
+              "To print text to the screen"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Conditional statements allow programs to make decisions based on whether conditions are true or false.",
+              "incorrect": "Conditional statements are specifically for decision-making. They check conditions and execute different code based on the result."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Think of three real-world situations where you make decisions based on conditions. How would a program handle these situations?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Code Comparison:**\n\n**Program without conditionals (always the same):**\n```python\nscore = 85\nprint(\"Your grade is B\")\n```\n\n**Program with conditionals (adapts to input):**\n```python\nscore = int(input(\"Enter your score: \"))\nif score >= 90:\n    print(\"Your grade is A\")\nelif score >= 80:\n    print(\"Your grade is B\")\nelse:\n    print(\"Your grade is C\")\n```\n\n**Question:** What's the key difference? How does the conditional version make the program more useful?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain why conditional statements make programs more useful than programs that always do the same thing.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which of these is a good example of when to use conditional statements?",
+            "options": [
+              "Printing a welcome message",
+              "Storing a user's name in a variable",
+              "Checking if a user's age is 18 or older to grant access",
+              "Adding two numbers together"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! Checking age to grant access is a perfect use case for conditional statements.",
+              "incorrect": "Conditional statements are used when you need to make decisions based on conditions, like checking age, scores, or other values."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Think About Decision-Making",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "Imagine you're creating a program for a movie theater. Which scenario would require conditional statements?",
+            "options": [
+              "Displaying the movie title",
+              "Checking if a customer is old enough to see an R-rated movie",
+              "Storing the ticket price",
+              "Printing a receipt"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Age verification requires checking a condition (age >= 17) and making a decision based on it.",
+              "incorrect": "Conditional statements are needed when you must check a condition and respond differently based on the result."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe a program you'd like to create that would use conditional statements. What decisions would it need to make?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Preparing for Learning",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I understand what conditional statements are",
+              "I can identify real-world examples of conditional logic",
+              "I'm ready to learn the vocabulary and syntax"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "On a scale of 1-10, how excited are you to learn about conditional statements? What would make it a 10?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What are you most curious about regarding conditional statements? What questions do you have?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How do you think conditional statements will help you create better programs?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What real-world problems could you solve with programs that make decisions?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Ready to Learn",
+        "components": [
+          {
+            "type": "text",
+            "content": "You've learned **what conditional statements are** and **why they matter**. You understand that they let programs make decisions based on conditions, just like you do in everyday life.\n\n**Why this matters:** Conditional statements are fundamental to programming. Almost every useful program uses them to respond intelligently to different situations.\n\n**How you'll use this:** You'll learn the specific vocabulary (if, elif, else, comparison operators) and syntax needed to write conditional statements. Then you'll practice writing them and eventually create your own decision-making programs.\n\nNext, you'll learn the **vocabulary and terminology** for conditional statements. You'll learn terms like \"if statement,\" \"condition,\" \"comparison operators,\" and \"boolean logic\" — the building blocks you need to write conditional code."
+          }
+        ]
+      }
+    },
+    "s1": {
+      "mindset": {
+        "heading": "Learning the Language",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from understanding the concept to learning the specific vocabulary. Right now, you're not writing code yet — you're learning the terms and building blocks that will let you write conditional statements confidently."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What You Remember",
+        "components": [
+          {
+            "type": "text",
+            "content": "From Stage 0, you know that conditional statements let programs make decisions. Now you'll learn the specific vocabulary: the terms, operators, and syntax you need to write them."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Key Vocabulary for Conditional Statements",
+        "components": [
+          {
+            "type": "text",
+            "content": "**if statement** — The basic conditional statement that checks if a condition is true and executes code if it is.\n\n**Example:** `if age >= 18:`\n\n**When it matters:** Use `if` when you want to check a single condition and do something if it's true.\n\n**Connection:** The `if` statement is the foundation of all conditional logic. Every conditional program starts with `if`."
+          },
+          {
+            "type": "text",
+            "content": "**else statement** — Executes code when the `if` condition is false (the \"otherwise\" option).\n\n**Example:** `else:` (always paired with `if`)\n\n**When it matters:** Use `else` when you want to handle the case when the condition is false. It provides an alternative path.\n\n**Connection:** `else` gives you two paths: one for true, one for false. It's like saying \"if this, do that; otherwise, do this other thing.\""
+          },
+          {
+            "type": "text",
+            "content": "**elif statement** — Short for \"else if,\" checks another condition when the previous `if` or `elif` was false.\n\n**Example:** `elif score >= 80:`\n\n**When it matters:** Use `elif` when you have multiple conditions to check in sequence. It lets you handle three or more different cases.\n\n**Connection:** `elif` bridges between `if` and `else`, allowing multiple conditions to be checked in order."
+          },
+          {
+            "type": "text",
+            "content": "**condition** — An expression that evaluates to True or False, used to make decisions.\n\n**Examples:** `age >= 18`, `score == 100`, `name == \"Admin\"`\n\n**When it matters:** Conditions are what you check to make decisions. They're the questions your program asks.\n\n**Connection:** Conditions use comparison operators (==, <, >, etc.) or boolean values to create True/False results."
+          },
+          {
+            "type": "text",
+            "content": "**comparison operators** — Symbols that compare two values and return True or False.\n\n**Operators:**\n- `==` (equal to) — Checks if two values are equal\n- `!=` (not equal to) — Checks if two values are different\n- `<` (less than) — Checks if left value is smaller\n- `>` (greater than) — Checks if left value is larger\n- `<=` (less than or equal to) — Checks if left value is smaller or equal\n- `>=` (greater than or equal to) — Checks if left value is larger or equal\n\n**When it matters:** Use comparison operators to create conditions that check relationships between values.\n\n**Connection:** Comparison operators are the tools you use to build conditions. They're like asking questions: \"Is this equal to that?\" \"Is this greater than that?\""
+          },
+          {
+            "type": "text",
+            "content": "**boolean value** — A value that is either `True` or `False` (only these two options).\n\n**Examples:** `True`, `False`, result of `age >= 18` (which is True or False)\n\n**When it matters:** Conditions must evaluate to boolean values. The `if` statement checks if the condition is `True`.\n\n**Connection:** You learned about booleans in the variables guide. Now you'll use them extensively in conditions."
+          },
+          {
+            "type": "text",
+            "content": "**logical operators** — Operators that combine multiple conditions: `and`, `or`, `not`.\n\n**Operators:**\n- `and` — Both conditions must be True\n- `or` — At least one condition must be True\n- `not` — Reverses True to False and False to True\n\n**Examples:** `age >= 18 and age <= 65`, `score > 90 or bonus == True`, `not is_weekend`\n\n**When it matters:** Use logical operators when you need to check multiple conditions together.\n\n**Connection:** Logical operators let you create complex conditions by combining simpler ones."
+          },
+          {
+            "type": "text",
+            "content": "**indentation** — The spaces or tabs at the beginning of lines that show which code belongs to which block.\n\n**Example:** Code inside `if` statements must be indented (usually 4 spaces)\n\n**When it matters:** Python uses indentation to show code structure. Code inside `if`, `elif`, and `else` blocks must be indented.\n\n**Connection:** Indentation is Python's way of showing which code executes when a condition is true."
+          },
+          {
+            "type": "text",
+            "content": "**nested conditionals** — Conditional statements inside other conditional statements.\n\n**Example:** An `if` statement inside another `if` statement\n\n**When it matters:** Use nested conditionals when you need to check conditions within conditions (like checking age, then checking if they have permission).\n\n**Connection:** Nested conditionals let you create complex decision trees with multiple levels of checking."
+          },
+          {
+            "type": "text",
+            "content": "**How These Terms Work Together:**\n\n1. You write an **if statement** with a **condition** (using **comparison operators**)\n2. The condition evaluates to a **boolean value** (True or False)\n3. If True, the indented code executes\n4. You can add **elif** statements for additional conditions\n5. You can add **else** for the default case\n6. Use **logical operators** to combine multiple conditions\n7. You can **nest** conditionals for complex logic\n\nAll these pieces work together to create decision-making programs!"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Vocabulary Practice",
+        "components": [
+          {
+            "type": "matching",
+            "leftColumn": [
+              "if",
+              "else",
+              "elif",
+              "condition",
+              "==",
+              "!=",
+              "and",
+              "or",
+              "not",
+              "indentation"
+            ],
+            "rightColumn": [
+              {
+                "definition": "Basic conditional statement that checks a condition",
+                "matchesWith": "if"
+              },
+              {
+                "definition": "Executes when the if condition is false",
+                "matchesWith": "else"
+              },
+              {
+                "definition": "Checks another condition when previous if/elif was false",
+                "matchesWith": "elif"
+              },
+              {
+                "definition": "Expression that evaluates to True or False",
+                "matchesWith": "condition"
+              },
+              {
+                "definition": "Comparison operator: equal to",
+                "matchesWith": "=="
+              },
+              {
+                "definition": "Comparison operator: not equal to",
+                "matchesWith": "!="
+              },
+              {
+                "definition": "Logical operator: both conditions must be True",
+                "matchesWith": "and"
+              },
+              {
+                "definition": "Logical operator: at least one condition must be True",
+                "matchesWith": "or"
+              },
+              {
+                "definition": "Logical operator: reverses True/False",
+                "matchesWith": "not"
+              },
+              {
+                "definition": "Spaces at line start showing code block structure",
+                "matchesWith": "indentation"
+              }
+            ]
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What does the comparison operator == do?",
+            "options": [
+              "Assigns a value",
+              "Checks if two values are equal",
+              "Adds two numbers",
+              "Prints text"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! == checks if two values are equal and returns True or False.",
+              "incorrect": "== is a comparison operator that checks equality, not assignment."
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What is the purpose of the elif statement?",
+            "options": [
+              "To execute code when if is false",
+              "To check another condition when previous if/elif was false",
+              "To combine two conditions",
+              "To print output"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! elif checks another condition when the previous if or elif was false.",
+              "incorrect": "elif is used to check additional conditions in sequence, not to execute when if is false (that's else)."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Vocabulary Application",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Creative Visualization Task:**\n\nCreate a diagram showing how conditional statements work. Include:\n- The flow from if → elif → else\n- Examples of conditions using comparison operators\n- How boolean values (True/False) determine which path is taken\n- Where indentation shows code blocks\n\nYou can draw this or describe it in text!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain the difference between == (comparison) and = (assignment). Why is this difference important?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is the difference between 'and' and 'or' logical operators? Give an example of when you'd use each.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Vocabulary Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can define key terms like if, elif, else, condition",
+              "I can recall what comparison operators do",
+              "I understand how these terms work together"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which term was easiest for you to understand? Which needs more review?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Can you recall the six comparison operators without looking back? Try listing them.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does understanding these terms help you prepare for writing conditional statements?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Terms to Understanding",
+        "components": [
+          {
+            "type": "text",
+            "content": "You've learned the vocabulary: **if**, **elif**, **else**, **comparison operators** (==, !=, <, >, <=, >=), **logical operators** (and, or, not), **conditions**, **boolean values**, **indentation**, and **nested conditionals**.\n\n**Why this matters:** Knowing the terms is the first step. Now you'll understand **how** these pieces work together — what happens when Python evaluates a condition, how the program flow changes, and why indentation matters.\n\n**How you'll use this:** Next, you'll learn the \"behind the scenes\" process: how Python reads conditional statements, evaluates conditions, and decides which code to execute. You'll understand the flow from condition check to code execution."
+          }
+        ]
+      }
+    },
+    "s2": {
+      "mindset": {
+        "heading": "Understanding the Process",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from knowing the terms to understanding **how** conditional statements actually work. You're opening the \"black box\" to see what happens inside when Python evaluates conditions and makes decisions."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What You Know",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know the vocabulary: if, elif, else, comparison operators, logical operators. Now you'll understand how Python uses these to make decisions step by step."
+          }
+        ]
+      },
+      "core": {
+        "heading": "How Conditional Statements Work",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Step-by-Step: What Happens When Python Encounters a Conditional Statement**\n\n**Step 1:** Python reads the `if` statement and finds the condition\n\n**Step 2:** Python evaluates the condition (checks comparison, applies logical operators)\n\n**Step 3:** The condition produces a boolean value (True or False)\n\n**Step 4:** If the result is `True`, Python executes the indented code block under the `if`\n\n**Step 5:** If the result is `False`, Python skips the `if` block and looks for `elif` or `else`\n\n**Step 6:** If there's an `elif`, Python evaluates its condition (only if previous if/elif was False)\n\n**Step 7:** If `elif` condition is `True`, Python executes the `elif` block and skips remaining elif/else\n\n**Step 8:** If all `if` and `elif` conditions are `False`, Python executes the `else` block (if present)\n\n**Step 9:** After executing one block, Python continues with code after the entire if-elif-else structure\n\n**Step 10:** Python uses indentation to know which code belongs to which block"
+          },
+          {
+            "type": "text",
+            "content": "**Why Each Step Matters:**\n\n- **Step 1-2:** Python must read and understand the condition before making a decision\n- **Step 3:** The boolean result determines the path taken\n- **Step 4-5:** This is where the actual decision happens — True takes one path, False takes another\n- **Step 6-7:** `elif` provides additional decision points when the first condition is false\n- **Step 8:** `else` provides a default path when no conditions are true\n- **Step 9:** After making a decision, the program continues normally\n- **Step 10:** Indentation is Python's way of organizing code blocks — it's not just formatting, it's structure"
+          },
+          {
+            "type": "text",
+            "content": "**What Happens Internally: Condition Evaluation**\n\nWhen Python sees `age >= 18`:\n1. Python retrieves the value of `age` from memory\n2. Python compares it to `18` using the `>=` operator\n3. Python performs the comparison: is age's value greater than or equal to 18?\n4. Python returns `True` if yes, `False` if no\n5. This boolean value is what the `if` statement checks\n\n**Example:** If `age = 20`:\n- `20 >= 18` evaluates to `True`\n- The `if` statement sees `True`\n- The indented code executes\n\n**Example:** If `age = 15`:\n- `15 >= 18` evaluates to `False`\n- The `if` statement sees `False`\n- The indented code is skipped"
+          },
+          {
+            "type": "text",
+            "content": "**How Components Interact: The Complete Flow**\n\n**Terminal/Editor → Python Interpreter → Memory → Comparison → Decision → Execution**\n\n1. **You write code** in your editor with conditional statements\n2. **Python reads** the code line by line\n3. **Python stores** variable values in memory\n4. **Python evaluates** conditions by comparing values\n5. **Python makes** a decision based on True/False\n6. **Python executes** the appropriate code block\n7. **Python continues** with the rest of the program\n\n**Visual Flow:**\n```\nCode: if age >= 18:\n         ↓\nPython reads condition\n         ↓\nChecks: age (20) >= 18?\n         ↓\nResult: True\n         ↓\nExecutes: print(\"Adult\")\n         ↓\nContinues with next line\n```"
+          },
+          {
+            "type": "text",
+            "content": "**How Logical Operators Work Internally**\n\n**`and` operator:**\n- Python evaluates left condition first\n- If left is `False`, Python stops (doesn't check right) — returns `False`\n- If left is `True`, Python evaluates right condition\n- Returns `True` only if both are `True`\n\n**Example:** `age >= 18 and age <= 65`\n- If `age = 15`: `15 >= 18` is `False`, so Python returns `False` immediately (doesn't check `<= 65`)\n- If `age = 20`: `20 >= 18` is `True`, so Python checks `20 <= 65` (also `True`), returns `True`\n\n**`or` operator:**\n- Python evaluates left condition first\n- If left is `True`, Python stops — returns `True`\n- If left is `False`, Python evaluates right condition\n- Returns `True` if either is `True`\n\n**Example:** `score > 90 or bonus == True`\n- If `score = 95`: `95 > 90` is `True`, so Python returns `True` immediately\n- If `score = 85` and `bonus = True`: `85 > 90` is `False`, so Python checks `bonus == True` (True), returns `True`"
+          },
+          {
+            "type": "text",
+            "content": "**How Indentation Works**\n\nPython uses indentation (spaces or tabs) to show code structure:\n\n- **Same indentation level** = same code block\n- **More indentation** = inside a block (like inside `if`)\n- **Less indentation** = outside a block (after `if` is done)\n\n**Example:**\n```python\nif age >= 18:        # Line 1: if statement\n    print(\"Adult\")   # Line 2: indented = inside if block\n    print(\"Access\")   # Line 3: same indentation = still inside if\nprint(\"Done\")        # Line 4: less indentation = outside if block\n```\n\n**Why it matters:** Python doesn't use braces `{}` like other languages. Indentation IS the structure. Wrong indentation = wrong code execution."
+          },
+          {
+            "type": "text",
+            "content": "**How Nested Conditionals Work**\n\nWhen you have conditionals inside conditionals:\n\n1. Python evaluates the **outer** condition first\n2. If outer is `True`, Python enters the outer block\n3. Python then evaluates the **inner** condition\n4. If inner is `True`, Python executes inner block\n5. Python continues with rest of outer block\n6. If outer is `False`, Python skips everything inside (including inner conditionals)\n\n**Example Flow:**\n```python\nif age >= 18:              # Outer: Check age\n    if has_permission:     # Inner: Check permission (only if age >= 18)\n        print(\"Access\")    # Only if BOTH are True\n```\n\n**Why it matters:** Nested conditionals let you check conditions within conditions, creating complex decision trees."
+          },
+          {
+            "type": "text",
+            "content": "**Key Idea: The Flow of Information**\n\nInformation flows through conditional statements like this:\n\n1. **Input** → Variables store values (from user input, calculations, etc.)\n2. **Condition** → Comparison operators check relationships\n3. **Evaluation** → Python produces True/False\n4. **Decision** → Python chooses which code path to take\n5. **Execution** → Python runs the selected code block\n6. **Output** → Results are displayed or stored\n\n**The Complete Picture:**\n- Variables provide the data\n- Conditions ask questions about the data\n- Boolean results answer the questions\n- Conditional statements use the answers to make decisions\n- Code blocks execute based on decisions\n- Programs respond intelligently to different situations"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example showing the complete flow\nage = int(input(\"How old are you? \"))\n\n# Step 1: Python reads 'if age >= 18:'\n# Step 2: Python evaluates 'age >= 18' (e.g., 20 >= 18)\n# Step 3: Result is True\n# Step 4: Python executes the indented block\nif age >= 18:\n    print(\"You are an adult.\")\n    print(\"Access granted.\")\n# Step 5: Python continues here after the if block\nelse:\n    print(\"You are a minor.\")\n    print(\"Access denied.\")\n\nprint(\"Program complete.\")",
+            "copyable": false
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Understanding the Flow",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What happens step-by-step when Python encounters 'if age >= 18:'? Describe the process.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "If age = 15, what happens when Python evaluates 'age >= 18'?",
+            "options": [
+              "Python returns True and executes the if block",
+              "Python returns False and skips the if block",
+              "Python shows an error",
+              "Python asks for user input"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! 15 >= 18 is False, so Python skips the if block.",
+              "incorrect": "15 is not greater than or equal to 18, so the condition is False and the if block is skipped."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does indentation matter in Python? What happens if you forget to indent code inside an if statement?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "In 'age >= 18 and age <= 65', if age = 15, what does Python do?",
+            "options": [
+              "Checks both conditions and returns False",
+              "Checks first condition, sees False, stops and returns False",
+              "Checks second condition first",
+              "Returns True"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! With 'and', Python stops early if the first condition is False (short-circuit evaluation).",
+              "incorrect": "The 'and' operator uses short-circuit evaluation: if the first condition is False, it doesn't check the second."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Prediction Activity:**\n\nLook at this code:\n```python\nscore = 85\nif score >= 90:\n    print(\"A\")\nelif score >= 80:\n    print(\"B\")\nelse:\n    print(\"C\")\n```\n\n**Question:** What will be printed? Trace through the steps Python takes."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain what happens when Python encounters nested conditionals. Use an example.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Flow Diagram",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Creative Diagram Task:**\n\nCreate a flowchart or diagram showing how conditional statements work. Include:\n\n1. **Start point** — Program begins\n2. **Condition check** — Python evaluates condition\n3. **Decision point** — True or False?\n4. **True path** — What happens if True\n5. **False path** — What happens if False\n6. **elif branches** — Additional conditions\n7. **else path** — Default case\n8. **Continue** — Program continues after conditionals\n\n**Hints:**\n- Use boxes for actions\n- Use diamonds for decisions\n- Use arrows to show flow\n- Label paths with True/False\n- Show how indentation relates to code blocks\n\nYou can draw this or describe it in detail!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your flowchart. How does it show the decision-making process?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What happens if a condition evaluates to True in an if-elif-else chain? Does Python check the remaining elif and else?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Understanding Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can explain why conditional statements work the way they do",
+              "I can describe what happens when Python evaluates a condition",
+              "I understand how indentation affects code execution"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most surprising thing you learned about how conditional statements work?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does understanding the 'behind the scenes' process help you write better conditional statements?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What still seems confusing about how conditional statements work?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Understanding to Doing",
+        "components": [
+          {
+            "type": "text",
+            "content": "You understand **how** conditional statements work — the step-by-step process Python follows, how conditions are evaluated, how boolean values drive decisions, and how indentation structures code blocks.\n\n**Why this matters:** Understanding the process helps you write correct code and debug when things go wrong.\n\n**How you'll use this:** Next, you'll **apply** this knowledge by writing your own conditional statements. You'll create programs that make decisions, handle different cases, and respond intelligently to user input. You'll practice the syntax, learn common patterns, and build confidence through hands-on coding."
+          }
+        ]
+      }
+    },
+    "s3": {
+      "mindset": {
+        "heading": "Time to Code",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from understanding to **doing**. Now you'll write your own conditional statements. Focus on accuracy, proper syntax, and correct indentation. Remember: mistakes are expected — that's how you learn!"
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Before You Start",
+        "components": [
+          {
+            "type": "text",
+            "content": "You understand how conditional statements work. Now let's write them! Make sure you can answer: What is a condition? What does if/elif/else do? Why does indentation matter?"
+          }
+        ]
+      },
+      "core": {
+        "heading": "Writing Conditional Statements: Step-by-Step",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Preparation Checklist**\n\nBefore you start coding, make sure you have:\n\n✓ **Python installed** — You should be able to run `python --version`\n✓ **Text editor ready** — Any editor works (VS Code, Notepad++, Sublime, etc.)\n✓ **Terminal/Command Prompt open** — You'll need this to run your scripts\n✓ **Folder location chosen** — Decide where you'll save your Python files\n✓ **Understanding of variables and input** — You should know how to get and store user input\n✓ **Basic Python knowledge** — You should be able to create and run simple scripts\n\nOnce you've checked these off, you're ready to write conditional statements!"
+          },
+          {
+            "type": "text",
+            "content": "**Step-by-Step Guide: Writing Your First Conditional Statement**\n\n**Step 1:** Open your text editor and create a new file\n\n**Step 2:** Save it as `conditional_demo.py` (the `.py` extension is important)\n\n**Step 3:** Get user input and store it in a variable:\n```python\nage = int(input(\"How old are you? \"))\n```\n\n**Step 4:** Write the `if` statement with a condition:\n```python\nif age >= 18:\n```\n\n**Step 5:** Add indented code (4 spaces) that runs when condition is True:\n```python\nif age >= 18:\n    print(\"You are an adult.\")\n```\n\n**Step 6:** Add an `else` statement for when condition is False:\n```python\nif age >= 18:\n    print(\"You are an adult.\")\nelse:\n    print(\"You are a minor.\")\n```\n\n**Step 7:** Save the file (Ctrl+S or Cmd+S)\n\n**Step 8:** Run the program in terminal:\n```bash\npython conditional_demo.py\n```\n\n**Step 9:** Test with different inputs (try 20, then 15) to verify both paths work\n\n**Step 10:** Add an `elif` for multiple conditions:\n```python\nif age >= 18:\n    print(\"You are an adult.\")\nelif age >= 13:\n    print(\"You are a teenager.\")\nelse:\n    print(\"You are a child.\")\n```\n\n**Step 11:** Test again with different ages (25, 15, 10) to verify all paths"
+          },
+          {
+            "type": "text",
+            "content": "**Visual Descriptions:**\n\n**File Structure:**\n```\nC:\\Code\\python-practice\\\n  └── conditional_demo.py  ← Your script\n```\n\n**Terminal Interaction:**\n```\nC:\\Code\\python-practice> python conditional_demo.py\nHow old are you? 20\nYou are an adult.\n\nC:\\Code\\python-practice> python conditional_demo.py\nHow old are you? 15\nYou are a minor.\n```\n\n**Code Structure with Indentation:**\n```python\n# No indentation: main code level\nage = int(input(\"How old are you? \"))\n\n# if statement: main level\nif age >= 18:\n    # 4 spaces: inside if block\n    print(\"You are an adult.\")\n    print(\"Access granted.\")\n# Back to main level\nelse:\n    # 4 spaces: inside else block\n    print(\"You are a minor.\")\n    print(\"Access denied.\")\n# Back to main level\nprint(\"Program complete.\")\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Common Pitfalls and How to Avoid Them:**\n\n1. **Forgetting the colon `:`** — `if age >= 18` causes SyntaxError. Fix: Always add `:` after conditions: `if age >= 18:`\n\n2. **Wrong indentation** — Code not indented inside `if` block runs always. Fix: Use 4 spaces (or 1 tab) for code inside blocks\n\n3. **Using `=` instead of `==`** — `if age = 18:` assigns instead of comparing. Fix: Use `==` for comparison: `if age == 18:`\n\n4. **Missing `else` when needed** — Program does nothing when condition is false. Fix: Add `else:` block for default case\n\n5. **Incorrect `elif` usage** — Using multiple `if` instead of `elif` checks all conditions. Fix: Use `elif` to chain conditions: `if... elif... else`\n\n6. **Not converting input** — `age = input(\"Age? \")` then `if age >= 18:` compares string to number. Fix: Convert: `age = int(input(\"Age? \"))`\n\n7. **Logical operator mistakes** — `if age >= 18 and <= 65:` is invalid syntax. Fix: Repeat variable: `if age >= 18 and age <= 65:`\n\n8. **Nested indentation errors** — Wrong indentation in nested conditionals. Fix: Each level adds 4 more spaces\n\n9. **Forgetting to test all paths** — Only testing one condition. Fix: Test True case, False case, and all elif cases\n\n10. **Comparing strings incorrectly** — `if name == \"admin\":` is case-sensitive. Fix: Use `.lower()`: `if name.lower() == \"admin\":`"
+          },
+          {
+            "type": "text",
+            "content": "**File Location Guidance:**\n\n**Where to Save:**\n• Create a dedicated folder for your Python practice\n• Save all conditional programs in this folder\n• Use descriptive filenames: `age_checker.py`, `grade_calculator.py`, `password_validator.py`\n\n**How to Navigate:**\n• In Windows: `cd C:\\path\\to\\your\\folder`\n• In Mac/Linux: `cd ~/path/to/your/folder`\n• Use `dir` (Windows) or `ls` (Mac/Linux) to see files\n\n**Running Programs:**\n• Make sure you're in the correct directory\n• Type `python filename.py` and press Enter\n• The program will wait for your input when it reaches `input()`"
+          },
+          {
+            "type": "text",
+            "content": "**Verification Steps:**\n\n**How to Confirm Success:**\n\n1. **Program runs without errors** — No SyntaxError or IndentationError messages\n2. **Prompt displays correctly** — You see the prompt and can type\n3. **Input is received** — Program continues after you press Enter\n4. **Correct path executes** — The right message prints based on your input\n5. **All paths work** — Test both True and False cases (and all elif cases)\n6. **Indentation is correct** — Code inside blocks is properly indented\n\n**Multiple verification methods:**\n- Run the program and test with different inputs\n- Check that conditions work as expected\n- Verify all if/elif/else paths are tested\n- Check for proper indentation visually\n- Test edge cases (boundary values like exactly 18)"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 1: Simple if-else\nage = int(input(\"How old are you? \"))\n\nif age >= 18:\n    print(\"You are an adult.\")\nelse:\n    print(\"You are a minor.\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 2: if-elif-else with multiple conditions\nscore = int(input(\"Enter your score: \"))\n\nif score >= 90:\n    print(\"Grade: A\")\nelif score >= 80:\n    print(\"Grade: B\")\nelif score >= 70:\n    print(\"Grade: C\")\nelse:\n    print(\"Grade: F\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 3: Using logical operators\nage = int(input(\"How old are you? \"))\nhas_license = input(\"Do you have a license? (yes/no): \").lower() == \"yes\"\n\nif age >= 18 and has_license:\n    print(\"You can drive.\")\nelse:\n    print(\"You cannot drive.\")",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 4: Nested conditionals\nage = int(input(\"How old are you? \"))\n\nif age >= 18:\n    has_permission = input(\"Do you have permission? (yes/no): \").lower() == \"yes\"\n    if has_permission:\n        print(\"Access granted.\")\n    else:\n        print(\"Access denied - no permission.\")\nelse:\n    print(\"Access denied - too young.\")",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Practice Writing Conditionals",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I have Python installed and can run scripts",
+              "I have a text editor ready",
+              "I have a folder for my Python files",
+              "I understand if/elif/else syntax",
+              "I know how to use comparison operators",
+              "I understand indentation requirements",
+              "I can get user input and convert types",
+              "I'm ready to write my first conditional statement"
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**Activity: Write and Test a Simple Conditional**\n\n1. Create a file called `age_checker.py`\n2. Write code that asks for age and prints \"Adult\" if age >= 18, otherwise \"Minor\"\n3. Save the file\n4. Run it and test with age 20\n5. Run it again and test with age 15\n6. Verify both outputs are correct"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Paste the output from your age_checker.py program when you test it with age 20 and age 15.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What error occurs if you forget the colon after 'if age >= 18'?",
+            "options": [
+              "IndentationError",
+              "SyntaxError",
+              "TypeError",
+              "ValueError"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Missing colon causes a SyntaxError.",
+              "incorrect": "Missing colons cause SyntaxError, not IndentationError."
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What happens if you use 'if age = 18' instead of 'if age == 18'?",
+            "options": [
+              "It works correctly",
+              "SyntaxError - can't assign in condition",
+              "It always evaluates to True",
+              "It compares correctly"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! You can't use = in conditions - it's for assignment, not comparison.",
+              "incorrect": "Using = in a condition tries to assign, which causes a SyntaxError."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Conditional Program",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Create a Proof-of-Work Program**\n\nCreate a program called `grade_calculator.py` that:\n\n1. Asks the user for a score (0-100)\n2. Uses if-elif-else to assign letter grades:\n   - A: 90-100\n   - B: 80-89\n   - C: 70-79\n   - F: below 70\n3. Prints the letter grade\n4. Handles edge cases (exactly 90, 80, 70)\n\n**Requirements:**\n• File must be named `grade_calculator.py`\n• Must use if-elif-else structure\n• Must convert input to int\n• Must test with scores: 95, 85, 75, 65\n• Take a screenshot showing:\n  - Your code in the editor\n  - Terminal output for at least 2 test cases\n\n**Optional advanced step:** Add input validation to ensure score is between 0-100."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most challenging part of writing your conditional program? How did you solve it?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Application Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can write if-else statements correctly",
+              "I can write if-elif-else statements with multiple conditions",
+              "I can use comparison and logical operators in conditions",
+              "I can handle indentation properly",
+              "I can test my conditional programs with different inputs"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the easiest part of writing conditional statements? What was the most confusing?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What surprised you about writing conditional code? What did you learn?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How confident do you feel writing conditional statements now? What would help you feel more confident?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Writing to Troubleshooting",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can now **write conditional statements** successfully — great work! You've created programs that make decisions, handle different cases, and respond to user input.\n\n**Why this matters:** Being able to write conditionals is a fundamental programming skill. You're building the foundation for more complex programs.\n\n**How you'll use this:** Next, you'll learn to **analyze and troubleshoot** conditional logic. You'll discover common errors, learn to debug logic mistakes, and understand what happens when conditions don't work as expected. This will make you a better problem-solver and help you fix issues in your own code."
+          }
+        ]
+      }
+    },
+    "s4": {
+      "mindset": {
+        "heading": "Becoming a Troubleshooter",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from writing code correctly to understanding what happens when things go wrong. Every error message is a clue. Think like a detective: look for causes, patterns, and relationships."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What Works",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know how to write conditional statements that work. Now let's explore what happens when something fails — and how to fix it."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Troubleshooting Conditional Logic Errors",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Error Analysis Table: Common Conditional Statement Errors**\n\n**Error 1: SyntaxError - Missing Colon**\n**Symptom:** `SyntaxError: expected ':'` appears when running code\n**Possible Cause:** Forgot to add `:` after `if`, `elif`, or `else` statement\n**How to Verify:** Look at the line with the error — check if `:` is present\n**How to Fix:** Add `:` after the condition: `if age >= 18:` not `if age >= 18`\n\n**Error 2: IndentationError**\n**Symptom:** `IndentationError: expected an indented block` or `unindent does not match any outer indentation level`\n**Possible Cause:** Code inside `if` block is not indented, or indentation is inconsistent (mixing spaces and tabs)\n**How to Verify:** Check that code inside `if`/`elif`/`else` has 4 spaces (or consistent tabs)\n**How to Fix:** Indent code inside blocks with 4 spaces. Use editor's \"Show Whitespace\" feature to check\n\n**Error 3: SyntaxError - Using = Instead of ==**\n**Symptom:** `SyntaxError: invalid syntax` or program assigns value instead of comparing\n**Possible Cause:** Used assignment operator `=` instead of comparison `==` in condition\n**How to Verify:** Look for `if variable = value:` instead of `if variable == value:`\n**How to Fix:** Change `=` to `==` for comparisons: `if age == 18:` not `if age = 18:`\n\n**Error 4: TypeError - Comparing String to Number**\n**Symptom:** `TypeError: '>=' not supported between instances of 'str' and 'int'`\n**Possible Cause:** Comparing string input directly to number without converting\n**How to Verify:** Check if you used `int()` or `float()` to convert input before comparison\n**How to Fix:** Convert input: `age = int(input(\"Age? \"))` before `if age >= 18:`\n\n**Error 5: Logic Error - Wrong Operator**\n**Symptom:** Program runs but gives wrong results (e.g., shows \"Adult\" for age 15)\n**Possible Cause:** Used wrong comparison operator (e.g., `<=` instead of `>=`)\n**How to Verify:** Test with known values and check if results match expectations\n**How to Fix:** Review logic: `if age >= 18:` means \"if age is 18 or older\"\n\n**Error 6: Logic Error - Multiple If Instead of Elif**\n**Symptom:** Multiple conditions execute when only one should (e.g., both \"A\" and \"B\" print)\n**Possible Cause:** Used multiple `if` statements instead of `if-elif-else` chain\n**How to Verify:** Check if you have `if... if... if...` instead of `if... elif... elif... else`\n**How to Fix:** Change subsequent `if` to `elif` to create a chain: only one block executes\n\n**Error 7: IndentationError - Nested Conditionals**\n**Symptom:** `IndentationError` in nested conditionals or wrong code executes\n**Possible Cause:** Incorrect indentation levels in nested `if` statements\n**How to Verify:** Check that each nesting level adds 4 more spaces\n**How to Fix:** Inner `if` should have 8 spaces (4 for outer, 4 for inner), outer `if` has 4 spaces\n\n**Error 8: Logic Error - Logical Operator Syntax**\n**Symptom:** `SyntaxError` or wrong logic results\n**Possible Cause:** Incorrect syntax like `if age >= 18 and <= 65:` (missing variable in second condition)\n**How to Verify:** Check that each condition in `and`/`or` is complete\n**How to Fix:** Write full conditions: `if age >= 18 and age <= 65:` not `if age >= 18 and <= 65:`\n\n**Error 9: Logic Error - Case-Sensitive String Comparison**\n**Symptom:** String comparisons fail even when values seem equal (e.g., \"Admin\" != \"admin\")\n**Possible Cause:** String comparison is case-sensitive: `\"Admin\" == \"admin\"` is False\n**How to Verify:** Check if comparing strings with different cases\n**How to Fix:** Use `.lower()`: `if name.lower() == \"admin\":`\n\n**Error 10: Logic Error - Off-by-One or Boundary Issues**\n**Symptom:** Edge cases fail (e.g., score 90 doesn't get \"A\" grade)\n**Possible Cause:** Wrong comparison operators for boundaries (e.g., `if score > 90:` instead of `if score >= 90:`)\n**How to Verify:** Test boundary values (exactly 90, 80, 70 in grade example)\n**How to Fix:** Use `>=` for inclusive boundaries: `if score >= 90:` includes 90"
+          },
+          {
+            "type": "text",
+            "content": "**Systematic Troubleshooting Methodology**\n\n**Step 1: Read the Error Message**\n- Look for the error type (SyntaxError, IndentationError, TypeError, etc.)\n- Note the line number where error occurs\n- Read the error description carefully\n\n**Step 2: Identify the Error Category**\n- **Syntax errors** — Missing colons, wrong operators, invalid syntax\n- **Indentation errors** — Wrong spacing, inconsistent tabs/spaces\n- **Type errors** — Comparing incompatible types (string vs number)\n- **Logic errors** — Code runs but gives wrong results\n\n**Step 3: Locate the Problem**\n- Go to the line number mentioned in error\n- Check the specific syntax mentioned in error message\n- Look for common patterns (missing `:`, wrong indentation, `=` vs `==`)\n\n**Step 4: Understand the Cause**\n- Why did this error occur? (forgot colon, wrong operator, type mismatch)\n- What was the programmer trying to do?\n- What went wrong in the logic?\n\n**Step 5: Apply the Fix**\n- Make the correction (add colon, fix indentation, convert type, etc.)\n- Test the fix with the same input that caused the error\n- Verify the program now works correctly"
+          },
+          {
+            "type": "text",
+            "content": "**Pattern Recognition: Common Error Patterns**\n\n**Pattern 1: Missing Punctuation**\n- Missing `:` after `if`/`elif`/`else`\n- Missing parentheses in complex conditions\n- **Fix:** Always add `:` after conditional statements\n\n**Pattern 2: Indentation Issues**\n- Code not indented inside blocks\n- Mixing spaces and tabs\n- Wrong indentation level in nested conditionals\n- **Fix:** Use 4 spaces consistently, check editor settings\n\n**Pattern 3: Operator Confusion**\n- Using `=` instead of `==` for comparison\n- Using wrong comparison operator (`<` instead of `<=`)\n- **Fix:** Remember `=` assigns, `==` compares\n\n**Pattern 4: Type Mismatches**\n- Comparing string input to numbers\n- Not converting `input()` result before comparison\n- **Fix:** Always convert: `int(input())` or `float(input())`\n\n**Pattern 5: Logic Flow Issues**\n- Multiple `if` instead of `if-elif-else`\n- Conditions that can't both be true but both execute\n- **Fix:** Use `elif` to chain conditions, ensure only one path executes"
+          },
+          {
+            "type": "text",
+            "content": "**Comparison of Error Types**\n\n**SyntaxError vs IndentationError:**\n- **SyntaxError:** Invalid code structure (missing `:`, wrong operators)\n- **IndentationError:** Wrong spacing/tabs (Python-specific, structure issue)\n- **Both:** Prevent program from running\n\n**TypeError vs Logic Error:**\n- **TypeError:** Program crashes (can't compare string to int)\n- **Logic Error:** Program runs but gives wrong results (wrong operator)\n- **TypeError:** Caught immediately when running\n- **Logic Error:** Only noticed when testing with specific inputs\n\n**Syntax Error vs Logic Error:**\n- **Syntax Error:** Code won't run at all (Python can't parse it)\n- **Logic Error:** Code runs but doesn't do what you intended\n- **Syntax Error:** Easy to spot (error message)\n- **Logic Error:** Harder to find (requires testing and thinking)"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example of common errors and fixes\n\n# ERROR 1: Missing colon\n# if age >= 18  ← SyntaxError\n# FIX:\nif age >= 18:\n    print(\"Adult\")\n\n# ERROR 2: Wrong indentation\n# if age >= 18:\n# print(\"Adult\")  ← IndentationError\n# FIX:\nif age >= 18:\n    print(\"Adult\")  # 4 spaces\n\n# ERROR 3: Using = instead of ==\n# if age = 18:  ← SyntaxError\n# FIX:\nif age == 18:\n    print(\"Exactly 18\")\n\n# ERROR 4: Type mismatch\n# age = input(\"Age? \")\n# if age >= 18:  ← TypeError\n# FIX:\nage = int(input(\"Age? \"))\nif age >= 18:\n    print(\"Adult\")\n\n# ERROR 5: Multiple if instead of elif\n# if score >= 90:\n#     print(\"A\")\n# if score >= 80:  ← Both can execute!\n#     print(\"B\")\n# FIX:\nif score >= 90:\n    print(\"A\")\nelif score >= 80:\n    print(\"B\")",
+            "copyable": false
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Error Diagnosis Practice",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Identify the Error**\n\nLook at this code:\n```python\nage = input(\"How old are you? \")\nif age >= 18:\n    print(\"Adult\")\n```\n\n**What error will occur? Why?**"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is the error in the code above? What type of error is it? How would you fix it?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": ["TypeError", "string", "int", "convert"]
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Spot the Problem**\n\n```python\nscore = int(input(\"Enter score: \"))\nif score >= 90:\n    print(\"A\")\nif score >= 80:\n    print(\"B\")\nelse:\n    print(\"C\")\n```\n\n**Question:** What's wrong with this code? What will happen if score is 95?"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "If score = 95, what will the code above print?",
+            "options": [
+              "Just 'A'",
+              "Just 'B'",
+              "Both 'A' and 'B'",
+              "Just 'C'"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! Using multiple 'if' statements means both conditions are checked independently, so both can execute.",
+              "incorrect": "With multiple 'if' statements, each condition is checked separately, so both 'A' and 'B' can print."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 3: Fix the Logic**\n\n```python\nage = int(input(\"Age? \"))\nif age = 18:\n    print(\"Exactly 18\")\n```\n\n**What's the error?**"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What error occurs in the code above? What's the fix?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": ["SyntaxError", "==", "assignment", "comparison"]
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 4: Indentation Issue**\n\n```python\nage = int(input(\"Age? \"))\nif age >= 18:\nprint(\"Adult\")\n```\n\n**What error will this cause?**"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What error occurs in the code above?",
+            "options": [
+              "SyntaxError",
+              "IndentationError",
+              "TypeError",
+              "No error"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! The print statement must be indented inside the if block.",
+              "incorrect": "This is an IndentationError because code inside the if block must be indented."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Troubleshooting Flowchart",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Creative Troubleshooting Flowchart Task**\n\nCreate a flowchart or decision tree showing how to troubleshoot conditional statement errors. Include:\n\n1. **Start:** Program has an error\n2. **Check error type:** SyntaxError, IndentationError, TypeError, or Logic Error?\n3. **For SyntaxError:** Check for missing `:`, wrong operators (`=` vs `==`)\n4. **For IndentationError:** Check spacing, verify 4 spaces inside blocks\n5. **For TypeError:** Check if types match, verify input conversion\n6. **For Logic Error:** Test with different inputs, verify operators and conditions\n7. **Apply fix** and test again\n8. **Success:** Program works correctly\n\n**Include these error scenarios:**\n- Missing colon\n- Wrong indentation\n- Using `=` instead of `==`\n- Type mismatch (string vs number)\n- Multiple `if` instead of `elif`\n- Wrong comparison operator\n\n**Hints:**\n- Use decision diamonds for error type checks\n- Use rectangles for actions/fixes\n- Use arrows to show flow\n- Label each path clearly"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your troubleshooting flowchart. How does it help someone diagnose conditional statement errors?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "List the steps you would take to troubleshoot a conditional statement that runs but gives wrong results (logic error).",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What's the first question you should ask when you see 'IndentationError: expected an indented block'?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Troubleshooting Skills Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can identify why conditional statement errors occur",
+              "I can tell the difference between SyntaxError, IndentationError, TypeError, and Logic Error",
+              "I can explain the troubleshooting process for conditional statements"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What's your 3-step plan for troubleshooting any conditional statement error?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What error patterns have you noticed? Which errors are most common?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How has your approach to debugging changed? What strategies work best for you?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Troubleshooting to Evaluating",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can now **diagnose and fix conditional statement errors** — excellent troubleshooting skills! You understand different error types, can recognize patterns, and know how to systematically find and fix problems.\n\n**Why this matters:** Troubleshooting is a critical programming skill. Being able to find and fix errors makes you a more capable programmer.\n\n**How you'll use this:** Next, you'll learn to **evaluate** conditional code quality. You'll judge whether code is well-written, appropriate for its purpose, and follows best practices. You'll make professional-level decisions about code design and quality."
+          }
+        ]
+      }
+    },
+    "s5": {
+      "mindset": {
+        "heading": "Becoming a Code Critic",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from finding what's wrong to choosing what's best. Focus on judgment: balancing advantages, limitations, and context. You're not just fixing code — you're optimizing and making informed decisions."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Troubleshooting Skills",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can diagnose and fix conditional statement errors. Now you'll make professional-level decisions about code quality, design, and best practices."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Evaluating Conditional Code Quality",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Evaluation Criteria for Conditional Statements**\n\n**1. Clarity** — Is the code easy to read and understand?\n- Are condition names descriptive?\n- Are conditions written clearly?\n- Is the logic easy to follow?\n\n**2. Correctness** — Does the code work correctly for all cases?\n- Are all possible cases handled?\n- Do boundary conditions work (e.g., exactly 18, exactly 90)?\n- Are edge cases considered?\n\n**3. Efficiency** — Is the code structured efficiently?\n- Are conditions ordered from most specific to least specific?\n- Does it use `elif` instead of multiple `if` when appropriate?\n- Are unnecessary checks avoided?\n\n**4. Maintainability** — Is the code easy to modify and extend?\n- Can you easily add new conditions?\n- Is the structure clear for future changes?\n- Are magic numbers avoided (use named constants)?\n\n**5. Readability** — Is the code well-formatted and organized?\n- Is indentation consistent?\n- Are conditions formatted clearly?\n- Is there appropriate spacing?\n\n**6. Appropriateness** — Is the approach suitable for the problem?\n- Does it use the right level of complexity?\n- Are nested conditionals used when needed, avoided when not?\n- Is the solution appropriate for the use case?\n\n**7. Robustness** — Does it handle errors and edge cases?\n- Does it validate input?\n- Does it handle unexpected values?\n- Are error cases considered?\n\n**8. Style** — Does it follow Python conventions?\n- Uses proper indentation (4 spaces)\n- Follows PEP 8 style guidelines\n- Uses clear variable names"
+          },
+          {
+            "type": "text",
+            "content": "**Rating Scale for Conditional Code Quality**\n\n**⭐⭐⭐⭐⭐ Excellent (5/5):**\n- Crystal clear logic, handles all cases correctly\n- Well-structured with appropriate use of if-elif-else\n- Efficient ordering of conditions\n- Handles edge cases and validates input\n- Follows best practices and style guidelines\n- Easy to read, modify, and extend\n\n**⭐⭐⭐⭐ Good (4/5):**\n- Clear and mostly correct\n- Good structure with minor improvements possible\n- Handles most cases correctly\n- Generally follows best practices\n- Minor issues with edge cases or style\n\n**⭐⭐⭐ Fair (3/5):**\n- Works but could be clearer\n- Some logic issues or missing cases\n- Structure could be improved\n- May have some style inconsistencies\n- Needs some refactoring\n\n**⭐⭐ Poor (2/5):**\n- Hard to understand or has logic errors\n- Missing important cases\n- Poor structure or inefficient\n- Doesn't follow best practices\n- Needs significant improvement\n\n**⭐ Very Poor (1/5):**\n- Doesn't work correctly\n- Very confusing or poorly structured\n- Many errors or missing functionality\n- Doesn't follow any best practices\n- Needs complete rewrite"
+          },
+          {
+            "type": "table",
+            "caption": "Detailed Evaluation Rubric",
+            "headers": ["Criterion", "Excellent (5)", "Good (4)", "Fair (3)", "Poor (2)", "Very Poor (1)"],
+            "rows": [
+              {
+                "Criterion": "Clarity",
+                "Excellent (5)": "Crystal clear, self-documenting code",
+                "Good (4)": "Mostly clear, minor improvements possible",
+                "Fair (3)": "Somewhat clear, needs better naming",
+                "Poor (2)": "Confusing, hard to understand",
+                "Very Poor (1)": "Unclear, cryptic code"
+              },
+              {
+                "Criterion": "Correctness",
+                "Excellent (5)": "Handles all cases including edge cases",
+                "Good (4)": "Handles most cases, minor edge case issues",
+                "Fair (3)": "Works for common cases, misses some",
+                "Poor (2)": "Has logic errors, doesn't work correctly",
+                "Very Poor (1)": "Doesn't work, many errors"
+              },
+              {
+                "Criterion": "Efficiency",
+                "Excellent (5)": "Optimal structure, well-ordered conditions",
+                "Good (4)": "Good structure, minor optimizations possible",
+                "Fair (3)": "Works but could be more efficient",
+                "Poor (2)": "Inefficient structure or ordering",
+                "Very Poor (1)": "Very inefficient, poorly structured"
+              },
+              {
+                "Criterion": "Maintainability",
+                "Excellent (5)": "Easy to modify and extend",
+                "Good (4)": "Mostly maintainable, some improvements",
+                "Fair (3)": "Moderate difficulty to modify",
+                "Poor (2)": "Hard to modify, tightly coupled",
+                "Very Poor (1)": "Very difficult to modify"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**Examples: Good vs. Bad Conditional Code**\n\n**Example 1: Clarity**\n\n**Bad (Unclear):**\n```python\nif x > y and z < 10:\n    a()\n```\n\n**Good (Clear):**\n```python\nif age >= 18 and score < passing_score:\n    grant_access()\n```\n\n**Why Good:** Variable names (`age`, `score`) and function names (`grant_access`) make the code self-documenting.\n\n**Example 2: Correctness**\n\n**Bad (Missing Edge Case):**\n```python\nif score > 90:\n    grade = \"A\"\nelif score > 80:\n    grade = \"B\"\n```\n\n**Good (Handles All Cases):**\n```python\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"F\"\n```\n\n**Why Good:** Uses `>=` to include boundary values (90, 80, 70) and has `else` for all other cases.\n\n**Example 3: Efficiency**\n\n**Bad (Inefficient - Multiple If):**\n```python\nif score >= 90:\n    grade = \"A\"\nif score >= 80:\n    grade = \"B\"\nif score >= 70:\n    grade = \"C\"\n```\n\n**Good (Efficient - Elif Chain):**\n```python\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelse:\n    grade = \"F\"\n```\n\n**Why Good:** `elif` ensures only one condition is checked after the first match, and only one grade is assigned.\n\n**Example 4: Maintainability**\n\n**Bad (Magic Numbers):**\n```python\nif age >= 18:\n    can_vote = True\nif age >= 21:\n    can_drink = True\n```\n\n**Good (Named Constants):**\n```python\nVOTING_AGE = 18\nDRINKING_AGE = 21\n\nif age >= VOTING_AGE:\n    can_vote = True\nif age >= DRINKING_AGE:\n    can_drink = True\n```\n\n**Why Good:** Named constants make it easy to change values and understand what the numbers mean.\n\n**Example 5: Robustness**\n\n**Bad (No Input Validation):**\n```python\nage = int(input(\"Age? \"))\nif age >= 18:\n    print(\"Adult\")\n```\n\n**Good (With Validation):**\n```python\ntry:\n    age = int(input(\"Age? \"))\n    if age < 0 or age > 150:\n        print(\"Invalid age\")\n    elif age >= 18:\n        print(\"Adult\")\n    else:\n        print(\"Minor\")\nexcept ValueError:\n    print(\"Please enter a valid number\")\n```\n\n**Why Good:** Handles invalid input and edge cases (negative ages, unrealistic ages)."
+          },
+          {
+            "type": "text",
+            "content": "**Context Considerations: When to Prioritize Which Criteria**\n\n**For Learning/Educational Code:**\n- Prioritize: Clarity, Readability\n- Less critical: Efficiency (unless teaching optimization)\n- Focus on: Making code easy to understand and learn from\n\n**For Production/Professional Code:**\n- Prioritize: Correctness, Robustness, Maintainability\n- Important: Efficiency, Appropriateness\n- Focus on: Code that works reliably and can be maintained\n\n**For Quick Scripts/Personal Use:**\n- Prioritize: Correctness, Clarity\n- Less critical: Maintainability (if one-time use)\n- Focus on: Getting the job done correctly\n\n**For Code Reviews/Team Projects:**\n- Prioritize: All criteria, especially Maintainability and Style\n- Focus on: Code that others can understand and modify\n\n**For Performance-Critical Code:**\n- Prioritize: Efficiency, Correctness\n- Important: Clarity (can't optimize what you can't understand)\n- Focus on: Fast, correct execution"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Evaluating Conditional Code",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Evaluate for Different Contexts**\n\n**Script 1:**\n```python\nage = int(input(\"Age? \"))\nif age >= 18:\n    print(\"Adult\")\nelse:\n    print(\"Minor\")\n```\n\n**Script 2:**\n```python\nuser_age = int(input(\"Enter your age: \"))\nADULT_AGE = 18\n\nif user_age >= ADULT_AGE:\n    print(\"You are an adult.\")\nelse:\n    print(\"You are a minor.\")\n```\n\n**Question:** Rate each script (1-5) for:\n- Clarity\n- Maintainability\n- Appropriateness for a learning context\n\nWhich would you recommend for a beginner learning conditionals? Why?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Compare Script 1 and Script 2. Which is better for teaching beginners? Rate each on clarity, maintainability, and explain your reasoning.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: What Would You Recommend?**\n\n**Scenario:** A student wrote this code for a grade calculator:\n```python\nscore = int(input(\"Score? \"))\nif score > 90:\n    print(\"A\")\nif score > 80:\n    print(\"B\")\nif score > 70:\n    print(\"C\")\n```\n\n**Context:** This is for a school project that will be graded.\n\n**Question:** What issues do you see? What would you recommend to improve it? Rate it (1-5) and explain."
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What's the main problem with the grade calculator code above?",
+            "options": [
+              "It uses the wrong comparison operators",
+              "It uses multiple 'if' instead of 'elif', so multiple grades can print",
+              "It doesn't convert input to int",
+              "It has indentation errors"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Using multiple 'if' statements means all conditions are checked, so a score of 95 would print 'A', 'B', and 'C'.",
+              "incorrect": "The main issue is using multiple 'if' instead of 'elif', which causes multiple conditions to execute."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What specific improvements would you recommend for the grade calculator code? Rate it 1-5 and explain your rating using the evaluation criteria.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 3: Compare Solutions**\n\n**Solution A:**\n```python\nif age >= 18 and age <= 65:\n    print(\"Working age\")\n```\n\n**Solution B:**\n```python\nWORKING_AGE_MIN = 18\nWORKING_AGE_MAX = 65\n\nif age >= WORKING_AGE_MIN and age <= WORKING_AGE_MAX:\n    print(\"Working age\")\n```\n\n**Question:** Which is better for a professional project? Rate each and explain."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Compare Solution A and Solution B. Which would you use in a professional project? Why? Consider maintainability, clarity, and context.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Code Review Scenario",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Real-World Code Review**\n\nYou're reviewing code for a school lab project. Here are three versions of an age-based access control program:\n\n**Code 1:**\n```python\nage = int(input(\"Age? \"))\nif age >= 18:\n    print(\"Access granted\")\nelse:\n    print(\"Access denied\")\n```\n\n**Code 2:**\n```python\nuser_age = int(input(\"Enter your age: \"))\nMINIMUM_AGE = 18\n\nif user_age >= MINIMUM_AGE:\n    print(\"Access granted. Welcome!\")\nelse:\n    print(\"Access denied. You must be 18 or older.\")\n```\n\n**Code 3:**\n```python\na = int(input(\"a? \"))\nif a > 17:\n    print(\"yes\")\nelse:\n    print(\"no\")\n```\n\n**Context:** This is for a classroom learning project where code will be shared and discussed."
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which code is best for a classroom learning context?",
+            "options": [
+              "Code 1 - Simple and clear",
+              "Code 2 - Clear with named constants and helpful messages",
+              "Code 3 - Shortest code"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Code 2 is best for learning because it's clear, uses named constants, and has helpful messages.",
+              "incorrect": "Code 2 is best for learning because it balances clarity with good practices like named constants."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Evaluate all three codes using the evaluation criteria. Rate each (1-5) and write a recommendation. Which would you approve for the project?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What makes code 'good' for conditional statements? List your top 3 criteria and explain why they matter.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Evaluation Skills Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can compare conditional code using multiple criteria",
+              "I can recommend code for different contexts",
+              "I can consider both technical and practical factors when evaluating"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which evaluation criterion (clarity, correctness, efficiency, etc.) do you think is most important? Why?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What makes conditional code 'good' in your opinion? How will you apply these standards to your own code?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How will you use evaluation criteria when writing your own conditional statements? What standards will you set for yourself?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Evaluating to Creating",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can now **evaluate and judge conditional code quality** like an expert! You understand evaluation criteria, can compare solutions, and make informed recommendations based on context.\n\n**Why this matters:** Being able to evaluate code helps you write better code yourself and contribute to code reviews in professional settings.\n\n**How you'll use this:** Next, you'll **create** original projects using conditional statements. You'll combine all your knowledge — writing, troubleshooting, and evaluating — to build useful, well-designed programs that solve real problems. This is where everything comes together!"
+          }
+        ]
+      }
+    },
+    "s6": {
+      "mindset": {
+        "heading": "From Learner to Creator",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from judging existing solutions to creating your own. Design, document, and demonstrate your understanding. The question changes: No longer 'Which way is best?' but 'How can I create something useful, clear, and well-designed?'"
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Your Journey So Far",
+        "components": [
+          {
+            "type": "text",
+            "content": "You've completed the full journey:\n- **Remembering** → Learned vocabulary and terms\n- **Understanding** → Learned how conditionals work\n- **Applying** → Wrote your own conditional statements\n- **Analyzing** → Troubleshot errors and problems\n- **Evaluating** → Judged code quality\n\nNow you'll **create** original projects that combine all this knowledge!"
+          }
+        ]
+      },
+      "core": {
+        "heading": "Creating Projects with Conditional Statements",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Project Type Options**\n\n**1. Age-Based Access Control System** ⭐\nCreate a program that checks age and grants/denies access based on different criteria (voting, driving, movies, etc.)\n\n**2. Grade Calculator with Letter Grades** ⭐\nBuild a calculator that takes numeric scores and assigns letter grades (A, B, C, D, F) with different grading scales\n\n**3. Number Guessing Game** ⭐⭐\nCreate a game where the program picks a number and the user guesses, with feedback (too high, too low, correct)\n\n**4. Password Validator** ⭐⭐\nBuild a validator that checks password strength (length, has uppercase, has number, etc.) and provides feedback\n\n**5. Menu-Driven Program** ⭐⭐\nCreate a program with a menu system where users choose options and the program responds with conditional logic\n\n**6. Weather-Based Activity Recommender** ⭐\nBuild a program that recommends activities based on weather conditions (temperature, rain, etc.)\n\n**7. Discount Calculator** ⭐\nCreate a calculator that applies different discounts based on purchase amount, membership status, etc.\n\n**8. BMI Calculator with Categories** ⭐\nBuild a BMI calculator that categorizes results (underweight, normal, overweight, obese) using conditionals"
+          },
+          {
+            "type": "text",
+            "content": "**Project Templates and Examples**\n\n**Template 1: Age-Based Access Control (Beginner ⭐)**\n```python\n# Age-Based Access Control System\n\nage = int(input(\"Enter your age: \"))\n\n# Voting eligibility\nif age >= 18:\n    print(\"You are eligible to vote.\")\nelse:\n    years_until = 18 - age\n    print(f\"You can vote in {years_until} years.\")\n\n# Driving eligibility\nif age >= 16:\n    print(\"You are eligible for a driver's license.\")\nelse:\n    years_until = 16 - age\n    print(f\"You can get a license in {years_until} years.\")\n\n# Movie rating access\nmovie_rating = input(\"Movie rating (G/PG/PG-13/R): \").upper()\n\nif movie_rating == \"R\" and age < 17:\n    print(\"Access denied: R-rated movies require age 17+\")\nelif movie_rating == \"PG-13\" and age < 13:\n    print(\"Access denied: PG-13 movies require age 13+\")\nelse:\n    print(\"Access granted.\")\n```\n\n**Template 2: Grade Calculator (Beginner ⭐)**\n```python\n# Grade Calculator with Letter Grades\n\nscore = int(input(\"Enter your score (0-100): \"))\n\nif score >= 90:\n    grade = \"A\"\n    message = \"Excellent work!\"\nelif score >= 80:\n    grade = \"B\"\n    message = \"Good job!\"\nelif score >= 70:\n    grade = \"C\"\n    message = \"Satisfactory.\"\nelif score >= 60:\n    grade = \"D\"\n    message = \"Needs improvement.\"\nelse:\n    grade = \"F\"\n    message = \"Please seek help.\"\n\nprint(f\"Your grade: {grade}\")\nprint(f\"{message}\")\n```\n\n**Template 3: Number Guessing Game (Intermediate ⭐⭐)**\n```python\n# Number Guessing Game\nimport random\n\nsecret_number = random.randint(1, 100)\nguesses = 0\nmax_guesses = 7\n\nprint(\"I'm thinking of a number between 1 and 100.\")\nprint(f\"You have {max_guesses} guesses.\")\n\nwhile guesses < max_guesses:\n    guess = int(input(\"Enter your guess: \"))\n    guesses += 1\n    \n    if guess == secret_number:\n        print(f\"Congratulations! You guessed it in {guesses} tries!\")\n        break\n    elif guess < secret_number:\n        print(\"Too low! Try again.\")\n    else:\n        print(\"Too high! Try again.\")\n    \n    if guesses == max_guesses:\n        print(f\"Sorry, the number was {secret_number}.\")\n```\n\n**Template 4: Password Validator (Intermediate ⭐⭐)**\n```python\n# Password Validator\n\npassword = input(\"Enter a password: \")\n\n# Check length\nif len(password) < 8:\n    print(\"Password too short (minimum 8 characters)\")\n    strength = \"Weak\"\nelse:\n    has_upper = any(c.isupper() for c in password)\n    has_lower = any(c.islower() for c in password)\n    has_digit = any(c.isdigit() for c in password)\n    has_special = any(c in \"!@#$%^&*\" for c in password)\n    \n    checks_passed = sum([has_upper, has_lower, has_digit, has_special])\n    \n    if checks_passed == 4:\n        strength = \"Strong\"\n    elif checks_passed >= 2:\n        strength = \"Medium\"\n    else:\n        strength = \"Weak\"\n    \n    print(f\"Password strength: {strength}\")\n```\n\n**Template 5: Menu-Driven Program (Intermediate ⭐⭐)**\n```python\n# Menu-Driven Calculator\n\nprint(\"=== Calculator Menu ===\")\nprint(\"1. Add\")\nprint(\"2. Subtract\")\nprint(\"3. Multiply\")\nprint(\"4. Divide\")\nprint(\"5. Exit\")\n\nchoice = input(\"Enter your choice (1-5): \")\n\nif choice == \"1\":\n    a = float(input(\"Enter first number: \"))\n    b = float(input(\"Enter second number: \"))\n    print(f\"Result: {a + b}\")\nelif choice == \"2\":\n    a = float(input(\"Enter first number: \"))\n    b = float(input(\"Enter second number: \"))\n    print(f\"Result: {a - b}\")\nelif choice == \"3\":\n    a = float(input(\"Enter first number: \"))\n    b = float(input(\"Enter second number: \"))\n    print(f\"Result: {a * b}\")\nelif choice == \"4\":\n    a = float(input(\"Enter first number: \"))\n    b = float(input(\"Enter second number: \"))\n    if b != 0:\n        print(f\"Result: {a / b}\")\n    else:\n        print(\"Error: Cannot divide by zero!\")\nelif choice == \"5\":\n    print(\"Goodbye!\")\nelse:\n    print(\"Invalid choice. Please enter 1-5.\")\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Application Suggestions**\n\n**School Projects:**\n- Grade calculator for different subjects\n- Attendance tracker with status messages\n- Study time recommender based on test dates\n- Course prerequisite checker\n\n**Personal Use:**\n- Budget tracker with spending alerts\n- Fitness goal tracker with progress messages\n- Habit tracker with streak notifications\n- Personal finance calculator\n\n**Fun Projects:**\n- Text-based adventure game with choices\n- Personality quiz with results\n- Trivia game with scoring\n- Rock-paper-scissors game\n\n**Learning Tools:**\n- Math practice with feedback\n- Vocabulary quiz with scoring\n- Code challenge validator\n- Study schedule generator\n\n**Professional Examples:**\n- Employee access control system\n- Inventory alert system\n- Customer discount calculator\n- Service eligibility checker"
+          },
+          {
+            "type": "text",
+            "content": "**Project Selection Guidance**\n\n**Choose based on skill level:**\n- **Beginner ⭐:** Start with simple if-else (age checker, grade calculator)\n- **Intermediate ⭐⭐:** Add elif chains and logical operators (password validator, menu system)\n- **Advanced ⭐⭐⭐:** Add nested conditionals and complex logic (multi-level access control, game with multiple states)\n\n**Choose based on interests:**\n- **Like games?** → Number guessing game, text adventure\n- **Like practical tools?** → Calculator, validator, tracker\n- **Like challenges?** → Complex logic problems, multi-condition systems\n\n**Choose based on goals:**\n- **Learning focus:** Start simple, add complexity gradually\n- **Portfolio project:** Choose something you can showcase\n- **Real problem:** Solve something you actually need"
+          },
+          {
+            "type": "text",
+            "content": "**Success Criteria for Each Project Type**\n\n**For Age-Based Systems:**\n- Handles multiple age thresholds correctly\n- Provides clear messages for each case\n- Tests boundary values (exactly 18, exactly 16, etc.)\n\n**For Grade Calculators:**\n- Correctly assigns all letter grades\n- Handles edge cases (exactly 90, 80, 70)\n- Provides helpful feedback messages\n\n**For Games:**\n- Provides appropriate feedback (too high/low, correct)\n- Handles invalid input gracefully\n- Has clear win/lose conditions\n\n**For Validators:**\n- Checks all required criteria\n- Provides specific feedback for each check\n- Handles edge cases (empty input, etc.)\n\n**For Menu Systems:**\n- All menu options work correctly\n- Handles invalid choices gracefully\n- Provides clear prompts and feedback"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Plan Your Project",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Plan Your Project**\n\nBefore coding, plan your project by answering these questions:"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What problem does your project solve? What will it do?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Who is your audience? (Yourself, classmates, teacher, general users)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What conditional logic will you use? (if-else, if-elif-else, nested conditionals, logical operators)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What inputs will you need from users?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What outputs/results will your program provide?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How will you know your project is successful? What are your success criteria?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Draft and Test**\n\nNow create your project following this checklist:"
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Create a new Python file with a descriptive name",
+              "Write code to get user input",
+              "Write conditional statements to make decisions",
+              "Add appropriate output messages",
+              "Test with different inputs (including edge cases)",
+              "Fix any errors that occur",
+              "Test all possible paths (all if/elif/else branches)",
+              "Verify the program works correctly",
+              "Add comments explaining your logic",
+              "Improve code clarity and formatting"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What approach will you use? (Which template will you start from, or will you create something original?)",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create and Share Your Project",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Create Your Conditional Statement Project**\n\nChoose one of these project types (or create your own):\n\n**Option 1: Personal Project**\nCreate a program that solves a problem you have (grade tracker, budget calculator, habit tracker, etc.)\n\n**Option 2: Teaching Project**\nCreate a program that teaches others about conditional statements with examples and explanations\n\n**Option 3: Creative Project**\nBuild something fun (game, quiz, interactive story, etc.) that uses conditionals creatively\n\n**Option 4: Utility Project**\nCreate a useful tool (validator, calculator, converter, etc.) that others can use\n\n**Option 5: Challenge Project**\nBuild something complex with nested conditionals, multiple conditions, and advanced logic"
+          },
+          {
+            "type": "ordering",
+            "instructions": "Arrange these steps in the correct order for creating and sharing your project.",
+            "items": [
+              "Plan your project and decide what it will do",
+              "Write and test your code",
+              "Fix any errors and improve the code",
+              "Share with a peer for feedback",
+              "Get peer feedback and test results",
+              "Revise based on feedback",
+              "Document your project with comments"
+            ],
+            "correctOrder": [0, 1, 2, 6, 3, 4, 5]
+          },
+          {
+            "type": "text",
+            "content": "**Quality Criteria Checklist:**\n\nYour project should have:\n- ✓ Clear purpose (solves a real problem or teaches something)\n- ✓ Working code (runs without errors)\n- ✓ Helpful output (clear messages for users)\n- ✓ Handles different cases (uses if-elif-else appropriately)\n- ✓ Tested thoroughly (works with various inputs)\n- ✓ Well-documented (comments explain the logic)\n- ✓ Reflection on design choices"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your project. What does it do? What conditional logic does it use? Why did you design it this way?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What design decisions did you make? Why did you write it this way? What alternatives did you consider?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Mastery Celebration",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I created a project that others can use or learn from",
+              "My project demonstrates complete understanding of conditional statements",
+              "I can explain my design choices and why I wrote the code this way",
+              "I'm proud of what I created"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What did you learn through creating your project? What surprised you?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your project and explain the design choices you made. Why did you structure the conditionals this way?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How has your knowledge of conditional statements grown from Stage 0 to now? What's the biggest change?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "🎉 **Celebration of Mastery!** 🎉\n\nYou've completed the full journey from learning what conditional statements are to creating your own projects! Take a moment to celebrate:\n- You understand conditional statements deeply\n- You can write, troubleshoot, and evaluate conditional code\n- You can create original programs that make decisions\n- You've reached the Creating stage — full mastery!\n\nYou're ready for the next level of Python programming — loops and iteration!"
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Congratulations on Your Journey",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Complete Journey Recap:**\n\nYou've completed the full learning journey:\n\n**Stage 0 (Starting)** → Learned what conditional statements are and why they matter\n**Stage 1 (Remembering)** → Learned vocabulary: if, elif, else, comparison operators, logical operators\n**Stage 2 (Understanding)** → Understood how conditional statements work step-by-step\n**Stage 3 (Applying)** → Wrote your own conditional statements successfully\n**Stage 4 (Analyzing)** → Troubleshot errors and debugged conditional logic\n**Stage 5 (Evaluating)** → Judged code quality and made professional recommendations\n**Stage 6 (Creating)** → Created original projects using conditional statements\n\n**Final Encouragement:**\n\nYou can now help others with confidence and expertise! You understand conditional statements from the ground up — from basic concepts to creating complex decision-making programs. Every expert programmer started exactly where you are now. Keep building, keep creating, and keep learning!\n\n**What's Next:**\n\nYou're ready to learn **loops** next — another fundamental programming concept that will let you repeat actions and work with collections of data. Conditional statements + loops = powerful programming!"
+          }
+        ]
+      }
+    }
+  },
+  "ui": {
+    "defaultExpandedStage": "s0"
+  }
+}

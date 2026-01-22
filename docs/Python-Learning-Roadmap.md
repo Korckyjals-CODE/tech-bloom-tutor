@@ -72,8 +72,6 @@ This document outlines the complete learning path for Python programming using t
 
 ---
 
-## Proposed Guides (To Be Created)
-
 ### 4. Input and Operations
 **File:** `input-and-operations.json`  
 **Status:** ✅ Complete  
@@ -117,8 +115,8 @@ This document outlines the complete learning path for Python programming using t
 ---
 
 ### 5. Conditional Statements
-**File:** `conditional-statements.json` (to be created)  
-**Status:** 📋 Planned  
+**File:** `conditional-statements.json`  
+**Status:** ✅ Complete  
 **Scope:** Single main concept (decision-making in code) + related sub-concepts (comparisons, boolean logic, if/elif/else)
 
 **Learning Objectives:**
@@ -194,7 +192,7 @@ This document outlines the complete learning path for Python programming using t
 ┌─────────────────────────────────────┐
 │  5. Conditional Statements          │
 │     (Requires: Guides #1-4)        │
-│     📋 PLANNED                      │
+│     ✅ COMPLETE                      │
 └─────────────────────────────────────┘
 ```
 
@@ -281,7 +279,7 @@ After Guide #5 (Conditional Statements), potential next topics:
 | First Python Script | ✅ Complete | `first-python-script.json` | Done |
 | Variables & Data Types | ✅ Complete | `variables-and-basic-data-types.json` | Done |
 | Input and Operations | ✅ Complete | `input-and-operations.json` | Done |
-| Conditional Statements | 📋 Planned | `conditional-statements.json` | TBD |
+| Conditional Statements | ✅ Complete | `conditional-statements.json` | Done |
 
 ---
 
