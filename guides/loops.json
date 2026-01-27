@@ -1,0 +1,1326 @@
+{
+  "metadata": {
+    "title": "Loops",
+    "subtitle": "Repeating actions in your code with for and while",
+    "description": "Learn how to write programs that repeat actions using for loops, while loops, range(), and loop control (break, continue) to create counters, menus, simulations, and other programs that iterate.",
+    "version": "1.0.0",
+    "author": "EduCafé",
+    "lastUpdated": "2026-01-27",
+    "storageKeyPrefix": "loops",
+    "instructorPasscode": "educafe-loops-101"
+  },
+  "branding": {
+    "brandName": "EduCafé — Python Guide",
+    "theme": {
+      "colorScheme": "dark",
+      "primaryColor": "#4aa3ff",
+      "secondaryColor": "#7bc67b"
+    }
+  },
+  "stages": [
+    {
+      "id": "s0",
+      "order": 0,
+      "title": "Stage 0 · Starting",
+      "shortTitle": "Starting",
+      "description": "Introduction to repetition in code"
+    },
+    {
+      "id": "s1",
+      "order": 1,
+      "title": "Stage 1 · Remembering",
+      "shortTitle": "Remembering",
+      "description": "Vocabulary for loops"
+    },
+    {
+      "id": "s2",
+      "order": 2,
+      "title": "Stage 2 · Understanding",
+      "shortTitle": "Understanding",
+      "description": "How loops work"
+    },
+    {
+      "id": "s3",
+      "order": 3,
+      "title": "Stage 3 · Applying",
+      "shortTitle": "Applying",
+      "description": "Writing loop-based programs"
+    },
+    {
+      "id": "s4",
+      "order": 4,
+      "title": "Stage 4 · Analyzing",
+      "shortTitle": "Analyzing",
+      "description": "Troubleshooting loop errors"
+    },
+    {
+      "id": "s5",
+      "order": 5,
+      "title": "Stage 5 · Evaluating",
+      "shortTitle": "Evaluating",
+      "description": "Judging loop design and choosing the right loop"
+    },
+    {
+      "id": "s6",
+      "order": 6,
+      "title": "Stage 6 · Creating",
+      "shortTitle": "Creating",
+      "description": "Original projects with repetition"
+    }
+  ],
+  "sections": [
+    {
+      "id": "mindset",
+      "displayName": "Mindset",
+      "order": 0,
+      "description": "Prepare mentally"
+    },
+    {
+      "id": "recap",
+      "displayName": "Recap",
+      "order": 1,
+      "description": "Connect to prior learning"
+    },
+    {
+      "id": "core",
+      "displayName": "Core",
+      "order": 2,
+      "description": "Main content"
+    },
+    {
+      "id": "guidedPractice",
+      "displayName": "Guided Practice",
+      "order": 3,
+      "description": "Practice with help"
+    },
+    {
+      "id": "challenge",
+      "displayName": "Challenge",
+      "order": 4,
+      "description": "Independent work"
+    },
+    {
+      "id": "reflection",
+      "displayName": "Reflection",
+      "order": 5,
+      "description": "Think about learning"
+    },
+    {
+      "id": "transition",
+      "displayName": "Transition",
+      "order": 6,
+      "description": "Move forward"
+    }
+  ],
+  "content": {
+    "s0": {
+      "mindset": {
+        "heading": "From One-Time to Repeated",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're about to learn **loops** — the programming feature that lets your code repeat actions without copying and pasting. This transforms your programs from doing things once into powerful tools that can count, iterate, run menus, and simulate repeated processes — just like real-world systems that cycle over and over."
+          },
+          {
+            "type": "text",
+            "content": "Every expert programmer started exactly where you are now. Loops are one of the most fundamental concepts in programming. Once you master them, you'll be able to create programs that process data in bulk, run until a condition is met, and build interactive experiences that repeat until the user is done."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Building on What You Know",
+        "components": [
+          {
+            "type": "text",
+            "content": "You already know how to:\n- Store data in variables\n- Get input from users\n- Perform operations (math and string)\n- Make decisions with conditionals\n\nNow you'll learn to make your programs **repeat** — programs that can run the same block of code many times: counting, asking again and again, or running until a condition is met. This is how you build menus, counters, and simulations!"
+          }
+        ]
+      },
+      "core": {
+        "heading": "What Are Loops?",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Loops** are code structures that repeat a block of code multiple times. Instead of writing the same instructions over and over, you write them once inside a loop, and the program runs them again and again. Think of them as \"do this until done\" or \"do this for each item.\""
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Examples of Repetition:**\n\n**Personal Use:**\n• **Countdown timers** — \"Count from 10 down to 1, print each number\"\n• **Daily habit trackers** — \"Ask for each day of the week, record habits\"\n• **Shopping list totals** — \"For each item, add the price to the total\"\n• **Retry prompts** — \"Keep asking for password until it's correct\"\n• **Game turns** — \"Repeat: show board, get move, update until someone wins\"\n\n**School Use:**\n• **Grade entry** — \"For each student, ask for score and store it\"\n• **Quiz retakes** — \"Keep offering quiz until score is passing\"\n• **Multiplication table** — \"For each number 1–10, print row\"\n• **Attendance loop** — \"For each class day, mark present/absent\"\n• **Study session counter** — \"Count study sessions until goal is met\"\n\n**Professional Use:**\n• **Login attempts** — \"Allow up to 3 password tries\"\n• **Batch processing** — \"For each file in folder, process it\"\n• **Menu systems** — \"Show menu and handle choice until user picks Exit\"\n• **Simulations** — \"Run simulation 1000 times and average results\"\n• **Data validation** — \"Keep asking for input until format is valid\""
+          },
+          {
+            "type": "text",
+            "content": "**Visual Metaphors for Loops:**\n\n**Like an Assembly Line:**\nA loop is like an assembly line. The same steps happen for each item: take part, attach, check, move to next. The line keeps going until there are no more items (or the shift ends).\n\n**Like a Clock:**\nA loop is like the second hand on a clock. It does the same thing over and over (tick, tick, tick) until some condition is met (e.g., you stop the clock).\n\n**Like a Playlist:**\nA loop is like playing through a playlist. \"For each song in the playlist, play it.\" You do one action (play) repeatedly, once per item.\n\n**Like a Countdown:**\n\"While count is greater than 0, print count and subtract 1.\" The loop runs until the condition becomes false."
+          },
+          {
+            "type": "text",
+            "content": "**What Makes Loops Powerful:**\n\nLoops unlock new possibilities:\n- **Efficiency** — Write code once, run it many times\n- **Scalability** — Handle 10 items or 10,000 without changing the logic\n- **Interactivity** — Menus and prompts that repeat until the user is done\n- **Simulation** — Run processes many times (e.g., dice rolls, experiments)\n- **Accumulation** — Sums, counts, and running totals\n- **Real-world modeling** — Many real processes are repetitive (days of week, attempts, batches)"
+          },
+          {
+            "type": "text",
+            "content": "**Connection to Prior Knowledge:**\n\nLoops build on what you already know:\n- **Variables** — You'll use variables as counters, accumulators, and loop indexes\n- **Input** — You'll often get input inside loops (e.g., menu choices, retry prompts)\n- **Conditionals** — You'll use conditions to decide when to break out of a loop or skip iterations\n- **Operations** — You'll use math (e.g., increment counter, add to sum) inside loops\n- **Indentation** — Code inside a loop is indented, just like inside conditionals"
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Simple for loop\nfor i in range(5):\n    print(f\"Count: {i}\")\n\n# Output:\n# Count: 0\n# Count: 1\n# Count: 2\n# Count: 3\n# Count: 4\n\n# Example: Simple while loop\ncount = 0\nwhile count < 3:\n    print(f\"Hello, count = {count}\")\n    count = count + 1",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Exploring Loops",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "What is the main purpose of loops?",
+            "options": [
+              "To make decisions based on conditions",
+              "To repeat a block of code multiple times",
+              "To store data in variables",
+              "To get user input"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Loops allow programs to repeat a block of code many times without writing it again.",
+              "incorrect": "Loops are specifically for repetition. They run the same code again and again until a condition is met or a sequence is finished."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Think of three real-world situations where the same action is repeated. How would a program use a loop for each?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Code Comparison:**\n\n**Without a loop (repetitive):**\n```python\nprint(\"Hello\")\nprint(\"Hello\")\nprint(\"Hello\")\nprint(\"Hello\")\nprint(\"Hello\")\n```\n\n**With a loop (efficient):**\n```python\nfor i in range(5):\n    print(\"Hello\")\n```\n\n**Question:** What's the advantage of the loop version? What if you needed to print \"Hello\" 100 times?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain why loops make programs more flexible than writing the same code many times.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which of these is a good example of when to use a loop?",
+            "options": [
+              "Printing a single welcome message",
+              "Storing a user's name",
+              "Asking for a password until it's correct",
+              "Comparing two numbers"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! \"Ask until correct\" is a classic loop pattern — repeat until condition is met.",
+              "incorrect": "Loops are used when you need to repeat an action: retry until correct, count, iterate over items, or run a menu until exit."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Think About Repetition",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "Imagine you're creating a program for a cafeteria. Which scenario would require a loop?",
+            "options": [
+              "Displaying today's menu once",
+              "Letting customers choose items repeatedly until they say 'Done'",
+              "Storing the price of one item",
+              "Checking if payment is enough"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! \"Repeat until Done\" is a loop — keep showing choices and processing until the user is finished.",
+              "incorrect": "Loops are needed when an action must repeat: multiple choices, multiple items, or until a condition like 'Done' is met."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe a program you'd like to create that would use loops. What would it repeat, and when would it stop?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Preparing for Learning",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I understand what loops are",
+              "I can identify real-world examples of repetition",
+              "I'm ready to learn the vocabulary and syntax"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "On a scale of 1-10, how excited are you to learn about loops? What would make it a 10?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What are you most curious about regarding loops? What questions do you have?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How do you think loops will help you create better programs?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What real-world problems could you solve with programs that repeat actions?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Ready to Learn",
+        "components": [
+          {
+            "type": "text",
+            "content": "You've learned **what loops are** and **why they matter**. You understand that they let programs repeat actions without copying code — for counting, menus, simulations, and more.\n\n**Why this matters:** Loops are fundamental to programming. Almost every useful program uses them to process multiple items or repeat until a condition is met.\n\n**How you'll use this:** You'll learn the specific vocabulary (for, while, range, break, continue) and syntax. Then you'll practice writing loops and eventually create your own programs that repeat actions.\n\nNext, you'll learn the **vocabulary and terminology** for loops: \"for loop,\" \"while loop,\" \"range(),\" \"iteration,\" \"loop variable,\" and \"loop control\" — the building blocks you need to write loop-based code."
+          }
+        ]
+      }
+    },
+    "s1": {
+      "mindset": {
+        "heading": "Learning the Language",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from understanding the concept to learning the specific vocabulary. Right now, you're not writing complex loops yet — you're learning the terms and building blocks that will let you use loops confidently."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What You Remember",
+        "components": [
+          {
+            "type": "text",
+            "content": "From Stage 0, you know that loops let programs repeat actions. Now you'll learn the specific vocabulary: the terms, functions, and syntax you need to write them."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Key Vocabulary for Loops",
+        "components": [
+          {
+            "type": "text",
+            "content": "**for loop** — A loop that runs a block of code once for each item in a sequence (or a set number of times using range()).\n\n**Example:** `for i in range(5):` or `for item in [1, 2, 3]:`\n\n**When it matters:** Use `for` when you know how many times to run, or when you are iterating over a known sequence.\n\n**Connection:** The `for` loop is the main way to \"do this N times\" or \"do this for each item.\""
+          },
+          {
+            "type": "text",
+            "content": "**while loop** — A loop that runs a block of code as long as a condition is True. It checks the condition before each iteration.\n\n**Example:** `while count < 10:` or `while user_input != \"quit\":`\n\n**When it matters:** Use `while` when you don't know how many times to run — you repeat until a condition becomes False.\n\n**Connection:** `while` is like \"keep doing this until something changes.\""
+          },
+          {
+            "type": "text",
+            "content": "**range()** — A built-in function that produces a sequence of numbers. Often used with `for` to control how many times the loop runs.\n\n**Forms:** `range(5)` → 0,1,2,3,4 │ `range(2,6)` → 2,3,4,5 │ `range(0,10,2)` → 0,2,4,6,8\n\n**When it matters:** Use `range()` when you need \"run this N times\" or \"count from A to B.\"\n\n**Connection:** `for i in range(5):` means \"run the block 5 times, with i taking values 0,1,2,3,4.\""
+          },
+          {
+            "type": "text",
+            "content": "**iteration** — One pass through the loop body. Each time the block runs, that's one iteration.\n\n**Example:** In `for i in range(3): print(i)`, there are 3 iterations; i is 0, then 1, then 2.\n\n**When it matters:** Talking about \"first iteration,\" \"last iteration,\" or \"how many iterations\" helps when debugging and reasoning about loops.\n\n**Connection:** Loops are made of repeated iterations."
+          },
+          {
+            "type": "text",
+            "content": "**loop variable** — The variable that changes each iteration (e.g., `i` in `for i in range(5):`).\n\n**Example:** In `for i in range(3):`, `i` is the loop variable; it is 0, 1, then 2.\n\n**When it matters:** You use the loop variable inside the body to know \"which time\" you're in or to compute values.\n\n**Connection:** The loop variable is updated automatically by the `for` loop; in a `while` loop you often manage a counter variable yourself."
+          },
+          {
+            "type": "text",
+            "content": "**loop body** — The indented block of code that runs on each iteration.\n\n**Example:** Everything indented under `for i in range(3):` is the loop body.\n\n**When it matters:** Only the indented code repeats. Code at the same indentation as the loop keyword runs after the loop finishes.\n\n**Connection:** Same idea as the body of an `if` or `else` — indentation defines what belongs to the loop."
+          },
+          {
+            "type": "text",
+            "content": "**break** — A statement that exits the loop immediately, skipping the rest of the body and any remaining iterations.\n\n**Example:** Inside a loop, `if condition: break`\n\n**When it matters:** Use `break` when you've found what you need or when you must stop early (e.g., \"user chose Exit\").\n\n**Connection:** `break` is a form of loop control; it changes the normal flow of the loop."
+          },
+          {
+            "type": "text",
+            "content": "**continue** — A statement that skips the rest of the current iteration and goes to the next one.\n\n**Example:** Inside a loop, `if condition: continue` skips to the next iteration.\n\n**When it matters:** Use `continue` to skip certain cases without exiting the whole loop (e.g., skip invalid input).\n\n**Connection:** `continue` is loop control; it doesn't end the loop, it just skips to the next iteration."
+          },
+          {
+            "type": "text",
+            "content": "**infinite loop** — A loop whose condition never becomes False, so it would run forever (e.g., `while True:` with no `break`).\n\n**When it matters:** Usually a bug, unless you deliberately use `while True` and break out with `break`. Infinite loops make the program hang.\n\n**Connection:** With `while`, you must ensure the condition can eventually become False, or that you exit with `break`."
+          },
+          {
+            "type": "text",
+            "content": "**accumulator** — A variable used inside a loop to build up a value (e.g., a sum or count) over iterations.\n\n**Example:** `total = 0` then inside the loop `total = total + x`\n\n**When it matters:** Use an accumulator when you need a running total, count, or combined result across iterations.\n\n**Connection:** Loops and accumulators together implement patterns like \"sum all numbers\" or \"count how many.\""
+          },
+          {
+            "type": "text",
+            "content": "**How These Terms Work Together:**\n\n1. You choose **for** (known count/sequence) or **while** (unknown, until condition).\n2. With **for**, you often use **range()** and a **loop variable**.\n3. The **loop body** runs on each **iteration**.\n4. **break** exits the loop early; **continue** skips to the next iteration.\n5. **Accumulators** hold running results across iterations.\n6. Avoid **infinite loops** by making sure **while** conditions can become False or you use **break**.\n\nAll these pieces work together to create programs that repeat actions in a controlled way."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Vocabulary Practice",
+        "components": [
+          {
+            "type": "matching",
+            "leftColumn": [
+              "for",
+              "while",
+              "range()",
+              "iteration",
+              "loop variable",
+              "loop body",
+              "break",
+              "continue",
+              "infinite loop",
+              "accumulator"
+            ],
+            "rightColumn": [
+              {
+                "definition": "Loop that runs for each item or a set number of times",
+                "matchesWith": "for"
+              },
+              {
+                "definition": "Loop that runs as long as a condition is True",
+                "matchesWith": "while"
+              },
+              {
+                "definition": "Produces a sequence of numbers for counting",
+                "matchesWith": "range()"
+              },
+              {
+                "definition": "One pass through the loop",
+                "matchesWith": "iteration"
+              },
+              {
+                "definition": "Variable that changes each pass (e.g., i in for i in range(5))",
+                "matchesWith": "loop variable"
+              },
+              {
+                "definition": "Indented code that runs on each iteration",
+                "matchesWith": "loop body"
+              },
+              {
+                "definition": "Exits the loop immediately",
+                "matchesWith": "break"
+              },
+              {
+                "definition": "Skips rest of current iteration, goes to next",
+                "matchesWith": "continue"
+              },
+              {
+                "definition": "Loop that would run forever (usually a bug)",
+                "matchesWith": "infinite loop"
+              },
+              {
+                "definition": "Variable that builds up a value across iterations (e.g., total)",
+                "matchesWith": "accumulator"
+              }
+            ]
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What does range(5) produce?",
+            "options": [
+              "The numbers 1 through 5",
+              "The numbers 0 through 4",
+              "The number 5",
+              "Five copies of the same value"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! range(5) produces 0, 1, 2, 3, 4 — five numbers starting at 0.",
+              "incorrect": "range(5) starts at 0 and stops before 5, so it gives 0, 1, 2, 3, 4."
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "When do you use a while loop instead of a for loop?",
+            "options": [
+              "When you need to run exactly 10 times",
+              "When you don't know in advance how many times to run",
+              "When you are printing a single message",
+              "When you need to store a variable"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Use while when you repeat until a condition becomes False and the number of iterations isn't known in advance.",
+              "incorrect": "Use while when you don't know how many times to run — for example, 'repeat until user says quit' or 'repeat until guess is correct.'"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Vocabulary Application",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Creative Visualization Task:**\n\nCreate a diagram showing how a loop works. Include:\n- The loop header (e.g., for i in range(3))\n- The loop body (what runs each time)\n- How the loop variable (e.g., i) changes each iteration\n- Where break and continue would change the flow\n\nYou can draw this or describe it in text!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain the difference between break and continue. When would you use each?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is an accumulator? Give an example of a program that would use one.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Vocabulary Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can define key terms like for, while, range, iteration, break, continue",
+              "I can recall what the loop variable and loop body are",
+              "I understand how these terms work together"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which term was easiest for you to understand? Which needs more review?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Can you recall the difference between range(5), range(1,6), and range(0,10,2)? Try describing each.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does understanding these terms help you prepare for writing loops?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Terms to Understanding",
+        "components": [
+          {
+            "type": "text",
+            "content": "You've learned the vocabulary: **for**, **while**, **range()**, **iteration**, **loop variable**, **loop body**, **break**, **continue**, **infinite loop**, and **accumulator**.\n\n**Why this matters:** Knowing the terms is the first step. Now you'll understand **how** loops run — what happens step-by-step when Python executes a for or while loop, how range() is used, and when to use which loop.\n\n**How you'll use this:** Next, you'll learn the \"behind the scenes\" process: how Python evaluates the condition or sequence, runs the body, updates the loop variable, and repeats. You'll understand the flow from loop start to finish (or break)."
+          }
+        ]
+      }
+    },
+    "s2": {
+      "mindset": {
+        "heading": "Understanding the Process",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from knowing the terms to understanding **how** loops actually work. You're opening the \"black box\" to see what happens inside when Python runs a for or while loop, and how break and continue change the flow."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What You Know",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know the vocabulary: for, while, range(), iteration, loop variable, break, continue. Now you'll understand how Python uses these to repeat code step by step."
+          }
+        ]
+      },
+      "core": {
+        "heading": "How Loops Work",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Step-by-Step: What Happens in a for Loop**\n\n**Step 1:** Python evaluates `range(...)` (or the sequence) and gets the first value\n**Step 2:** The loop variable is assigned that value\n**Step 3:** The loop body runs with that value\n**Step 4:** If there's a `continue`, Python skips the rest of the body and goes to Step 5\n**Step 5:** If there's a `break`, Python exits the loop entirely\n**Step 6:** If no break, Python gets the next value from the sequence\n**Step 7:** If there is a next value, go back to Step 2; otherwise the loop ends\n**Step 8:** Execution continues with the first line after the loop body"
+          },
+          {
+            "type": "text",
+            "content": "**Step-by-Step: What Happens in a while Loop**\n\n**Step 1:** Python evaluates the condition (e.g., `count < 5`)\n**Step 2:** If the condition is False, skip the body and go to the code after the loop\n**Step 3:** If the condition is True, run the loop body\n**Step 4:** If there's a `continue`, skip the rest of the body and go back to Step 1\n**Step 5:** If there's a `break`, exit the loop entirely\n**Step 6:** If the body finishes normally, go back to Step 1 (re-check the condition)\n**Step 7:** The loop ends when the condition is False or when break runs"
+          },
+          {
+            "type": "text",
+            "content": "**How range() Works**\n\n- `range(stop)` → integers from 0 up to but not including stop. Example: `range(5)` → 0,1,2,3,4\n- `range(start, stop)` → from start up to but not including stop. Example: `range(2,6)` → 2,3,4,5\n- `range(start, stop, step)` → from start by step, stopping before stop. Example: `range(0,10,2)` → 0,2,4,6,8\n\n**Why \"up to but not including\"?** So that `range(5)` has 5 values (0–4), and `range(a,b)` has `b - a` values. This matches how indexing works in Python (0-based)."
+          },
+          {
+            "type": "text",
+            "content": "**When to Use for vs while**\n\n**Use for when:**\n- You know how many times to run (e.g., 10 times, once per day)\n- You are iterating over a known sequence (e.g., range, or later: list, string)\n- The pattern is \"do this N times\" or \"for each of these\"\n\n**Use while when:**\n- You don't know how many times to run\n- You repeat until a condition becomes False (e.g., user enters \"quit\", guess is correct)\n- The pattern is \"keep doing this until...\"\n\n**Both can often solve the same problem;** choose the one that matches how you think about the problem."
+          },
+          {
+            "type": "text",
+            "content": "**How break and continue Change Flow**\n\n**break:**\n- Exits the loop immediately\n- No more iterations\n- Execution continues at the first line after the loop\n- Often used with `while True:` to loop until a condition, then break\n\n**continue:**\n- Skips the rest of the current iteration\n- Goes back to the loop condition (while) or next value (for)\n- Used to \"skip this item\" or \"try again\" without leaving the loop"
+          },
+          {
+            "type": "text",
+            "content": "**How Nested Loops Work**\n\nWhen you put a loop inside another loop:\n- For each iteration of the **outer** loop, the **inner** loop runs completely\n- Example: outer runs 3 times, inner runs 4 times → inner body runs 3 × 4 = 12 times\n- Loop variables: use different names (e.g., `i` for outer, `j` for inner) to avoid confusion"
+          },
+          {
+            "type": "text",
+            "content": "**Key Idea: The Flow of Repetition**\n\n1. **Setup** — Initialize any counters, accumulators, or state before the loop\n2. **Condition/Sequence** — for: next value? while: condition True?\n3. **Body** — Run the repeated logic; update counters/accumulators if needed\n4. **Control** — break to exit, continue to skip to next iteration\n5. **Repeat or Exit** — Loop again or continue to the code after the loop\n\nThe loop variable (for) or your own counter (while) often drives \"which iteration\" you're in and when to stop."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: for loop flow\nfor i in range(3):\n    print(f\"Iteration, i = {i}\")\nprint(\"Loop done\")\n\n# Output:\n# Iteration, i = 0\n# Iteration, i = 1\n# Iteration, i = 2\n# Loop done\n\n# Example: while with condition\ncount = 0\nwhile count < 3:\n    print(f\"Count = {count}\")\n    count = count + 1\nprint(\"Done\")",
+            "copyable": false
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Understanding the Flow",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What happens step-by-step when Python runs 'for i in range(3): print(i)'? Describe the process.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "In 'while count < 3' with count starting at 0 and body doing 'count = count + 1', how many times does the body run?",
+            "options": [
+              "0 times",
+              "1 time",
+              "3 times",
+              "Forever"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! count goes 0, 1, 2 (body runs each time), then 3 < 3 is False and the loop stops.",
+              "incorrect": "Count 0,1,2 all satisfy count < 3, so the body runs 3 times. When count becomes 3, the condition is False."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why does range(5) give 0,1,2,3,4 and not 1,2,3,4,5? How does that fit with 'run 5 times'?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "You want to 'ask for password until it is correct.' Which loop is most appropriate?",
+            "options": [
+              "for i in range(10):",
+              "while password != correct_password:",
+              "for i in range(1):",
+              "while True: (with no break)"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! 'Until correct' means unknown number of tries; while with a condition matches that.",
+              "incorrect": "You don't know how many attempts; a while loop that checks the condition fits 'repeat until correct.'"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Prediction Activity:**\n\n```python\ntotal = 0\nfor i in range(4):\n    total = total + i\nprint(total)\n```\n\n**Question:** What value is printed? Trace through each iteration."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain the difference between break and continue using a concrete example (e.g., a loop that processes user inputs).",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Flow Diagram",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Creative Diagram Task:**\n\nCreate a flowchart or diagram showing how a while loop works. Include:\n\n1. **Start** — Enter loop\n2. **Condition check** — Is condition True?\n3. **True** — Run body, then go back to condition\n4. **False** — Exit loop, continue with rest of program\n5. **Where break would go** — Exit immediately\n6. **Where continue would go** — Skip to condition\n\n**Hints:** Use a diamond for the condition, rectangle for the body, arrows for flow. You can draw it or describe it in detail!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your flowchart. How does it show when the loop runs and when it stops?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "In a for loop, when does Python know the loop is finished? How is that different from a while loop?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Understanding Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can explain how for and while loops run step by step",
+              "I can describe what range() produces and how it's used",
+              "I understand when to use for vs when to use while"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most surprising thing you learned about how loops work?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does understanding the flow help you write and debug loops?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What still seems confusing about how loops work?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Understanding to Doing",
+        "components": [
+          {
+            "type": "text",
+            "content": "You understand **how** loops work — the step-by-step process Python follows for for and while, how range() and conditions drive repetition, and how break and continue change the flow.\n\n**Why this matters:** Understanding the process helps you write correct loops and fix bugs when things go wrong.\n\n**How you'll use this:** Next, you'll **apply** this by writing your own loops. You'll create programs that count, repeat until a condition, use accumulators, and combine loops with input and conditionals. You'll practice the syntax and common patterns."
+          }
+        ]
+      }
+    },
+    "s3": {
+      "mindset": {
+        "heading": "Time to Code",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from understanding to **doing**. Now you'll write your own loops. Focus on correct syntax, indentation, and updating counters so loops stop when you expect. Mistakes are normal — that's how you learn!"
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Before You Start",
+        "components": [
+          {
+            "type": "text",
+            "content": "You understand how loops work. Now let's write them! Make sure you can answer: What is the loop variable? When does a for loop stop? When does a while loop stop? Why does indentation matter?"
+          }
+        ]
+      },
+      "core": {
+        "heading": "Writing Loops: Step-by-Step",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Preparation Checklist**\n\nBefore you start coding, make sure you have:\n\n✓ **Python installed** — You can run `python --version`\n✓ **Text editor ready** — Any editor (VS Code, Notepad++, etc.)\n✓ **Terminal open** — To run your scripts\n✓ **Folder chosen** — Where you'll save your Python files\n✓ **Variables, input, conditionals** — You can use these inside loops\n✓ **Understanding of range() and loop syntax** — From Stages 1–2\n\nOnce you've checked these off, you're ready to write loops!"
+          },
+          {
+            "type": "text",
+            "content": "**Step-by-Step: Your First for Loop**\n\n**Step 1:** Create a new file, e.g. `loop_demo.py`\n\n**Step 2:** Write a for loop with range:\n```python\nfor i in range(5):\n    print(i)\n```\n\n**Step 3:** Run the file: `python loop_demo.py` — you should see 0, 1, 2, 3, 4\n\n**Step 4:** Add an accumulator — e.g. sum numbers 0 to 4:\n```python\ntotal = 0\nfor i in range(5):\n    total = total + i\nprint(\"Sum:\", total)\n```\n\n**Step 5:** Try range with start and stop: `for i in range(2, 6):` and see 2,3,4,5\n\n**Step 6:** Try range with step: `for i in range(0, 10, 2):` and see 0,2,4,6,8"
+          },
+          {
+            "type": "text",
+            "content": "**Step-by-Step: Your First while Loop**\n\n**Step 1:** Use a variable to control the loop:\n```python\ncount = 0\nwhile count < 5:\n    print(count)\n    count = count + 1\n```\n\n**Step 2:** Run it — output should be 0,1,2,3,4\n\n**Step 3:** \"Repeat until user says quit\" pattern:\n```python\nmessage = \"\"\nwhile message != \"quit\":\n    message = input(\"Type something (or 'quit' to stop): \")\n    print(\"You said:\", message)\n```\n\n**Step 4:** Use break to exit:\n```python\nwhile True:\n    choice = input(\"Enter 1 to continue, 0 to quit: \")\n    if choice == \"0\":\n        break\n    print(\"Continuing...\")\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Common Pitfalls and How to Avoid Them**\n\n1. **Infinite while loop** — Condition never becomes False. Fix: Ensure something in the body changes so the condition can become False, or use break.\n\n2. **Wrong indentation** — Body not indented or partly outside loop. Fix: Indent all lines that should repeat (4 spaces).\n\n3. **Forgetting to update counter in while** — Loop runs forever. Fix: Always change the variable used in the condition (e.g., count = count + 1).\n\n4. **Off-by-one** — range(5) gives 0–4, not 1–5. Fix: Use range(1, 6) if you want 1–5, or remember range(N) is 0..N-1.\n\n5. **Using = instead of == in condition** — `while count = 5` is invalid. Fix: Use `while count < 5` or `while count == 5` as intended.\n\n6. **Modifying loop variable in for** — Changing i inside `for i in range(5)` doesn't change how many iterations run. Fix: Don't rely on modifying the loop variable; use a different variable if needed.\n\n7. **break/continue in wrong place** — Logic error. Fix: Put break/continue so they run when the right condition is True.\n\n8. **Accumulator not initialized** — Using total before `total = 0`. Fix: Initialize before the loop: `total = 0`\n\n9. **Range with floats** — range(1.5, 5) is invalid. Fix: Use integers: range(1, 5) or convert with int().\n\n10. **Nested loop variable name** — Using same name for inner and outer. Fix: Use different names, e.g. i and j."
+          },
+          {
+            "type": "text",
+            "content": "**Verification Steps**\n\n**How to confirm your loop is correct:**\n\n1. **For \"run N times\"** — Check output or counts; you should see exactly N iterations.\n2. **For \"until condition\"** — Run until condition is met; loop should stop, not hang.\n3. **Accumulator** — Manually check a small case (e.g., sum 0+1+2 = 3).\n4. **Break/continue** — Test the case that triggers break or continue and confirm behavior.\n5. **Indentation** — Only the intended lines repeat; no IndentationError when you run."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 1: for with accumulator\ntotal = 0\nfor i in range(1, 6):\n    total = total + i\nprint(\"Sum 1 to 5:\", total)\n\n# Example 2: while with counter\ncount = 0\nwhile count < 3:\n    print(\"Hello\", count)\n    count += 1\n\n# Example 3: while with input until quit\nwhile True:\n    word = input(\"Say 'quit' to stop: \")\n    if word == \"quit\":\n        break\n    print(\"You said:\", word)",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 4: for with continue\nfor i in range(5):\n    if i == 2:\n        continue\n    print(i)\n# Prints 0, 1, 3, 4\n\n# Example 5: nested loops\nfor i in range(2):\n    for j in range(3):\n        print(f\"i={i} j={j}\")",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Practice Writing Loops",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I have Python installed and can run scripts",
+              "I have a text editor and folder for Python files",
+              "I understand for and while syntax",
+              "I know how to use range()",
+              "I understand indentation for the loop body",
+              "I can use accumulators and update counters",
+              "I'm ready to write my first loop"
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**Activity: Write a Counting Loop**\n\n1. Create `count_up.py`\n2. Use a for loop to print numbers 1 through 5 (use range(1, 6))\n3. Run it and confirm output is 1, 2, 3, 4, 5\n4. Add an accumulator to compute the sum of 1+2+3+4+5 and print it"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Paste the output from your count_up.py (the sum). What sum did you get?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What happens if you write 'while count < 5:' but never change count inside the body?",
+            "options": [
+              "The loop runs 5 times and stops",
+              "SyntaxError",
+              "The loop runs forever (infinite loop)",
+              "NameError"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! If count never changes, the condition stays True and the loop never ends.",
+              "incorrect": "If the variable in the condition never changes, the condition stays True and you get an infinite loop."
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What does range(2, 8, 2) produce?",
+            "options": [
+              "2, 4, 6, 8",
+              "2, 4, 6",
+              "2, 3, 4, 5, 6, 7",
+              "0, 2, 4, 6"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! range(2, 8, 2) starts at 2, steps by 2, stops before 8: 2, 4, 6.",
+              "incorrect": "range(start, stop, step) goes from start by step, stopping before stop. So 2,4,6."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Loop Program",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Create a Proof-of-Work Program**\n\nCreate a program called `menu_loop.py` that:\n\n1. Uses a while loop to show a simple menu until the user chooses \"Quit\"\n2. Menu options: \"1. Say Hello\", \"2. Count to 3\", \"3. Quit\"\n3. Option 1 prints \"Hello!\"\n4. Option 2 uses a for loop to print 1, 2, 3\n5. Option 3 (or \"Quit\") uses break to exit\n6. After the loop, print \"Goodbye!\"\n\n**Requirements:**\n• File named `menu_loop.py`\n• Uses while and at least one for loop\n• Uses break to exit\n• No infinite loop when choosing 1 or 2\n• Screenshot showing code and terminal output for at least two choices\n\n**Optional:** Add an accumulator that counts how many times the user picked \"Say Hello\" and print it at the end."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most challenging part of writing your loop program? How did you solve it?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Application Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can write for loops with range()",
+              "I can write while loops that stop correctly",
+              "I can use break and continue when needed",
+              "I can use accumulators and update counters",
+              "I can test my loop programs with different inputs"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the easiest part of writing loops? What was the most confusing?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What surprised you about writing loop code? What did you learn?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How confident do you feel writing loops now? What would help you feel more confident?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Writing to Troubleshooting",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can now **write loops** successfully. You've used for and while, range(), break, continue, and accumulators.\n\n**Why this matters:** Being able to write loops is a core programming skill. You're ready to debug them when something goes wrong.\n\n**How you'll use this:** Next, you'll **analyze and troubleshoot** loop errors: infinite loops, off-by-one bugs, wrong indentation, and logic mistakes. You'll learn to spot and fix common loop problems."
+          }
+        ]
+      }
+    },
+    "s4": {
+      "mindset": {
+        "heading": "Becoming a Troubleshooter",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from writing correct loops to understanding what goes wrong. Every infinite hang, wrong count, or odd result is a clue. Think like a detective: check the condition, the counter, and the indentation."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What Works",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know how to write loops that work. Now we'll look at what happens when they don't — and how to fix it."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Troubleshooting Loop Errors",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Error Analysis Table: Common Loop Errors**\n\n**Error 1: Infinite Loop (while)**\n**Symptom:** Program runs forever, doesn't respond\n**Possible Cause:** Condition never becomes False; counter never updated or wrong condition\n**How to Verify:** Check that the variable in the condition changes inside the body; check the condition logic\n**How to Fix:** Update the variable (e.g., count += 1); ensure condition can become False; or use break with a clear exit condition\n\n**Error 2: IndentationError in Loop**\n**Symptom:** IndentationError when running\n**Possible Cause:** Loop body not indented, or mixed tabs/spaces\n**How to Verify:** Ensure all body lines are indented (e.g., 4 spaces) under the for/while line\n**How to Fix:** Indent the whole body consistently; use 4 spaces\n\n**Error 3: Off-by-One (wrong count or range)**\n**Symptom:** Loop runs one too many or one too few times; wrong sum/count\n**Possible Cause:** range(stop) is 0..stop-1; using > instead of >= or vice versa\n**How to Verify:** Trace a small example (e.g., range(3) → 0,1,2)\n**How to Fix:** Use range(1, N+1) for 1..N; use range(N) for 0..N-1; adjust comparisons (e.g., count < 5 vs count <= 4)\n\n**Error 4: NameError — loop variable or counter**\n**Symptom:** NameError (variable not defined)\n**Possible Cause:** Using a variable before assigning it (e.g., counter in while before initializing); typo in variable name\n**How to Verify:** Find where the variable is first used; ensure it's assigned before the loop (for condition or body)\n**How to Fix:** Initialize before the loop: count = 0; or use the correct variable name\n\n**Error 5: Accumulator wrong or not initialized**\n**Symptom:** Sum/count is wrong or UnboundLocalError\n**Possible Cause:** Forgot to set total = 0 (or similar) before the loop; wrong update (e.g., total = i instead of total += i)\n**How to Verify:** Check that the accumulator is set before the loop and updated in the body\n**How to Fix:** Initialize before the loop; use total = total + x or total += x\n\n**Error 6: break/continue logic wrong**\n**Symptom:** Loop exits too early, or never skips when it should\n**Possible Cause:** Condition for break/continue is wrong or in wrong order\n**How to Verify:** Trace one iteration where you expect break or continue\n**How to Fix:** Write the condition so it matches \"when do I exit?\" or \"when do I skip?\"\n\n**Error 7: Modifying loop variable in for**\n**Symptom:** Expecting fewer/more iterations; confusion about loop variable\n**Possible Cause:** Assigning to the loop variable (e.g., i = i + 1) or changing it in a way that doesn't affect the sequence\n**How to Verify:** Remember: for gets the next value from the sequence regardless of what you do to i\n**How to Fix:** Don't rely on changing the for-loop variable; use a separate variable or use while if you need to change \"current index\" yourself\n\n**Error 8: TypeError — range with non-integer**\n**Symptom:** TypeError: 'float' object cannot be interpreted as an integer\n**Possible Cause:** range(1.5, 5) or range(x) where x is float\n**How to Verify:** Check arguments to range()\n**How to Fix:** Use integers: range(1, 6), or int(): range(int(start), int(stop))\n\n**Error 9: Logic — wrong loop type**\n**Symptom:** Code is clumsy or buggy (e.g., complex while when for would be clearer)\n**Possible Cause:** Using while for \"repeat N times\" or for when \"until condition\" is clearer\n**How to Verify:** Rephrase the problem: \"repeat N times\" vs \"until X\"\n**How to Fix:** Prefer for for fixed count/sequence; prefer while for \"until condition\"\n\n**Error 10: Nested loop variable shadowing**\n**Symptom:** Inner loop overwrites outer loop variable; hard-to-find logic errors\n**Possible Cause:** Using same name for inner and outer loop (e.g., i in both)\n**How to Verify:** Inspect variable names in nested loops\n**How to Fix:** Use different names (e.g., i and j, or row and col)"
+          },
+          {
+            "type": "text",
+            "content": "**Systematic Troubleshooting Steps**\n\n**Step 1:** Identify the symptom — infinite? wrong count? wrong sum? crash?\n**Step 2:** Locate the loop — which for/while, and where is the body?\n**Step 3:** For while: can the condition become False? Is the variable that drives it updated?\n**Step 4:** For for: is range() what you expect? Trace first and last iteration.\n**Step 5:** Check indentation — does only the intended code run in the body?\n**Step 6:** Check break/continue — when do they run? Do they match your intent?\n**Step 7:** Check accumulators/counters — initialized? updated in the right place?"
+          },
+          {
+            "type": "text",
+            "content": "**Pattern Recognition**\n\n**Infinite loop pattern:** while condition never False → update variable or add break.\n**Off-by-one pattern:** range or condition boundaries wrong → draw 0..N-1 or 1..N and align with condition.\n**Wrong sum pattern:** accumulator not initialized or wrong update → init before loop, use += in body.\n**Indentation pattern:** body must be indented; break/continue inside the body must be indented too."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Common errors and fixes\n\n# ERROR 1: Infinite loop\n# count = 0\n# while count < 5:\n#     print(count)  # count never changes!\n# FIX:\ncount = 0\nwhile count < 5:\n    print(count)\n    count += 1\n\n# ERROR 2: Accumulator not initialized\n# for i in range(5):\n#     total = total + i  # NameError or wrong value\n# FIX:\ntotal = 0\nfor i in range(5):\n    total = total + i\n\n# ERROR 3: range(5) produces 0,1,2,3,4 not 1,2,3,4,5\n# To get 1..5 use:\nfor i in range(1, 6):\n    print(i)",
+            "copyable": false
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Error Diagnosis Practice",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Find the bug**\n\n```python\ncount = 0\nwhile count < 5:\n    print(count)\n```\n\n**What's wrong?**"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What error or behavior does the code above cause? How do you fix it?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": ["infinite", "count", "update", "increment", "count + 1", "count += 1"]
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Wrong sum**\n\n```python\nfor i in range(1, 6):\n    total = total + i\nprint(total)\n```\n\n**What's wrong?**"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What problem does the code above have?",
+            "options": [
+              "Wrong range",
+              "total is never initialized before the loop",
+              "Should use while",
+              "Indentation error"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! total must be set to 0 before the loop.",
+              "incorrect": "The variable total is used in total + i before it's ever given a value. Initialize total = 0 before the loop."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 3: How many times?**\n\n```python\nfor i in range(4):\n    print(\"Hi\")\n```\n\n**Question:** How many times does \"Hi\" print?"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "How many times does the loop body run?",
+            "options": [
+              "3",
+              "4",
+              "5",
+              "0"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! range(4) yields 0,1,2,3 — four values, so the body runs 4 times.",
+              "incorrect": "range(4) produces 0,1,2,3, so there are 4 iterations."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Write a 3-step process you would use to debug any loop that runs forever or gives the wrong count.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Troubleshooting Flowchart",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Creative Task:**\n\nCreate a small flowchart or list for debugging a while loop that \"runs forever.\" Include:\n\n1. Check: Is the condition ever False?\n2. Check: Is the variable in the condition updated in the body?\n3. Check: Could you use break for an explicit exit?\n4. List 2–3 concrete fixes (e.g., add count += 1, add break when user_types_quit)\n\nYou can draw it or write numbered steps."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your debugging process. What do you look at first when a loop doesn't stop?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "A program uses a for loop and the sum is wrong. What three things would you check?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Troubleshooting Skills Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can identify why loop errors occur (infinite, off-by-one, accumulator)",
+              "I can tell how to fix common loop bugs",
+              "I can explain a simple troubleshooting process for loops"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What's your 3-step plan for fixing a loop that runs forever?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which loop error have you seen or made most often? How do you avoid it now?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Troubleshooting to Evaluating",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can **diagnose and fix** common loop errors — infinite loops, off-by-one, wrong accumulators, and indentation.\n\n**Why this matters:** Debugging loops is a core skill. You can keep programs correct as you add more logic.\n\n**How you'll use this:** Next, you'll **evaluate** loop design: when to use for vs while, when to use break/continue, and how to write loops that are clear and appropriate for the problem."
+          }
+        ]
+      }
+    },
+    "s5": {
+      "mindset": {
+        "heading": "Choosing the Right Loop",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from fixing bugs to choosing the best design. Focus on clarity, appropriateness, and when to use for vs while, break vs condition, and how to keep loop code readable."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Troubleshooting Skills",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can diagnose and fix loop errors. Now you'll judge when a loop is well-chosen and well-written — and when to use for vs while, break, or a different structure."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Evaluating Loop Design",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Evaluation Criteria for Loops**\n\n**1. Appropriateness** — Is the right kind of loop used?\n- \"Repeat N times\" or \"for each in sequence\" → for\n- \"Repeat until condition\" → while\n- Avoid using while when for is clearer\n\n**2. Clarity** — Is it easy to see what the loop does?\n- Clear loop variable or counter name\n- Condition or range that matches the intent (e.g., \"while not done\" vs \"while count < 10\")\n- Obvious where and why the loop stops\n\n**3. Correctness** — Does it always stop when intended? No accidental infinite loop?\n- while: variable in condition is updated (or break is reached)\n- for: range/sequence is finite\n- break/continue used only when they simplify logic\n\n**4. Readability** — Is the body short and focused?\n- Not too much logic in one loop; consider splitting or helper steps\n- Meaningful names (total, count, i for index)\n\n**5. Efficiency (simple sense)** — Avoid redundant work inside the loop\n- Don't do the same calculation every time if it doesn't depend on the loop variable\n- Prefer range() that matches exactly what you need (no hidden extra iterations)\n\n**6. Maintainability** — Can someone change it later?\n- Magic numbers (e.g., 10) replaced by names (e.g., MAX_TRIES) when it helps\n- Clear comments if the \"why\" isn't obvious"
+          },
+          {
+            "type": "text",
+            "content": "**When to Use for vs while**\n\n**Prefer for when:**\n- You know how many times to run (e.g., 10 times, 5 times)\n- You're stepping through range(a, b) or a fixed sequence\n- The pattern is \"for each of these\" or \"do this N times\"\n\n**Prefer while when:**\n- You don't know how many times (e.g., until user says quit)\n- You're waiting for a condition (e.g., valid input, target value)\n- The pattern is \"keep doing until...\"\n\n**Both can work:**\n- \"Repeat at most 5 times\" can be for i in range(5) or while count < 5 with count += 1\n- Choose the one that reads more naturally for the problem"
+          },
+          {
+            "type": "text",
+            "content": "**Good vs. Less Good Examples**\n\n**Clarity — loop intent:**\n\n**Less clear:** `while 1:` with a break buried inside\n**Clearer:** `while not done:` or `while user_input != \"quit\":` so the exit condition is visible\n\n**Appropriateness — for vs while:**\n\n**Less appropriate:** while loop that only increments a counter and stops at 10 (same as \"run 10 times\")\n**More appropriate:** for i in range(10): — matches \"do this 10 times\"\n\n**Correctness — accumulator:**\n\n**Wrong:** total used without total = 0 before the loop\n**Good:** total = 0 before the loop; in body total += value"
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Evaluating Loop Design",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Choose the loop**\n\n**Scenario A:** Print \"Hello\" 5 times.\n**Scenario B:** Ask for a password until the user types \"secret\".\n\nWhich do you use: for or while? Why?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "For Scenario A and B, which loop (for or while) would you use? Give a one-sentence reason for each.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Compare two solutions**\n\n**Solution 1:**\n```python\ncount = 0\nwhile count < 10:\n    print(count * 2)\n    count += 1\n```\n\n**Solution 2:**\n```python\nfor i in range(10):\n    print(i * 2)\n```\n\n**Question:** Which is clearer for \"print double of 0,1,...,9\"? Why?"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "For 'print double of 0,1,...,9', which solution is generally better?",
+            "options": [
+              "Solution 1 (while) — more flexible",
+              "Solution 2 (for) — clearer and shorter for fixed count",
+              "Both are equally good",
+              "Neither — you need range(0,20,2)"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! When the job is 'do this N times,' for with range(N) is usually clearer and less error-prone.",
+              "incorrect": "For a fixed count, for i in range(10) is simpler and avoids manually updating a counter."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Name one situation where you would definitely use while instead of for. Explain briefly.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Code Review Scenario",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Review this pattern:**\n\n```python\nattempts = 0\nwhile True:\n    p = input(\"Password: \")\n    attempts += 1\n    if p == \"secret\":\n        print(\"OK\")\n        break\n    if attempts >= 3:\n        print(\"Too many tries\")\n        break\n```\n\n**Questions:** Is a while True with break appropriate here? What are the exit conditions? Could you write it with a single while condition instead?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Evaluate the password loop above. Is it clear? Appropriate? Would you keep it or rewrite it? Explain.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Evaluation Skills Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can choose for vs while based on the problem",
+              "I can tell when a loop is clear and when it's confusing",
+              "I consider correctness and readability when writing loops"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What's your rule of thumb for when to use for vs when to use while?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How will you use these criteria when writing your own loops from now on?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Evaluating to Creating",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can **evaluate** loop design and choose the right loop for the job. You think about appropriateness, clarity, and correctness.\n\n**Why this matters:** Good loop design makes programs easier to read, debug, and change.\n\n**How you'll use this:** Next, you'll **create** your own loop-based projects — counters, menus, simple simulations — using for, while, break, continue, and accumulators. You'll bring together everything you've learned."
+          }
+        ]
+      }
+    },
+    "s6": {
+      "mindset": {
+        "heading": "From Learner to Creator",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from judging loop design to creating your own programs. Design, implement, and test small projects that use loops to repeat actions — menus, counters, or simple simulations."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Your Journey So Far",
+        "components": [
+          {
+            "type": "text",
+            "content": "You've completed:\n- **Remembering** → Vocabulary (for, while, range, break, continue, accumulator)\n- **Understanding** → How loops run step-by-step\n- **Applying** → Writing for/while, accumulators, break/continue\n- **Analyzing** → Troubleshooting infinite loops, off-by-one, accumulators\n- **Evaluating** → Choosing for vs while, judging clarity\n\nNow you'll **create** programs that use loops to solve real tasks!"
+          }
+        ]
+      },
+      "core": {
+        "heading": "Creating Projects with Loops",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Project Type Options**\n\n**1. Counter / Sum Program** ⭐\nUse a for loop and an accumulator to sum numbers 1 to N, or count how many numbers the user enters until they type 0.\n\n**2. Menu Loop** ⭐\nA program that shows a menu and runs until the user chooses \"Quit.\" Use while and break.\n\n**3. Retry-Until-Valid Input** ⭐\nUse a while loop to keep asking for input until the user gives a valid value (e.g., a number between 1 and 10).\n\n**4. Countdown Timer** ⭐\nUse a loop (for or while) to print a countdown from N down to 1, then \"Go!\"\n\n**5. Multiplication Table (N×N)** ⭐⭐\nUse nested for loops to print a small multiplication table (e.g., 5×5).\n\n**6. Number Guessing Loop** ⭐⭐\nProgram picks a number; user guesses in a loop until correct. Use while and break when guess is right.\n\n**7. Run-Length or Repetition Checker** ⭐⭐\nAsk for a list of numbers (or repeated input) and use a loop to find sum, count, or average.\n\n**8. Simple Dice Simulation** ⭐⭐\nUse a for loop to \"roll\" a dice N times (e.g., with random) and count how many times you get a 6 (or any target)."
+          },
+          {
+            "type": "text",
+            "content": "**Templates and Examples**\n\n**Template 1: Sum 1 to N (Beginner ⭐)**\n```python\nn = int(input(\"Enter N: \"))\ntotal = 0\nfor i in range(1, n + 1):\n    total = total + i\nprint(\"Sum from 1 to\", n, \"=\", total)\n```\n\n**Template 2: Menu Until Quit (Beginner ⭐)**\n```python\nwhile True:\n    print(\"1. Hello  2. Count to 3  3. Quit\")\n    choice = input(\"Choice: \")\n    if choice == \"1\":\n        print(\"Hello!\")\n    elif choice == \"2\":\n        for i in range(1, 4):\n            print(i)\n    elif choice == \"3\":\n        print(\"Bye!\")\n        break\n    else:\n        print(\"Invalid\")\n```\n\n**Template 3: Retry Until Valid (Beginner ⭐)**\n```python\nwhile True:\n    x = int(input(\"Enter number 1-10: \"))\n    if 1 <= x <= 10:\n        print(\"Valid:\", x)\n        break\n    print(\"Try again\")\n```\n\n**Template 4: Countdown (Beginner ⭐)**\n```python\nn = int(input(\"Count down from: \"))\nfor i in range(n, 0, -1):\n    print(i)\nprint(\"Go!\")\n```\n\n**Template 5: Nested Loop Table (Intermediate ⭐⭐)**\n```python\nfor i in range(1, 4):\n    for j in range(1, 4):\n        print(i * j, end=\" \")\n    print()\n```\n\n**Template 6: Guessing Loop (Intermediate ⭐⭐)**\n```python\nimport random\nsecret = random.randint(1, 10)\nwhile True:\n    g = int(input(\"Guess 1-10: \"))\n    if g == secret:\n        print(\"Correct!\")\n        break\n    if g < secret:\n        print(\"Higher\")\n    else:\n        print(\"Lower\")\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Success Criteria**\n\n- **Counter/Sum:** Correct total or count; loop runs the right number of times.\n- **Menu:** Repeats until Quit; each option does the right thing; no infinite loop.\n- **Retry:** Keeps asking until input is valid; clear message when valid.\n- **Countdown:** Prints N down to 1 (or 0) then a final message.\n- **Nested table:** Rows and columns correct; readable output.\n- **Guessing:** Loop stops when guess is correct; hints (higher/lower) optional but helpful.\n- **Simulation:** Loop runs N times; accumulator (e.g., count of 6s) is correct."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Plan Your Project",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What will your program do? (e.g., menu until quit, sum 1 to N, guess a number)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which loops will you use? (for, while, or both?) Where will you use break or continue, if at all?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How will you know it works? (e.g., test with N=5 for sum, test Quit for menu)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Create a new .py file with a clear name",
+              "Use at least one for or while loop",
+              "Initialize any accumulators before the loop",
+              "Update counters/accumulators correctly in the body",
+              "Make sure the loop can stop (condition or break)",
+              "Test with a few inputs",
+              "Fix any bugs and simplify if needed"
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create and Share Your Project",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Create a Loop-Based Project**\n\nChoose one (or combine ideas):\n\n**Option 1: Menu program** — Loop until user chooses Quit; at least 2 actions + Quit.\n**Option 2: Counter/accumulator** — Sum, count, or average over repeated input or range.\n**Option 3: Retry-until-valid** — Keep asking until input is in a valid range or format.\n**Option 4: Small simulation or game** — e.g., guess a number, or roll dice N times and report a count.\n\n**Quality checklist:**\n- Clear purpose and one or more loops used correctly\n- No infinite loop; loop stops when intended\n- Tested with normal and edge inputs\n- Code is readable (names, indentation)"
+          },
+          {
+            "type": "ordering",
+            "instructions": "Order these steps for creating your project.",
+            "items": [
+              "Choose what the program will do",
+              "Decide which loop(s) to use",
+              "Write and run the code",
+              "Test with different inputs",
+              "Fix bugs and improve clarity",
+              "Add a short comment or docstring at the top"
+            ],
+            "correctOrder": [0, 1, 2, 3, 4, 5]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your project: what it does, which loops you used, and one design choice you made (e.g., why for vs while, or why you used break).",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Mastery Celebration",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I created a program that uses at least one loop",
+              "My program has a clear purpose and stops correctly",
+              "I can explain which loops I used and why",
+              "I'm proud of what I built"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What did you learn by creating this project? What was hardest? What would you do differently next time?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "🎉 **You've Reached the Creating Stage** 🎉\n\nYou've gone from \"what is a loop?\" to writing and designing loop-based programs. You can use for, while, range(), break, continue, and accumulators to build menus, counters, and simulations. You're ready for the next step: **functions** — reusing blocks of code with names and parameters!"
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Congratulations on Your Journey",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Journey Recap:**\n\n**Stage 0 (Starting)** → What loops are and why they matter\n**Stage 1 (Remembering)** → Vocabulary: for, while, range, iteration, break, continue, accumulator\n**Stage 2 (Understanding)** → How loops run step-by-step\n**Stage 3 (Applying)** → Writing for/while, accumulators, break/continue\n**Stage 4 (Analyzing)** → Troubleshooting infinite loops, off-by-one, accumulator bugs\n**Stage 5 (Evaluating)** → Choosing for vs while, judging loop design\n**Stage 6 (Creating)** → Building your own loop-based projects\n\n**What's Next:**\n\nYou're ready to learn **functions** — named, reusable blocks of code that take parameters and return values. Loops + conditionals + functions will give you the core tools to structure larger, clearer programs."
+          }
+        ]
+      }
+    }
+  },
+  "ui": {
+    "defaultExpandedStage": "s0"
+  }
+}

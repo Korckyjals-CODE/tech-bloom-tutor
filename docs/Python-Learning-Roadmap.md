@@ -164,8 +164,8 @@ This document outlines the complete learning path for Python programming using t
 ## Planned Guides (Next Two)
 
 ### 6. Loops
-**File:** `loops.json` (planned)  
-**Status:** 📋 Planned  
+**File:** `loops.json`  
+**Status:** ✅ Complete  
 **Scope:** Single main concept (repetition in code) + related sub-concepts (`for`/`while`, loop control, iteration patterns)
 
 **Learning Objectives:**
@@ -275,7 +275,7 @@ This document outlines the complete learning path for Python programming using t
 ┌─────────────────────────────────────┐
 │  6. Loops                             │
 │     (Requires: Guides #1-5)           │
-│     📋 PLANNED                       │
+│     ✅ COMPLETE                       │
 └──────────────┬──────────────────────┘
                │
                ▼
@@ -370,7 +370,7 @@ After Guide #7 (Functions), potential next topics:
 | Variables & Data Types | ✅ Complete | `variables-and-basic-data-types.json` | Done |
 | Input and Operations | ✅ Complete | `input-and-operations.json` | Done |
 | Conditional Statements | ✅ Complete | `conditional-statements.json` | Done |
-| Loops | 📋 Planned | `loops.json` | — |
+| Loops | ✅ Complete | `loops.json` | Done |
 | Functions | 📋 Planned | `functions.json` | — |
 
 ---
