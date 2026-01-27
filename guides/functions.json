@@ -1,0 +1,1314 @@
+{
+  "metadata": {
+    "title": "Functions",
+    "subtitle": "Reusable blocks of code with parameters and return values",
+    "description": "Learn how to define and call functions with def, use parameters and arguments, return values, understand local scope, and create programs organized into reusable functions.",
+    "version": "1.0.0",
+    "author": "EduCafé",
+    "lastUpdated": "2026-01-27",
+    "storageKeyPrefix": "functions",
+    "instructorPasscode": "educafe-functions-101"
+  },
+  "branding": {
+    "brandName": "EduCafé — Python Guide",
+    "theme": {
+      "colorScheme": "dark",
+      "primaryColor": "#4aa3ff",
+      "secondaryColor": "#7bc67b"
+    }
+  },
+  "stages": [
+    {
+      "id": "s0",
+      "order": 0,
+      "title": "Stage 0 · Starting",
+      "shortTitle": "Starting",
+      "description": "Introduction to functions"
+    },
+    {
+      "id": "s1",
+      "order": 1,
+      "title": "Stage 1 · Remembering",
+      "shortTitle": "Remembering",
+      "description": "Vocabulary for functions"
+    },
+    {
+      "id": "s2",
+      "order": 2,
+      "title": "Stage 2 · Understanding",
+      "shortTitle": "Understanding",
+      "description": "How functions work"
+    },
+    {
+      "id": "s3",
+      "order": 3,
+      "title": "Stage 3 · Applying",
+      "shortTitle": "Applying",
+      "description": "Writing function-based programs"
+    },
+    {
+      "id": "s4",
+      "order": 4,
+      "title": "Stage 4 · Analyzing",
+      "shortTitle": "Analyzing",
+      "description": "Troubleshooting function errors"
+    },
+    {
+      "id": "s5",
+      "order": 5,
+      "title": "Stage 5 · Evaluating",
+      "shortTitle": "Evaluating",
+      "description": "Judging function design and reuse"
+    },
+    {
+      "id": "s6",
+      "order": 6,
+      "title": "Stage 6 · Creating",
+      "shortTitle": "Creating",
+      "description": "Original projects with functions"
+    }
+  ],
+  "sections": [
+    {
+      "id": "mindset",
+      "displayName": "Mindset",
+      "order": 0,
+      "description": "Prepare mentally"
+    },
+    {
+      "id": "recap",
+      "displayName": "Recap",
+      "order": 1,
+      "description": "Connect to prior learning"
+    },
+    {
+      "id": "core",
+      "displayName": "Core",
+      "order": 2,
+      "description": "Main content"
+    },
+    {
+      "id": "guidedPractice",
+      "displayName": "Guided Practice",
+      "order": 3,
+      "description": "Practice with help"
+    },
+    {
+      "id": "challenge",
+      "displayName": "Challenge",
+      "order": 4,
+      "description": "Independent work"
+    },
+    {
+      "id": "reflection",
+      "displayName": "Reflection",
+      "order": 5,
+      "description": "Think about learning"
+    },
+    {
+      "id": "transition",
+      "displayName": "Transition",
+      "order": 6,
+      "description": "Move forward"
+    }
+  ],
+  "content": {
+    "s0": {
+      "mindset": {
+        "heading": "From Repeated Code to Reusable Blocks",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're about to learn **functions** — the programming feature that lets you wrap blocks of code into named, reusable units. Instead of copying the same logic in multiple places, you define it once and call it whenever you need it. This transforms messy scripts into clear, maintainable programs."
+          },
+          {
+            "type": "text",
+            "content": "Every expert programmer started exactly where you are now. Functions are one of the most important concepts in programming. Once you master them, you'll be able to organize code, avoid repetition, and build programs that are easier to read, test, and change."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Building on What You Know",
+        "components": [
+          {
+            "type": "text",
+            "content": "You already know how to:\n- Store data in variables\n- Get input and perform operations\n- Make decisions with conditionals\n- Repeat actions with loops\n\nNow you'll learn to **organize** your code into **functions** — named blocks you can call from anywhere. Instead of writing the same logic twice, you write it once in a function and reuse it. This is how professional programs stay readable and maintainable!"
+          }
+        ]
+      },
+      "core": {
+        "heading": "What Are Functions?",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Functions** are named, reusable blocks of code. You define them once with `def`, give them a name and optional **parameters**, and optionally **return** a value. Whenever you need that logic, you **call** the function by name and pass **arguments**. Think of them as \"recipes\" or \"tools\" you can use over and over."
+          },
+          {
+            "type": "text",
+            "content": "**Real-World Examples of Functions:**\n\n**Personal Use:**\n• **Greeting** — \"Say hello\" used in menus, chats, and intros\n• **Format date** — Convert a date to \"Jan 27, 2026\" used in logs, reports, messages\n• **Validate input** — \"Is this a valid email?\" used in forms, sign-up, contact\n• **Calculate tip** — Given bill and percentage, return tip amount — used in bills, splits\n• **Convert units** — Miles to km, pounds to kg — used in travel, cooking, fitness\n\n**School Use:**\n• **Letter grade** — Given a score, return A/B/C/D/F — used in gradebooks, reports\n• **Average** — Given a list of scores, return average — used in grades, surveys\n• **Check even/odd** — Used in many small exercises and games\n• **Format name** — \"LastName, FirstName\" — used in rosters, certificates\n• **Validate score** — \"Is score between 0 and 100?\" — used in quizzes, grades\n\n**Professional Use:**\n• **Login check** — Given username/password, return True/False — used in apps, dashboards\n• **Format currency** — Given amount, return \"$12.34\" — used in invoices, reports\n• **Sanitize input** — Remove bad characters — used in security, forms\n• **Compute tax** — Given amount and rate, return tax — used in e‑commerce, payroll\n• **Parse date** — Given string, return day/month/year — used in logs, reports"
+          },
+          {
+            "type": "text",
+            "content": "**Visual Metaphors for Functions:**\n\n**Like a Recipe:**\nA function is like a recipe. You write the steps once (the recipe). Whenever you want that dish, you follow the recipe (call the function). You can change the ingredients (arguments) each time — more salt, fewer eggs — but the steps stay the same.\n\n**Like a Tool:**\nA function is like a calculator's \"square root\" button. You don't rebuild the button each time; you press it and get a result. The function hides the details and gives you a simple interface: input → output.\n\n**Like a Subroutine:**\nA function is like a labeled section in a manual: \"To reset the device, do steps 1–5.\" Whenever someone says \"reset the device,\" they mean \"do those steps.\" The function is that labeled section of code.\n\n**Like a Black Box:**\nYou put in inputs (arguments), and you get an output (return value). You don't have to know how it's done inside — you just call it and use the result."
+          },
+          {
+            "type": "text",
+            "content": "**What Makes Functions Powerful:**\n\n- **Reuse** — Write logic once, call it many times\n- **Clarity** — Names like `calculate_tip` or `is_valid_email` make intent obvious\n- **Maintainability** — Change the logic in one place; every call benefits\n- **Testability** — You can test a function in isolation\n- **Organization** — Long scripts become short lists of function calls\n- **Collaboration** — Others can use your functions without reading all the internals"
+          },
+          {
+            "type": "text",
+            "content": "**Connection to Prior Knowledge:**\n\nFunctions build on what you already know:\n- **Variables** — Functions use variables inside; they can take parameters and return values\n- **Conditionals and loops** — Function bodies often contain if/else and for/while\n- **Input and operations** — Functions can call input(), do math, and format strings\n- **Indentation** — The function body is the indented block under `def`\n\nYou're not learning new \"actions\" — you're learning how to **package** the actions you already know into reusable units."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Simple function\ndef greet():\n    print(\"Hello!\")\n\ngreet()  # Call it — prints Hello!\ngreet()  # Call again — prints Hello!\n\n# Example: Function with parameter and return\ndef double(x):\n    return x * 2\n\nresult = double(5)   # result is 10\nprint(double(10))   # prints 20",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Exploring Functions",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "What is the main benefit of using functions?",
+            "options": [
+              "They make code run faster",
+              "They let you reuse a block of code by name instead of copying it",
+              "They are required by Python",
+              "They replace variables"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Functions let you define logic once and call it wherever you need it, reducing duplication and improving clarity.",
+              "incorrect": "The main benefit is reuse: define once, call many times. This keeps code shorter, clearer, and easier to change."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Think of three tasks in a program you've written (or might write) that could be turned into a function. What would you name each one?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Code Comparison:**\n\n**Without a function (repeated logic):**\n```python\n# Check if score is passing, used in 3 places\nif score >= 60:\n    print(\"Pass\")\n# ... later ...\nif score >= 60:\n    print(\"Pass\")\n# ... again ...\nif score >= 60:\n    print(\"Pass\")\n```\n\n**With a function (reuse):**\n```python\ndef show_pass_status(score):\n    if score >= 60:\n        print(\"Pass\")\n\nshow_pass_status(85)\nshow_pass_status(50)\nshow_pass_status(72)\n```\n\n**Question:** What's the advantage of the function version?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain why functions make programs easier to maintain when you need to change how something works.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Which scenario is a good use of a function?",
+            "options": [
+              "Printing one message a single time",
+              "Calculating the average of three numbers in three different places in your program",
+              "Storing a user's name in a variable",
+              "Running a loop exactly once"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! When the same calculation appears in multiple places, a function avoids duplication and keeps one place to update.",
+              "incorrect": "Functions shine when you do the same logic in more than one place. Calculating an average in three places is a classic case for a function."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Think About Reuse",
+        "components": [
+          {
+            "type": "multipleChoice",
+            "question": "Imagine you're building a grade-book program. Which would be best as a function?",
+            "options": [
+              "A single variable that holds one student's name",
+              "The logic that converts a numeric score (0–100) into a letter grade (A/B/C/D/F), used for each student",
+              "One print statement that runs once at the start",
+              "A loop that runs only in one place"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Converting score → letter grade is the same logic for every student; a function keeps it in one place and reusable.",
+              "incorrect": "Functions are best when the same logic is used repeatedly. Score-to-letter conversion fits that: one definition, many calls per student."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe a small program you'd like to write that would use at least two functions. What would each function do?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Preparing for Learning",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I understand what functions are",
+              "I can identify when reusing a block of code would help",
+              "I'm ready to learn the vocabulary and syntax"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "On a scale of 1–10, how excited are you to learn about functions? What would make it a 10?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What are you most curious about regarding functions? What questions do you have?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How do you think functions will help you write better programs?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What real-world problems could you solve more easily with reusable functions?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Ready to Learn",
+        "components": [
+          {
+            "type": "text",
+            "content": "You've learned **what functions are** and **why they matter**. You understand that they let you reuse blocks of code by name, making programs clearer and easier to maintain.\n\n**Why this matters:** Functions are the main way to structure code in Python. Almost every non-trivial program uses them.\n\n**How you'll use this:** You'll learn the vocabulary — **def**, **parameters**, **arguments**, **return**, **call**, **scope** — and syntax. Then you'll practice defining and calling functions and eventually organize your own programs into functions.\n\nNext, you'll learn the **vocabulary and terminology** for functions: \"definition,\" \"call,\" \"parameter,\" \"argument,\" \"return value,\" and \"local scope\" — the building blocks you need to write function-based code."
+          }
+        ]
+      }
+    },
+    "s1": {
+      "mindset": {
+        "heading": "Learning the Language",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from the idea of functions to the specific vocabulary. Right now you're not writing large programs yet — you're learning the terms and syntax that will let you define and call functions confidently."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What You Remember",
+        "components": [
+          {
+            "type": "text",
+            "content": "From Stage 0, you know that functions are reusable, named blocks of code. Now you'll learn the precise terms: def, parameters, arguments, return, call, and scope."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Key Vocabulary for Functions",
+        "components": [
+          {
+            "type": "text",
+            "content": "**function definition** — The block of code that starts with `def`, gives the function a name, optional parameters in parentheses, and a colon. The indented body is the \"recipe\" that runs when the function is called.\n\n**Example:** `def greet():` or `def double(x):`\n\n**When it matters:** You define a function once; that definition is used every time you call the function.\n\n**Connection:** The definition is the full \"def name(params):\" plus the indented body."
+          },
+          {
+            "type": "text",
+            "content": "**def** — The keyword that starts a function definition. It is always followed by the function name, parentheses, and a colon.\n\n**Example:** `def say_hello():` or `def add(a, b):`\n\n**When it matters:** Python uses `def` to know \"this is a function definition, not regular code.\"\n\n**Connection:** You can't define a function without `def`."
+          },
+          {
+            "type": "text",
+            "content": "**parameter** — A name listed inside the parentheses in a function definition. It acts as a placeholder for a value that will be passed in when the function is called.\n\n**Example:** In `def greet(name):`, `name` is a parameter.\n\n**When it matters:** Parameters let the same function work with different inputs (e.g., greet(\"Alice\") vs greet(\"Bob\")).\n\n**Connection:** Parameters are the \"inputs\" declared in the definition; arguments are the actual values you pass when you call."
+          },
+          {
+            "type": "text",
+            "content": "**argument** — A value you pass to a function when you call it. It is assigned to the corresponding parameter.\n\n**Example:** In `greet(\"Alice\")`, `\"Alice\"` is the argument for the parameter `name`.\n\n**When it matters:** Arguments are how you give a function the data it needs for each call.\n\n**Connection:** Arguments match parameters by position (first arg → first param, etc.)."
+          },
+          {
+            "type": "text",
+            "content": "**return** — A statement that sends a value back to the caller and ends the function. After `return`, no more code in that function runs.\n\n**Example:** `return x * 2` or `return \"Hello\"`\n\n**When it matters:** Use `return` when the function should produce a value you can use (e.g., assign to a variable, use in an expression).\n\n**Connection:** A function can return once, multiple times (in different branches), or not at all (then it returns `None`)."
+          },
+          {
+            "type": "text",
+            "content": "**return value** — The value that a function sends back to the caller via `return`. You can use it in an assignment, condition, or expression.\n\n**Example:** `result = double(5)` — the return value is `10`.\n\n**When it matters:** The return value is the \"output\" of the function when you need a result, not just a side effect like printing.\n\n**Connection:** If there is no `return` or just `return`, the return value is `None`."
+          },
+          {
+            "type": "text",
+            "content": "**call** (or **function call**) — Using the function by writing its name followed by parentheses and optional arguments. Python runs the function body and, if there is one, uses the return value.\n\n**Example:** `greet()` or `add(3, 5)`\n\n**When it matters:** Defining a function doesn't run it; calling it does.\n\n**Connection:** You call a function wherever you want that logic to run."
+          },
+          {
+            "type": "text",
+            "content": "**local scope** — The region where a variable or parameter is visible. Variables defined inside a function (including parameters) are local to that function — they exist only while the function runs and are not visible outside.\n\n**When it matters:** You can use the same variable name in different functions without conflict; each function's locals are separate.\n\n**Connection:** Parameters and variables created inside the function body are in that function's local scope."
+          },
+          {
+            "type": "text",
+            "content": "**function body** — The indented block of code under the `def` line. It runs each time the function is called.\n\n**Example:** Everything indented under `def greet():` is the body.\n\n**When it matters:** Only the indented code is part of the function. The body can use parameters, other variables, conditionals, loops, and more.\n\n**Connection:** Same idea as the body of `if` or `for` — indentation defines what belongs to the function."
+          },
+          {
+            "type": "text",
+            "content": "**How These Terms Work Together:**\n\n1. You **define** a function with **def**, a name, and optional **parameters**.\n2. The **function body** is the indented block that runs when the function is **called**.\n3. When you **call** the function, you pass **arguments** that match the parameters.\n4. The function can **return** a value; that value is the **return value** of the **call**.\n5. Names inside the function (parameters and variables you create) are in **local scope** — they exist only during that call.\n\nTogether, these give you reusable, named blocks with clear inputs and outputs."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Vocabulary Practice",
+        "components": [
+          {
+            "type": "matching",
+            "leftColumn": [
+              "def",
+              "parameter",
+              "argument",
+              "return",
+              "return value",
+              "call",
+              "local scope",
+              "function body",
+              "function definition"
+            ],
+            "rightColumn": [
+              {
+                "definition": "Keyword that starts a function definition",
+                "matchesWith": "def"
+              },
+              {
+                "definition": "Placeholder in the definition for incoming data (e.g., name in def f(name))",
+                "matchesWith": "parameter"
+              },
+              {
+                "definition": "Value passed to a function when you call it (e.g., 5 in f(5))",
+                "matchesWith": "argument"
+              },
+              {
+                "definition": "Statement that sends a value back and ends the function",
+                "matchesWith": "return"
+              },
+              {
+                "definition": "The value the function sends back to the caller",
+                "matchesWith": "return value"
+              },
+              {
+                "definition": "Using the function by writing its name and parentheses (and args)",
+                "matchesWith": "call"
+              },
+              {
+                "definition": "Region where names inside a function are visible (only during that run)",
+                "matchesWith": "local scope"
+              },
+              {
+                "definition": "Indented block under def that runs when the function is called",
+                "matchesWith": "function body"
+              },
+              {
+                "definition": "The full def line plus the function body",
+                "matchesWith": "function definition"
+              }
+            ]
+          },
+          {
+            "type": "multipleChoice",
+            "question": "In `def add(a, b): return a + b` and `add(3, 5)`, what are 3 and 5?",
+            "options": [
+              "Parameters",
+              "Arguments",
+              "Return values",
+              "Local variables"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! 3 and 5 are the values passed when you call add(3, 5); they are the arguments. a and b are the parameters.",
+              "incorrect": "Parameters are the names in the definition (a, b). The values you pass when calling (3, 5) are the arguments."
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What does a function do if it has no return statement?",
+            "options": [
+              "It causes an error",
+              "It returns the last value computed",
+              "It returns None",
+              "It cannot be called"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! In Python, a function without a return (or with just return) returns None.",
+              "incorrect": "If a function doesn't return a value, Python automatically returns None. No error."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Vocabulary Application",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Creative Visualization Task:**\n\nCreate a diagram showing how a function works. Include:\n- The definition (def name(params):)\n- The function body (what runs when called)\n- A call with arguments\n- Where the return value goes\n\nYou can draw it or describe it in text!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Explain the difference between a parameter and an argument. Give a small example.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What is local scope? Why does it matter when you use variable names inside a function?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Vocabulary Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can define key terms: def, parameter, argument, return, call, local scope",
+              "I can tell the difference between parameters and arguments",
+              "I understand how these terms work together"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which term was easiest for you? Which needs more review?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Can you recall what happens when you call a function: what gets passed in, what runs, and what (if anything) comes back?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does knowing these terms help you when reading or writing function code?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Terms to Understanding",
+        "components": [
+          {
+            "type": "text",
+            "content": "You've learned the vocabulary: **def**, **parameter**, **argument**, **return**, **return value**, **call**, **local scope**, **function body**, and **function definition**.\n\n**Why this matters:** Knowing the terms is the first step. Next you'll understand **how** functions run — what happens when you call a function, how arguments become parameters, when return runs, and how local scope keeps names separate.\n\n**How you'll use this:** You'll learn the step-by-step process: call → parameters get argument values → body runs → return (if any) sends a value back. You'll see how scope affects where names are visible."
+          }
+        ]
+      }
+    },
+    "s2": {
+      "mindset": {
+        "heading": "Understanding the Process",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from knowing the terms to understanding **how** functions run. You're opening the \"black box\" to see what happens when Python executes a call: how arguments flow in, how the body runs, and how return sends a value back."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What You Know",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know the vocabulary: def, parameter, argument, return, call, local scope. Now you'll understand how Python uses these when a function is called."
+          }
+        ]
+      },
+      "core": {
+        "heading": "How Functions Work",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Step-by-Step: What Happens When You Call a Function**\n\n**Step 1:** Python sees the function call (e.g., `add(3, 5)`).\n**Step 2:** Python looks up the function by name (`add`) and confirms it is defined.\n**Step 3:** Argument values are assigned to parameters in order: first argument → first parameter, second → second, etc. So `a = 3`, `b = 5`.\n**Step 4:** Execution jumps into the function body. The rest of the calling code is paused.\n**Step 5:** The body runs line by line. Parameters and any new variables in the body are in that function's local scope.\n**Step 6:** If Python hits a `return` statement, it evaluates the expression, sends that value back to the caller, and exits the function immediately. No more lines in the body run.\n**Step 7:** Execution resumes in the caller at the place of the call. If the call was part of an expression (e.g., `result = add(3, 5)`), the return value is used there (e.g., `result` becomes 8).\n**Step 8:** If the function ends without a return (or with just `return`), it returns `None` and the caller gets `None`."
+          },
+          {
+            "type": "text",
+            "content": "**How Parameters and Arguments Match**\n\n- **By position:** The first argument goes to the first parameter, the second to the second, and so on. `add(3, 5)` with `def add(a, b)` means a=3, b=5.\n- **Count must match:** If the function has two parameters, you typically pass two arguments. (Default values and *args are later topics.)\n- **Names don't have to match:** The argument can be any expression; its value is what gets assigned to the parameter. `add(x, y)` passes the values of x and y; the parameter names a and b are only inside the function."
+          },
+          {
+            "type": "text",
+            "content": "**How Return Works**\n\n- **return value** — The value you put after `return` is sent back. It can be a literal, variable, or expression: `return 0`, `return result`, `return a + b`.\n- **return with no value** — Just `return` exits the function and returns `None`.\n- **Multiple returns** — You can have several `return` statements in different branches (e.g., in if/else). Only one runs per call; that one ends the function.\n- **After return** — No code in the function runs after a return. So \"return and then print\" doesn't print."
+          },
+          {
+            "type": "text",
+            "content": "**How Local Scope Works**\n\n- **Parameters** are local: they exist only for that call and only inside the function.\n- **Variables assigned inside the body** are local: they are created in that call and discarded when the function exits.\n- **The caller's variables** are unchanged by local names. If the function has `x = 10`, that doesn't change an `x` in the caller (unless you're mutating a shared object, which is a later topic).\n- **Reading vs writing:** The function can read global variables (names defined at the top level), but writing to a name without `global` creates a new local variable. For now, treat \"variables created inside the function\" as local."
+          },
+          {
+            "type": "text",
+            "content": "**Call Stack Idea (Simplified)**\n\nWhen A calls B, Python is \"inside\" B until B returns. When B returns, Python is back \"in\" A. So you can think of a stack: \"call A\" → \"call B from A\" → \"B returns\" → \"continue in A.\" That's why only one function runs at a time and why return sends control and a value back to the caller."
+          },
+          {
+            "type": "text",
+            "content": "**Key Idea: Flow of a Function Call**\n\n1. **Call** — Caller writes name(args).\n2. **Bind** — Arguments are bound to parameters.\n3. **Execute** — Body runs in local scope.\n4. **Return** — A return sends a value back and exits; if no return, None is returned.\n5. **Resume** — Caller continues; the call expression gets the return value.\n\nUnderstanding this flow helps you debug \"wrong value\" or \"variable not defined\" errors and design clear functions."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: trace a simple call\ndef add(a, b):\n    s = a + b   # local s\n    return s\n\nx = add(2, 3)  # 2 → a, 3 → b; body runs; return 5 → x\nprint(x)       # 5\n\n# Example: no return\ndef say_hi():\n    print(\"Hi\")\n    # no return\n\nresult = say_hi()  # prints Hi; result is None\nprint(result)     # None",
+            "copyable": false
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Understanding the Flow",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What happens step-by-step when Python runs 'result = double(4)' for 'def double(x): return x * 2'?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "In 'def f(a, b): return a - b' and 'f(10, 3)', what value is returned?",
+            "options": [
+              "10",
+              "3",
+              "7",
+              "13"
+            ],
+            "correctIndex": 2,
+            "feedback": {
+              "correct": "Correct! a=10, b=3; return a - b is return 7.",
+              "incorrect": "Arguments are passed by position: first 10 → a, second 3 → b. So a - b is 10 - 3 = 7."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "If a function has three parameters, how many arguments should you usually pass when you call it? Why?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What is the return value of a function that runs 'print(5)' but has no return statement?",
+            "options": [
+              "5",
+              "None",
+              "It causes an error",
+              "print"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Printing is a side effect. The return value is None when there is no return.",
+              "incorrect": "Print sends output to the screen; it doesn't send a value back to the caller. Without return, the function returns None."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Prediction:**\n\n```python\ndef add_one(n):\n    n = n + 1\n    return n\n\nx = 5\ny = add_one(x)\n```\n\n**Question:** What are x and y after this runs? Why?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "In your own words, when does a variable inside a function 'exist'? When can the rest of the program see it?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Flow Diagram",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Creative Diagram Task:**\n\nCreate a flowchart or diagram for one function call. Include:\n\n1. Caller calls function with arguments\n2. Arguments bound to parameters\n3. Body runs (local scope)\n4. return sends value back\n5. Caller receives return value and continues\n\n**Hints:** Use a box for \"call,\" a box for \"body,\" and an arrow for \"return to caller.\" You can draw it or describe it in detail!"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your diagram. How does it show where arguments come from and where the return value goes?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Why can't the caller use a variable that was created only inside the function? Tie your answer to scope.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Understanding Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can explain what happens when a function is called (bind, run body, return)",
+              "I understand how arguments match parameters by position",
+              "I understand that variables inside a function are local and disappear after the call"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most surprising thing about how functions run?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How does understanding the flow help you write and debug functions?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What still seems confusing about how functions work?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Understanding to Doing",
+        "components": [
+          {
+            "type": "text",
+            "content": "You understand **how** functions work — how arguments become parameters, how the body runs, and how return sends a value back. You also know that names inside the function are local.\n\n**Why this matters:** Understanding the process helps you write correct functions and fix bugs when values or scope are wrong.\n\n**How you'll use this:** Next, you'll **apply** this by writing your own functions: defining with def, using parameters and return, and combining them with variables, conditionals, and loops. You'll practice the syntax and common patterns."
+          }
+        ]
+      }
+    },
+    "s3": {
+      "mindset": {
+        "heading": "Time to Code",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from understanding to **doing**. Now you'll write your own functions. Focus on correct def syntax, indentation, parameters, and return. Mistakes are normal — that's how you learn!"
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Before You Start",
+        "components": [
+          {
+            "type": "text",
+            "content": "You understand how functions run. Now let's write them! Make sure you can answer: What goes in the def line? How do you pass arguments? When do you use return?"
+          }
+        ]
+      },
+      "core": {
+        "heading": "Writing Functions: Step-by-Step",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Preparation Checklist**\n\nBefore you start coding, make sure you have:\n\n✓ **Python installed** — You can run `python --version`\n✓ **Text editor ready** — Any editor (VS Code, Notepad++, etc.)\n✓ **Terminal open** — To run your scripts\n✓ **Folder chosen** — Where you'll save your Python files\n✓ **Variables, conditionals, loops** — You can use these inside function bodies\n✓ **Understanding of def, parameters, return** — From Stages 1–2\n\nOnce you've checked these off, you're ready to write functions!"
+          },
+          {
+            "type": "text",
+            "content": "**Step-by-Step: Your First Function (No Parameters)**\n\n**Step 1:** Create a new file, e.g. `func_demo.py`\n\n**Step 2:** Define a function with def, a name, parentheses, and colon:\n```python\ndef greet():\n    print(\"Hello!\")\n```\n\n**Step 3:** Call it: `greet()` — you should see \"Hello!\"\n\n**Step 4:** Call it again: `greet()` — same output. You've reused the block."
+          },
+          {
+            "type": "text",
+            "content": "**Step-by-Step: Function with Parameters and Return**\n\n**Step 1:** Define a function that takes inputs and returns a value:\n```python\ndef double(x):\n    return x * 2\n```\n\n**Step 2:** Call it and use the return value: `result = double(5)` then `print(result)` — 10\n\n**Step 3:** Use it in an expression: `print(double(10) + 1)` — 21\n\n**Step 4:** Define a function with two parameters:\n```python\ndef add(a, b):\n    return a + b\n\nprint(add(3, 7))  # 10\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Step-by-Step: Function with Conditionals and Loops**\n\n**Step 1:** Put conditionals inside the function:\n```python\ndef is_even(n):\n    if n % 2 == 0:\n        return True\n    else:\n        return False\n```\n\n**Step 2:** Use a loop inside:\n```python\ndef sum_up_to(n):\n    total = 0\n    for i in range(1, n + 1):\n        total = total + i\n    return total\n```\n\n**Step 3:** Combine: call one function from another, or from the main flow, using variables and conditionals."
+          },
+          {
+            "type": "text",
+            "content": "**Common Pitfalls and How to Avoid Them**\n\n1. **Forgetting the colon** — `def greet()` needs `:` at the end. Fix: Always put `:` after the closing `)`.\n\n2. **Wrong indentation** — The body must be indented (e.g., 4 spaces). Fix: Indent every line that belongs in the function.\n\n3. **Defining inside a loop/if by mistake** — Define functions at the top level (or where you mean), not inside another block unless you intend to. Fix: Keep def at the left margin (or one consistent level).\n\n4. **Parameter/argument count mismatch** — Too few or too many arguments for the parameters. Fix: Match count (or use default values later).\n\n5. **Returning the wrong thing** — e.g., `return print(x)` returns None because print returns None. Fix: Use `return x` when you want to return a value.\n\n6. **Confusing parameter names with caller names** — Parameter names are local. Fix: Remember they're just placeholders; the caller's variable names don't have to match.\n\n7. **Using a variable before it's set in a branch** — If some paths don't assign or return, you might get UnboundLocalError or return None by accident. Fix: Ensure every path either assigns or returns what you want.\n\n8. **Expecting the caller's variable to change** — Assigning to a parameter doesn't change the caller's variable. Fix: Return the new value and let the caller assign: `x = add_one(x)`.\n\n9. **Calling before defining** — Python runs top to bottom. If you call `greet()` before `def greet():`, you get NameError. Fix: Define the function above the first call (or ensure the call runs after the definition).\n\n10. **Typo in function name** — Calling `greet()` when you defined `greet` is fine; calling `greet_user()` when you defined `greet` causes NameError. Fix: Use the same name when calling."
+          },
+          {
+            "type": "text",
+            "content": "**Verification Steps**\n\n**How to confirm your function is correct:**\n\n1. **Call with known inputs** — Use simple values (e.g., 2, 5) and check the return value or side effects.\n2. **Check parameter order** — If you have (a, b), confirm you're passing (first, second) in the right order.\n3. **Test edge cases** — 0, 1, negative, empty string if relevant.\n4. **Print or return** — If you need a value in the caller, use return and assign; don't rely on print for the \"result.\"\n5. **Run the file** — No NameError, TypeError, or IndentationError."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 1: no params\ndef say_hello():\n    print(\"Hello!\")\nsay_hello()\n\n# Example 2: one param, return\ndef double(x):\n    return x * 2\nprint(double(5))  # 10\n\n# Example 3: two params\ndef add(a, b):\n    return a + b\nprint(add(2, 3))  # 5\n\n# Example 4: conditionals inside\ndef is_even(n):\n    return n % 2 == 0\nprint(is_even(4))  # True",
+            "copyable": true
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example 5: loop inside\ndef sum_range(start, end):\n    total = 0\n    for i in range(start, end + 1):\n        total += i\n    return total\nprint(sum_range(1, 5))  # 15\n\n# Example 6: call from main flow\nname = input(\"Name: \")\n\ndef greet(name):\n    return \"Hello, \" + name\n\nmsg = greet(name)\nprint(msg)",
+            "copyable": true
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Practice Writing Functions",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I have Python installed and can run scripts",
+              "I have a text editor and folder for Python files",
+              "I understand def name(): and def name(param1, param2):",
+              "I know how to return a value and how to call a function",
+              "I'm ready to write my first function"
+            ]
+          },
+          {
+            "type": "text",
+            "content": "**Activity: Write a Small Function**\n\n1. Create `my_funcs.py`\n2. Define `def triple(x):` that returns `x * 3`\n3. Call it with `triple(4)` and print the result (should be 12)\n4. Define `def greet(name):` that returns `\"Hello, \" + name`\n5. Call `greet(\"Alex\")` and print the return value"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What output do you get when you run your my_funcs.py? Paste the output or describe it.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What is wrong with this code? 'def add(a, b): return a + b' then 'add(5)'",
+            "options": [
+              "add is a keyword",
+              "Too few arguments — add expects 2, got 1",
+              "return is wrong",
+              "Nothing is wrong"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! add(a, b) has two parameters, so you must pass two arguments. add(5) only passes one.",
+              "incorrect": "The function was defined with two parameters (a, b). A call must pass two arguments, e.g. add(5, 3)."
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What does 'def f(): print(1); return; print(2)' do when you call f()?",
+            "options": [
+              "Prints 1 then 2",
+              "Prints 1 only",
+              "Prints 2 only",
+              "SyntaxError"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! It prints 1, then return runs and exits. print(2) is never executed.",
+              "incorrect": "return ends the function immediately. Anything after return in that block doesn't run."
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Function-Based Program",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Create a Proof-of-Work Program**\n\nCreate a program called `function_tools.py` that:\n\n1. Defines a function `square(n)` that returns n * n\n2. Defines a function `is_positive(x)` that returns True if x > 0, else False\n3. Defines a function `greet(name)` that returns the string \"Hello, \" + name\n4. In the main part (after the definitions), call each function at least once and print the results\n5. Use at least one loop or conditional inside one of your functions\n\n**Requirements:**\n• File named `function_tools.py`\n• At least 3 functions defined and called\n• No syntax or NameError when run\n• Screenshot or paste of code and terminal output\n\n**Optional:** Add a function that takes two parameters and uses a loop (e.g., sum from a to b)."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the most challenging part of writing your functions? How did you solve it?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Application Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can define functions with def and optional parameters",
+              "I can return values and use them in the caller",
+              "I can call functions with the correct number of arguments",
+              "I can use conditionals and loops inside function bodies",
+              "I can test my functions with a few inputs"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What was the easiest part of writing functions? What was the most confusing?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What surprised you about writing function code? What did you learn?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How confident do you feel writing functions now? What would help you feel more confident?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Writing to Troubleshooting",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can now **write functions** — with def, parameters, return, and calls. You've combined them with variables, conditionals, and loops.\n\n**Why this matters:** Being able to write functions is a core skill. You're ready to fix them when something goes wrong.\n\n**How you'll use this:** Next, you'll **analyze and troubleshoot** function errors: wrong argument count, UnboundLocalError, wrong return value, and scope mix-ups. You'll learn to spot and fix common function bugs."
+          }
+        ]
+      }
+    },
+    "s4": {
+      "mindset": {
+        "heading": "Becoming a Troubleshooter",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from writing functions to fixing them when they break. TypeError, NameError, wrong results — each is a clue. Check the call (arguments vs parameters), the body (logic and return), and scope."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "What Works",
+        "components": [
+          {
+            "type": "text",
+            "content": "You know how to write functions that work. Now we'll look at what happens when they don't — and how to fix it."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Troubleshooting Function Errors",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Error Analysis Table: Common Function Errors**\n\n**Error 1: TypeError — wrong number of arguments**\n**Symptom:** TypeError: function takes X positional arguments but Y were given\n**Possible Cause:** Call passes more or fewer arguments than the function has parameters\n**How to Verify:** Count parameters in the def line and arguments in the call\n**How to Fix:** Pass the same number of arguments as parameters, in the right order\n\n**Error 2: NameError — function not defined**\n**Symptom:** NameError: name 'my_func' is not defined\n**Possible Cause:** Calling before the def runs; typo in the function name; def inside a block that hasn't run\n**How to Verify:** Ensure the def appears before the call in the file (or in execution order); check spelling\n**How to Fix:** Move the def above the call; fix the name to match\n\n**Error 3: UnboundLocalError — variable referenced before assignment**\n**Symptom:** UnboundLocalError: local variable 'x' referenced before assignment\n**Possible Cause:** Using a variable in the function before assigning it in that scope; one branch assigns, another uses\n**How to Verify:** Trace each path through the function; find where the variable is first used vs first set\n**How to Fix:** Assign a value on every path that uses it, or assign once at the top of the function\n\n**Error 4: Wrong return value (logic error)**\n**Symptom:** Caller gets wrong value (e.g., None instead of a number, or wrong number)\n**Possible Cause:** Forgot to return; returned the wrong expression; returned in only some branches\n**How to Verify:** Check every path through the function; ensure intended paths have return value\n**How to Fix:** Add return or fix the expression; return in all branches that should produce a value\n\n**Error 5: IndentationError in function**\n**Symptom:** IndentationError when running\n**Possible Cause:** Body not indented under def; mixed tabs and spaces; extra indent on return\n**How to Verify:** All body lines must be indented one level more than the def line\n**How to Fix:** Use consistent indentation (e.g., 4 spaces) for the whole body\n\n**Error 6: Parameter/argument order wrong**\n**Symptom:** Result is wrong but no crash (e.g., add(5, 3) gives 3+5=8 but you passed (b, a) by mistake)\n**Possible Cause:** Arguments passed in wrong order for what you meant\n**How to Verify:** Write down \"param1 = ?, param2 = ?\" for the call\n**How to Fix:** Pass arguments in the order the function expects: first arg → first param\n\n**Error 7: Expecting caller's variable to change**\n**Symptom:** Call f(x) and x doesn't change\n**Possible Cause:** Assigning to the parameter only changes the local name, not the caller's variable\n**How to Verify:** Recall: arguments are passed by value (for simple types); assignment to the parameter is local\n**How to Fix:** Return the new value and have the caller assign: x = f(x)\n\n**Error 8: Using return in a loop without breaking**\n**Symptom:** Function returns in first iteration when you wanted to return after the loop\n**Possible Cause:** return inside the loop runs and exits the function on first pass\n**How to Verify:** If you want to \"find and return,\" return inside the loop is OK; if you want \"compute over all, then return,\" return after the loop\n**How to Fix:** Put return after the loop when you need to finish the loop first; use return inside the loop only when you mean \"exit as soon as you find it\"\n\n**Error 9: Missing colon or wrong def syntax**\n**Symptom:** SyntaxError: invalid syntax\n**Possible Cause:** Forgot `:` after `)` or typo in def\n**How to Verify:** def name(...): must end with colon\n**How to Fix:** Add the colon: `def f():`\n\n**Error 10: Returning print(...)**\n**Symptom:** Function \"returns\" None when you expected a value\n**Possible Cause:** Wrote `return print(x)` — print returns None\n**How to Fix:** Use `return x` (or the value you want); use `print(x)` only when you want to print, not to return."
+          },
+          {
+            "type": "text",
+            "content": "**Systematic Troubleshooting Steps**\n\n**Step 1:** Read the error message — TypeError? NameError? UnboundLocalError? Wrong value?\n**Step 2:** Find the line number — which call or which line in the function?\n**Step 3:** For TypeError (arguments): count parameters vs arguments; fix the call or the def.\n**Step 4:** For NameError: is the function defined before the call? Is the name spelled correctly?\n**Step 5:** For wrong value: trace one call — what arguments, what does the body do, what does it return?\n**Step 6:** For scope/UnboundLocal: identify which variable is used before set; set it on all paths or at the start.\n**Step 7:** Check indentation — body under def; return inside the correct block."
+          },
+          {
+            "type": "text",
+            "content": "**Pattern Recognition**\n\n**\"Takes N arguments but M given\"** → Mismatch between def and call; adjust arguments or parameters.\n**\"Not defined\"** → Def after call or typo.\n**\"Referenced before assignment\"** → Use before set in that scope; assign first or in every branch.\n**Getting None** → Forgot return or returned print(...); use return value.\n**Caller's variable unchanged** → Assignment to parameter is local; return and assign in caller."
+          },
+          {
+            "type": "code",
+            "language": "python",
+            "content": "# Example: Common errors and fixes\n\n# ERROR 1: Too few arguments\n# def add(a, b): return a + b\n# add(5)  -> TypeError\n# FIX:\ndef add(a, b): return a + b\nadd(5, 3)\n\n# ERROR 2: Wrong return\n# def double(x): print(x * 2)  -> returns None\n# FIX:\ndef double(x): return x * 2\n\n# ERROR 3: UnboundLocalError — use before set in one branch\n# def f(flag):\n#     if flag: x = 1\n#     return x  -> Error if flag False\n# FIX:\ndef f(flag):\n    x = 0\n    if flag: x = 1\n    return x",
+            "copyable": false
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Error Diagnosis Practice",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Find the bug**\n\n```python\ndef add(a, b):\n    return a + b\n\nprint(add(5))\n```\n\n**What's wrong?**"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What error does the code above cause? How do you fix it?",
+            "validation": {
+              "type": "contains",
+              "acceptedAnswers": ["TypeError", "argument", "two", "add(5, 3)", "parameters"]
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Wrong result**\n\n```python\ndef get_double(x):\n    result = x * 2\n    print(result)\n\nval = get_double(5)\nprint(val)\n```\n\n**Question:** What does print(val) show? Why?"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "What does the caller get from get_double(5) in the code above?",
+            "options": [
+              "10",
+              "None",
+              "result",
+              "5"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! The function prints 10 but never returns. So it returns None, and val is None.",
+              "incorrect": "The function only prints; it doesn't return. So the caller gets None. To get 10, the function must use return result."
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 3: NameError**\n\n```python\nprint(greet(\"Alice\"))\n\ndef greet(name):\n    return \"Hi, \" + name\n```\n\n**Question:** What goes wrong? How do you fix it?"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Why does the code above fail?",
+            "options": [
+              "greet is misspelled",
+              "greet is called before it is defined",
+              "Alice is wrong",
+              "return is wrong"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! The call runs first; at that moment greet is not defined yet.",
+              "incorrect": "Python runs top to bottom. The call to greet runs before the def, so greet doesn't exist yet. Move the def above the call."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Write a 3-step process you would use to debug 'function returns wrong value'.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Troubleshooting Flowchart",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Creative Task:**\n\nCreate a small flowchart or list for debugging \"function returns None when I expect a number.\" Include:\n\n1. Does the function have a return statement?\n2. Is it returning the right expression (not print(...))?\n3. Are all code paths that should produce a value actually returning?\n\nYou can draw it or write numbered steps."
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your debugging process. What do you check first when a function returns the wrong value?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "A program gets TypeError: add() takes 2 arguments but 1 was given. What three things would you check?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Troubleshooting Skills Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can identify why function errors occur (argument count, no return, scope)",
+              "I can tell how to fix common function bugs",
+              "I can explain a simple troubleshooting process for functions"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What's your 3-step plan for fixing 'function returns None when I wanted a number'?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which function error have you seen or made most often? How do you avoid it now?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Troubleshooting to Evaluating",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can **diagnose and fix** common function errors — wrong arguments, missing return, NameError, and scope issues.\n\n**Why this matters:** Debugging functions is a core skill. You can keep programs correct as you add more logic.\n\n**How you'll use this:** Next, you'll **evaluate** function design: naming, single responsibility, clear parameters and return values, and when to split or combine functions."
+          }
+        ]
+      }
+    },
+    "s5": {
+      "mindset": {
+        "heading": "Choosing Good Design",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from fixing bugs to choosing the best design. Focus on clarity, single responsibility, naming, and when a function is doing too much or too little."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Troubleshooting Skills",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can diagnose and fix function errors. Now you'll judge when a function is well-named, well-scoped, and well-designed — and when to split or simplify it."
+          }
+        ]
+      },
+      "core": {
+        "heading": "Evaluating Function Design",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Evaluation Criteria for Functions**\n\n**1. Clarity of purpose** — Does the name tell you what it does?\n- Good: `calculate_tip`, `is_valid_email`, `format_date`\n- Weak: `do_stuff`, `func1`, `helper`\n\n**2. Single responsibility** — Does it do one coherent thing?\n- Good: One function computes average; another prints the grade.\n- Weak: One function that reads input, validates, computes, prints, and writes to file.\n\n**3. Parameter design** — Are inputs clear and minimal?\n- Good: Parameters match what the function needs; no extra or unused parameters.\n- Weak: Many parameters where a few would do; or one huge parameter that hides what’s really needed.\n\n**4. Return design** — Does it return what the caller needs?\n- Good: Returns a value when the caller needs to use it; uses side effects (e.g., print) only when that’s the goal.\n- Weak: Prints when the caller needs a value; or returns when the main point was a side effect.\n\n**5. Readability** — Is the body short and easy to follow?\n- Good: Short, descriptive names; logic that’s easy to trace.\n- Weak: Long body with many branches; vague names.\n\n**6. Reusability** — Could you call it from another place or program?\n- Good: No unnecessary dependence on global state or one-off input method.\n- Weak: Tied to one script’s globals or a specific way of getting input."
+          },
+          {
+            "type": "text",
+            "content": "**When to Split a Function**\n\n- **Too long** — If the body is many lines or does several distinct steps, consider splitting into smaller functions.\n- **Two jobs** — If you can name it \"X and Y,\" consider one function for X and one for Y.\n- **Hard to test** — If you can’t test \"just the math\" or \"just the validation,\" those parts may deserve their own functions.\n- **Reuse** — If the same logic appears in two places, extract it into a function and call it from both."
+          },
+          {
+            "type": "text",
+            "content": "**Good vs. Less Good Examples**\n\n**Naming:**\n- Less clear: `def f(x): return x * 2`\n- Clearer: `def double(x): return x * 2`\n\n**Single responsibility:**\n- Less clear: One function that gets input, validates, computes grade, and prints the report.\n- Clearer: `get_score()`, `letter_grade(score)`, `print_report(name, grade)` — each does one thing.\n\n**Return vs print:**\n- Use return when the caller needs the value: `def add(a,b): return a+b` then `total = add(3,5)`.\n- Use print when the goal is to show something: `def show_hello(): print(\"Hello\")`."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Evaluating Function Design",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Activity 1: Name the function**\n\nYou need a function that, given a score 0–100, returns \"Pass\" or \"Fail.\" Which name is better?\n- `check(score)`\n- `pass_or_fail(score)`\n- `score_status(score)`"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Which name do you prefer and why? What makes a good function name?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "**Activity 2: Compare two designs**\n\n**Design A:** One function that gets name from input, computes a greeting, and prints it.\n**Design B:** `get_name()` returns the name; `greet(name)` returns the greeting string; main code calls both and prints.\n\n**Question:** Which design is easier to reuse and test? Why?"
+          },
+          {
+            "type": "multipleChoice",
+            "question": "For reusability, which is generally better?",
+            "options": [
+              "Design A — fewer functions",
+              "Design B — separate get, compute, and print",
+              "Both are equally good",
+              "Neither — you must use classes"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct! Design B lets you test greet() with any string and reuse get_name() or greet() elsewhere without printing.",
+              "incorrect": "Splitting \"get input,\" \"compute,\" and \"output\" makes each part reusable and testable. One big function that does all three is harder to reuse."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Give one example of a function that does \"too much\" and how you would split it into two functions.",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Code Review Scenario",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Review this design:**\n\n```python\ndef process(n):\n    x = n * 2\n    print(x)\n    if x > 10:\n        print(\"Big\")\n    return x\n```\n\n**Questions:** Does it have a single responsibility? Should it both return and print? How would you improve it for a caller who only needs the value?"
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Evaluate the function above. Is it clear? Should it print and return? What would you change and why?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Evaluation Skills Check",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I can judge whether a function has a clear purpose from its name",
+              "I can tell when a function is doing too much",
+              "I think about return vs side effects when designing functions"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What's your rule of thumb for when to return a value vs when to print inside a function?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How will you use these criteria when writing your own functions from now on?",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "heading": "From Evaluating to Creating",
+        "components": [
+          {
+            "type": "text",
+            "content": "You can **evaluate** function design — naming, single responsibility, return vs print, and reusability.\n\n**Why this matters:** Good function design makes programs easier to read, test, and change.\n\n**How you'll use this:** Next, you'll **create** your own function-based projects — calculators, validators, formatters, small tools — using def, parameters, return, and clear structure. You'll bring together everything you've learned."
+          }
+        ]
+      }
+    },
+    "s6": {
+      "mindset": {
+        "heading": "From Learner to Creator",
+        "components": [
+          {
+            "type": "text",
+            "content": "You're moving from judging function design to creating your own programs. Design, implement, and test small projects organized into clear, reusable functions."
+          }
+        ]
+      },
+      "recap": {
+        "heading": "Your Journey So Far",
+        "components": [
+          {
+            "type": "text",
+            "content": "You've completed:\n- **Remembering** → Vocabulary (def, parameter, argument, return, call, scope)\n- **Understanding** → How functions run (bind, body, return)\n- **Applying** → Writing functions with parameters and return\n- **Analyzing** → Troubleshooting argument/return/scope errors\n- **Evaluating** → Naming, single responsibility, return vs print\n\nNow you'll **create** programs that use functions to solve real tasks!"
+          }
+        ]
+      },
+      "core": {
+        "heading": "Creating Projects with Functions",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Project Type Options**\n\n**1. Tip / Bill Calculator** ⭐\nFunctions: get_bill(), get_tip_percent(), calculate_tip(bill, percent), display_total(bill, tip).\n\n**2. Grade Helper** ⭐\nFunctions: get_score(), letter_grade(score), pass_fail(score), main flow that calls them.\n\n**3. Unit Converter** ⭐\nFunctions: miles_to_km(miles), kg_to_lb(kg), or similar; main menu that calls the right one.\n\n**4. Input Validator** ⭐\nFunctions: get_int_in_range(low, high), get_non_empty_string(prompt); use them in a small form or quiz.\n\n**5. String Formatter** ⭐\nFunctions: capitalize_words(s), reverse_string(s), is_palindrome(s); main script that demonstrates each.\n\n**6. Mini Quiz or Flashcard** ⭐⭐\nFunctions: load_question(), check_answer(question, answer), run_quiz(); use loops and conditionals inside.\n\n**7. Number Tools** ⭐⭐\nFunctions: is_even(n), is_prime(n), sum_digits(n); main menu that calls them for a number.\n\n**8. Simple Report Generator** ⭐⭐\nFunctions: format_header(title), format_row(label, value), build_report(data); main code that builds and prints a small report."
+          },
+          {
+            "type": "text",
+            "content": "**Templates and Examples**\n\n**Template 1: Tip Calculator (Beginner ⭐)**\n```python\ndef get_float(prompt):\n    return float(input(prompt))\n\ndef calc_tip(bill, percent):\n    return bill * (percent / 100)\n\ndef main():\n    bill = get_float(\"Bill amount: \")\n    pct = get_float(\"Tip %: \")\n    tip = calc_tip(bill, pct)\n    print(\"Tip:\", tip)\n    print(\"Total:\", bill + tip)\n\nmain()\n```\n\n**Template 2: Letter Grade (Beginner ⭐)**\n```python\ndef letter_grade(score):\n    if score >= 90: return \"A\"\n    if score >= 80: return \"B\"\n    if score >= 70: return \"C\"\n    if score >= 60: return \"D\"\n    return \"F\"\n\ndef main():\n    s = float(input(\"Score: \"))\n    print(\"Grade:\", letter_grade(s))\n\nmain()\n```\n\n**Template 3: Validated Input (Beginner ⭐)**\n```python\ndef get_int_in_range(low, high):\n    while True:\n        n = int(input(f\"Enter {low}-{high}: \"))\n        if low <= n <= high:\n            return n\n        print(\"Try again\")\n\ndef main():\n    age = get_int_in_range(1, 120)\n    print(\"Age:\", age)\n\nmain()\n```\n\n**Template 4: Number Tools (Intermediate ⭐⭐)**\n```python\ndef is_even(n):\n    return n % 2 == 0\n\ndef sum_digits(n):\n    s = 0\n    n = abs(n)\n    while n:\n        s += n % 10\n        n //= 10\n    return s\n\ndef main():\n    x = int(input(\"Number: \"))\n    print(\"Even?\", is_even(x))\n    print(\"Sum of digits:\", sum_digits(x))\n\nmain()\n```"
+          },
+          {
+            "type": "text",
+            "content": "**Success Criteria**\n\n- **Tip/Grade/Converter:** Clear functions for input, calculation, and output; correct results for a few inputs.\n- **Validator:** get_* functions return only valid values; used from a small main flow.\n- **Formatters/Number tools:** Each function does one thing; main demonstrates and combines them.\n- **Quiz/Report:** Logic split into small functions; main flow is short and readable."
+          }
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Plan Your Project",
+        "components": [
+          {
+            "type": "shortAnswer",
+            "prompt": "What will your program do? (e.g., tip calculator, grade helper, validator, number tools)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "List 3–4 functions you will define. What will each one do and what will it return (or only print)?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "How will you know it works? (e.g., test with known inputs, check one edge case)",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "checklist",
+            "items": [
+              "Create a new .py file with a clear name",
+              "Define at least 2–3 functions with clear names",
+              "Use parameters and return where the caller needs a value",
+              "Call functions from main flow or a main() function",
+              "Test with a few inputs",
+              "Fix any bugs and simplify if needed"
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "heading": "Create and Share Your Project",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Create a Function-Based Project**\n\nChoose one (or combine ideas):\n\n**Option 1: Calculator/Converter** — At least 2 functions (e.g., input + compute); clear names and return values.\n**Option 2: Validator/Helper** — get_* or is_* or format_* functions used from a small main flow.\n**Option 3: Number or string tools** — 2–3 small functions (e.g., is_even, sum_digits, reverse_string) and a short main that uses them.\n**Option 4: Mini quiz or report** — Logic in functions; main flow calls them and keeps the script readable.\n\n**Quality checklist:**\n- Clear purpose and at least 2–3 functions used correctly\n- Names describe what each function does\n- Return used when the caller needs a value\n- Tested with normal and one edge case\n- Code is readable (indentation, names)"
+          },
+          {
+            "type": "ordering",
+            "instructions": "Order these steps for creating your project.",
+            "items": [
+              "Decide what the program will do",
+              "Name the functions and what they input/output",
+              "Write each function and test it simply",
+              "Write the main flow that calls them",
+              "Test with a few inputs",
+              "Add a short comment or docstring at the top"
+            ],
+            "correctOrder": [0, 1, 2, 3, 4, 5]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Describe your project: what it does, which functions you wrote, and one design choice you made (e.g., why you returned a value instead of printing).",
+            "validation": {
+              "type": "freeform"
+            }
+          }
+        ]
+      },
+      "reflection": {
+        "heading": "Mastery Celebration",
+        "components": [
+          {
+            "type": "checklist",
+            "items": [
+              "I created a program that uses at least 2–3 functions",
+              "My program has clear names and a clear purpose",
+              "I can explain what each function does and why I designed it that way",
+              "I'm proud of what I built"
+            ]
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What did you learn by creating this project? What was hardest? What would you do differently next time?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "text",
+            "content": "🎉 **You've Reached the Creating Stage** 🎉\n\nYou've gone from \"what is a function?\" to designing and building function-based programs. You can use def, parameters, return, and scope to organize code into reusable, clear units. You're ready for the next step: **lists and collections** — storing and iterating over sequences of data!"
+          }
+        ]
+      },
+      "transition": {
+        "heading": "Congratulations on Your Journey",
+        "components": [
+          {
+            "type": "text",
+            "content": "**Journey Recap:**\n\n**Stage 0 (Starting)** → What functions are and why they matter\n**Stage 1 (Remembering)** → Vocabulary: def, parameter, argument, return, call, scope\n**Stage 2 (Understanding)** → How functions run (bind, body, return)\n**Stage 3 (Applying)** → Writing functions with parameters and return\n**Stage 4 (Analyzing)** → Troubleshooting argument/return/scope errors\n**Stage 5 (Evaluating)** → Naming, single responsibility, return vs print\n**Stage 6 (Creating)** → Building your own function-based projects\n\n**What's Next:**\n\nYou're ready to learn **lists and collections** — storing multiple values, iterating with for, and using built-in operations. Functions + lists will let you work with data at scale and build even richer programs."
+          }
+        ]
+      }
+    }
+  },
+  "ui": {
+    "defaultExpandedStage": "s0"
+  }
+}
