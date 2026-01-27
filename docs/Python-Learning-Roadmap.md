@@ -161,6 +161,82 @@ This document outlines the complete learning path for Python programming using t
 
 ---
 
+## Planned Guides (Next Two)
+
+### 6. Loops
+**File:** `loops.json` (planned)  
+**Status:** 📋 Planned  
+**Scope:** Single main concept (repetition in code) + related sub-concepts (`for`/`while`, loop control, iteration patterns)
+
+**Learning Objectives:**
+- Understand when and why to use loops
+- Write `for` loops (counting and iterating)
+- Write `while` loops (condition-based repetition)
+- Use loop control (`break`, `continue`)
+- Nest loops when appropriate
+- Combine loops with conditionals and operations
+- Troubleshoot common loop errors
+- Evaluate loop design and choose the right loop type
+- Create programs that repeat actions (counters, menus, simulations)
+
+**Prerequisites:**
+- Conditional statements (Guide #5)
+- Input and operations (Guide #4)
+- Variables and data types (Guide #3)
+
+**Estimated Duration:** 2-3 hours
+
+**Why This Guide:**
+- Loops are the natural next step in control flow after conditionals
+- Enables repetition without copying code
+- Foundation for iterating over sequences (e.g., in a future Lists guide)
+
+**Key Concepts:**
+- `for` loops and `range()`
+- `while` loops and loop conditions
+- `break` and `continue`
+- Nested loops
+- Iteration patterns and accumulation
+
+---
+
+### 7. Functions
+**File:** `functions.json` (planned)  
+**Status:** 📋 Planned  
+**Scope:** Single main concept (reusable, named blocks of code) + related sub-concepts (parameters, return values, scope)
+
+**Learning Objectives:**
+- Understand when and why to use functions
+- Define functions with `def`
+- Use parameters and arguments
+- Return values from functions
+- Understand local scope and variable visibility
+- Combine functions with variables, conditionals, and loops
+- Troubleshoot common function errors
+- Evaluate function design (naming, single responsibility)
+- Create programs organized into reusable functions
+
+**Prerequisites:**
+- Loops (Guide #6)
+- Conditional statements (Guide #5)
+- Variables, input, and operations (Guides #3, #4)
+
+**Estimated Duration:** 2-3 hours
+
+**Why This Guide:**
+- Functions organize code and avoid repetition at a structural level
+- Essential for readable, maintainable programs
+- Builds on all prior concepts (variables, conditionals, loops) by wrapping them in reusable units
+
+**Key Concepts:**
+- Defining and calling functions
+- Parameters and arguments
+- Return values and `return`
+- Local scope
+- Function design and reuse
+
+---
+
 ## Complete Learning Path
 
 ```
@@ -191,8 +267,22 @@ This document outlines the complete learning path for Python programming using t
                ▼
 ┌─────────────────────────────────────┐
 │  5. Conditional Statements          │
-│     (Requires: Guides #1-4)        │
+│     (Requires: Guides #1-4)          │
 │     ✅ COMPLETE                      │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│  6. Loops                             │
+│     (Requires: Guides #1-5)           │
+│     📋 PLANNED                       │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│  7. Functions                         │
+│     (Requires: Guides #1-6)           │
+│     📋 PLANNED                       │
 └─────────────────────────────────────┘
 ```
 
@@ -223,6 +313,18 @@ This document outlines the complete learning path for Python programming using t
 - Multiple program paths
 - Complex interactive programs
 
+### Phase 5: Repetition (Guide 6 — Planned)
+**Goal:** Repeat actions without copying code
+- `for` and `while` loops
+- Loop control and iteration patterns
+- Programs that repeat until a condition is met or a count is reached
+
+### Phase 6: Organization and Reuse (Guide 7 — Planned)
+**Goal:** Structure code into reusable units
+- Defining and calling functions
+- Parameters, return values, and scope
+- Readable, maintainable program structure
+
 ---
 
 ## Guide Scope Standards
@@ -249,19 +351,7 @@ Based on analysis of existing guides, each guide should:
 
 ## Future Roadmap Considerations
 
-After Guide #5 (Conditional Statements), potential next topics:
-
-### Potential Guide #6: Loops
-- `for` loops
-- `while` loops
-- Loop control (`break`, `continue`)
-- Nested loops
-
-### Potential Guide #7: Functions
-- Defining functions
-- Parameters and arguments
-- Return values
-- Function scope
+After Guide #7 (Functions), potential next topics:
 
 ### Potential Guide #8: Lists and Collections
 - Lists
@@ -280,6 +370,8 @@ After Guide #5 (Conditional Statements), potential next topics:
 | Variables & Data Types | ✅ Complete | `variables-and-basic-data-types.json` | Done |
 | Input and Operations | ✅ Complete | `input-and-operations.json` | Done |
 | Conditional Statements | ✅ Complete | `conditional-statements.json` | Done |
+| Loops | 📋 Planned | `loops.json` | — |
+| Functions | 📋 Planned | `functions.json` | — |
 
 ---
 
@@ -293,5 +385,5 @@ After Guide #5 (Conditional Statements), potential next topics:
 
 ---
 
-**Last Updated:** 2026-01-20  
-**Document Version:** 1.0
+**Last Updated:** 2026-01-27  
+**Document Version:** 1.1
