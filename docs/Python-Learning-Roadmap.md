@@ -267,9 +267,9 @@ This document outlines the complete learning path for Python programming using t
 
 ---
 
-### 9. Collections (Planned)
-**File:** `collections.json` (to be created)  
-**Status:** Planned  
+### 9. Collections
+**File:** `collections.json`  
+**Status:** ✅ Complete  
 **Scope:** Tuples (immutable), dictionaries (key–value), iteration over different collections, when to use which
 
 **Learning Objectives:**
@@ -350,8 +350,9 @@ This document outlines the complete learning path for Python programming using t
                │
                ▼
 ┌─────────────────────────────────────┐
-│  9. Collections (Planned)             │
+│  9. Collections                       │
 │     (Requires: Guides #1-8)           │
+│     ✅ COMPLETE                       │
 │     Tuples, Dictionaries              │
 └─────────────────────────────────────┘
 ```
@@ -401,7 +402,7 @@ This document outlines the complete learning path for Python programming using t
 - List methods and mutation
 - Iteration over lists, lists and functions
 
-### Phase 8: Collections (Guide 9 — Planned)
+### Phase 8: Collections (Guide 9)
 **Goal:** Tuples, dictionaries, and choosing the right collection
 - Tuples (immutable), dictionaries (key–value)
 - Iteration over different collections
@@ -433,7 +434,7 @@ Based on analysis of existing guides, each guide should:
 ## Future Roadmap Considerations
 
 - **Guide #8: Lists** — Implemented. Single-concept guide on lists (creating, indexing, slicing, methods, iteration, functions).
-- **Guide #9: Collections** — Planned next. Tuples, dictionaries, iteration over different collections (same depth/length standard).
+- **Guide #9: Collections** — Implemented. Tuples, dictionaries, iteration over different collections (same depth/length standard).
 
 ---
 
@@ -449,7 +450,7 @@ Based on analysis of existing guides, each guide should:
 | Loops | ✅ Complete | `loops.json` | Done |
 | Functions | ✅ Complete | `functions.json` | Done |
 | Lists | ✅ Complete | `lists.json` | Done |
-| Collections | Planned | `collections.json` | After Lists |
+| Collections | ✅ Complete | `collections.json` | Done |
 
 ---
 
