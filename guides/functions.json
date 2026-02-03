@@ -1294,7 +1294,7 @@
           },
           {
             "type": "text",
-            "content": "🎉 **You've Reached the Creating Stage** 🎉\n\nYou've gone from \"what is a function?\" to designing and building function-based programs. You can use def, parameters, return, and scope to organize code into reusable, clear units. You're ready for the next step: **lists and collections** — storing and iterating over sequences of data!"
+            "content": "🎉 **You've Reached the Creating Stage** 🎉\n\nYou've gone from \"what is a function?\" to designing and building function-based programs. You can use def, parameters, return, and scope to organize code into reusable, clear units. You're ready for the next step: **lists** — storing multiple values in order, indexing, slicing, and iterating with for. After that, **collections** (tuples, dictionaries) will let you choose the right structure for each problem."
           }
         ]
       },
@@ -1303,7 +1303,7 @@
         "components": [
           {
             "type": "text",
-            "content": "**Journey Recap:**\n\n**Stage 0 (Starting)** → What functions are and why they matter\n**Stage 1 (Remembering)** → Vocabulary: def, parameter, argument, return, call, scope\n**Stage 2 (Understanding)** → How functions run (bind, body, return)\n**Stage 3 (Applying)** → Writing functions with parameters and return\n**Stage 4 (Analyzing)** → Troubleshooting argument/return/scope errors\n**Stage 5 (Evaluating)** → Naming, single responsibility, return vs print\n**Stage 6 (Creating)** → Building your own function-based projects\n\n**What's Next:**\n\nYou're ready to learn **lists and collections** — storing multiple values, iterating with for, and using built-in operations. Functions + lists will let you work with data at scale and build even richer programs."
+            "content": "**Journey Recap:**\n\n**Stage 0 (Starting)** → What functions are and why they matter\n**Stage 1 (Remembering)** → Vocabulary: def, parameter, argument, return, call, scope\n**Stage 2 (Understanding)** → How functions run (bind, body, return)\n**Stage 3 (Applying)** → Writing functions with parameters and return\n**Stage 4 (Analyzing)** → Troubleshooting argument/return/scope errors\n**Stage 5 (Evaluating)** → Naming, single responsibility, return vs print\n**Stage 6 (Creating)** → Building your own function-based projects\n\n**What's Next:**\n\nYou're ready to learn **lists** — storing multiple values in order, indexing, slicing, and iterating with for. Functions + lists will let you work with data at scale. After lists, **collections** (tuples, dictionaries) will round out your ability to choose the right structure for each problem."
           }
         ]
       }

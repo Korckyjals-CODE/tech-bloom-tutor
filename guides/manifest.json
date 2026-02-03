@@ -26,5 +26,9 @@
   {
     "value": "guides/functions.json",
     "label": "Functions"
+  },
+  {
+    "value": "guides/lists.json",
+    "label": "Lists"
   }
 ]

@@ -161,8 +161,6 @@ This document outlines the complete learning path for Python programming using t
 
 ---
 
-## Planned Guides (Next Two)
-
 ### 6. Loops
 **File:** `loops.json`  
 **Status:** ✅ Complete  
@@ -237,6 +235,64 @@ This document outlines the complete learning path for Python programming using t
 
 ---
 
+### 8. Lists
+**File:** `lists.json`  
+**Status:** ✅ Complete  
+**Scope:** Single main concept (Lists) + related sub-concepts (creating lists, indexing/slicing, list methods, iterating with for, lists and functions)
+
+**Learning Objectives:**
+- Create lists with literals `[]` and `list()`
+- Use indexing (0-based, negative indices) and slicing
+- Use list methods (e.g. `append`, `pop`, `len()`)
+- Iterate over lists with `for item in list`
+- Write functions that take and return lists
+- Troubleshoot common list errors (IndexError, slice bounds, mutation)
+- Evaluate when to use a list vs single variables
+- Create list-based projects (grade lists, shopping lists, menus, number tools)
+
+**Prerequisites:** Guides #1–#7 (Variables, Scripts, Input/Operations, Conditionals, Loops, Functions)
+
+**Estimated Duration:** 2–3 hours
+
+**Why This Guide:**
+- Natural next step after functions; store and process sequences of data
+- Foundation for iterating over data at scale
+- Prepares for Collections guide (tuples, dictionaries)
+
+**Key Concepts:**
+- List literal, element, index, slice
+- Mutation (append, pop), `len()`
+- Iteration over a list
+- Lists as function arguments and return values
+
+---
+
+### 9. Collections (Planned)
+**File:** `collections.json` (to be created)  
+**Status:** Planned  
+**Scope:** Tuples (immutable), dictionaries (key–value), iteration over different collections, when to use which
+
+**Learning Objectives:**
+- Understand tuples as immutable sequences
+- Create and use dictionaries for key–value data
+- Iterate over tuples and dictionaries
+- Choose the right collection type for the problem
+
+**Prerequisites:** Guide #8 (Lists)
+
+**Estimated Duration:** 2–3 hours
+
+**Why This Guide:**
+- Builds on lists; compares and contrasts tuples and dicts
+- Same depth/length standard as other guides
+
+**Key Concepts:**
+- Tuples, immutability, unpacking
+- Dictionaries, keys, values, access
+- Iteration over collections
+
+---
+
 ## Complete Learning Path
 
 ```
@@ -283,6 +339,20 @@ This document outlines the complete learning path for Python programming using t
 │  7. Functions                         │
 │     (Requires: Guides #1-6)           │
 │     ✅ COMPLETE                       │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│  8. Lists                             │
+│     (Requires: Guides #1-7)           │
+│     ✅ COMPLETE                       │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│  9. Collections (Planned)             │
+│     (Requires: Guides #1-8)           │
+│     Tuples, Dictionaries              │
 └─────────────────────────────────────┘
 ```
 
@@ -313,7 +383,7 @@ This document outlines the complete learning path for Python programming using t
 - Multiple program paths
 - Complex interactive programs
 
-### Phase 5: Repetition (Guide 6 — Planned)
+### Phase 5: Repetition (Guide 6)
 **Goal:** Repeat actions without copying code
 - `for` and `while` loops
 - Loop control and iteration patterns
@@ -324,6 +394,17 @@ This document outlines the complete learning path for Python programming using t
 - Defining and calling functions
 - Parameters, return values, and scope
 - Readable, maintainable program structure
+
+### Phase 7: Sequences (Guide 8)
+**Goal:** Store and process ordered sequences with lists
+- Creating lists, indexing and slicing
+- List methods and mutation
+- Iteration over lists, lists and functions
+
+### Phase 8: Collections (Guide 9 — Planned)
+**Goal:** Tuples, dictionaries, and choosing the right collection
+- Tuples (immutable), dictionaries (key–value)
+- Iteration over different collections
 
 ---
 
@@ -351,13 +432,8 @@ Based on analysis of existing guides, each guide should:
 
 ## Future Roadmap Considerations
 
-After Guide #7 (Functions), potential next topics:
-
-### Potential Guide #8: Lists and Collections
-- Lists
-- Tuples
-- Dictionaries
-- Iteration over collections
+- **Guide #8: Lists** — Implemented. Single-concept guide on lists (creating, indexing, slicing, methods, iteration, functions).
+- **Guide #9: Collections** — Planned next. Tuples, dictionaries, iteration over different collections (same depth/length standard).
 
 ---
 
@@ -372,6 +448,8 @@ After Guide #7 (Functions), potential next topics:
 | Conditional Statements | ✅ Complete | `conditional-statements.json` | Done |
 | Loops | ✅ Complete | `loops.json` | Done |
 | Functions | ✅ Complete | `functions.json` | Done |
+| Lists | ✅ Complete | `lists.json` | Done |
+| Collections | Planned | `collections.json` | After Lists |
 
 ---
 
@@ -385,5 +463,5 @@ After Guide #7 (Functions), potential next topics:
 
 ---
 
-**Last Updated:** 2026-01-27  
-**Document Version:** 1.1
+**Last Updated:** 2026-02-03  
+**Document Version:** 1.2
