@@ -7,7 +7,8 @@
     "author": "ABC Bilingual School",
     "lastUpdated": "2025-11-10",
     "storageKeyPrefix": "pywin_guide",
-    "instructorPasscode": "abc123"
+    "instructorPasscode": "abc123",
+    "order": 1
   },
   
   "branding": {

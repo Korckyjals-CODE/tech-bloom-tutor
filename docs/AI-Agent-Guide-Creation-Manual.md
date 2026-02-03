@@ -64,7 +64,8 @@ Every guide follows this top-level structure:
   "author": "Organization Name",
   "lastUpdated": "YYYY-MM-DD",
   "storageKeyPrefix": "unique_identifier",
-  "instructorPasscode": "secure_code"
+  "instructorPasscode": "secure_code",
+  "order": 1
 }
 ```
 
@@ -73,6 +74,7 @@ Every guide follows this top-level structure:
 - Subtitle provides context or scope
 - Description should be 1-2 sentences explaining the learning outcome
 - `storageKeyPrefix` should be lowercase with underscores (e.g., `python_install`, `first_script`)
+- `order` is an integer indicating the guide's position in the learning path (1 = first). Set it so the guide appears in the correct place in the guide selector; new guides should use the next number in the curriculum sequence.
 
 ### Branding Section
 
@@ -971,7 +973,7 @@ Before finalizing a guide, verify:
 ### Structure
 - [ ] All 7 stages present (s0 through s6)
 - [ ] All 7 sections present in each stage (mindset, recap, core, guidedPractice, challenge, reflection, transition)
-- [ ] Metadata complete and accurate
+- [ ] Metadata complete and accurate (including `metadata.order` set for curriculum order in the guide selector)
 - [ ] Branding consistent
 - [ ] JSON is valid (no syntax errors)
 

@@ -7,7 +7,8 @@
     "author": "EduCafé",
     "lastUpdated": "2026-01-27",
     "storageKeyPrefix": "functions",
-    "instructorPasscode": "educafe-functions-101"
+    "instructorPasscode": "educafe-functions-101",
+    "order": 7
   },
   "branding": {
     "brandName": "EduCafé — Python Guide",

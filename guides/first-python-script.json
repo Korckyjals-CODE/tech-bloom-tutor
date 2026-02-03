@@ -7,7 +7,8 @@
     "author": "ABC Bilingual School",
     "lastUpdated": "2026-01-19",
     "storageKeyPrefix": "first_python_script",
-    "instructorPasscode": "abc123"
+    "instructorPasscode": "abc123",
+    "order": 2
   },
   "branding": {
     "brandName": "First Python Script — Guide",
