@@ -34,5 +34,9 @@
   {
     "value": "guides/collections.json",
     "label": "Collections"
+  },
+  {
+    "value": "guides/working-with-files.json",
+    "label": "Working with Files"
   }
 ]

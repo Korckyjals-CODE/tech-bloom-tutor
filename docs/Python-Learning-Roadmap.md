@@ -293,6 +293,36 @@ This document outlines the complete learning path for Python programming using t
 
 ---
 
+### 10. Working with Files
+**File:** `working-with-files.json`  
+**Status:** ✅ Complete  
+**Scope:** Reading and writing text files; open, read, write, close, with; file paths; line-by-line processing
+
+**Learning Objectives:**
+- Open, read, write, and close text files in Python
+- Use the `with` statement for safe file handling
+- Work with file modes (`"r"`, `"w"`, `"a"`)
+- Use `read()`, `readline()`, `readlines()`, `write()`, `writelines()`
+- Understand relative and absolute paths
+- Process files line-by-line and combine file I/O with strings, loops, and functions
+
+**Prerequisites:** Guides #1–#9 (especially strings, loops, functions, collections)
+
+**Estimated Duration:** 2–3 hours
+
+**Why This Guide:**
+- Natural next step after collections; programs can persist and load data
+- Foundation for configs, logs, CSV-like data, and save/load features
+- Prepares for robust file handling (e.g., exceptions in a future guide)
+
+**Key Concepts:**
+- `open()`, file object, file mode
+- `read()`, `readlines()`, `write()`, newlines
+- `with` statement, `close()`, path
+- Troubleshooting FileNotFoundError, mode, and path issues
+
+---
+
 ## Complete Learning Path
 
 ```
@@ -354,6 +384,14 @@ This document outlines the complete learning path for Python programming using t
 │     (Requires: Guides #1-8)           │
 │     ✅ COMPLETE                       │
 │     Tuples, Dictionaries              │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│  10. Working with Files               │
+│     (Requires: Guides #1-9)           │
+│     ✅ COMPLETE                       │
+│     Read, write, with, paths          │
 └─────────────────────────────────────┘
 ```
 
@@ -407,6 +445,12 @@ This document outlines the complete learning path for Python programming using t
 - Tuples (immutable), dictionaries (key–value)
 - Iteration over different collections
 
+### Phase 9: File I/O (Guide 10)
+**Goal:** Read and write text files; persist and load data
+- Open, read, write, close; the `with` statement
+- File modes, paths, line-by-line processing
+- Programs that save and load data (configs, logs, reports)
+
 ---
 
 ## Guide Scope Standards
@@ -435,6 +479,8 @@ Based on analysis of existing guides, each guide should:
 
 - **Guide #8: Lists** — Implemented. Single-concept guide on lists (creating, indexing, slicing, methods, iteration, functions).
 - **Guide #9: Collections** — Implemented. Tuples, dictionaries, iteration over different collections (same depth/length standard).
+- **Guide #10: Working with Files** — Implemented. Reading and writing text files; open, read, write, close, with; paths; line-by-line processing.
+- **Guide #11 (next):** Errors and Exceptions — Proposed next; handle FileNotFoundError and other errors robustly.
 
 ---
 
@@ -451,6 +497,7 @@ Based on analysis of existing guides, each guide should:
 | Functions | ✅ Complete | `functions.json` | Done |
 | Lists | ✅ Complete | `lists.json` | Done |
 | Collections | ✅ Complete | `collections.json` | Done |
+| Working with Files | ✅ Complete | `working-with-files.json` | Done |
 
 ---
 
@@ -464,5 +511,5 @@ Based on analysis of existing guides, each guide should:
 
 ---
 
-**Last Updated:** 2026-02-03  
-**Document Version:** 1.2
+**Last Updated:** 2026-02-05  
+**Document Version:** 1.3
