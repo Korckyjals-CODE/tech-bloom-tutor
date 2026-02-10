@@ -323,6 +323,42 @@ This document outlines the complete learning path for Python programming using t
 
 ---
 
+### 11. Errors and Exceptions
+**File:** `errors-and-exceptions.json`  
+**Status:** ✅ Complete  
+**Scope:** Handling errors with exceptions so programs don't crash and can report or recover; what exceptions are, reading tracebacks, try/except/else/finally, choosing what to catch, raising exceptions, common built-in exceptions (ValueError, TypeError, FileNotFoundError, KeyError, etc.)
+
+**Learning Objectives:**
+- Understand what exceptions are and when they occur
+- Read and interpret tracebacks
+- Use try, except, else, and finally to handle exceptions
+- Choose what to catch (specific vs broad) and when to let exceptions propagate
+- Raise exceptions with raise
+- Work with common built-in exceptions (ValueError, TypeError, FileNotFoundError, KeyError, IndexError, ZeroDivisionError)
+- Write robust input validation, safe file opening, retry logic, and simple error-reporting helpers
+
+**Prerequisites:** Guides #1–#9 and Guide #10 (Working with Files)
+
+**Estimated Duration:** 2–3 hours
+
+**Why This Guide:**
+- After Files (and Collections), programs get more realistic and errors (missing files, bad input, invalid operations) become important
+- A dedicated guide fits “single main concept + sub-concepts” and Bloom’s structure
+- Enables programs that don’t crash and can report or recover
+
+**Key Concepts:**
+- Exception, traceback, try, except, else, finally, handler, raise
+- Built-in exceptions: ValueError, TypeError, FileNotFoundError, KeyError, IndexError, ZeroDivisionError
+- Handling vs propagating; choosing what to catch; clarity of error messages
+
+**Example Projects:**
+- Robust input validation
+- Safe file opening
+- Retry logic
+- Simple error-reporting helpers
+
+---
+
 ## Complete Learning Path
 
 ```
@@ -392,6 +428,14 @@ This document outlines the complete learning path for Python programming using t
 │     (Requires: Guides #1-9)           │
 │     ✅ COMPLETE                       │
 │     Read, write, with, paths          │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│  11. Errors and Exceptions           │
+│     (Requires: Guides #1-10)         │
+│     ✅ COMPLETE                       │
+│     try/except, tracebacks, built-ins│
 └─────────────────────────────────────┘
 ```
 
@@ -451,6 +495,13 @@ This document outlines the complete learning path for Python programming using t
 - File modes, paths, line-by-line processing
 - Programs that save and load data (configs, logs, reports)
 
+### Phase 10: Errors and Exceptions (Guide 11)
+**Goal:** Handle errors with exceptions so programs don't crash and can report or recover
+- What exceptions are; reading tracebacks
+- try, except, else, finally; choosing what to catch; raising exceptions
+- Common built-in exceptions (ValueError, TypeError, FileNotFoundError, KeyError, etc.)
+- Robust input validation, safe file opening, retry logic, error-reporting helpers
+
 ---
 
 ## Guide Scope Standards
@@ -480,7 +531,7 @@ Based on analysis of existing guides, each guide should:
 - **Guide #8: Lists** — Implemented. Single-concept guide on lists (creating, indexing, slicing, methods, iteration, functions).
 - **Guide #9: Collections** — Implemented. Tuples, dictionaries, iteration over different collections (same depth/length standard).
 - **Guide #10: Working with Files** — Implemented. Reading and writing text files; open, read, write, close, with; paths; line-by-line processing.
-- **Guide #11 (next):** Errors and Exceptions — Proposed next; handle FileNotFoundError and other errors robustly.
+- **Guide #11: Errors and Exceptions** — Implemented. Handling errors with exceptions; tracebacks; try/except/else/finally; common built-in exceptions; robust validation, safe file open, retry logic, error-reporting helpers.
 
 ---
 
@@ -498,6 +549,7 @@ Based on analysis of existing guides, each guide should:
 | Lists | ✅ Complete | `lists.json` | Done |
 | Collections | ✅ Complete | `collections.json` | Done |
 | Working with Files | ✅ Complete | `working-with-files.json` | Done |
+| Errors and Exceptions | ✅ Complete | `errors-and-exceptions.json` | Done |
 
 ---
 

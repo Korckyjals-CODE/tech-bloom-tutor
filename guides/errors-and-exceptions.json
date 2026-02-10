@@ -1,0 +1,439 @@
+{
+  "metadata": {
+    "title": "Errors and Exceptions",
+    "subtitle": "Handling errors so programs don't crash and can report or recover",
+    "description": "Learn what exceptions are and when they occur; how to read tracebacks; use try, except, else, and finally; choose what to catch; raise exceptions; and work with common built-in exceptions such as ValueError, TypeError, FileNotFoundError, and KeyError.",
+    "version": "1.0.0",
+    "author": "EduCafé",
+    "lastUpdated": "2026-02-10",
+    "storageKeyPrefix": "errors_and_exceptions",
+    "instructorPasscode": "educafe-exceptions-101",
+    "order": 11
+  },
+  "branding": {
+    "brandName": "EduCafé — Python Guide",
+    "theme": {
+      "colorScheme": "dark",
+      "primaryColor": "#4aa3ff",
+      "secondaryColor": "#7bc67b"
+    }
+  },
+  "stages": [
+    {"id": "s0", "order": 0, "title": "Stage 0 · Starting", "shortTitle": "Starting", "description": "Introduction to exceptions and error handling"},
+    {"id": "s1", "order": 1, "title": "Stage 1 · Remembering", "shortTitle": "Remembering", "description": "Vocabulary for exceptions and handling"},
+    {"id": "s2", "order": 2, "title": "Stage 2 · Understanding", "shortTitle": "Understanding", "description": "How exceptions and try/except work"},
+    {"id": "s3", "order": 3, "title": "Stage 3 · Applying", "shortTitle": "Applying", "description": "Writing programs that handle errors"},
+    {"id": "s4", "order": 4, "title": "Stage 4 · Analyzing", "shortTitle": "Analyzing", "description": "Troubleshooting and analyzing exception errors"},
+    {"id": "s5", "order": 5, "title": "Stage 5 · Evaluating", "shortTitle": "Evaluating", "description": "Judging exception-handling design and quality"},
+    {"id": "s6", "order": 6, "title": "Stage 6 · Creating", "shortTitle": "Creating", "description": "Original projects with robust error handling"}
+  ],
+  "sections": [
+    {"id": "mindset", "displayName": "Mindset", "order": 0, "description": "Prepare mentally"},
+    {"id": "recap", "displayName": "Recap", "order": 1, "description": "Connect to prior learning"},
+    {"id": "core", "displayName": "Core", "order": 2, "description": "Main content"},
+    {"id": "guidedPractice", "displayName": "Guided Practice", "order": 3, "description": "Practice with help"},
+    {"id": "challenge", "displayName": "Challenge", "order": 4, "description": "Independent work"},
+    {"id": "reflection", "displayName": "Reflection", "order": 5, "description": "Think about learning"},
+    {"id": "transition", "displayName": "Transition", "order": 6, "description": "Move forward"}
+  ],
+  "content": {
+    "s0": {
+      "mindset": {
+        "heading": "Programs That Don't Crash on Bad Input",
+        "components": [
+          {"type": "text", "content": "You're about to learn **errors and exceptions** — how to handle problems so your programs don't crash and can report or recover. Until now, a missing file or invalid input might have stopped your program with a long message. With exception handling, you can catch those errors, show a clear message, or try something else (like asking for the file again)."}
+        ]
+      },
+      "recap": {
+        "heading": "Building on What You Know",
+        "components": [
+          {"type": "text", "content": "You already know:\n- **File I/O (Guide 10)** — Opening a missing file raises **FileNotFoundError**.\n- **Input and operations (Guide 4)** — Converting bad input with `int()` or `float()` can raise **ValueError**.\n- **Lists and collections (Guides 8–9)** — Accessing a missing index or key raises **IndexError** or **KeyError**.\n\nThose errors are **exceptions**. In this guide you'll learn what they are, how to read the messages (tracebacks), and how to **handle** them so your program stays in control."}
+        ]
+      },
+      "core": {
+        "heading": "What Are Exceptions and Why Handle Them?",
+        "components": [
+          {"type": "text", "content": "An **exception** is Python's way of signaling that something went wrong during execution — invalid input, missing file, wrong type, or invalid operation. When code raises an exception and nothing **handles** it, the program stops and prints a **traceback** (the stack of calls and the line where it failed). **Handling** an exception means wrapping risky code in a **try** block and providing an **except** block that runs when that exception occurs — so the program can continue, show a friendly message, or recover (e.g. retry or use a default)."},
+          {"type": "text", "content": "**Real-World Examples:**\n\n• **Form validation** — User types \"abc\" where a number is expected; catch ValueError and ask again or show \"Please enter a number.\"\n• **Safe file opening** — File might be missing; catch FileNotFoundError and prompt for another path or create a default file.\n• **Retry on failure** — Network or file read might fail once; catch the exception, wait, and try again a few times.\n• **Config loading** — Config file missing or key missing; catch FileNotFoundError or KeyError and use defaults.\n• **Parsing numbers** — int(\"42\") works; int(\"hello\") raises ValueError; handle it to avoid a crash.\n• **Dictionary lookup** — data[\"name\"] raises KeyError if \"name\" is missing; catch it or use .get().\n• **Division by zero** — 1/0 raises ZeroDivisionError; handle it to show a message instead of crashing."},
+          {"type": "text", "content": "**Visual Metaphors:**\n\n**Exception as an alarm** — When something goes wrong, Python \"rings\" an exception. If you don't handle it, the program stops. If you have a try/except \"safety net,\" your code catches the alarm and decides what to do (message, retry, default).\n\n**Traceback as a map** — The traceback lists the path execution took (which function called which) and the exact line where the exception was raised. The last line is usually where the error happened; the lines above show the call chain.\n\n**Handling vs propagating** — You can **handle** an exception (try/except) or **let it propagate** (bubble up) so the caller or the user sees it. Choosing when to handle and when to let it propagate is part of good design."},
+          {"type": "text", "content": "**Why handling improves programs:** Users get clear messages instead of raw tracebacks. Programs can recover (retry, default value) instead of exiting. You can log errors for debugging while still keeping the program running. Every expert programmer uses exception handling for robustness."},
+          {"type": "code", "language": "python", "content": "# Without handling: crash on bad input\n# x = int(\"not a number\")  # ValueError\n\n# With handling: program stays in control\ntry:\n    x = int(input(\"Enter a number: \"))\n    print(\"You entered\", x)\nexcept ValueError:\n    print(\"That wasn't a valid number.\")", "copyable": false}
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Exploring Exceptions",
+        "components": [
+          {"type": "multipleChoice", "question": "When should you handle an exception instead of letting the program crash?", "options": ["Never; crashes are better", "When you can show a clear message or recover (e.g. ask again, use a default)", "Only for file errors", "Only in functions"], "correctIndex": 1, "feedback": {"correct": "Correct! Handling lets you show a clear message or recover so the program stays useful.", "incorrect": "Handle exceptions when you can improve the user experience (clear message, retry, default) or keep the program running."}},
+          {"type": "shortAnswer", "prompt": "Name one situation from your own experience (or from the examples) where handling an error would make a program better. What would you do in the handler?", "validation": {"type": "freeform"}},
+          {"type": "multipleChoice", "question": "What does a traceback show?", "options": ["Only the error message", "The call stack and the line where the exception was raised", "How to fix the bug", "The correct code"], "correctIndex": 1, "feedback": {"correct": "Correct! A traceback shows the call stack and the line where the exception occurred.", "incorrect": "The traceback shows the sequence of calls and the line where the exception was raised — it's your map to the problem."}}
+        ]
+      },
+      "challenge": {
+        "heading": "Think About Error Handling",
+        "components": [
+          {"type": "multipleChoice", "question": "Which scenario would benefit most from exception handling?", "options": ["A script that only you run once", "A program that reads a config file that might be missing", "A calculator with no user input", "A script that never uses files"], "correctIndex": 1, "feedback": {"correct": "Correct! Missing config is a common case for handling FileNotFoundError and using defaults.", "incorrect": "Programs that depend on external things (files, user input) often benefit from handling exceptions."}},
+          {"type": "shortAnswer", "prompt": "For a program that opens a file the user names, what could go wrong? What would you want to do instead of crashing?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "reflection": {
+        "heading": "Preparing for Learning",
+        "components": [
+          {"type": "checklist", "items": ["I understand what an exception is (Python's signal that something went wrong)", "I can name at least two examples of when handling exceptions helps", "I'm ready to learn the vocabulary (exception, traceback, try, except, raise)"]},
+          {"type": "shortAnswer", "prompt": "On a scale of 1-10, how excited are you to learn exception handling? What would make it a 10?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "What are you most curious about regarding errors and exceptions? What questions do you have?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "How do you think handling errors will help you build better programs?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "transition": {
+        "heading": "Ready to Learn",
+        "components": [
+          {"type": "text", "content": "You've learned **what exceptions are** and **why handling them matters** — clearer messages, recovery, and more robust programs.\n\n**Why this matters:** Programs that handle errors gracefully feel professional and are easier to use.\n\n**How you'll use this:** You'll learn the vocabulary — **exception**, **traceback**, **try**, **except**, **else**, **finally**, **raise**, **handler** — and the common built-in exception types. Next: the terms and syntax for exception handling."}
+        ]
+      }
+    },
+    "s1": {
+      "mindset": {
+        "heading": "Learning the Language of Exceptions",
+        "components": [
+          {"type": "text", "content": "You're moving from 'things break' to naming the parts: exception, traceback, try, except, else, finally, raise, and the built-in exception types. Right now you're learning the terms that will let you read tracebacks and write handlers confidently."}
+        ]
+      },
+      "recap": {
+        "heading": "What You Remember",
+        "components": [
+          {"type": "text", "content": "From Stage 0 you know that exceptions signal errors, that tracebacks show where things failed, and that handling means catching an exception so the program can continue or report. Now you'll learn the precise terms: exception, traceback, try, except, else, finally, handler, catch, raise, and the common built-in exceptions (ValueError, TypeError, FileNotFoundError, KeyError, IndexError, ZeroDivisionError)."}
+        ]
+      },
+      "core": {
+        "heading": "Key Vocabulary for Errors and Exceptions",
+        "components": [
+          {"type": "text", "content": "**exception** — An object that represents an error. When something goes wrong, Python **raises** an exception (e.g. ValueError, FileNotFoundError). Example: int(\"x\") raises ValueError. When it matters: Exceptions are how Python signals errors. Connection: You catch them with except."},
+          {"type": "text", "content": "**traceback** — The message Python prints when an exception is not caught: a list of function calls (the call stack) and the file and line number where the exception was raised. The **last** line usually shows the actual failing line. When it matters: Reading the traceback tells you where and what failed. Connection: It appears when you don't handle the exception."},
+          {"type": "text", "content": "**try** — A block of code that might raise an exception. You write try: followed by indented code. Example: try: x = int(s). When it matters: Only code in a try block can be caught by an except for that try. Connection: Pairs with except (and optionally else, finally)."},
+          {"type": "text", "content": "**except** — A block that runs when a matching exception is raised in the try block. You write except ExceptionType: or except ExceptionType as e: to capture the exception. Example: except ValueError: print(\"Not a number\"). When it matters: This is your **handler** — where you recover or report. Connection: Comes after try; you can have multiple except blocks for different types."},
+          {"type": "text", "content": "**else** (try/except) — Optional block that runs only if the try block **did not** raise an exception. Example: try: f = open(fname); except FileNotFoundError: ...; else: content = f.read(). When it matters: Use for code that should run only on success. Connection: Placed after all except blocks, before finally."},
+          {"type": "text", "content": "**finally** — Optional block that **always** runs after the try (and any except/else), whether or not an exception occurred. Use for cleanup (e.g. closing a file). Example: finally: f.close(). When it matters: Ensures cleanup runs even when an exception is raised. Connection: Last part of try/except/else/finally."},
+          {"type": "text", "content": "**handler** — The except block that catches an exception. When it matters: You write handlers to respond to specific errors. Connection: Same as 'catch' in other languages."},
+          {"type": "text", "content": "**raise** — Statement that raises an exception: raise ValueError(\"bad value\"). When it matters: You raise when you detect an error and want to signal it to the caller. Connection: The exception can be caught by an except in the same function or a caller."},
+          {"type": "text", "content": "**built-in exception** — Exception types provided by Python. Common ones: **ValueError** (invalid value, e.g. int(\"x\")); **TypeError** (wrong type, e.g. \"a\" + 1); **FileNotFoundError** (file missing); **KeyError** (missing dict key); **IndexError** (index out of range); **ZeroDivisionError** (division by zero). When it matters: You catch these by name in except. Connection: Each indicates a specific kind of error."}
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Vocabulary Practice",
+        "components": [
+          {"type": "matching", "leftColumn": ["exception", "traceback", "try", "except", "else", "finally", "handler", "raise", "ValueError", "FileNotFoundError"], "rightColumn": [
+            {"definition": "Object representing an error; Python raises it when something goes wrong", "matchesWith": "exception"},
+            {"definition": "Message showing the call stack and line where the exception was raised", "matchesWith": "traceback"},
+            {"definition": "Block of code that might raise an exception", "matchesWith": "try"},
+            {"definition": "Block that runs when a matching exception is raised in the try", "matchesWith": "except"},
+            {"definition": "Block that runs only if the try block did not raise an exception", "matchesWith": "else"},
+            {"definition": "Block that always runs after try/except/else, for cleanup", "matchesWith": "finally"},
+            {"definition": "The except block that catches and responds to an exception", "matchesWith": "handler"},
+            {"definition": "Statement that raises an exception (e.g. raise ValueError(...))", "matchesWith": "raise"},
+            {"definition": "Raised for invalid value (e.g. int(\"abc\"))", "matchesWith": "ValueError"},
+            {"definition": "Raised when opening a file that does not exist", "matchesWith": "FileNotFoundError"}
+          ]},
+          {"type": "ordering", "instructions": "Put these in the order they run when no exception occurs: try, except, else, finally.", "items": ["try", "except", "else", "finally"], "correctOrder": [0, 2, 3, 1]},
+          {"type": "multipleChoice", "question": "Which block runs only when no exception was raised in the try block?", "options": ["except", "else", "finally", "raise"], "correctIndex": 1, "feedback": {"correct": "Correct! The else block runs only when the try block completes without raising.", "incorrect": "The else block (after try/except) runs only when no exception was raised in the try."}}
+        ]
+      },
+      "challenge": {
+        "heading": "Vocabulary Application",
+        "components": [
+          {"type": "text", "content": "**Creative task:** Draw or describe how these connect: exception is raised → propagates → except (handler) catches it → program continues (or else/finally run)."},
+          {"type": "shortAnswer", "prompt": "What is the difference between except and finally? When does each run?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "Which built-in exception would you get if you did: d[\"missing_key\"] where d is a dict with no \"missing_key\"?", "validation": {"type": "contains", "acceptedAnswers": ["KeyError"]}}
+        ]
+      },
+      "reflection": {
+        "heading": "Vocabulary Check",
+        "components": [
+          {"type": "checklist", "items": ["I can define exception, traceback, try, except, else, finally, handler, raise", "I can name at least three built-in exceptions (e.g. ValueError, FileNotFoundError, KeyError)", "I understand how try, except, else, and finally work together"]},
+          {"type": "shortAnswer", "prompt": "Which term was easiest for you? Which needs more review?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "How does knowing the exception types (ValueError, FileNotFoundError, etc.) help you write better code?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "transition": {
+        "heading": "From Terms to Understanding",
+        "components": [
+          {"type": "text", "content": "You've learned the vocabulary: **exception**, **traceback**, **try**, **except**, **else**, **finally**, **handler**, **raise**, and common **built-in exceptions**.\n\n**Why this matters:** Knowing the terms is the first step. Now you'll understand **how** execution flows when an exception is raised — propagation, matching except, and when else and finally run.\n\n**How you'll use this:** Next, you'll see the step-by-step process so you can read tracebacks and predict what happens with try/except/else/finally."}
+        ]
+      }
+    },
+    "s2": {
+      "mindset": {
+        "heading": "Understanding the Flow",
+        "components": [
+          {"type": "text", "content": "You're moving from knowing the terms to understanding **how** exceptions work: what happens when one is raised, how it propagates, how an except catches it, and when else and finally run. Open the 'black box' and see the flow."}
+        ]
+      },
+      "recap": {
+        "heading": "What You Know",
+        "components": [
+          {"type": "text", "content": "You know the vocabulary: exception, traceback, try, except, else, finally, raise, and built-in types. Now you'll see how Python uses these when an exception is raised and when it's caught."}
+        ]
+      },
+      "core": {
+        "heading": "How Exceptions and try/except Work",
+        "components": [
+          {"type": "text", "content": "**Step 1: Code runs until something raises** — Normal execution continues until a line raises an exception (e.g. int(\"x\"), open(\"missing.txt\"), or raise ValueError(\"bad\"))."},
+          {"type": "text", "content": "**Step 2: Exception propagates up the call stack** — Python looks for a matching except in the current try block. If none matches (or there is no try), the exception propagates to the **caller** — the function that called this one. This repeats until an except matches or the program exits."},
+          {"type": "text", "content": "**Step 3: Traceback shows the path** — When the program exits due to an uncaught exception, Python prints a traceback. Each line shows a file name, line number, and function name. The **last** line is usually where the exception was raised; the lines **above** are the call chain (who called whom)."},
+          {"type": "text", "content": "**Step 4: Matching except catches** — If execution is inside a try block and an exception is raised, Python looks at the except blocks in order. The **first** except whose type matches the exception (or a base class like Exception) runs. That exception is then considered **handled** — it does not propagate further from that try."},
+          {"type": "text", "content": "**Step 5: Which except runs** — You can have except ValueError:, except FileNotFoundError:, etc. Only one except runs (the first match). More specific types should usually come before more general (e.g. except ValueError before except Exception)."},
+          {"type": "text", "content": "**Step 6: else runs only if no exception** — The else block (if present) runs only when the try block **completed without raising**. If an exception was raised and caught, else does **not** run."},
+          {"type": "text", "content": "**Step 7: finally always runs** — The finally block (if present) runs **always** — after try; after except if one ran; after else if it ran. It even runs when an exception is raised in except or else (then that new exception propagates after finally). Use finally for cleanup (e.g. close a file)."},
+          {"type": "text", "content": "**Step 8: After handling, execution continues** — After the except (and else/finally) run, execution continues at the next statement after the whole try/except/else/finally. The program does not crash."},
+          {"type": "text", "content": "**Key idea:** Raise → propagate up → first matching except runs → else runs only on success → finally always runs. Reading the traceback: bottom line = where it failed; above = call chain."},
+          {"type": "code", "language": "python", "content": "try:\n    x = int(\"5\")\n    print(\"Success:\", x)\nexcept ValueError:\n    print(\"Not a number\")\nelse:\n    print(\"No error\")\nfinally:\n    print(\"Always runs\")", "copyable": false}
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Understanding the Flow",
+        "components": [
+          {"type": "multipleChoice", "question": "If int(\"x\") runs inside a try and you have except ValueError: ... what happens next?", "options": ["The program crashes", "The except block runs, then execution continues after the try/except", "The else block runs", "finally does not run"], "correctIndex": 1, "feedback": {"correct": "Correct! The except runs, then execution continues; finally would run too if present.", "incorrect": "When except catches the exception, that block runs and execution continues after the try/except; the program does not crash."}},
+          {"type": "shortAnswer", "prompt": "When reading a traceback, which line do you look at first to find where the error happened? Why?", "validation": {"type": "freeform"}},
+          {"type": "multipleChoice", "question": "When does the else block of a try/except run?", "options": ["When an exception is raised", "Only when no exception was raised in the try block", "Always", "Only for ValueError"], "correctIndex": 1, "feedback": {"correct": "Correct! else runs only when the try block completed without raising.", "incorrect": "The else block runs only when the try block finished without raising an exception."}},
+          {"type": "shortAnswer", "prompt": "In one sentence, what does 'exception propagates' mean?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Flow Diagram",
+        "components": [
+          {"type": "text", "content": "**Creative task:** Create a flowchart showing: exception raised → propagation → except matches → (optional else) → finally. Label when each block runs."},
+          {"type": "shortAnswer", "prompt": "Describe your diagram. When does the handler (except) run, and when does finally run?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "When would you use a finally block? Give one example (e.g. closing a file).", "validation": {"type": "freeform"}}
+        ]
+      },
+      "reflection": {
+        "heading": "Understanding Check",
+        "components": [
+          {"type": "checklist", "items": ["I can explain how exception propagation and catching work", "I can describe when else and finally run", "I can read a traceback to find the failing line and call chain"]},
+          {"type": "shortAnswer", "prompt": "What was the most surprising thing about how try/except/else/finally work?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "How does understanding the flow help you decide where to put try/except in your code?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "transition": {
+        "heading": "From Understanding to Doing",
+        "components": [
+          {"type": "text", "content": "You understand **how** exceptions propagate and how try/except/else/finally work.\n\n**Why this matters:** Understanding the flow helps you write correct handlers and read tracebacks.\n\n**How you'll use this:** Next, you'll **apply** this by writing your own code: safe file opening, input validation with try/except ValueError, and optional retry logic."}
+        ]
+      }
+    },
+    "s3": {
+      "mindset": {
+        "heading": "Time to Handle Errors",
+        "components": [
+          {"type": "text", "content": "You're moving from understanding to **doing**. Now you'll write try/except blocks, validate input safely, and open files without crashing. Focus on identifying what can raise, choosing the right exception type, and avoiding common pitfalls. Mistakes are normal — that's how you learn!"}
+        ]
+      },
+      "recap": {
+        "heading": "Before You Start",
+        "components": [
+          {"type": "text", "content": "You understand how exceptions propagate and how try/except/else/finally run. Can you answer: When does except run? When does else run? How do you read a traceback? Now let's write handlers!"}
+        ]
+      },
+      "core": {
+        "heading": "Writing Exception-Handling Code: Step-by-Step",
+        "components": [
+          {"type": "text", "content": "**Preparation checklist**\n\n✓ Python and a text editor ready\n✓ You know try, except, else, finally and common exception types\n✓ You can read a traceback\n✓ You have written file I/O and input code (Guides 4, 10)\n\nOnce you've checked these, you're ready to write exception-handling code!"},
+          {"type": "text", "content": "**Step-by-step: Add a handler**\n\n**Step 1:** Identify the line(s) that might raise (e.g. int(user_input), open(path)).\n**Step 2:** Wrap that code in a try: block (indent it).\n**Step 3:** Add except ExceptionType: (e.g. except ValueError:) and indent the code that should run when that exception occurs (e.g. print a message, ask again).\n**Step 4:** Optionally add else: for code that should run only on success, and finally: for cleanup.\n**Step 5:** Test with both valid input and invalid input (e.g. type \"abc\" when a number is expected)."},
+          {"type": "text", "content": "**Safe file open pattern** — Wrap open() in try and catch FileNotFoundError:\ntry:\n    with open(path, \"r\") as f:\n        content = f.read()\nexcept FileNotFoundError:\n    print(\"File not found.\")  # or prompt for another path, or use default\n\n**Input validation pattern** — Wrap int() or float() in try and catch ValueError:\ntry:\n    n = int(input(\"Enter a number: \"))\nexcept ValueError:\n    print(\"That wasn't a number.\")\n\n**Retry pattern (optional)** — Loop a few times; break on success; catch exception and retry or give up after max attempts."},
+          {"type": "text", "content": "**Common pitfalls and how to avoid them**\n\n1. **Bare except:** except: catches everything (including KeyboardInterrupt). Prefer except ValueError: or at least except Exception:.\n2. **Catching too broad:** except Exception: hides specific errors. Catch the specific type when you know it (ValueError, FileNotFoundError).\n3. **Not closing resources:** If you open without with, use finally: f.close() so the file is closed even on error.\n4. **Swallowing errors:** Don't use except: pass without logging or printing; you'll hide bugs.\n5. **Wrong order of except:** Put more specific types first (except ValueError before except Exception)."},
+          {"type": "text", "content": "**Verification** — Run with valid input (number, existing file) and invalid input (non-number, missing file). Confirm your handler runs and the program doesn't crash; check that messages are clear."},
+          {"type": "code", "language": "python", "content": "try:\n    with open(\"config.txt\", \"r\") as f:\n        data = f.read()\nexcept FileNotFoundError:\n    data = \"\"  # default\nprint(\"Config:\", data)", "copyable": true},
+          {"type": "code", "language": "python", "content": "try:\n    age = int(input(\"Your age: \"))\n    print(\"Age:\", age)\nexcept ValueError:\n    print(\"Please enter a number.\")", "copyable": true}
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Practice Writing Handlers",
+        "components": [
+          {"type": "checklist", "items": ["I identified which line can raise", "I wrapped it in try and added except with the right type", "I tested with both valid and invalid input (or missing file)", "I did not use bare except:"]},
+          {"type": "text", "content": "**Activity:** Write a short script that asks for a number with input(), converts with int() inside try, and catches ValueError to print \"That wasn't a number.\" Run it and try typing a word."},
+          {"type": "shortAnswer", "prompt": "What exception type do you catch when the user enters text that isn't a valid integer?", "validation": {"type": "contains", "acceptedAnswers": ["ValueError"]}},
+          {"type": "multipleChoice", "question": "What is wrong with: except: pass?", "options": ["Nothing", "It catches all exceptions and hides them with no message or action", "It only catches ValueError", "finally is required"], "correctIndex": 1, "feedback": {"correct": "Correct! Bare except with pass hides all errors and makes debugging hard.", "incorrect": "except: pass catches everything and does nothing, which hides bugs. Use a specific exception type and at least print or log."}},
+          {"type": "multipleChoice", "question": "How do you ensure a file is closed even if an error occurs while reading?", "options": ["Use try/except only", "Use the with statement (or finally: f.close())", "Catch FileNotFoundError only", "Use else"], "correctIndex": 1, "feedback": {"correct": "Correct! with closes automatically; or use finally to close.", "incorrect": "Use with open(...) as f so the file is closed when the block ends, or use finally: f.close()."}}
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Program with Exception Handling",
+        "components": [
+          {"type": "text", "content": "**Proof-of-work:** Create exceptions_practice.py that does one of:\n\n(1) **Robust input validation** — Ask for a number (or two); use try/except ValueError and a clear message if input is invalid.\n(2) **Safe file opening** — Ask for a filename (or use a fixed name); use try/except FileNotFoundError and print a friendly message or use default content if missing.\n\n**Requirements:** File named exceptions_practice.py; use try and at least one except with a specific exception type; run with both valid and invalid input (or existing and missing file) and confirm no crash."},
+          {"type": "shortAnswer", "prompt": "What could still go wrong in your program? Name one other exception or situation you might handle later.", "validation": {"type": "freeform"}}
+        ]
+      },
+      "reflection": {
+        "heading": "Application Check",
+        "components": [
+          {"type": "checklist", "items": ["I can write try/except for at least one exception type (e.g. ValueError, FileNotFoundError)", "I can run my script and verify the handler runs on error", "I can fix common mistakes (bare except, catching too broad)"]},
+          {"type": "shortAnswer", "prompt": "What was the easiest part? What was the most confusing?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "How confident do you feel adding exception handling to a script now? What would help?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "transition": {
+        "heading": "From Writing to Troubleshooting",
+        "components": [
+          {"type": "text", "content": "You can now **write** exception-handling code — try/except, safe file open, input validation. You're ready to **analyze** what goes wrong: which exception type was raised, why the handler didn't catch it, and how to fix bad handler design."}
+        ]
+      }
+    },
+    "s4": {
+      "mindset": {
+        "heading": "Becoming a Troubleshooter",
+        "components": [
+          {"type": "text", "content": "You're moving from writing handlers to understanding why something failed and which handler is right. Every traceback and unexpected crash is a clue. Read the exception type, check the line, and fix the cause or add the right except."}
+        ]
+      },
+      "recap": {
+        "heading": "What You Built",
+        "components": [
+          {"type": "text", "content": "You've written try/except for validation and file opening. Now we'll analyze failure modes: wrong exception type, catching too broad, and how to read tracebacks to fix bugs."}
+        ]
+      },
+      "core": {
+        "heading": "Error Analysis: Exceptions and Handlers",
+        "components": [
+          {"type": "text", "content": "**Error 1: ValueError — invalid conversion**\n**Symptom:** ValueError when using int() or float() on bad input\n**Cause:** String cannot be converted to number (e.g. int(\"abc\"))\n**Verify:** Check the line that does the conversion; try the input in the shell\n**Fix:** Wrap in try/except ValueError; validate or prompt again\n\n**Error 2: TypeError — wrong type**\n**Symptom:** TypeError (e.g. unsupported operand type(s))\n**Cause:** Operation on wrong type (e.g. \"a\" + 1, or function got str instead of int)\n**Verify:** Check the types of variables at the failing line\n**Fix:** Convert with int()/str() or add a type check; catch TypeError if appropriate\n\n**Error 3: FileNotFoundError — missing file**\n**Symptom:** FileNotFoundError when opening with \"r\"\n**Cause:** File does not exist or path is wrong\n**Verify:** Check path and current working directory\n**Fix:** Use try/except FileNotFoundError; prompt for path or use default\n\n**Error 4: KeyError — missing dictionary key**\n**Symptom:** KeyError when using d[key]\n**Cause:** Key not in dictionary\n**Verify:** Check which key was used; print(d.keys())\n**Fix:** Use d.get(key, default) or try/except KeyError\n\n**Error 5: IndexError — index out of range**\n**Symptom:** IndexError when using list[i]\n**Cause:** Index not in range 0 to len(list)-1\n**Verify:** Check index value and list length\n**Fix:** Check bounds before indexing or try/except IndexError\n\n**Error 6: ZeroDivisionError**\n**Symptom:** ZeroDivisionError when dividing by zero\n**Cause:** Denominator is 0\n**Verify:** Check the divisor variable\n**Fix:** Check before dividing or try/except ZeroDivisionError\n\n**Error 7: Catching wrong type**\n**Symptom:** Exception not caught; program still crashes\n**Cause:** except block is for a different type (e.g. except ValueError but it's KeyError)\n**Verify:** Read the traceback — last line shows the exception type\n**Fix:** Catch the correct type or add another except block\n\n**Error 8: Catching too broad**\n**Symptom:** You catch Exception and hide bugs you didn't intend to handle\n**Cause:** except Exception: catches almost everything\n**Verify:** Ask: did I mean to handle this specific error?\n**Fix:** Catch specific types (ValueError, FileNotFoundError) when you know them\n\n**Error 9: Traceback reading**\n**Symptom:** Not sure where the bug is\n**Cause:** Traceback is long or unfamiliar\n**Verify:** Last line = exception type and message; line above = exact file and line\n**Fix:** Go to that file and line; identify what raised; add or fix handler\n\n**Systematic troubleshooting:** (1) Read the last line of the traceback for the exception type. (2) Find the file and line number (usually the last or second-to-last frame). (3) Identify what raised (int(), open(), [], etc.). (4) Add or fix try/except for that type, or fix the cause (e.g. validate input)."}
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Error Diagnosis Practice",
+        "components": [
+          {"type": "text", "content": "**Activity:** This code crashes. What exception do you get? How do you fix it?\n\ns = input(\"Number: \")\nn = int(s)\nprint(n * 2)"},
+          {"type": "shortAnswer", "prompt": "If the user types \"hello\" in the code above, what exception is raised? What would you add to handle it?", "validation": {"type": "contains", "acceptedAnswers": ["ValueError", "int"]}},
+          {"type": "multipleChoice", "question": "You get KeyError: 'name'. What should you check?", "options": ["The file path", "Whether the dictionary has the key 'name' or you need .get() or try/except KeyError", "Whether you used int()", "The with statement"], "correctIndex": 1, "feedback": {"correct": "Correct! KeyError means the key isn't in the dict; use .get() or handle KeyError.", "incorrect": "KeyError means you used d[key] and that key isn't in the dictionary. Use .get('name', default) or try/except KeyError."}},
+          {"type": "ordering", "instructions": "Order these steps for fixing an uncaught exception.", "items": ["Read the traceback to find the exception type and line", "Add try/except with that exception type or fix the cause", "Run again with the same input to confirm"], "correctOrder": [0, 1, 2]},
+          {"type": "shortAnswer", "prompt": "What's the difference between catching ValueError and catching Exception? When would you use each?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "challenge": {
+        "heading": "Create a Troubleshooting Flowchart",
+        "components": [
+          {"type": "text", "content": "**Creative task:** Create a small flowchart for debugging exceptions: See traceback → read exception type → file/input/key/other? → add or fix handler (or fix cause)."},
+          {"type": "shortAnswer", "prompt": "Describe your flowchart. What do you check first when you get an uncaught exception?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "For a FileNotFoundError, what are two things you would verify before adding a handler?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "A script crashes with ValueError. What's the first question you'd ask to diagnose it?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "reflection": {
+        "heading": "Troubleshooting Skills Check",
+        "components": [
+          {"type": "checklist", "items": ["I can identify why an exception occurred (type and line)", "I can tell the difference between ValueError, FileNotFoundError, KeyError, TypeError", "I can explain a simple troubleshooting process for exceptions"]},
+          {"type": "shortAnswer", "prompt": "What's your 3-step plan for fixing an uncaught exception?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "Which exception have you seen or made most often? How do you avoid or handle it now?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "transition": {
+        "heading": "From Troubleshooting to Evaluating",
+        "components": [
+          {"type": "text", "content": "You can **diagnose and fix** exception-related errors — read tracebacks, match the right exception type, and add or fix handlers.\n\n**Why this matters:** Good troubleshooting saves time and makes your code reliable.\n\n**How you'll use this:** Next, you'll **evaluate** what makes exception handling good — clarity of messages, what to catch, when to raise, and when to let exceptions propagate."}
+        ]
+      }
+    },
+    "s5": {
+      "mindset": {
+        "heading": "Choosing Good Handler Design",
+        "components": [
+          {"type": "text", "content": "You're moving from fixing bugs to judging what makes exception handling good. Focus on clarity of error messages, catching the right scope (specific vs broad), when to recover vs fail-fast, and when to raise vs handle."}
+        ]
+      },
+      "recap": {
+        "heading": "Troubleshooting Skills",
+        "components": [
+          {"type": "text", "content": "You can diagnose and fix exception errors. Now you'll evaluate when exception handling is well-designed — clear messages, appropriate scope, and good recovery or propagation choices."}
+        ]
+      },
+      "core": {
+        "heading": "Evaluating Exception-Handling Code",
+        "components": [
+          {"type": "text", "content": "**Evaluation criteria**\n\n**1. Clarity** — Error messages are understandable to the user or developer. \"Please enter a number\" is better than a raw traceback for end users.\n**2. Scope** — Catch specific exceptions (ValueError, FileNotFoundError) when you know them; avoid catching Exception everywhere so you don't hide bugs.\n**3. Recovery** — Does the program retry, use a default, or exit cleanly? Choose based on context (e.g. config missing → use default; critical data missing → fail with clear message).\n**4. Propagation** — When the caller can handle the error better, let the exception propagate (don't catch). When you can improve the situation (message, retry, default), handle it.\n**5. Resource safety** — Use finally or with so files and other resources are closed even when an exception occurs.\n**6. User vs developer** — For users: short, friendly messages. For developers: log or re-raise with context."},
+          {"type": "text", "content": "**Good vs less-good examples**\n\n**Catching:**\n• Less good: except: pass (hides all errors)\n• Better: except ValueError: print(\"Please enter a number.\")\n\n**Scope:**\n• Less good: except Exception: (catches too much; hides bugs)\n• Better: except FileNotFoundError: and except ValueError: for known cases\n\n**Messages:**\n• Less good: print(\"Error\") (not helpful)\n• Better: print(\"File not found. Check the path.\")\n\n**When to raise:** If your function receives invalid input and cannot continue, raise ValueError(\"description\") so the caller can handle it. Don't always catch — sometimes propagating is correct."}
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Evaluating Exception Handling",
+        "components": [
+          {"type": "text", "content": "**Activity 1:** Script A catches FileNotFoundError and prints \"File not found.\" Script B catches Exception and prints \"Something went wrong.\" For a program that opens a user-specified file, which is better? Why?"},
+          {"type": "shortAnswer", "prompt": "When opening a config file that might be missing, would you catch FileNotFoundError and use a default, or let the program crash? Give a reason.", "validation": {"type": "freeform"}},
+          {"type": "multipleChoice", "question": "What makes an error message 'good' for the user?", "options": ["It shows the full traceback", "It is short, clear, and suggests what to do (e.g. 'Please enter a number')", "It is in code only", "It catches Exception"], "correctIndex": 1, "feedback": {"correct": "Correct! Users need clear, actionable messages.", "incorrect": "Good user-facing messages are clear and helpful (e.g. 'Please enter a number' or 'File not found. Check the path.')."}},
+          {"type": "shortAnswer", "prompt": "Name one criterion (e.g. clarity, scope, recovery) that matters most to you when writing exception handling. Why?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "challenge": {
+        "heading": "Code Review Scenario",
+        "components": [
+          {"type": "text", "content": "**Scenario:** You review three approaches. (A) except: pass. (B) except Exception: print(\"Error\"). (C) except ValueError: print(\"Please enter a number.\") For a script that converts user input to int, which is best? What's wrong with the others?"},
+          {"type": "shortAnswer", "prompt": "Evaluate the three approaches above. Which would you recommend and why? Use criteria like clarity, scope, and user experience.", "validation": {"type": "freeform"}}
+        ]
+      },
+      "reflection": {
+        "heading": "Evaluation Skills Check",
+        "components": [
+          {"type": "checklist", "items": ["I can compare exception handling using clarity, scope, and recovery", "I can recommend when to catch specific vs broad exceptions", "I consider user-facing messages when writing handlers"]},
+          {"type": "shortAnswer", "prompt": "What's your rule of thumb for when to catch a specific exception (e.g. ValueError) vs Exception?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "How will you use these criteria when writing your own exception handling from now on?", "validation": {"type": "freeform"}}
+        ]
+      },
+      "transition": {
+        "heading": "From Evaluating to Creating",
+        "components": [
+          {"type": "text", "content": "You can **evaluate** exception-handling design — clarity, scope, recovery, and propagation.\n\n**Why this matters:** Good exception handling makes programs robust and user-friendly.\n\n**How you'll use this:** Next, you'll **create** your own projects — robust input validation, safe file opening, retry logic, or a simple error-reporting helper — using everything you've learned."}
+        ]
+      }
+    },
+    "s6": {
+      "mindset": {
+        "heading": "From Learner to Creator",
+        "components": [
+          {"type": "text", "content": "You're moving from judging exception handling to creating your own programs that handle errors well. Design, implement, and test small projects that use try/except to make programs robust."}
+        ]
+      },
+      "recap": {
+        "heading": "Your Journey So Far",
+        "components": [
+          {"type": "text", "content": "You've completed:\n- **Remembering** → Vocabulary (exception, traceback, try, except, else, finally, raise, built-in types)\n- **Understanding** → How exceptions propagate and how try/except/else/finally work\n- **Applying** → Writing handlers (validation, safe file open)\n- **Analyzing** → Troubleshooting exception errors\n- **Evaluating** → What makes exception handling good\n\nNow you'll **create** programs that use exception handling to solve real tasks!"}
+        ]
+      },
+      "core": {
+        "heading": "Creating Projects with Exception Handling",
+        "components": [
+          {"type": "text", "content": "**Project type options**\n\n**1. Robust input validation** ⭐ — Ask for numbers or ranges; use try/except ValueError and clear messages; loop until valid or give up after N tries. Success: no crash on bad input; clear prompts.\n**2. Safe file opening** ⭐ — Open a file (path from input or fixed); catch FileNotFoundError; prompt for another path or use default content. Success: program never crashes on missing file.\n**3. Retry logic** ⭐⭐ — Try an operation (e.g. open file, or int(input)) in a loop; catch the exception and retry up to N times; then give up with a message. Success: retries then clean failure.\n**4. Simple error-reporting helper** ⭐⭐ — Wrap a block in try/except; on exception, print or log a short message (and optionally the exception type). Success: one place that catches and reports.\n**5. Config loader** ⭐⭐ — Read a file (e.g. key=value per line); catch FileNotFoundError and use defaults; when reading values, catch KeyError for missing keys. Success: missing file or key doesn't crash.\n**6. Menu with invalid choice** ⭐ — Loop showing a menu; get choice; use try/except or range check to handle invalid input and ask again. Success: invalid choice doesn't crash.\n**7. Number-guessing game with validation** ⭐ — Ask for a number; use try/except ValueError; only accept valid numbers. Success: game doesn't crash on non-number.\n**8. CSV-like line reader with skip-bad-line** ⭐⭐ — Read a file line by line; try to parse each line (e.g. split); catch ValueError or similar and skip bad lines; process good lines. Success: one bad line doesn't stop the whole run."},
+          {"type": "text", "content": "**Templates**\n\n**Robust number input (Beginner ⭐):**\nwhile True:\n    try:\n        n = int(input(\"Enter a number: \"))\n        break\n    except ValueError:\n        print(\"Please enter a valid integer.\")\nprint(\"You entered:\", n)\n\n**Safe file open (Beginner ⭐):**\ntry:\n    with open(\"data.txt\", \"r\") as f:\n        content = f.read()\nexcept FileNotFoundError:\n    content = \"\"\n    print(\"File not found; using empty content.\")\n\n**Retry loop (Intermediate ⭐⭐):**\nfor attempt in range(3):\n    try:\n        x = int(input(\"Number: \"))\n        break\n    except ValueError:\n        print(\"Try again.\")\nelse:\n    print(\"Giving up after 3 attempts.\")\n\n**Simple error reporter (Intermediate ⭐⭐):**\ntry:\n    # your code here\n    result = int(input(\"Number: \"))\nexcept ValueError as e:\n    print(\"Invalid input:\", e)"},
+          {"type": "text", "content": "**Success criteria** — Clear purpose; handles at least one or two exception types (e.g. ValueError, FileNotFoundError); helpful messages; no bare except; tested with both valid and invalid input (or missing file)."}
+        ]
+      },
+      "guidedPractice": {
+        "heading": "Plan Your Project",
+        "components": [
+          {"type": "shortAnswer", "prompt": "What will your program do? (e.g. validation, safe file open, retry, error-reporting helper)", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "Which exception(s) will you handle? What will you do in each handler (message, default, retry)?", "validation": {"type": "freeform"}},
+          {"type": "shortAnswer", "prompt": "How will you know it works? (e.g. run with bad input or missing file and see your message)", "validation": {"type": "freeform"}},
+          {"type": "checklist", "items": ["Create a new .py file with a clear name", "Use try/except with specific exception types", "Include clear error messages", "Test with valid and invalid input (or existing and missing file)", "Trigger an error on purpose and confirm your handler runs"]}
+        ]
+      },
+      "challenge": {
+        "heading": "Create and Share Your Project",
+        "components": [
+          {"type": "text", "content": "**Create an exception-handling project**\n\nChoose one (or combine):\n\n**Option 1: Robust input validation** — Numbers or ranges with try/except ValueError and clear messages.\n**Option 2: Safe file opening** — Open a file; catch FileNotFoundError; prompt or use default.\n**Option 3: Retry logic** — Try an operation up to N times with try/except.\n**Option 4: Error-reporting helper** — Wrap code in try/except and print or log the exception.\n\n**Quality checklist:** Clear purpose; handles at least 2 error types or 2 situations; helpful messages; tested; short reflection on design choices."},
+          {"type": "ordering", "instructions": "Order these steps for creating your project.", "items": ["Choose what the program will do and which exceptions to handle", "Write try/except with clear messages", "Test with valid and invalid input (or missing file)", "Revise and add a short comment or reflection"], "correctOrder": [0, 1, 2, 3]},
+          {"type": "shortAnswer", "prompt": "Describe your project: what it does, which exceptions it handles, and one design choice you made (e.g. why you used a default vs asking again).", "validation": {"type": "freeform"}}
+        ]
+      },
+      "reflection": {
+        "heading": "Mastery Celebration",
+        "components": [
+          {"type": "checklist", "items": ["I created a program that handles at least one exception type", "My program has a clear purpose and helpful error messages", "I can explain what each handler does and why I chose it", "I'm proud of what I built"]},
+          {"type": "shortAnswer", "prompt": "What did you learn by creating this project? What was hardest? What would you do differently next time?", "validation": {"type": "freeform"}},
+          {"type": "text", "content": "You've reached the Creating stage. You've gone from \"what is an exception?\" to designing and building programs that handle errors robustly. You can read tracebacks, write try/except/else/finally, choose what to catch, and evaluate handler design. You can handle errors and help others debug — well done!"}
+        ]
+      },
+      "transition": {
+        "heading": "Congratulations on Your Journey",
+        "components": [
+          {"type": "text", "content": "**Journey recap:**\n\n**Stage 0 (Starting)** → What exceptions are and why handling matters\n**Stage 1 (Remembering)** → Vocabulary: exception, traceback, try, except, else, finally, raise, built-in types\n**Stage 2 (Understanding)** → How exceptions propagate and how try/except/else/finally work\n**Stage 3 (Applying)** → Writing exception-handling code\n**Stage 4 (Analyzing)** → Troubleshooting exception errors\n**Stage 5 (Evaluating)** → What makes exception handling good\n**Stage 6 (Creating)** → Building your own projects with robust error handling\n\n**What's next:**\n\nYou have a solid foundation in errors and exceptions. Use it in every project that takes input or uses files — and keep building more complex programs with confidence."}
+        ]
+      }
+    }
+  },
+  "ui": {"defaultExpandedStage": "s0"}
+}

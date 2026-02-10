@@ -38,5 +38,9 @@
   {
     "value": "guides/working-with-files.json",
     "label": "Working with Files"
+  },
+  {
+    "value": "guides/errors-and-exceptions.json",
+    "label": "Errors and Exceptions"
   }
 ]
