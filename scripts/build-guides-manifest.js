@@ -1,7 +1,9 @@
 /**
- * Build script: scans guides/*.json (excluding manifest.json), reads metadata.title
- * and metadata.order from each, and writes guides/manifest.json for the static page to fetch.
- * Entries are sorted by metadata.order (ascending); guides without order appear last, sorted by filename.
+ * Build script: scans topic folders under guides/, then for each topic scans *.json
+ * (excluding manifest.json), reads metadata.title and metadata.order, and writes:
+ * - guides/topics.json
+ * - guides/<topic>/manifest.json
+ * Entries are sorted by metadata.order (ascending); guides without order appear last.
  * Run from repo root: node scripts/build-guides-manifest.js
  */
 
@@ -9,8 +11,9 @@ const fs = require('fs');
 const path = require('path');
 
 const GUIDES_DIR = path.join(__dirname, '..', 'guides');
-const MANIFEST_PATH = path.join(GUIDES_DIR, 'manifest.json');
 const MANIFEST_FILENAME = 'manifest.json';
+const TOPICS_FILENAME = 'topics.json';
+const TOPICS_PATH = path.join(GUIDES_DIR, TOPICS_FILENAME);
 
 function filenameToLabel(filename) {
   const base = path.basename(filename, '.json');
@@ -19,15 +22,32 @@ function filenameToLabel(filename) {
     .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-function buildManifest() {
-  const files = fs.readdirSync(GUIDES_DIR);
-  const jsonFiles = files.filter(
-    (f) => f.endsWith('.json') && f !== MANIFEST_FILENAME
-  );
+function topicToLabel(topicName) {
+  return topicName
+    .replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function getTopicDirectories() {
+  const entries = fs.readdirSync(GUIDES_DIR, { withFileTypes: true });
+  return entries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort((a, b) => a.localeCompare(b));
+}
+
+function buildTopicManifest(topicName) {
+  const topicDir = path.join(GUIDES_DIR, topicName);
+  const manifestPath = path.join(topicDir, MANIFEST_FILENAME);
+  const files = fs.readdirSync(topicDir, { withFileTypes: true });
+  const jsonFiles = files
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+    .filter((f) => f.endsWith('.json') && f !== MANIFEST_FILENAME);
 
   const entries = [];
   for (const file of jsonFiles) {
-    const filePath = path.join(GUIDES_DIR, file);
+    const filePath = path.join(topicDir, file);
     let label;
     let order = Infinity;
     try {
@@ -44,7 +64,7 @@ function buildManifest() {
       label = filenameToLabel(file);
     }
     entries.push({
-      value: `guides/${file}`,
+      value: `guides/${topicName}/${file}`,
       label,
       order,
       file,
@@ -59,11 +79,34 @@ function buildManifest() {
   const output = entries.map(({ value, label }) => ({ value, label }));
 
   fs.writeFileSync(
-    MANIFEST_PATH,
+    manifestPath,
     JSON.stringify(output, null, 2),
     'utf8'
   );
-  console.log(`Wrote ${output.length} guide(s) to ${MANIFEST_PATH}`);
+  console.log(`Wrote ${output.length} guide(s) to ${manifestPath}`);
 }
 
-buildManifest();
+function buildTopicsManifest(topicNames) {
+  const topics = topicNames.map((topic) => ({
+    value: topic,
+    label: topicToLabel(topic),
+  }));
+
+  fs.writeFileSync(
+    TOPICS_PATH,
+    JSON.stringify(topics, null, 2),
+    'utf8'
+  );
+  console.log(`Wrote ${topics.length} topic(s) to ${TOPICS_PATH}`);
+}
+
+function buildManifests() {
+  const topicNames = getTopicDirectories();
+  buildTopicsManifest(topicNames);
+
+  for (const topicName of topicNames) {
+    buildTopicManifest(topicName);
+  }
+}
+
+buildManifests();

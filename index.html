@@ -289,6 +289,13 @@
       <div class="brand" id="brandName">Technical Skill Tutor</div>
       
       <div style="margin-bottom:12px">
+        <label class="muted" style="display:block; margin-bottom:4px">Select Topic:</label>
+        <select id="topicSelector" style="width:100%; background:#0c1219; border:1px solid var(--border); color:var(--text); padding:8px; border-radius:8px;">
+          <option value="">Loading topics...</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:12px">
         <label class="muted" style="display:block; margin-bottom:4px">Select Guide:</label>
         <select id="guideSelector" style="width:100%; background:#0c1219; border:1px solid var(--border); color:var(--text); padding:8px; border-radius:8px;">
           <option value="">Loading guides...</option>
@@ -401,12 +408,62 @@
     }
   }
   
-  async function populateGuideSelector() {
-    const selector = document.getElementById('guideSelector');
-    selector.innerHTML = '<option value="">Loading guides...</option>';
+  async function populateTopicSelector() {
+    const topicSelector = document.getElementById('topicSelector');
+    const guideSelector = document.getElementById('guideSelector');
+    topicSelector.innerHTML = '<option value="">Loading topics...</option>';
+    guideSelector.innerHTML = '<option value="">Loading guides...</option>';
+    topicSelector.disabled = true;
+    guideSelector.disabled = true;
 
     try {
-      const response = await fetch('guides/manifest.json');
+      const response = await fetch('guides/topics.json');
+      if (!response.ok) throw new Error('Failed to load topics list');
+      const topics = await response.json();
+      if (!Array.isArray(topics) || topics.length === 0) throw new Error('No topics found');
+
+      topicSelector.innerHTML = '';
+      topics.forEach(topic => {
+        const option = document.createElement('option');
+        option.value = topic.value;
+        option.textContent = topic.label;
+        topicSelector.appendChild(option);
+      });
+      topicSelector.disabled = false;
+
+      const savedTopic = localStorage.getItem('selected_topic');
+      const selectedTopic = savedTopic && topics.some(t => t.value === savedTopic)
+        ? savedTopic
+        : topics[0].value;
+
+      topicSelector.value = selectedTopic;
+      localStorage.setItem('selected_topic', selectedTopic);
+      await populateGuideSelector(selectedTopic);
+    } catch (err) {
+      console.error('Error loading topic list:', err);
+      topicSelector.innerHTML = '';
+      const topicOption = document.createElement('option');
+      topicOption.value = '';
+      topicOption.textContent = 'No topics found';
+      topicOption.disabled = true;
+      topicSelector.appendChild(topicOption);
+
+      guideSelector.innerHTML = '';
+      const guideOption = document.createElement('option');
+      guideOption.value = '';
+      guideOption.textContent = 'No guides found';
+      guideOption.disabled = true;
+      guideSelector.appendChild(guideOption);
+    }
+  }
+
+  async function populateGuideSelector(topic) {
+    const selector = document.getElementById('guideSelector');
+    selector.innerHTML = '<option value="">Loading guides...</option>';
+    selector.disabled = true;
+
+    try {
+      const response = await fetch(`guides/${topic}/manifest.json`);
       if (!response.ok) throw new Error('Failed to load guide list');
       const guides = await response.json();
       if (!Array.isArray(guides) || guides.length === 0) throw new Error('No guides in manifest');
@@ -424,13 +481,15 @@
         ? savedGuide
         : guides[0].value;
       selector.value = selectedValue;
+      selector.disabled = false;
+      localStorage.setItem('selected_guide', selectedValue);
       await loadGuide(selectedValue);
     } catch (err) {
       console.error('Error loading guide list:', err);
       selector.innerHTML = '';
       const option = document.createElement('option');
       option.value = '';
-      option.textContent = 'No guides found';
+      option.textContent = 'No guides found for topic';
       option.disabled = true;
       selector.appendChild(option);
     }
@@ -1564,8 +1623,15 @@ Please evaluate if this answer is correct and complete based on the lesson conte
   // ------------------------------
   // INIT + EVENTS
   // ------------------------------
+  document.getElementById('topicSelector').addEventListener('change', async (e) => {
+    const selectedTopic = e.target.value;
+    localStorage.setItem('selected_topic', selectedTopic);
+    await populateGuideSelector(selectedTopic);
+  });
+
   document.getElementById('guideSelector').addEventListener('change', (e) => {
     const selectedGuide = e.target.value;
+    if (!selectedGuide) return;
     localStorage.setItem('selected_guide', selectedGuide);
     loadGuide(selectedGuide);
   });
@@ -1596,8 +1662,8 @@ Please evaluate if this answer is correct and complete based on the lesson conte
   state.student = localStorage.getItem('last_student_name') || '';
   if(state.student){ document.getElementById('studentName').value = state.student; }
 
-  // Initialize guide selector and load first guide
-  populateGuideSelector();
+  // Initialize topic selector and load first guide in topic
+  populateTopicSelector();
   </script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+[
+  {
+    "value": "guides/python/python-install.json",
+    "label": "Installing Python on Windows"
+  },
+  {
+    "value": "guides/python/first-python-script.json",
+    "label": "Your First Python Script"
+  },
+  {
+    "value": "guides/python/variables-and-basic-data-types.json",
+    "label": "Python Variables and Basic Data Types"
+  },
+  {
+    "value": "guides/python/input-and-operations.json",
+    "label": "Input and Operations"
+  },
+  {
+    "value": "guides/python/conditional-statements.json",
+    "label": "Conditional Statements"
+  },
+  {
+    "value": "guides/python/loops.json",
+    "label": "Loops"
+  },
+  {
+    "value": "guides/python/functions.json",
+    "label": "Functions"
+  },
+  {
+    "value": "guides/python/lists.json",
+    "label": "Lists"
+  },
+  {
+    "value": "guides/python/collections.json",
+    "label": "Collections"
+  },
+  {
+    "value": "guides/python/working-with-files.json",
+    "label": "Working with Files"
+  },
+  {
+    "value": "guides/python/errors-and-exceptions.json",
+    "label": "Errors and Exceptions"
+  }
+]
