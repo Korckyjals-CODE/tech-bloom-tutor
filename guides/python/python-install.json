@@ -405,11 +405,15 @@
         "components": [
           {
             "type": "text",
-            "content": "**What happens in each step:**\n\n**1. Download the Installer**\nYou click a link on python.org and get a .exe file — a special program that can copy and configure Python on your system.\n\n**2. Run the Installer**\nYou see a window with options. The installer creates a *Python folder* and sets up files on your computer.\n\n**3. Add Python to PATH**\nYou check a small box that says \"Add to PATH.\" This tells Windows: \"Whenever someone types python, look in this folder to find it.\"\n\n**4. Open Windows Terminal**\nYou see a black window. This window communicates directly with the computer's command system.\n\n**5. Type python --version**\nA number appears (like 3.12.5). Windows looks for \"python\" using PATH, finds the file, runs it, and shows its version."
+            "content": "**What happens in each step (internal model):**\n\n**1. Download the installer**\nYou get a `.exe` package containing Python binaries, standard library files, and setup actions.\n\n**2. Run installer actions**\nThe installer copies files into an installation directory, creates launcher entries, and may register file associations.\n\n**3. Add Python to PATH**\nPATH is an ordered list of folders Windows searches when you type a command. Adding Python means `python` can be found without typing the full path.\n\n**4. Open terminal and run command**\nWhen you type `python --version`, the shell requests command lookup. Windows checks current directory and PATH entries in order until it finds a matching executable.\n\n**5. Execute and print version**\nThe discovered Python executable runs and prints version output."
           },
           {
             "type": "text",
-            "content": "**🧠 Key Idea:**\n\nThe PATH is like a **directory of locations** Windows searches when you type a command.\n\nIf Python isn't in the PATH, Windows says:\n'python' is not recognized as an internal or external command."
+            "content": "**Command lookup sequence (mental model):**\n1) You enter command text.\n2) Shell tokenizes command name and arguments.\n3) System searches known command locations (including PATH folders).\n4) First match is executed.\n5) If no match, shell reports command not recognized.\n\nIf Python is not in PATH, Windows reports that `python` is not recognized."
+          },
+          {
+            "type": "text",
+            "content": "**Common misconceptions to avoid**\n- \"Python command\" is not the same thing as \"Python language\"; command lookup is an OS feature.\n- Installing Python does not guarantee command availability unless PATH is configured.\n- Running terminal in a different folder does not install/uninstall Python; it only changes relative path context."
           }
         ]
       },
@@ -451,6 +455,32 @@
               "correct": "Correct! PATH must be added for Windows to find Python.",
               "incorrect": "Think about what helps Windows locate programs..."
             }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Predict-and-explain #1: What happens when PATH is missing but Python is installed correctly?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Predict-and-explain #2: What happens if you run `python --version` from a terminal that starts in a different folder than expected?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "ordering",
+            "instructions": "Reconstruct the command execution sequence in correct order.",
+            "items": [
+              "You type python --version in terminal",
+              "Shell asks the OS to resolve the command",
+              "OS searches PATH entries in order",
+              "Python executable is found and launched",
+              "Version text is printed"
+            ],
+            "correctOrder": [0, 1, 2, 3, 4]
           }
         ]
       },
@@ -459,11 +489,11 @@
         "components": [
           {
             "type": "text",
-            "content": "Create a simple diagram (or mental map) showing **how Python, PATH, and Windows Terminal work together**.\n\n🧩 Hints:\n• Start with *User* → *Windows Terminal* → *PATH* → *Python program*.\n• Add arrows and labels like \"command travels here\" or \"Windows searches this folder.\""
+            "content": "Conceptual troubleshooting simulation:\n\nA learner reports: \"I installed Python, but `python --version` fails in one terminal and works in another.\"\n\nWithout performing real system changes, diagnose the most likely causes using your mental model:\n- installer actions,\n- PATH resolution,\n- terminal command lookup sequence.\n\nProvide a conceptual fix plan and verification steps."
           },
           {
             "type": "shortAnswer",
-            "prompt": "Describe your diagram or explain the flow from typing a command to Python executing:",
+            "prompt": "Write your diagnosis, likely causes, conceptual fix plan, and what output would confirm success.",
             "validation": {
               "type": "freeform"
             }
@@ -479,7 +509,7 @@
           },
           {
             "type": "shortAnswer",
-            "prompt": "Explain in your own words why we add Python to PATH:",
+            "prompt": "Explain install flow to a classmate: installer actions, PATH role, and command lookup sequence.",
             "validation": {
               "type": "freeform"
             }

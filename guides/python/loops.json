@@ -1066,7 +1066,7 @@
         "components": [
           {
             "type": "text",
-            "content": "You can diagnose and fix loop errors. Now you'll judge when a loop is well-chosen and well-written — and when to use for vs while, break, or a different structure."
+            "content": "You can diagnose and fix loop errors. Now you'll judge when a loop is well-chosen and well-written — and when to use for vs while, break, or a different structure.\n\nQuick contrast recap:\n- `for` is usually best for known counts or fixed sequences.\n- `while` is usually best for condition-driven repetition.\n- `break` can make exits explicit, but can also hide stop logic if overused.\n- condition-driven exits can be clearer when the stopping rule is simple and visible."
           }
         ]
       },
@@ -1084,6 +1084,10 @@
           {
             "type": "text",
             "content": "**Good vs. Less Good Examples**\n\n**Clarity — loop intent:**\n\n**Less clear:** `while 1:` with a break buried inside\n**Clearer:** `while not done:` or `while user_input != \"quit\":` so the exit condition is visible\n\n**Appropriateness — for vs while:**\n\n**Less appropriate:** while loop that only increments a counter and stops at 10 (same as \"run 10 times\")\n**More appropriate:** for i in range(10): — matches \"do this 10 times\"\n\n**Correctness — accumulator:**\n\n**Wrong:** total used without total = 0 before the loop\n**Good:** total = 0 before the loop; in body total += value"
+          },
+          {
+            "type": "text",
+            "content": "**Decision Matrix (Pick the best control pattern)**\n\n| Scenario | Best Pattern | Why |\n| --- | --- | --- |\n| Print labels 1..20 | `for i in range(1, 21)` | Fixed count, direct intent |\n| Read scores until user types `done` | `while True` + sentinel `break` | Unknown count, user-driven stop |\n| Keep retrying login up to 3 attempts | `for attempt in range(3)` | Bounded retries with clear limit |\n| Process each row in a list | `for row in rows` | Sequence traversal is explicit |\n| Poll until file appears | `while not exists(path)` | Condition-driven wait |\n| Menu until user chooses Exit | `while choice != \"exit\"` | Domain stop condition is visible |\n\n**Readability trade-off: `while True` + `break` vs explicit condition**\n- Use `while True` when there are multiple valid exits and each exit reason is readable near its branch.\n- Use explicit `while condition` when there is one dominant stop rule; this keeps termination visible at the loop header.\n\n**Testability checks for loop quality**\n- Normal path test: loop body runs expected number of times.\n- Boundary test: zero-iteration and one-iteration cases.\n- Termination test: stop condition or `break` is reachable.\n- Regression test: bad input does not create an infinite loop."
           }
         ]
       },
@@ -1126,6 +1130,43 @@
             "validation": {
               "type": "freeform"
             }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Classification: You must read exactly 12 sensor values and compute an average. Which loop is best?",
+            "options": [
+              "while value != 0",
+              "for _ in range(12)",
+              "while True with two breaks",
+              "Any loop is equally clear"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct. Fixed-count work is usually clearest with for/range.",
+              "incorrect": "This task has a known count (12), so for/range communicates intent best."
+            }
+          },
+          {
+            "type": "multipleChoice",
+            "question": "Classification: Keep asking until the user enters an integer between 1 and 5. Which loop is best?",
+            "options": [
+              "for i in range(5)",
+              "while True with validation and break on valid input",
+              "for each item in list",
+              "No loop needed"
+            ],
+            "correctIndex": 1,
+            "feedback": {
+              "correct": "Correct. Unknown attempts plus validation is a classic while pattern.",
+              "incorrect": "The number of attempts is unknown, so a condition-driven while loop is more appropriate."
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Code review scoring task: score these criteria from 1-5 for two alternatives (clarity, correctness, maintainability), then state which version you recommend and why.",
+            "validation": {
+              "type": "freeform"
+            }
           }
         ]
       },
@@ -1134,11 +1175,18 @@
         "components": [
           {
             "type": "text",
-            "content": "**Review this pattern:**\n\n```python\nattempts = 0\nwhile True:\n    p = input(\"Password: \")\n    attempts += 1\n    if p == \"secret\":\n        print(\"OK\")\n        break\n    if attempts >= 3:\n        print(\"Too many tries\")\n        break\n```\n\n**Questions:** Is a while True with break appropriate here? What are the exit conditions? Could you write it with a single while condition instead?"
+            "content": "**Review Case: Choose one of three candidate solutions**\n\nGoal: ask for password with max 3 attempts.\n\n**Candidate A**\n```python\nattempts = 0\nwhile True:\n    p = input(\"Password: \")\n    attempts += 1\n    if p == \"secret\":\n        print(\"OK\")\n        break\n    if attempts >= 3:\n        print(\"Too many tries\")\n        break\n```\n\n**Candidate B**\n```python\nfor attempt in range(3):\n    p = input(\"Password: \")\n    if p == \"secret\":\n        print(\"OK\")\n        break\nelse:\n    print(\"Too many tries\")\n```\n\n**Candidate C**\n```python\nattempts = 0\np = \"\"\nwhile attempts < 3 and p != \"secret\":\n    p = input(\"Password: \")\n    attempts += 1\nif p == \"secret\":\n    print(\"OK\")\nelse:\n    print(\"Too many tries\")\n```\n\nUse criteria: clarity, correctness, maintainability, and testability."
           },
           {
             "type": "shortAnswer",
-            "prompt": "Evaluate the password loop above. Is it clear? Appropriate? Would you keep it or rewrite it? Explain.",
+            "prompt": "Write a recommendation memo: choose A, B, or C, justify trade-offs by criteria, and identify one risk in each non-selected option.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Propose one refactor to your selected option to improve readability or testability, and explain why it helps.",
             "validation": {
               "type": "freeform"
             }
@@ -1169,6 +1217,13 @@
             "validation": {
               "type": "freeform"
             }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Pick one loop decision you made recently and justify it with at least two criteria (not preference).",
+            "validation": {
+              "type": "freeform"
+            }
           }
         ]
       },
@@ -1177,7 +1232,7 @@
         "components": [
           {
             "type": "text",
-            "content": "You can **evaluate** loop design and choose the right loop for the job. You think about appropriateness, clarity, and correctness.\n\n**Why this matters:** Good loop design makes programs easier to read, debug, and change.\n\n**How you'll use this:** Next, you'll **create** your own loop-based projects — counters, menus, simple simulations — using for, while, break, continue, and accumulators. You'll bring together everything you've learned."
+            "content": "You can **evaluate** loop design and choose the right loop for the job. You think about appropriateness, clarity, and correctness.\n\n**Why this matters:** Good loop design makes programs easier to read, debug, and change.\n\n**Bridge to creating:** your design choices now become implementation patterns in your own projects.\n\n**How you'll use this:** Next, you'll **create** your own loop-based projects — counters, menus, simple simulations — using for, while, break, continue, and accumulators. You'll bring together everything you've learned."
           }
         ]
       }
@@ -1206,6 +1261,10 @@
         "components": [
           {
             "type": "text",
+            "content": "**Complexity Tiers and Scope Boundaries**\n\n**Tier 1 (Beginner):** one loop, one clear output, no nested loops required.\nExamples: countdown, fixed-count sum.\n\n**Tier 2 (Intermediate):** multiple decisions, user input, and at least one validation path.\nExamples: menu loop, guessing game.\n\n**Tier 3 (Advanced):** multiple loop structures, state tracking, and explicit test evidence.\nExamples: simulation with summary metrics, nested-loop table + input handling.\n\nScope rule: finish a complete Tier 1 before adding Tier 2 or Tier 3 features."
+          },
+          {
+            "type": "text",
             "content": "**Project Type Options**\n\n**1. Counter / Sum Program** ⭐\nUse a for loop and an accumulator to sum numbers 1 to N, or count how many numbers the user enters until they type 0.\n\n**2. Menu Loop** ⭐\nA program that shows a menu and runs until the user chooses \"Quit.\" Use while and break.\n\n**3. Retry-Until-Valid Input** ⭐\nUse a while loop to keep asking for input until the user gives a valid value (e.g., a number between 1 and 10).\n\n**4. Countdown Timer** ⭐\nUse a loop (for or while) to print a countdown from N down to 1, then \"Go!\"\n\n**5. Multiplication Table (N×N)** ⭐⭐\nUse nested for loops to print a small multiplication table (e.g., 5×5).\n\n**6. Number Guessing Loop** ⭐⭐\nProgram picks a number; user guesses in a loop until correct. Use while and break when guess is right.\n\n**7. Run-Length or Repetition Checker** ⭐⭐\nAsk for a list of numbers (or repeated input) and use a loop to find sum, count, or average.\n\n**8. Simple Dice Simulation** ⭐⭐\nUse a for loop to \"roll\" a dice N times (e.g., with random) and count how many times you get a 6 (or any target)."
           },
           {
@@ -1214,7 +1273,7 @@
           },
           {
             "type": "text",
-            "content": "**Success Criteria**\n\n- **Counter/Sum:** Correct total or count; loop runs the right number of times.\n- **Menu:** Repeats until Quit; each option does the right thing; no infinite loop.\n- **Retry:** Keeps asking until input is valid; clear message when valid.\n- **Countdown:** Prints N down to 1 (or 0) then a final message.\n- **Nested table:** Rows and columns correct; readable output.\n- **Guessing:** Loop stops when guess is correct; hints (higher/lower) optional but helpful.\n- **Simulation:** Loop runs N times; accumulator (e.g., count of 6s) is correct."
+            "content": "**Design Brief Template (required before coding)**\n\n- Goal: what the program must do.\n- Loop choices: where `for` and/or `while` are used and why.\n- Stop conditions: how each loop is guaranteed to terminate.\n- Test plan: normal case, boundary case, invalid-input case.\n\n**Architecture Examples**\n- **Architecture A (Controller + helpers):** main loop drives flow, helper functions handle validation and reporting.\n- **Architecture B (State-update cycle):** read input -> update state -> render output -> check stop condition.\n\n**Success Criteria**\n\n- **Counter/Sum:** Correct total or count; loop runs the right number of times.\n- **Menu:** Repeats until Quit; each option does the right thing; no infinite loop.\n- **Retry:** Keeps asking until input is valid; clear message when valid.\n- **Countdown:** Prints N down to 1 (or 0) then a final message.\n- **Nested table:** Rows and columns correct; readable output.\n- **Guessing:** Loop stops when guess is correct; hints (higher/lower) optional but helpful.\n- **Simulation:** Loop runs N times; accumulator (e.g., count of 6s) is correct."
           }
         ]
       },
@@ -1243,6 +1302,13 @@
             }
           },
           {
+            "type": "shortAnswer",
+            "prompt": "List at least 3 acceptance tests and 2 edge cases for your chosen project.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
             "type": "checklist",
             "items": [
               "Create a new .py file with a clear name",
@@ -1251,6 +1317,7 @@
               "Update counters/accumulators correctly in the body",
               "Make sure the loop can stop (condition or break)",
               "Test with a few inputs",
+              "Run at least one edge-case test",
               "Fix any bugs and simplify if needed"
             ]
           }
@@ -1261,7 +1328,7 @@
         "components": [
           {
             "type": "text",
-            "content": "**Create a Loop-Based Project**\n\nChoose one (or combine ideas):\n\n**Option 1: Menu program** — Loop until user chooses Quit; at least 2 actions + Quit.\n**Option 2: Counter/accumulator** — Sum, count, or average over repeated input or range.\n**Option 3: Retry-until-valid** — Keep asking until input is in a valid range or format.\n**Option 4: Small simulation or game** — e.g., guess a number, or roll dice N times and report a count.\n\n**Quality checklist:**\n- Clear purpose and one or more loops used correctly\n- No infinite loop; loop stops when intended\n- Tested with normal and edge inputs\n- Code is readable (names, indentation)"
+            "content": "**Create a Loop-Based Project**\n\nChoose one (or combine ideas):\n\n**Option 1: Menu program** — Loop until user chooses Quit; at least 2 actions + Quit.\n**Option 2: Counter/accumulator** — Sum, count, or average over repeated input or range.\n**Option 3: Retry-until-valid** — Keep asking until input is in a valid range or format.\n**Option 4: Small simulation or game** — e.g., guess a number, or roll dice N times and report a count.\n\n**Required final deliverable package**\n- Final artifact (.py file)\n- Design rationale (what loop patterns were chosen and why)\n- Test evidence (expected vs actual for acceptance tests)\n\n**Quality checklist:**\n- Clear purpose and one or more loops used correctly\n- No infinite loop; loop stops when intended\n- Tested with normal and edge inputs\n- Code is readable (names, indentation)"
           },
           {
             "type": "ordering",
@@ -1279,6 +1346,13 @@
           {
             "type": "shortAnswer",
             "prompt": "Describe your project: what it does, which loops you used, and one design choice you made (e.g., why for vs while, or why you used break).",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Peer/self review checkpoint: identify one revision you made after feedback or self-review, and explain what improved.",
             "validation": {
               "type": "freeform"
             }

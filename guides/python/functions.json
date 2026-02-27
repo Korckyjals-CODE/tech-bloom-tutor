@@ -1046,7 +1046,7 @@
         "components": [
           {
             "type": "text",
-            "content": "You're moving from fixing bugs to choosing the best design. Focus on clarity, single responsibility, naming, and when a function is doing too much or too little."
+            "content": "You're moving from fixing bugs to choosing the best design. Shift from \"does it work?\" to \"is the interface clear?\" Focus on naming, signature clarity, return behavior, side effects, and whether the function has a single responsibility."
           }
         ]
       },
@@ -1055,7 +1055,7 @@
         "components": [
           {
             "type": "text",
-            "content": "You can diagnose and fix function errors. Now you'll judge when a function is well-named, well-scoped, and well-designed — and when to split or simplify it."
+            "content": "You can diagnose and fix function errors. Now you'll judge when a function API is clear and maintainable: the name, inputs, outputs, side effects, and cohesion should be intentional."
           }
         ]
       },
@@ -1073,6 +1073,10 @@
           {
             "type": "text",
             "content": "**Good vs. Less Good Examples**\n\n**Naming:**\n- Less clear: `def f(x): return x * 2`\n- Clearer: `def double(x): return x * 2`\n\n**Single responsibility:**\n- Less clear: One function that gets input, validates, computes grade, and prints the report.\n- Clearer: `get_score()`, `letter_grade(score)`, `print_report(name, grade)` — each does one thing.\n\n**Return vs print:**\n- Use return when the caller needs the value: `def add(a,b): return a+b` then `total = add(3,5)`.\n- Use print when the goal is to show something: `def show_hello(): print(\"Hello\")`."
+          },
+          {
+            "type": "text",
+            "content": "**Function Quality Rubric (score each criterion 1-5)**\n\n| Criterion | Strong (5) | Weak (1) |\n| --- | --- | --- |\n| Naming | Intent obvious from name | Generic or ambiguous name |\n| Signature design | Parameters are minimal and explicit | Hidden inputs or unused parameters |\n| Return behavior | Returns value when caller needs data | Prints instead of returning useful values |\n| Side effects | Side effects are intentional and documented | Side effects are surprising or mixed into logic |\n| Cohesion | Function has one clear job | Function mixes unrelated tasks |\n\n**Required comparison: hidden dependency vs explicit parameter**\n- Hidden dependency example: function reads global tax rate silently.\n- Explicit parameter example: `calculate_total(amount, tax_rate)`.\n- Prefer explicit parameters for testability and reuse.\n\n**Readability and testability implications**\n- Short, cohesive functions are easier to unit test with predictable inputs and outputs.\n- APIs that separate compute from print avoid brittle tests and make reuse easier."
           }
         ]
       },
@@ -1115,6 +1119,20 @@
             "validation": {
               "type": "freeform"
             }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Choose the better API and justify: `send_report(data)` (reads globals) vs `send_report(data, recipient, smtp_client)`.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Mini refactor evaluation: take one broad function idea and rewrite it as two focused function signatures with clear returns.",
+            "validation": {
+              "type": "freeform"
+            }
           }
         ]
       },
@@ -1123,11 +1141,11 @@
         "components": [
           {
             "type": "text",
-            "content": "**Review this design:**\n\n```python\ndef process(n):\n    x = n * 2\n    print(x)\n    if x > 10:\n        print(\"Big\")\n    return x\n```\n\n**Questions:** Does it have a single responsibility? Should it both return and print? How would you improve it for a caller who only needs the value?"
+            "content": "**Function Review Scenario (score then rewrite)**\n\n```python\ndef process(order_id, items):\n    total = 0\n    for i in items:\n        total += i[\"price\"]\n    print(\"Total:\", total)\n    if total > 100:\n        print(\"Discount candidate\")\n    log_message = f\"processed {order_id}\"\n    with open(\"log.txt\", \"a\") as f:\n        f.write(log_message + \"\\n\")\n    return total\n```\n\nUse the rubric (naming, signature, return behavior, side effects, cohesion), score 1-5 each, then recommend a redesign."
           },
           {
             "type": "shortAnswer",
-            "prompt": "Evaluate the function above. Is it clear? Should it print and return? What would you change and why?",
+            "prompt": "Write your recommendation with rubric scores and trade-offs. Then provide a rewritten design using at least two functions.",
             "validation": {
               "type": "freeform"
             }
@@ -1155,6 +1173,13 @@
           {
             "type": "shortAnswer",
             "prompt": "How will you use these criteria when writing your own functions from now on?",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "What one rule will you apply in your next function design, and why?",
             "validation": {
               "type": "freeform"
             }
@@ -1195,6 +1220,10 @@
         "components": [
           {
             "type": "text",
+            "content": "**Decomposition Requirements (creation contract)**\n\n- Minimum function count: 4 functions for beginner projects, 5+ for intermediate.\n- Single-responsibility target: each function should do one coherent job.\n- Required architecture: at least one controller function that calls helper functions.\n- Keep I/O boundaries clear: separate compute functions from display/input where possible."
+          },
+          {
+            "type": "text",
             "content": "**Project Type Options**\n\n**1. Tip / Bill Calculator** ⭐\nFunctions: get_bill(), get_tip_percent(), calculate_tip(bill, percent), display_total(bill, tip).\n\n**2. Grade Helper** ⭐\nFunctions: get_score(), letter_grade(score), pass_fail(score), main flow that calls them.\n\n**3. Unit Converter** ⭐\nFunctions: miles_to_km(miles), kg_to_lb(kg), or similar; main menu that calls the right one.\n\n**4. Input Validator** ⭐\nFunctions: get_int_in_range(low, high), get_non_empty_string(prompt); use them in a small form or quiz.\n\n**5. String Formatter** ⭐\nFunctions: capitalize_words(s), reverse_string(s), is_palindrome(s); main script that demonstrates each.\n\n**6. Mini Quiz or Flashcard** ⭐⭐\nFunctions: load_question(), check_answer(question, answer), run_quiz(); use loops and conditionals inside.\n\n**7. Number Tools** ⭐⭐\nFunctions: is_even(n), is_prime(n), sum_digits(n); main menu that calls them for a number.\n\n**8. Simple Report Generator** ⭐⭐\nFunctions: format_header(title), format_row(label, value), build_report(data); main code that builds and prints a small report."
           },
           {
@@ -1203,7 +1232,7 @@
           },
           {
             "type": "text",
-            "content": "**Success Criteria**\n\n- **Tip/Grade/Converter:** Clear functions for input, calculation, and output; correct results for a few inputs.\n- **Validator:** get_* functions return only valid values; used from a small main flow.\n- **Formatters/Number tools:** Each function does one thing; main demonstrates and combines them.\n- **Quiz/Report:** Logic split into small functions; main flow is short and readable."
+            "content": "**Interface Contract Expectations**\n\nFor each function, define:\n- function name and purpose,\n- parameters and expected types,\n- return value (or explicit side effect),\n- edge-case behavior.\n\n**Success Criteria**\n\n- **Tip/Grade/Converter:** Clear functions for input, calculation, and output; correct results for a few inputs.\n- **Validator:** get_* functions return only valid values; used from a small main flow.\n- **Formatters/Number tools:** Each function does one thing; main demonstrates and combines them.\n- **Quiz/Report:** Logic split into small functions; main flow is short and readable."
           }
         ]
       },
@@ -1226,6 +1255,13 @@
           },
           {
             "type": "shortAnswer",
+            "prompt": "Function plan sheet: for each planned function write name, params, return, side effects, and one test case.",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
             "prompt": "How will you know it works? (e.g., test with known inputs, check one edge case)",
             "validation": {
               "type": "freeform"
@@ -1239,6 +1275,7 @@
               "Use parameters and return where the caller needs a value",
               "Call functions from main flow or a main() function",
               "Test with a few inputs",
+              "Complete one self-review and refactor pass",
               "Fix any bugs and simplify if needed"
             ]
           }
@@ -1249,7 +1286,7 @@
         "components": [
           {
             "type": "text",
-            "content": "**Create a Function-Based Project**\n\nChoose one (or combine ideas):\n\n**Option 1: Calculator/Converter** — At least 2 functions (e.g., input + compute); clear names and return values.\n**Option 2: Validator/Helper** — get_* or is_* or format_* functions used from a small main flow.\n**Option 3: Number or string tools** — 2–3 small functions (e.g., is_even, sum_digits, reverse_string) and a short main that uses them.\n**Option 4: Mini quiz or report** — Logic in functions; main flow calls them and keeps the script readable.\n\n**Quality checklist:**\n- Clear purpose and at least 2–3 functions used correctly\n- Names describe what each function does\n- Return used when the caller needs a value\n- Tested with normal and one edge case\n- Code is readable (indentation, names)"
+            "content": "**Create a Function-Based Project**\n\nChoose one (or combine ideas):\n\n**Option 1: Calculator/Converter** — At least 2 functions (e.g., input + compute); clear names and return values.\n**Option 2: Validator/Helper** — get_* or is_* or format_* functions used from a small main flow.\n**Option 3: Number or string tools** — 2–3 small functions (e.g., is_even, sum_digits, reverse_string) and a short main that uses them.\n**Option 4: Mini quiz or report** — Logic in functions; main flow calls them and keeps the script readable.\n\n**Mandatory design constraints**\n- Include one controller function calling helpers.\n- Meet the minimum function-count contract for your selected difficulty.\n- Perform one refactor pass after self-review.\n\n**Quality checklist:**\n- Clear purpose and at least 2–3 functions used correctly\n- Names describe what each function does\n- Return used when the caller needs a value\n- Tested with normal and one edge case\n- Code is readable (indentation, names)"
           },
           {
             "type": "ordering",
@@ -1267,6 +1304,13 @@
           {
             "type": "shortAnswer",
             "prompt": "Describe your project: what it does, which functions you wrote, and one design choice you made (e.g., why you returned a value instead of printing).",
+            "validation": {
+              "type": "freeform"
+            }
+          },
+          {
+            "type": "shortAnswer",
+            "prompt": "Refactor evidence: what changed after your self-review, and why is the new design better?",
             "validation": {
               "type": "freeform"
             }
