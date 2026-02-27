@@ -900,6 +900,38 @@ Here's a minimal but complete example for a "Git Basics" guide:
 | **Evaluating** | Short Answer (freeform), MCQ (comparison), Table | Single-answer questions |
 | **Creating** | Short Answer (freeform), Flowchart, Code, Table | Recall-only activities |
 
+### Depth and Stage Integrity Guardrails
+
+Use these concrete checks before approving a new or revised guide:
+
+1. **Stage completeness**
+   - All stages `s0` through `s6` must exist with all seven sections present.
+2. **Stage density minimums**
+   - `s0`: at least 10 total components across all sections.
+   - `s1-s6`: at least 12 total components across all sections.
+3. **Interactivity minimums**
+   - At least 4 interactive components per stage (`shortAnswer`, `multipleChoice`, `matching`, `ordering`, `checklist`).
+   - At least 2 interactive components in `guidedPractice`.
+   - At least 1 interactive component in `challenge`.
+4. **Higher-stage anti-compression**
+   - `s4`, `s5`, and `s6` must not be substantially thinner than `s2` or `s3`.
+   - If `s5` or `s6` is noticeably lighter, expand with rubric/scenario/project scaffolding.
+5. **Mandatory stage-specific artifacts**
+   - `s4` includes an error-analysis table (symptom -> cause -> verify -> fix) and at least one multi-fault scenario.
+   - `s5` includes an explicit rubric/criteria matrix and at least one recommendation task with trade-offs.
+   - `s6` includes project options, deliverable checklist, and a revision cycle (self/peer feedback).
+
+### Recommended Quality-Lint Workflow
+
+Before final review, run a simple structure pass over the JSON:
+
+1. Count components per stage.
+2. Count interactive components per stage.
+3. Verify `s4-s6` meet the artifact requirements above.
+4. Confirm no stage has empty `guidedPractice`, `challenge`, or `reflection`.
+
+This catches shallow-stage regressions early.
+
 ### Writing Guidelines
 
 1. **Clear Instructions**: Every interactive component should have clear, concise instructions
@@ -913,6 +945,7 @@ Here's a minimal but complete example for a "Git Basics" guide:
 2. **IDs**: Use consistent naming conventions (e.g., `s0-s6` for stages, camelCase for sections)
 3. **Validation**: For commands, include common variations in `acceptedAnswers`
 4. **Code Language**: Use correct language identifiers for syntax highlighting (`python`, `javascript`, `bash`, `html`, `css`, etc.)
+5. **Formatting for Reviewability**: Keep guide JSON pretty-printed (multi-line), not minified, so stage depth and content audits are reliable.
 
 ### Accessibility
 

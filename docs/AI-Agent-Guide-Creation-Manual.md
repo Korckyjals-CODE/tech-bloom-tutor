@@ -835,6 +835,42 @@ Each **transition** section should have:
 - **Connection to real-world value** (why the next stage matters)
 - **Summary of current knowledge** (brief recap of what they've accomplished)
 
+### Anti-Gap Coverage Rules (New Required Guardrails)
+
+Use these rules to prevent shallow stages and late-stage compression:
+
+- **No stage compression in `s4-s6`**:
+  - `s4`, `s5`, and `s6` must each include at least as much instructional depth as `s2` or `s3`.
+  - If `s5` or `s6` is noticeably shorter or simpler than `s3`, expand before finalizing.
+- **Minimum component density per stage**:
+  - `s0`: at least 10 components total across all sections.
+  - `s1-s6`: at least 12 components total across all sections.
+- **Minimum interactivity per stage**:
+  - At least 4 interactive components per stage (`shortAnswer`, `multipleChoice`, `matching`, `ordering`, `checklist`).
+  - At least 2 interactive components in `guidedPractice`.
+  - At least 1 interactive component in `challenge`.
+- **Code/data evidence progression**:
+  - `s2-s6` should include at least 1 code, pseudo-code, or structured artifact/example where topic-appropriate.
+  - `s5` and `s6` should never be "discussion only."
+
+### Stage-Specific Depth Contracts for Higher Bloom Levels
+
+These are required to avoid the exact deficiencies seen in prior guides.
+
+- **Stage 4 (Analyzing) must include**:
+  - Error/issue taxonomy table with at least 5 entries (symptom -> cause -> verification -> fix).
+  - At least 3 diagnosis activities (not just recall).
+  - At least 1 multi-fault or ambiguous scenario requiring reasoning.
+- **Stage 5 (Evaluating) must include**:
+  - Explicit rubric or criteria matrix with at least 4 criteria.
+  - At least 2 compare-and-justify activities between alternative solutions.
+  - At least 1 recommendation task with trade-off justification.
+- **Stage 6 (Creating) must include**:
+  - 3+ project options across difficulty levels (beginner/intermediate/advanced).
+  - A planning worksheet (goal, design choices, validation approach).
+  - A quality checklist with deliverable requirements.
+  - At least 1 revision cycle (self-review or peer feedback) before "final."
+
 ---
 
 ## Common Patterns and Best Practices
@@ -985,6 +1021,10 @@ Before finalizing a guide, verify:
 - [ ] Stage 4 core has error analysis table (8-10 error types)
 - [ ] Stage 5 core has evaluation criteria (6-8 criteria) with rubrics and examples
 - [ ] Stage 6 core has multiple project types (6-8 options) with templates
+- [ ] `s4-s6` are not compressed compared to `s2-s3` (depth remains equal or greater)
+- [ ] Stage 4 includes at least one multi-fault diagnostic scenario
+- [ ] Stage 5 includes at least one recommendation task with trade-offs
+- [ ] Stage 6 includes a required revision cycle (self-review or peer review)
 
 ### Activity Quality
 - [ ] Each guidedPractice has minimum 2 activities (preferably 3-4)
@@ -992,6 +1032,9 @@ Before finalizing a guide, verify:
 - [ ] Multiple choice questions have feedback for correct and incorrect answers
 - [ ] Short answer questions use appropriate validation (freeform, contains, regex)
 - [ ] Activities progress in complexity
+- [ ] Each stage has at least 4 interactive components total
+- [ ] Each guidedPractice has at least 2 interactive components
+- [ ] Each challenge has at least 1 interactive component
 
 ### Reflection and Transition
 - [ ] Each reflection has self-assessment checklist (3-4 questions)
