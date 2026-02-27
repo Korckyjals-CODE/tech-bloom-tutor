@@ -4,14 +4,14 @@
     "subtitle": "Storing and working with information in Python",
     "description": "Learn how to store data using variables and understand Python's basic data types: integers, floats, strings, and booleans.",
     "version": "1.0.0",
-    "author": "EduCafé",
+    "author": "Korckyjals-CODE",
     "lastUpdated": "2026-01-20",
     "storageKeyPrefix": "python_variables",
     "instructorPasscode": "educafe-vars-101",
     "order": 3
   },
   "branding": {
-    "brandName": "EduCafé — Python Guide",
+    "brandName": "Tech Bloom Tutor",
     "theme": {
       "colorScheme": "dark",
       "primaryColor": "#4aa3ff",

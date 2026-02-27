@@ -4,14 +4,14 @@
     "subtitle": "Storing and iterating over sequences of values",
     "description": "Learn how to create lists with literals and list(), use indexing and slicing, call list methods like append and pop, iterate over lists with for, and write functions that take and return lists.",
     "version": "1.0.0",
-    "author": "EduCafé",
+    "author": "Korckyjals-CODE",
     "lastUpdated": "2026-02-03",
     "storageKeyPrefix": "lists",
     "instructorPasscode": "educafe-lists-101",
     "order": 8
   },
   "branding": {
-    "brandName": "EduCafé — Python Guide",
+    "brandName": "Tech Bloom Tutor",
     "theme": {
       "colorScheme": "dark",
       "primaryColor": "#4aa3ff",

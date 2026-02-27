@@ -4,14 +4,14 @@
     "subtitle": "Reusable blocks of code with parameters and return values",
     "description": "Learn how to define and call functions with def, use parameters and arguments, return values, understand local scope, and create programs organized into reusable functions.",
     "version": "1.0.0",
-    "author": "EduCafé",
+    "author": "Korckyjals-CODE",
     "lastUpdated": "2026-01-27",
     "storageKeyPrefix": "functions",
     "instructorPasscode": "educafe-functions-101",
     "order": 7
   },
   "branding": {
-    "brandName": "EduCafé — Python Guide",
+    "brandName": "Tech Bloom Tutor",
     "theme": {
       "colorScheme": "dark",
       "primaryColor": "#4aa3ff",

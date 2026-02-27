@@ -4,14 +4,14 @@
     "subtitle": "Tuples, dictionaries, and choosing the right collection",
     "description": "Learn how to use tuples as immutable sequences, create and use dictionaries for key-value data, iterate over tuples and dictionaries, and choose the right collection type for the problem.",
     "version": "1.0.0",
-    "author": "EduCafé",
+    "author": "Korckyjals-CODE",
     "lastUpdated": "2026-02-03",
     "storageKeyPrefix": "collections",
     "instructorPasscode": "educafe-collections-101",
     "order": 9
   },
   "branding": {
-    "brandName": "EduCafé — Python Guide",
+    "brandName": "Tech Bloom Tutor",
     "theme": {
       "colorScheme": "dark",
       "primaryColor": "#4aa3ff",

@@ -4,14 +4,14 @@
     "subtitle": "Repeating actions in your code with for and while",
     "description": "Learn how to write programs that repeat actions using for loops, while loops, range(), and loop control (break, continue) to create counters, menus, simulations, and other programs that iterate.",
     "version": "1.0.0",
-    "author": "EduCafé",
+    "author": "Korckyjals-CODE",
     "lastUpdated": "2026-01-27",
     "storageKeyPrefix": "loops",
     "instructorPasscode": "educafe-loops-101",
     "order": 6
   },
   "branding": {
-    "brandName": "EduCafé — Python Guide",
+    "brandName": "Tech Bloom Tutor",
     "theme": {
       "colorScheme": "dark",
       "primaryColor": "#4aa3ff",

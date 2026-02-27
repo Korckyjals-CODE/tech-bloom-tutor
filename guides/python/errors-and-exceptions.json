@@ -4,14 +4,14 @@
     "subtitle": "Handling errors so programs don't crash and can report or recover",
     "description": "Learn what exceptions are and when they occur; how to read tracebacks; use try, except, else, and finally; choose what to catch; raise exceptions; and work with common built-in exceptions such as ValueError, TypeError, FileNotFoundError, and KeyError.",
     "version": "1.0.0",
-    "author": "EduCafé",
+    "author": "Korckyjals-CODE",
     "lastUpdated": "2026-02-10",
     "storageKeyPrefix": "errors_and_exceptions",
     "instructorPasscode": "educafe-exceptions-101",
     "order": 11
   },
   "branding": {
-    "brandName": "EduCafé — Python Guide",
+    "brandName": "Tech Bloom Tutor",
     "theme": {
       "colorScheme": "dark",
       "primaryColor": "#4aa3ff",

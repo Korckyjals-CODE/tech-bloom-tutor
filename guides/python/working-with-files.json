@@ -4,14 +4,14 @@
     "subtitle": "Reading and writing text files in Python",
     "description": "Learn to open, read, write, and close text files; use the with statement; work with file paths and line-by-line processing.",
     "version": "1.0.0",
-    "author": "EduCafé",
+    "author": "Korckyjals-CODE",
     "lastUpdated": "2026-02-05",
     "storageKeyPrefix": "working_with_files",
     "instructorPasscode": "educafe-files-101",
     "order": 10
   },
   "branding": {
-    "brandName": "EduCafé — Python Guide",
+    "brandName": "Tech Bloom Tutor",
     "theme": {
       "colorScheme": "dark",
       "primaryColor": "#4aa3ff",

@@ -4,14 +4,14 @@
     "subtitle": "Making decisions in your code with if, elif, and else",
     "description": "Learn how to write programs that make decisions using conditional statements, comparison operators, and boolean logic to create interactive programs that respond differently based on conditions.",
     "version": "1.0.0",
-    "author": "EduCafé",
+    "author": "Korckyjals-CODE",
     "lastUpdated": "2026-01-20",
     "storageKeyPrefix": "conditional_statements",
     "instructorPasscode": "educafe-conditions-101",
     "order": 5
   },
   "branding": {
-    "brandName": "EduCafé — Python Guide",
+    "brandName": "Tech Bloom Tutor",
     "theme": {
       "colorScheme": "dark",
       "primaryColor": "#4aa3ff",
